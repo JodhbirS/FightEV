@@ -1,86 +1,110 @@
 [
   {
-    "fighter1": "Diego Lopes",
-    "fighter2": "Jean Silva",
-    "odds1": 210,
-    "odds2": -255
+    "fighter1": "Carlos Ulberg",
+    "fighter2": "Dominick Reyes",
+    "odds1": -255,
+    "odds2": 210
   },
   {
-    "fighter1": "David Martinez",
-    "fighter2": "Rob Font",
-    "odds1": 100,
-    "odds2": -118
+    "fighter1": "Ivan Erslan",
+    "fighter2": "Jim Crute",
+    "odds1": 184,
+    "odds2": -220
   },
   {
-    "fighter1": "Jared Gordon",
-    "fighter2": "Rafa Garcia",
-    "odds1": -230,
-    "odds2": 190
+    "fighter1": "Jack Jenkins",
+    "fighter2": "Ramon Taveras",
+    "odds1": -290,
+    "odds2": 235
   },
   {
-    "fighter1": "Dustin Stoltzfus",
-    "fighter2": "Kelvin Gastelum",
-    "odds1": 194,
-    "odds2": -235
+    "fighter1": "Jake Matthews",
+    "fighter2": "Neil Magny",
+    "odds1": -370,
+    "odds2": 295
   },
   {
-    "fighter1": "Alex Hernandez",
-    "fighter2": "Carlos Diego Ferreira",
-    "odds1": 100,
-    "odds2": -118
+    "fighter1": "Charlie Campbell",
+    "fighter2": "Tom Nolan",
+    "odds1": 120,
+    "odds2": -142
   },
   {
-    "fighter1": "Quang Le",
-    "fighter2": "Santiago Luna",
+    "fighter1": "Navajo Stirling",
+    "fighter2": "Rodolfo Bellato",
+    "odds1": -270,
+    "odds2": 220
+  },
+  {
+    "fighter1": "Andre Petroski",
+    "fighter2": "Cam Rowston",
+    "odds1": -174,
+    "odds2": 146
+  },
+  {
+    "fighter1": "Jamie Mullarkey",
+    "fighter2": "Rolando Bedoya",
+    "odds1": -132,
+    "odds2": 112
+  },
+  {
+    "fighter1": "Colby Thicknesse",
+    "fighter2": "Josias Musasa",
     "odds1": 130,
     "odds2": -154
   },
   {
-    "fighter1": "Dusko Todorovic",
-    "fighter2": "Jose Daniel Medina",
-    "odds1": -405,
-    "odds2": 320
+    "fighter1": "Luana Carolina",
+    "fighter2": "Michelle Montague",
+    "odds1": 188,
+    "odds2": -225
   },
   {
-    "fighter1": "Claudio Puelles",
-    "fighter2": "Joaquim Silva",
-    "odds1": -126,
-    "odds2": 108
+    "fighter1": "Brando Pericic",
+    "fighter2": "Elisha Ellison",
+    "odds1": -215,
+    "odds2": 180
   },
   {
-    "fighter1": "Amanda Lemos",
-    "fighter2": "Tatiana Suarez",
-    "odds1": 340,
-    "odds2": -430
+    "fighter1": "Alexia Thainara",
+    "fighter2": "Loma Lookboonmee",
+    "odds1": -240,
+    "odds2": 198
   },
   {
-    "fighter1": "Jesus Santos Aguilar",
-    "fighter2": "Luis Gurule",
-    "odds1": 176,
-    "odds2": -210
+    "fighter1": "Ayman Galal",
+    "fighter2": "Mohammad Alaqraa",
+    "odds1": 1040,
+    "odds2": -2000
   },
   {
-    "fighter1": "Sedriques Dumas",
-    "fighter2": "Zachary Reese",
-    "odds1": 194,
-    "odds2": -235
+    "fighter1": "Mohammad Fahmi",
+    "fighter2": "Mohsen Mohammadseifi",
+    "odds1": 360,
+    "odds2": -460
   },
   {
-    "fighter1": "Alden Coria",
-    "fighter2": "Alessandro Costa",
-    "odds1": 295,
-    "odds2": -370
+    "fighter1": "Ahmed Mostafa",
+    "fighter2": "Malik Basahel",
+    "odds1": 810,
+    "odds2": -1350
   },
   {
-    "fighter1": "Alice Pereira",
-    "fighter2": "Montserrat Rendon",
-    "odds1": -164,
-    "odds2": 138
+    "fighter1": "Islam Youssef",
+    "fighter2": "Xavier Alaoui",
+    "odds1": 520,
+    "odds2": -720
   },
   {
-    "fighter1": "Daniil Donchenko",
-    "fighter2": "Rodrigo Sezinando",
-    "odds1": -205,
-    "odds2": 172
+    "fighter1": "Salah Eddine Hamli",
+    "fighter2": "Souhil Tairi",
+    "odds1": -350,
+    "odds2": 280
+  },
+  {
+    "fighter1": "Islam Reda",
+    "fighter2": "Taha Bendaoud",
+    "odds1": -420,
+    "odds2": 330
   }
 ]
