@@ -1,110 +1,86 @@
 [
   {
-    "fighter1": "Carlos Ulberg",
-    "fighter2": "Dominick Reyes",
-    "odds1": -255,
-    "odds2": 210
+    "fighter1": "Alex Pereira",
+    "fighter2": "Magomed Ankalaev",
+    "odds1": 215,
+    "odds2": -260
   },
   {
-    "fighter1": "Ivan Erslan",
-    "fighter2": "Jim Crute",
-    "odds1": 184,
-    "odds2": -220
+    "fighter1": "Cory Sandhagen",
+    "fighter2": "Merab Dvalishvili",
+    "odds1": 320,
+    "odds2": -405
   },
   {
-    "fighter1": "Jack Jenkins",
-    "fighter2": "Ramon Taveras",
-    "odds1": -290,
-    "odds2": 235
+    "fighter1": "Jiri Prochazka",
+    "fighter2": "Khalil Rountree",
+    "odds1": -210,
+    "odds2": 176
   },
   {
-    "fighter1": "Jake Matthews",
-    "fighter2": "Neil Magny",
-    "odds1": -370,
-    "odds2": 295
+    "fighter1": "Josh Emmett",
+    "fighter2": "Youssef Zalal",
+    "odds1": 380,
+    "odds2": -490
   },
   {
-    "fighter1": "Charlie Campbell",
-    "fighter2": "Tom Nolan",
-    "odds1": 120,
-    "odds2": -142
+    "fighter1": "Abusupyian Magomedov",
+    "fighter2": "Joseph Pyfer",
+    "odds1": 205,
+    "odds2": -250
   },
   {
-    "fighter1": "Navajo Stirling",
-    "fighter2": "Rodolfo Bellato",
-    "odds1": -270,
-    "odds2": 220
+    "fighter1": "Ateba Gautier",
+    "fighter2": "Tre'ston Vines",
+    "odds1": -1800,
+    "odds2": 980
   },
   {
-    "fighter1": "Andre Petroski",
-    "fighter2": "Cam Rowston",
-    "odds1": -174,
-    "odds2": 146
+    "fighter1": "Andre Muniz",
+    "fighter2": "Edmen Shahbazyan",
+    "odds1": 260,
+    "odds2": -320
   },
   {
-    "fighter1": "Jamie Mullarkey",
-    "fighter2": "Rolando Bedoya",
-    "odds1": -132,
-    "odds2": 112
+    "fighter1": "Chris Gutierrez",
+    "fighter2": "Farid Basharat",
+    "odds1": 385,
+    "odds2": -500
   },
   {
-    "fighter1": "Colby Thicknesse",
-    "fighter2": "Josias Musasa",
-    "odds1": 130,
-    "odds2": -154
+    "fighter1": "Daniel Santos",
+    "fighter2": "Joo Sang Yoo",
+    "odds1": -148,
+    "odds2": 126
   },
   {
-    "fighter1": "Luana Carolina",
-    "fighter2": "Michelle Montague",
-    "odds1": 188,
-    "odds2": -225
+    "fighter1": "Macy Chiasson",
+    "fighter2": "Yana Santos",
+    "odds1": -196,
+    "odds2": 164
   },
   {
-    "fighter1": "Brando Pericic",
-    "fighter2": "Elisha Ellison",
-    "odds1": -215,
-    "odds2": 180
+    "fighter1": "Jakub Wiklacz",
+    "fighter2": "Patchy Mix",
+    "odds1": 260,
+    "odds2": -320
   },
   {
-    "fighter1": "Alexia Thainara",
-    "fighter2": "Loma Lookboonmee",
-    "odds1": -240,
-    "odds2": 198
+    "fighter1": "Nikolay Veretennikov",
+    "fighter2": "Punahele Soriano",
+    "odds1": 265,
+    "odds2": -330
   },
   {
-    "fighter1": "Ayman Galal",
-    "fighter2": "Mohammad Alaqraa",
-    "odds1": 1040,
-    "odds2": -2000
+    "fighter1": "Austin Vanderford",
+    "fighter2": "Ramiz Brahimaj",
+    "odds1": -295,
+    "odds2": 240
   },
   {
-    "fighter1": "Mohammad Fahmi",
-    "fighter2": "Mohsen Mohammadseifi",
-    "odds1": 360,
-    "odds2": -460
-  },
-  {
-    "fighter1": "Ahmed Mostafa",
-    "fighter2": "Malik Basahel",
-    "odds1": 810,
-    "odds2": -1350
-  },
-  {
-    "fighter1": "Islam Youssef",
-    "fighter2": "Xavier Alaoui",
-    "odds1": 520,
-    "odds2": -720
-  },
-  {
-    "fighter1": "Salah Eddine Hamli",
-    "fighter2": "Souhil Tairi",
-    "odds1": -350,
-    "odds2": 280
-  },
-  {
-    "fighter1": "Islam Reda",
-    "fighter2": "Taha Bendaoud",
-    "odds1": -420,
-    "odds2": 330
+    "fighter1": "Brogan Walker-Sanchez",
+    "fighter2": "Veronica Hardy",
+    "odds1": 540,
+    "odds2": -770
   }
 ]
