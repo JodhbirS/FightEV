@@ -1,11 +1,11 @@
 # UFC Fights EV Predictor
 
-A simple React + TypeScript frontend showing main UFC fight cards with sportsbook odds, alongside my Python Elo‑based win probabilities & expected value (EV) model. Positive‑EV fighters are highlighted in green; negative‑EV fighters in red. The new fight card is uploaded at noon on the day of the fight, and the fight data is scraped the next morning. Screenshot below shows data from UFC 315.
+A simple React + TypeScript frontend showing main UFC fight cards with sportsbook odds, alongside my Python Elo‑based win probabilities & expected value (EV) model. Positive‑EV fighters are highlighted in green; negative‑EV fighters in red. The new fight card is uploaded at noon on the day of the fight, and the fight data is scraped the next morning. Screenshot below shows data from UFC 320.
 
 If you use this to place your own bets, please do so at your own discretion.
 
 <p align="center">
-  <img src="./assets/ufc315_predictions.png" alt="UFC 315 Predictions UI" width="600"/>
+  <img src="./assets/ufc_predictions.png" alt="UFC Predictions UI" width="600"/>
 </p>
 
 ## Features
