@@ -1,74 +1,86 @@
 [
   {
-    "fighter1": "Charles Oliveira",
-    "fighter2": "Mateusz Gamrot",
-    "odds1": -108,
-    "odds2": -108
+    "fighter1": "Brendan Allen",
+    "fighter2": "Reinier de Ridder",
+    "odds1": 172,
+    "odds2": -205
   },
   {
-    "fighter1": "Deiveson Figueiredo",
-    "fighter2": "Montel Jackson",
-    "odds1": 265,
-    "odds2": -330
+    "fighter1": "Kevin Holland",
+    "fighter2": "Mike Malott",
+    "odds1": -104,
+    "odds2": -112
   },
   {
-    "fighter1": "Joel Alvarez",
-    "fighter2": "Vicente Luque",
-    "odds1": -590,
-    "odds2": 430
+    "fighter1": "Aiemann Zahabi",
+    "fighter2": "Marlon Vera",
+    "odds1": -136,
+    "odds2": 116
   },
   {
-    "fighter1": "Kaan Ofli",
-    "fighter2": "Ricardo Ramos",
-    "odds1": 168,
-    "odds2": -200
+    "fighter1": "Jasmine Jasudavicius",
+    "fighter2": "Manon Fiorot",
+    "odds1": 190,
+    "odds2": -230
   },
   {
-    "fighter1": "Jhonata Diniz",
-    "fighter2": "Mario Pinto",
-    "odds1": -120,
-    "odds2": 102
+    "fighter1": "Aori Qileng",
+    "fighter2": "Cody Gibson",
+    "odds1": 152,
+    "odds2": -180
   },
   {
-    "fighter1": "Lucas Almeida",
-    "fighter2": "Michael Aswell",
-    "odds1": 215,
-    "odds2": -260
+    "fighter1": "Kyle Nelson",
+    "fighter2": "Matt Frevola",
+    "odds1": 102,
+    "odds2": -120
   },
   {
-    "fighter1": "Clayton Carpenter",
-    "fighter2": "Jafel Filho",
-    "odds1": 106,
-    "odds2": -124
+    "fighter1": "Charles Jourdain",
+    "fighter2": "Davey Grant",
+    "odds1": -178,
+    "odds2": 150
   },
   {
-    "fighter1": "Thomas Petersen",
-    "fighter2": "Vitor Petrino",
-    "odds1": 240,
-    "odds2": -295
+    "fighter1": "Bruno Silva",
+    "fighter2": "Hyun Sung Park",
+    "odds1": 190,
+    "odds2": -230
   },
   {
-    "fighter1": "Beatriz Mesquita",
-    "fighter2": "Irina Alekseeva",
-    "odds1": -600,
-    "odds2": 450
+    "fighter1": "Danny Barlow",
+    "fighter2": "Djorden Santos",
+    "odds1": -290,
+    "odds2": 235
   },
   {
-    "fighter1": "Lucas Rocha",
-    "fighter2": "Stewart Nicoll",
-    "odds1": -116,
-    "odds2": -102
+    "fighter1": "Drew Dober",
+    "fighter2": "Kyle Prepolec",
+    "odds1": -390,
+    "odds2": 310
   },
   {
-    "fighter1": "Julia Polastri",
-    "fighter2": "Karolina Kowalkiewicz",
-    "odds1": -590,
-    "odds2": 430
+    "fighter1": "Ravena Oliveira",
+    "fighter2": "Stephanie Luciano",
+    "odds1": 245,
+    "odds2": -300
   },
   {
-    "fighter1": "Luan Lacerda",
-    "fighter2": "Saimon Oliveira",
-    "odds1": -330,
-    "odds2": 265
+    "fighter1": "Azamat Bekoev",
+    "fighter2": "Yousri Belgaroui",
+    "odds1": -295,
+    "odds2": 240
+  },
+  {
+    "fighter1": "Melissa Croden",
+    "fighter2": "Tainara Lisboa",
+    "odds1": -132,
+    "odds2": 112
+  },
+  {
+    "fighter1": "Abdoul Razac Sankara",
+    "fighter2": "Patrick Ocheme",
+    "odds1": 138,
+    "odds2": -164
   }
 ]
