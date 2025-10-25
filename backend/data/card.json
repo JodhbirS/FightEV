@@ -1,86 +1,56 @@
 [
   {
-    "fighter1": "Brendan Allen",
-    "fighter2": "Reinier de Ridder",
-    "odds1": 172,
-    "odds2": -205
+    "fighter1": "Ciryl Gane",
+    "fighter2": "Tom Aspinall",
+    "odds1": 295,
+    "odds2": -370
   },
   {
-    "fighter1": "Kevin Holland",
-    "fighter2": "Mike Malott",
-    "odds1": -104,
-    "odds2": -112
+    "fighter1": "Mackenzie Dern",
+    "fighter2": "Virna Jandiroba",
+    "odds1": -156,
+    "odds2": 132
   },
   {
-    "fighter1": "Aiemann Zahabi",
-    "fighter2": "Marlon Vera",
-    "odds1": -136,
-    "odds2": 116
+    "fighter1": "Mario Bautista",
+    "fighter2": "Umar Nurmagomedov",
+    "odds1": 480,
+    "odds2": -650
   },
   {
-    "fighter1": "Jasmine Jasudavicius",
-    "fighter2": "Manon Fiorot",
-    "odds1": 190,
-    "odds2": -230
-  },
-  {
-    "fighter1": "Aori Qileng",
-    "fighter2": "Cody Gibson",
+    "fighter1": "Alexander Volkov",
+    "fighter2": "Jailton Almeida",
     "odds1": 152,
     "odds2": -180
   },
   {
-    "fighter1": "Kyle Nelson",
-    "fighter2": "Matt Frevola",
-    "odds1": 102,
-    "odds2": -120
+    "fighter1": "Aleksandar Rakic",
+    "fighter2": "Azamat Murzakanov",
+    "odds1": -118,
+    "odds2": 100
   },
   {
-    "fighter1": "Charles Jourdain",
-    "fighter2": "Davey Grant",
-    "odds1": -178,
-    "odds2": 150
+    "fighter1": "Nasrat Haqparast",
+    "fighter2": "Quillan Salkilld",
+    "odds1": 100,
+    "odds2": -118
   },
   {
-    "fighter1": "Bruno Silva",
-    "fighter2": "Hyun Sung Park",
-    "odds1": 190,
-    "odds2": -230
+    "fighter1": "L'udovit Klein",
+    "fighter2": "Mateusz Rebecki",
+    "odds1": -152,
+    "odds2": 120
   },
   {
-    "fighter1": "Danny Barlow",
-    "fighter2": "Djorden Santos",
-    "odds1": -290,
-    "odds2": 235
+    "fighter1": "Ikram Aliskerov",
+    "fighter2": "Jun Yong Park",
+    "odds1": -220,
+    "odds2": 184
   },
   {
-    "fighter1": "Drew Dober",
-    "fighter2": "Kyle Prepolec",
-    "odds1": -390,
-    "odds2": 310
-  },
-  {
-    "fighter1": "Ravena Oliveira",
-    "fighter2": "Stephanie Luciano",
-    "odds1": 245,
-    "odds2": -300
-  },
-  {
-    "fighter1": "Azamat Bekoev",
-    "fighter2": "Yousri Belgaroui",
-    "odds1": -295,
-    "odds2": 240
-  },
-  {
-    "fighter1": "Melissa Croden",
-    "fighter2": "Tainara Lisboa",
-    "odds1": -132,
-    "odds2": 112
-  },
-  {
-    "fighter1": "Abdoul Razac Sankara",
-    "fighter2": "Patrick Ocheme",
-    "odds1": 138,
-    "odds2": -164
+    "fighter1": "Louie Sutherland",
+    "fighter2": "Valter Walker",
+    "odds1": 320,
+    "odds2": -405
   }
 ]
