@@ -1,56 +1,80 @@
 [
   {
-    "fighter1": "Ciryl Gane",
-    "fighter2": "Tom Aspinall",
-    "odds1": 295,
-    "odds2": -370
+    "fighter1": "David Onama",
+    "fighter2": "Steve Garcia Jr.",
+    "odds1": 114,
+    "odds2": -134
   },
   {
-    "fighter1": "Mackenzie Dern",
-    "fighter2": "Virna Jandiroba",
-    "odds1": -156,
-    "odds2": 132
+    "fighter1": "Ante Delija",
+    "fighter2": "Waldo Cortes-Acosta",
+    "odds1": -132,
+    "odds2": 112
   },
   {
-    "fighter1": "Mario Bautista",
-    "fighter2": "Umar Nurmagomedov",
-    "odds1": 480,
-    "odds2": -650
+    "fighter1": "Jeremiah Wells",
+    "fighter2": "Themba Gorimbo",
+    "odds1": 120,
+    "odds2": -142
   },
   {
-    "fighter1": "Alexander Volkov",
-    "fighter2": "Jailton Almeida",
+    "fighter1": "Isaac Dulgarian",
+    "fighter2": "Yadier DelValle",
+    "odds1": -245,
+    "odds2": 200
+  },
+  {
+    "fighter1": "Charlie Radtke",
+    "fighter2": "Daniel Frunza",
+    "odds1": -172,
+    "odds2": 144
+  },
+  {
+    "fighter1": "Allan Nascimento",
+    "fighter2": "Cody Durden",
+    "odds1": -290,
+    "odds2": 235
+  },
+  {
+    "fighter1": "Billy Elekana",
+    "fighter2": "Kevin Christian",
+    "odds1": -270,
+    "odds2": 220
+  },
+  {
+    "fighter1": "Chang Ho Lee",
+    "fighter2": "Timothy Cuamba",
+    "odds1": -108,
+    "odds2": -108
+  },
+  {
+    "fighter1": "Donte Johnson",
+    "fighter2": "Sedriques Dumas",
+    "odds1": -350,
+    "odds2": 280
+  },
+  {
+    "fighter1": "Ketlen Vieira",
+    "fighter2": "Norma Dumont",
+    "odds1": 146,
+    "odds2": -174
+  },
+  {
+    "fighter1": "Alice Ardelean",
+    "fighter2": "Montserrat Ruiz",
+    "odds1": -360,
+    "odds2": 290
+  },
+  {
+    "fighter1": "Philip Rowe",
+    "fighter2": "Seok Hyun Ko",
     "odds1": 152,
     "odds2": -180
   },
   {
-    "fighter1": "Aleksandar Rakic",
-    "fighter2": "Azamat Murzakanov",
-    "odds1": -118,
-    "odds2": 100
-  },
-  {
-    "fighter1": "Nasrat Haqparast",
-    "fighter2": "Quillan Salkilld",
-    "odds1": 100,
-    "odds2": -118
-  },
-  {
-    "fighter1": "L'udovit Klein",
-    "fighter2": "Mateusz Rebecki",
-    "odds1": -152,
-    "odds2": 120
-  },
-  {
-    "fighter1": "Ikram Aliskerov",
-    "fighter2": "Jun Yong Park",
-    "odds1": -220,
-    "odds2": 184
-  },
-  {
-    "fighter1": "Louie Sutherland",
-    "fighter2": "Valter Walker",
-    "odds1": 320,
-    "odds2": -405
+    "fighter1": "Ariane Carnelossi",
+    "fighter2": "Talita Alencar",
+    "odds1": 188,
+    "odds2": -225
   }
 ]
