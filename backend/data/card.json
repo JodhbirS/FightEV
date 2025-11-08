@@ -1,80 +1,74 @@
 [
   {
-    "fighter1": "David Onama",
-    "fighter2": "Steve Garcia Jr.",
-    "odds1": 114,
-    "odds2": -134
-  },
-  {
-    "fighter1": "Ante Delija",
-    "fighter2": "Waldo Cortes-Acosta",
-    "odds1": -132,
-    "odds2": 112
-  },
-  {
-    "fighter1": "Jeremiah Wells",
-    "fighter2": "Themba Gorimbo",
-    "odds1": 120,
-    "odds2": -142
-  },
-  {
-    "fighter1": "Isaac Dulgarian",
-    "fighter2": "Yadier DelValle",
-    "odds1": -245,
-    "odds2": 200
-  },
-  {
-    "fighter1": "Charlie Radtke",
-    "fighter2": "Daniel Frunza",
+    "fighter1": "Gabriel Bonfim",
+    "fighter2": "Randy Brown",
     "odds1": -172,
     "odds2": 144
   },
   {
-    "fighter1": "Allan Nascimento",
-    "fighter2": "Cody Durden",
-    "odds1": -290,
-    "odds2": 235
+    "fighter1": "Joseph Morales",
+    "fighter2": "Matt Schnell",
+    "odds1": -450,
+    "odds2": 350
   },
   {
-    "fighter1": "Billy Elekana",
-    "fighter2": "Kevin Christian",
-    "odds1": -270,
-    "odds2": 220
+    "fighter1": "Muslim Salikhov",
+    "fighter2": "Uros Medic",
+    "odds1": 116,
+    "odds2": -136
   },
   {
-    "fighter1": "Chang Ho Lee",
-    "fighter2": "Timothy Cuamba",
-    "odds1": -108,
-    "odds2": -108
+    "fighter1": "Chris Padilla",
+    "fighter2": "Ismael Bonfim",
+    "odds1": -104,
+    "odds2": -112
   },
   {
-    "fighter1": "Donte Johnson",
-    "fighter2": "Sedriques Dumas",
-    "odds1": -350,
-    "odds2": 280
+    "fighter1": "Christian Leroy Duncan",
+    "fighter2": "Marco Tulio Silva",
+    "odds1": 138,
+    "odds2": -164
   },
   {
-    "fighter1": "Ketlen Vieira",
-    "fighter2": "Norma Dumont",
-    "odds1": 146,
-    "odds2": -174
+    "fighter1": "Hyder Amil",
+    "fighter2": "Jamall Emmers",
+    "odds1": -146,
+    "odds2": 124
   },
   {
-    "fighter1": "Alice Ardelean",
-    "fighter2": "Montserrat Ruiz",
-    "odds1": -360,
-    "odds2": 290
+    "fighter1": "Raoni Barcelos",
+    "fighter2": "Ricky Simon",
+    "odds1": 142,
+    "odds2": -168
   },
   {
-    "fighter1": "Philip Rowe",
-    "fighter2": "Seok Hyun Ko",
-    "odds1": 152,
-    "odds2": -180
+    "fighter1": "Jacqueline Cavalcanti",
+    "fighter2": "Mayra Bueno Silva",
+    "odds1": -220,
+    "odds2": 184
   },
   {
-    "fighter1": "Ariane Carnelossi",
-    "fighter2": "Talita Alencar",
-    "odds1": 188,
-    "odds2": -225
+    "fighter1": "Josh Hokit",
+    "fighter2": "Max Gimenis",
+    "odds1": -390,
+    "odds2": 310
+  },
+  {
+    "fighter1": "Denise Gomes",
+    "fighter2": "Tecia Torres",
+    "odds1": -178,
+    "odds2": 150
+  },
+  {
+    "fighter1": "Daniel Marcos",
+    "fighter2": "Miles Johns",
+    "odds1": -190,
+    "odds2": 160
+  },
+  {
+    "fighter1": "Jackson McVey",
+    "fighter2": "Zachary Reese",
+    "odds1": 240,
+    "odds2": -295
   }
 ]
