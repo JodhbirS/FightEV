@@ -1,74 +1,86 @@
 [
   {
-    "fighter1": "Gabriel Bonfim",
-    "fighter2": "Randy Brown",
-    "odds1": -172,
-    "odds2": 144
+    "fighter1": "Islam Makhachev",
+    "fighter2": "Jack Della Maddalena",
+    "odds1": -295,
+    "odds2": 240
   },
   {
-    "fighter1": "Joseph Morales",
-    "fighter2": "Matt Schnell",
-    "odds1": -450,
-    "odds2": 350
+    "fighter1": "Valentina Shevchenko",
+    "fighter2": "Weili Zhang",
+    "odds1": -136,
+    "odds2": 116
   },
   {
-    "fighter1": "Muslim Salikhov",
-    "fighter2": "Uros Medic",
-    "odds1": 116,
-    "odds2": -136
+    "fighter1": "Michael Morales",
+    "fighter2": "Sean Brady",
+    "odds1": 120,
+    "odds2": -142
   },
   {
-    "fighter1": "Chris Padilla",
-    "fighter2": "Ismael Bonfim",
-    "odds1": -104,
-    "odds2": -112
+    "fighter1": "Carlos Prates",
+    "fighter2": "Leon Edwards",
+    "odds1": -180,
+    "odds2": 152
   },
   {
-    "fighter1": "Christian Leroy Duncan",
-    "fighter2": "Marco Tulio Silva",
-    "odds1": 138,
-    "odds2": -164
+    "fighter1": "Beneil Dariush",
+    "fighter2": "Benoit Saint-Denis",
+    "odds1": 160,
+    "odds2": -190
   },
   {
-    "fighter1": "Hyder Amil",
-    "fighter2": "Jamall Emmers",
-    "odds1": -146,
-    "odds2": 124
+    "fighter1": "Bo Nickal",
+    "fighter2": "Rodolfo Vieira",
+    "odds1": -230,
+    "odds2": 190
   },
   {
-    "fighter1": "Raoni Barcelos",
-    "fighter2": "Ricky Simon",
-    "odds1": 142,
-    "odds2": -168
-  },
-  {
-    "fighter1": "Jacqueline Cavalcanti",
-    "fighter2": "Mayra Bueno Silva",
-    "odds1": -220,
-    "odds2": 184
-  },
-  {
-    "fighter1": "Josh Hokit",
-    "fighter2": "Max Gimenis",
-    "odds1": -390,
-    "odds2": 310
-  },
-  {
-    "fighter1": "Denise Gomes",
-    "fighter2": "Tecia Torres",
+    "fighter1": "Gregory Rodrigues",
+    "fighter2": "Roman Kopylov",
     "odds1": -178,
     "odds2": 150
   },
   {
-    "fighter1": "Daniel Marcos",
-    "fighter2": "Miles Johns",
-    "odds1": -190,
-    "odds2": 160
+    "fighter1": "Erin Blanchfield",
+    "fighter2": "Tracy Cortez",
+    "odds1": -250,
+    "odds2": 205
   },
   {
-    "fighter1": "Jackson McVey",
-    "fighter2": "Zachary Reese",
-    "odds1": 240,
-    "odds2": -295
+    "fighter1": "Ethyn Ewing",
+    "fighter2": "Malcolm Wellmaker",
+    "odds1": 360,
+    "odds2": -460
+  },
+  {
+    "fighter1": "Gerald Meerschaert",
+    "fighter2": "Kyle Daukaus",
+    "odds1": 360,
+    "odds2": -460
+  },
+  {
+    "fighter1": "Chepe Mariscal",
+    "fighter2": "Pat Sabatini",
+    "odds1": 100,
+    "odds2": -118
+  },
+  {
+    "fighter1": "Angela Hill",
+    "fighter2": "Fatima Kline",
+    "odds1": 390,
+    "odds2": -510
+  },
+  {
+    "fighter1": "Baysangur Susurkaev",
+    "fighter2": "Eric McConico",
+    "odds1": -1000,
+    "odds2": 660
+  },
+  {
+    "fighter1": "Matheus Camilo",
+    "fighter2": "Viacheslav Borshchev",
+    "odds1": -164,
+    "odds2": 138
   }
 ]
