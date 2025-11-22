@@ -1,86 +1,68 @@
 [
   {
-    "fighter1": "Islam Makhachev",
-    "fighter2": "Jack Della Maddalena",
-    "odds1": -295,
-    "odds2": 240
+    "fighter1": "Arman Tsarukyan",
+    "fighter2": "Daniel Hooker",
+    "odds1": -750,
+    "odds2": 530
   },
   {
-    "fighter1": "Valentina Shevchenko",
-    "fighter2": "Weili Zhang",
-    "odds1": -136,
-    "odds2": 116
+    "fighter1": "Belal Muhammad",
+    "fighter2": "Ian Garry",
+    "odds1": 235,
+    "odds2": -290
   },
   {
-    "fighter1": "Michael Morales",
-    "fighter2": "Sean Brady",
-    "odds1": 120,
-    "odds2": -142
+    "fighter1": "Alonzo Menifield",
+    "fighter2": "Volkan Oezdemir",
+    "odds1": 190,
+    "odds2": -230
   },
   {
-    "fighter1": "Carlos Prates",
-    "fighter2": "Leon Edwards",
-    "odds1": -180,
-    "odds2": 152
+    "fighter1": "Jack Hermansson",
+    "fighter2": "Myktybek Orolbai",
+    "odds1": 166,
+    "odds2": -198
   },
   {
-    "fighter1": "Beneil Dariush",
-    "fighter2": "Benoit Saint-Denis",
-    "odds1": 160,
-    "odds2": -190
+    "fighter1": "Shamil Gaziev",
+    "fighter2": "Waldo Cortes-Acosta",
+    "odds1": 126,
+    "odds2": -148
   },
   {
-    "fighter1": "Bo Nickal",
-    "fighter2": "Rodolfo Vieira",
-    "odds1": -230,
-    "odds2": 190
+    "fighter1": "Kyoji Horiguchi",
+    "fighter2": "Tagir Ulanbekov",
+    "odds1": 194,
+    "odds2": -235
   },
   {
-    "fighter1": "Gregory Rodrigues",
-    "fighter2": "Roman Kopylov",
-    "odds1": -178,
-    "odds2": 150
+    "fighter1": "Bogdan Grad",
+    "fighter2": "Luke Riley",
+    "odds1": 205,
+    "odds2": -250
   },
   {
-    "fighter1": "Erin Blanchfield",
-    "fighter2": "Tracy Cortez",
-    "odds1": -250,
-    "odds2": 205
+    "fighter1": "Nicolas Dalby",
+    "fighter2": "Saygid Izagakhmaev",
+    "odds1": 270,
+    "odds2": -335
   },
   {
-    "fighter1": "Ethyn Ewing",
-    "fighter2": "Malcolm Wellmaker",
-    "odds1": 360,
-    "odds2": -460
+    "fighter1": "Alex Perez",
+    "fighter2": "Asu Almabaev",
+    "odds1": 172,
+    "odds2": -205
   },
   {
-    "fighter1": "Gerald Meerschaert",
-    "fighter2": "Kyle Daukaus",
-    "odds1": 360,
-    "odds2": -460
+    "fighter1": "Abdulrakhman Yakhyaev",
+    "fighter2": "Raffael Cerqueira",
+    "odds1": -1600,
+    "odds2": 900
   },
   {
-    "fighter1": "Chepe Mariscal",
-    "fighter2": "Pat Sabatini",
-    "odds1": 100,
-    "odds2": -118
-  },
-  {
-    "fighter1": "Angela Hill",
-    "fighter2": "Fatima Kline",
-    "odds1": 390,
-    "odds2": -510
-  },
-  {
-    "fighter1": "Baysangur Susurkaev",
-    "fighter2": "Eric McConico",
-    "odds1": -1000,
-    "odds2": 660
-  },
-  {
-    "fighter1": "Matheus Camilo",
-    "fighter2": "Viacheslav Borshchev",
-    "odds1": -164,
-    "odds2": 138
+    "fighter1": "Aleksandre Topuria",
+    "fighter2": "Bekzat Almakhan",
+    "odds1": -138,
+    "odds2": 118
   }
 ]
