@@ -1,68 +1,86 @@
 [
   {
-    "fighter1": "Arman Tsarukyan",
-    "fighter2": "Daniel Hooker",
-    "odds1": -750,
-    "odds2": 530
+    "fighter1": "Merab Dvalishvili",
+    "fighter2": "Petr Yan",
+    "odds1": -400,
+    "odds2": 315
   },
   {
-    "fighter1": "Belal Muhammad",
-    "fighter2": "Ian Garry",
-    "odds1": 235,
-    "odds2": -290
+    "fighter1": "Alexandre Pantoja",
+    "fighter2": "Joshua Van",
+    "odds1": -240,
+    "odds2": 198
   },
   {
-    "fighter1": "Alonzo Menifield",
-    "fighter2": "Volkan Oezdemir",
-    "odds1": 190,
-    "odds2": -230
+    "fighter1": "Brandon Moreno",
+    "fighter2": "Tatsuro Taira",
+    "odds1": 102,
+    "odds2": -120
   },
   {
-    "fighter1": "Jack Hermansson",
-    "fighter2": "Myktybek Orolbai",
-    "odds1": 166,
-    "odds2": -198
-  },
-  {
-    "fighter1": "Shamil Gaziev",
-    "fighter2": "Waldo Cortes-Acosta",
-    "odds1": 126,
-    "odds2": -148
-  },
-  {
-    "fighter1": "Kyoji Horiguchi",
-    "fighter2": "Tagir Ulanbekov",
-    "odds1": 194,
-    "odds2": -235
-  },
-  {
-    "fighter1": "Bogdan Grad",
-    "fighter2": "Luke Riley",
+    "fighter1": "Henry Cejudo",
+    "fighter2": "Payton Talbott",
     "odds1": 205,
     "odds2": -250
   },
   {
-    "fighter1": "Nicolas Dalby",
-    "fighter2": "Saygid Izagakhmaev",
-    "odds1": 270,
-    "odds2": -335
+    "fighter1": "Bogdan Guskov",
+    "fighter2": "Jan Blachowicz",
+    "odds1": -108,
+    "odds2": -108
   },
   {
-    "fighter1": "Alex Perez",
-    "fighter2": "Asu Almabaev",
-    "odds1": 172,
-    "odds2": -205
+    "fighter1": "Grant Dawson",
+    "fighter2": "Manuel Torres",
+    "odds1": -245,
+    "odds2": 200
   },
   {
-    "fighter1": "Abdulrakhman Yakhyaev",
-    "fighter2": "Raffael Cerqueira",
-    "odds1": -1600,
-    "odds2": 900
+    "fighter1": "Chris Duncan",
+    "fighter2": "Terrance Mckinney",
+    "odds1": -120,
+    "odds2": 102
   },
   {
-    "fighter1": "Aleksandre Topuria",
-    "fighter2": "Bekzat Almakhan",
-    "odds1": -138,
-    "odds2": 118
+    "fighter1": "Karine Silva",
+    "fighter2": "Maycee Barber",
+    "odds1": 168,
+    "odds2": -200
+  },
+  {
+    "fighter1": "Fares Ziam",
+    "fighter2": "Nazim Sadykhov",
+    "odds1": -158,
+    "odds2": 134
+  },
+  {
+    "fighter1": "Brunno Ferreira",
+    "fighter2": "Marvin Vettori",
+    "odds1": -102,
+    "odds2": -116
+  },
+  {
+    "fighter1": "Edson Barboza",
+    "fighter2": "Jalin Turner",
+    "odds1": 295,
+    "odds2": -370
+  },
+  {
+    "fighter1": "Ibo Aslan",
+    "fighter2": "Iwo Baraniewski",
+    "odds1": 156,
+    "odds2": -186
+  },
+  {
+    "fighter1": "Antonio Trocoli",
+    "fighter2": "Mansur Abdul-Malik",
+    "odds1": 750,
+    "odds2": -1200
+  },
+  {
+    "fighter1": "Mairon Santos",
+    "fighter2": "Muhammadjon Naimov",
+    "odds1": -260,
+    "odds2": 215
   }
 ]
