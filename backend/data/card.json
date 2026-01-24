@@ -1,8 +1,62 @@
 [
   {
-    "fighter1": "Boule Godogo",
-    "fighter2": "Nkosi Ndebele",
-    "odds1": 700,
-    "odds2": -1100
+    "fighter1": "Justin Gaethje",
+    "fighter2": "Paddy Pimblett",
+    "odds1": 210,
+    "odds2": -255
+  },
+  {
+    "fighter1": "Derrick Lewis",
+    "fighter2": "Waldo Cortes-Acosta",
+    "odds1": 265,
+    "odds2": -330
+  },
+  {
+    "fighter1": "Natalia Silva",
+    "fighter2": "Rose Namajunas",
+    "odds1": -340,
+    "odds2": 275
+  },
+  {
+    "fighter1": "Arnold Allen",
+    "fighter2": "Jean Silva",
+    "odds1": 210,
+    "odds2": -255
+  },
+  {
+    "fighter1": "Andrey Pulyaev",
+    "fighter2": "Ateba Gautier",
+    "odds1": 660,
+    "odds2": -1000
+  },
+  {
+    "fighter1": "Modestas Bukauskas",
+    "fighter2": "Nikita Krylov",
+    "odds1": -142,
+    "odds2": 120
+  },
+  {
+    "fighter1": "Alex Perez",
+    "fighter2": "Charles Johnson",
+    "odds1": 150,
+    "odds2": -178
+  },
+  {
+    "fighter1": "Adam Fugitt",
+    "fighter2": "Ty Miller",
+    "odds1": 390,
+    "odds2": -510
+  },
+  {
+    "fighter1": "Denzel Freeman",
+    "fighter2": "Josh Hokit",
+    "odds1": 190,
+    "odds2": -230
+  },
+  {
+    "fighter1": "Alex Hernandez",
+    "fighter2": "Michael Johnson",
+    "odds1": -108,
+    "odds2": -108
   }
 ]
