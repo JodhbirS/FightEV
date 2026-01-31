@@ -1,5 +1,23 @@
 [
   {
+    "fighter1": "Alexander Volkanovski",
+    "fighter2": "Diego Lopes",
+    "odds1": -150,
+    "odds2": 125
+  },
+  {
+    "fighter1": "Dan Hooker",
+    "fighter2": "Benoît Saint Denis",
+    "odds1": 275,
+    "odds2": -350
+  },
+  {
+    "fighter1": "Rafael Fiziev",
+    "fighter2": "Mauricio Ruffy",
+    "odds1": 100,
+    "odds2": -125
+  },
+  {
     "fighter1": "Tai Tuivasa",
     "fighter2": "Tallison Teixeira",
     "odds1": 265,
