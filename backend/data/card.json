@@ -1,122 +1,38 @@
 [
   {
-    "fighter1": "Mario Bautista",
-    "fighter2": "Vinicius Oliveira",
-    "odds1": -146,
-    "odds2": 124
+    "fighter1": "Dan Ige",
+    "fighter2": "Melquizael Costa",
+    "odds1": 180,
+    "odds2": -215
   },
   {
-    "fighter1": "Amir Albazi",
-    "fighter2": "Kyoji Horiguchi",
-    "odds1": 295,
-    "odds2": -370
+    "fighter1": "Ante Delija",
+    "fighter2": "Sergey Spivak",
+    "odds1": -122,
+    "odds2": 104
   },
   {
-    "fighter1": "Jailton Almeida",
-    "fighter2": "Rizvan Kuniev",
-    "odds1": -162,
-    "odds2": 136
+    "fighter1": "Jacobe Smith",
+    "fighter2": "Josiah Harrell",
+    "odds1": -320,
+    "odds2": 260
   },
   {
-    "fighter1": "Marc-Andre Barriault",
-    "fighter2": "Michal Oleksiejczuk",
-    "odds1": 380,
-    "odds2": -490
+    "fighter1": "Alibi Idiris",
+    "fighter2": "Ode Osbourne",
+    "odds1": -126,
+    "odds2": 108
   },
   {
-    "fighter1": "Farid Basharat",
-    "fighter2": "Jean Matsumoto",
-    "odds1": -300,
-    "odds2": 245
+    "fighter1": "Alden Coria",
+    "fighter2": "Luis Gurule",
+    "odds1": -390,
+    "odds2": 310
   },
   {
-    "fighter1": "Dustin Jacoby",
-    "fighter2": "Julius Walker",
-    "odds1": -166,
-    "odds2": 140
-  },
-  {
-    "fighter1": "Alex Morono",
-    "fighter2": "Daniil Donchenko",
-    "odds1": 530,
-    "odds2": -750
-  },
-  {
-    "fighter1": "Nikolay Veretennikov",
-    "fighter2": "Niko Price",
-    "odds1": -290,
-    "odds2": 235
-  },
-  {
-    "fighter1": "Bruna Brasil",
-    "fighter2": "Ketlen Souza",
-    "odds1": 128,
-    "odds2": -152
-  },
-  {
-    "fighter1": "Gianni Vazquez",
-    "fighter2": "Javid Basharat",
-    "odds1": 540,
-    "odds2": -770
-  },
-  {
-    "fighter1": "Eduarda Moura",
-    "fighter2": "Wang Cong",
-    "odds1": 285,
-    "odds2": -355
-  },
-  {
-    "fighter1": "Jakub Wiklacz",
-    "fighter2": "Muin Gafurov",
-    "odds1": 124,
-    "odds2": -146
-  },
-  {
-    "fighter1": "Klaudia Sygu\u0142a",
-    "fighter2": "Priscila Cachoeira",
-    "odds1": -166,
-    "odds2": 140
-  },
-  {
-    "fighter1": "Alfie Davis",
-    "fighter2": "Usman Nurmagomedov",
-    "odds1": 980,
-    "odds2": -1800
-  },
-  {
-    "fighter1": "Ramazan Kuramagomedov",
-    "fighter2": "Shamil Musaev",
-    "odds1": 340,
-    "odds2": -430
-  },
-  {
-    "fighter1": "Abdoul Abdouraguimov",
-    "fighter2": "Kendly St. Louis",
-    "odds1": -310,
-    "odds2": 250
-  },
-  {
-    "fighter1": "Jesus Pinedo",
-    "fighter2": "Salamat Isbulaev",
-    "odds1": -104,
-    "odds2": -112
-  },
-  {
-    "fighter1": "Karl Williams",
-    "fighter2": "Pouya Rahmani",
-    "odds1": 420,
-    "odds2": -560
-  },
-  {
-    "fighter1": "Amru Magomedov",
-    "fighter2": "Kolton Englund",
-    "odds1": -1800,
-    "odds2": 980
-  },
-  {
-    "fighter1": "Kasum Kasumov",
-    "fighter2": "Taylor Lapilus",
-    "odds1": 194,
-    "odds2": -240
+    "fighter1": "Jean-Paul Lebosnoyani",
+    "fighter2": "Philip Rowe",
+    "odds1": -205,
+    "odds2": 172
   }
 ]
