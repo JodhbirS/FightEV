@@ -1,5 +1,17 @@
 [
   {
+    "fighter1": "Sean Strickland",
+    "fighter2": "Anthony Hernandez",
+    "odds1": 200,
+    "odds2": -215
+  },
+  {
+    "fighter1": "Geoff Neal",
+    "fighter2": "Uros Medic",
+    "odds1": -200,
+    "odds2": 150
+  },
+  {
     "fighter1": "Dan Ige",
     "fighter2": "Melquizael Costa",
     "odds1": 180,
@@ -16,6 +28,12 @@
     "fighter2": "Josiah Harrell",
     "odds1": -320,
     "odds2": 260
+  },
+  {
+    "fighter1": "Zach Reese",
+    "fighter2": "Michael Perreira",
+    "odds1": 100,
+    "odds2": -100
   },
   {
     "fighter1": "Alibi Idiris",
