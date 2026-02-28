@@ -1,56 +1,74 @@
 [
   {
-    "fighter1": "Sean Strickland",
-    "fighter2": "Anthony Hernandez",
-    "odds1": 200,
-    "odds2": -215
+    "fighter1": "Brandon Moreno",
+    "fighter2": "Lone'er Kavanagh",
+    "odds1": -210,
+    "odds2": 176
   },
   {
-    "fighter1": "Geoff Neal",
-    "fighter2": "Uros Medic",
-    "odds1": -200,
+    "fighter1": "David Martinez",
+    "fighter2": "Marlon Vera",
+    "odds1": -300,
+    "odds2": 245
+  },
+  {
+    "fighter1": "Daniel Zellhuber",
+    "fighter2": "King Green",
+    "odds1": -420,
+    "odds2": 330
+  },
+  {
+    "fighter1": "Edgar Chairez",
+    "fighter2": "Felipe Bunes",
+    "odds1": -300,
+    "odds2": 245
+  },
+  {
+    "fighter1": "Imanol Rodriguez",
+    "fighter2": "Kevin Borjas",
+    "odds1": -450,
+    "odds2": 350
+  },
+  {
+    "fighter1": "Angel Pacheco",
+    "fighter2": "Santiago Luna",
+    "odds1": 460,
+    "odds2": -650
+  },
+  {
+    "fighter1": "Jose Daniel Medina",
+    "fighter2": "Ryan Gandra",
+    "odds1": 480,
+    "odds2": -650
+  },
+  {
+    "fighter1": "Ailin Perez",
+    "fighter2": "Macy Chiasson",
+    "odds1": -178,
     "odds2": 150
   },
   {
-    "fighter1": "Dan Ige",
-    "fighter2": "Melquizael Costa",
-    "odds1": 180,
-    "odds2": -215
+    "fighter1": "Cristian Quinonez",
+    "fighter2": "Kris Moutinho",
+    "odds1": -600,
+    "odds2": 450
   },
   {
-    "fighter1": "Ante Delija",
-    "fighter2": "Sergey Spivak",
-    "odds1": -122,
-    "odds2": 104
+    "fighter1": "Ernesta Kareckaite",
+    "fighter2": "Regina Tarin",
+    "odds1": -172,
+    "odds2": 144
   },
   {
-    "fighter1": "Jacobe Smith",
-    "fighter2": "Josiah Harrell",
-    "odds1": -320,
-    "odds2": 260
+    "fighter1": "Erik Silva",
+    "fighter2": "Francis Marshall",
+    "odds1": 500,
+    "odds2": -700
   },
   {
-    "fighter1": "Zach Reese",
-    "fighter2": "Michael Perreira",
-    "odds1": 100,
-    "odds2": -100
-  },
-  {
-    "fighter1": "Alibi Idiris",
-    "fighter2": "Ode Osbourne",
-    "odds1": -126,
-    "odds2": 108
-  },
-  {
-    "fighter1": "Alden Coria",
-    "fighter2": "Luis Gurule",
-    "odds1": -390,
-    "odds2": 310
-  },
-  {
-    "fighter1": "Jean-Paul Lebosnoyani",
-    "fighter2": "Philip Rowe",
-    "odds1": -205,
-    "odds2": 172
+    "fighter1": "Damian Pinas",
+    "fighter2": "Wes Schultz",
+    "odds1": -260,
+    "odds2": 215
   }
 ]
