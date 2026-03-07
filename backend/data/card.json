@@ -1,74 +1,44 @@
 [
   {
-    "fighter1": "Brandon Moreno",
-    "fighter2": "Lone'er Kavanagh",
-    "odds1": -210,
-    "odds2": 176
+    "fighter1": "Charles Oliveira",
+    "fighter2": "Max Holloway",
+    "odds1": 176,
+    "odds2": -210
   },
   {
-    "fighter1": "David Martinez",
-    "fighter2": "Marlon Vera",
-    "odds1": -300,
-    "odds2": 245
+    "fighter1": "Caio Borralho",
+    "fighter2": "Reinier de Ridder",
+    "odds1": -250,
+    "odds2": 205
   },
   {
-    "fighter1": "Daniel Zellhuber",
-    "fighter2": "King Green",
-    "odds1": -420,
-    "odds2": 330
+    "fighter1": "Raul Rosas Jr",
+    "fighter2": "Rob Font",
+    "odds1": -250,
+    "odds2": 205
   },
   {
-    "fighter1": "Edgar Chairez",
-    "fighter2": "Felipe Bunes",
-    "odds1": -300,
-    "odds2": 245
+    "fighter1": "Alberto Montes",
+    "fighter2": "Ricky Turcios",
+    "odds1": -180,
+    "odds2": 152
   },
   {
-    "fighter1": "Imanol Rodriguez",
-    "fighter2": "Kevin Borjas",
-    "odds1": -450,
-    "odds2": 350
+    "fighter1": "Cody Durden",
+    "fighter2": "Nyamjargal Tumendemberel",
+    "odds1": 130,
+    "odds2": -154
   },
   {
-    "fighter1": "Angel Pacheco",
-    "fighter2": "Santiago Luna",
-    "odds1": 460,
-    "odds2": -650
+    "fighter1": "Luke Fernandez",
+    "fighter2": "Rodolfo Bellato",
+    "odds1": -220,
+    "odds2": 184
   },
   {
-    "fighter1": "Jose Daniel Medina",
-    "fighter2": "Ryan Gandra",
-    "odds1": 480,
-    "odds2": -650
-  },
-  {
-    "fighter1": "Ailin Perez",
-    "fighter2": "Macy Chiasson",
-    "odds1": -178,
-    "odds2": 150
-  },
-  {
-    "fighter1": "Cristian Quinonez",
-    "fighter2": "Kris Moutinho",
-    "odds1": -600,
-    "odds2": 450
-  },
-  {
-    "fighter1": "Ernesta Kareckaite",
-    "fighter2": "Regina Tarin",
-    "odds1": -172,
-    "odds2": 144
-  },
-  {
-    "fighter1": "Erik Silva",
-    "fighter2": "Francis Marshall",
-    "odds1": 500,
-    "odds2": -700
-  },
-  {
-    "fighter1": "Damian Pinas",
-    "fighter2": "Wes Schultz",
-    "odds1": -260,
-    "odds2": 215
+    "fighter1": "Drew Dober",
+    "fighter2": "Michael Johnson",
+    "odds1": -122,
+    "odds2": 104
   }
 ]
