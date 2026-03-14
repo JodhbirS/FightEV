@@ -1,44 +1,86 @@
 [
   {
-    "fighter1": "Charles Oliveira",
-    "fighter2": "Max Holloway",
-    "odds1": 176,
-    "odds2": -210
+    "fighter1": "Steven Asplund",
+    "fighter2": "Vitor Petrino",
+    "odds1": 190,
+    "odds2": -230
   },
   {
-    "fighter1": "Caio Borralho",
-    "fighter2": "Reinier de Ridder",
-    "odds1": -250,
-    "odds2": 205
+    "fighter1": "Josh Emmett",
+    "fighter2": "Kevin Vallejos",
+    "odds1": 410,
+    "odds2": -550
   },
   {
-    "fighter1": "Raul Rosas Jr",
-    "fighter2": "Rob Font",
-    "odds1": -250,
-    "odds2": 205
+    "fighter1": "Ion Cutelaba",
+    "fighter2": "Oumar Sy",
+    "odds1": 230,
+    "odds2": -280
   },
   {
-    "fighter1": "Alberto Montes",
-    "fighter2": "Ricky Turcios",
-    "odds1": -180,
-    "odds2": 152
+    "fighter1": "Harry Hardwick",
+    "fighter2": "Marwan Rahiki",
+    "odds1": 215,
+    "odds2": -260
   },
   {
-    "fighter1": "Cody Durden",
-    "fighter2": "Nyamjargal Tumendemberel",
-    "odds1": 130,
-    "odds2": -154
+    "fighter1": "Andre Fili",
+    "fighter2": "Jose Delgado",
+    "odds1": 350,
+    "odds2": -450
   },
   {
-    "fighter1": "Luke Fernandez",
-    "fighter2": "Rodolfo Bellato",
-    "odds1": -220,
-    "odds2": 184
+    "fighter1": "Amanda Lemos",
+    "fighter2": "Gillian Robertson",
+    "odds1": 194,
+    "odds2": -240
   },
   {
-    "fighter1": "Drew Dober",
-    "fighter2": "Michael Johnson",
-    "odds1": -122,
-    "odds2": 104
+    "fighter1": "Piera Rodriguez",
+    "fighter2": "Sam Hughes",
+    "odds1": -146,
+    "odds2": 124
+  },
+  {
+    "fighter1": "Enrique Hecher Sosa",
+    "fighter2": "Luan Lacerda",
+    "odds1": -245,
+    "odds2": 200
+  },
+  {
+    "fighter1": "Elijah Smith",
+    "fighter2": "Su Young You",
+    "odds1": -260,
+    "odds2": 215
+  },
+  {
+    "fighter1": "Chris Curtis",
+    "fighter2": "Myktybek Orolbai",
+    "odds1": 300,
+    "odds2": -375
+  },
+  {
+    "fighter1": "Bruno Silva",
+    "fighter2": "Charles Johnson",
+    "odds1": 132,
+    "odds2": -156
+  },
+  {
+    "fighter1": "Brad Tavares",
+    "fighter2": "Eryk Anders",
+    "odds1": -108,
+    "odds2": -108
+  },
+  {
+    "fighter1": "Bolaji Oki",
+    "fighter2": "Manoel Sousa",
+    "odds1": 225,
+    "odds2": -275
+  },
+  {
+    "fighter1": "Beatriz Mesquita",
+    "fighter2": "Montserrat Rendon",
+    "odds1": -670,
+    "odds2": 490
   }
 ]
