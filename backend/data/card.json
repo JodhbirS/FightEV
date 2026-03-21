@@ -1,86 +1,68 @@
 [
   {
-    "fighter1": "Steven Asplund",
-    "fighter2": "Vitor Petrino",
-    "odds1": 190,
-    "odds2": -230
-  },
-  {
-    "fighter1": "Josh Emmett",
-    "fighter2": "Kevin Vallejos",
-    "odds1": 410,
-    "odds2": -550
-  },
-  {
-    "fighter1": "Ion Cutelaba",
-    "fighter2": "Oumar Sy",
-    "odds1": 230,
-    "odds2": -280
-  },
-  {
-    "fighter1": "Harry Hardwick",
-    "fighter2": "Marwan Rahiki",
-    "odds1": 215,
-    "odds2": -260
-  },
-  {
-    "fighter1": "Andre Fili",
-    "fighter2": "Jose Delgado",
-    "odds1": 350,
-    "odds2": -450
-  },
-  {
-    "fighter1": "Amanda Lemos",
-    "fighter2": "Gillian Robertson",
-    "odds1": 194,
+    "fighter1": "Lerone Murphy",
+    "fighter2": "Movsar Evloev",
+    "odds1": 198,
     "odds2": -240
   },
   {
-    "fighter1": "Piera Rodriguez",
-    "fighter2": "Sam Hughes",
-    "odds1": -146,
-    "odds2": 124
+    "fighter1": "Luke Riley",
+    "fighter2": "Michael Aswell",
+    "odds1": -198,
+    "odds2": 166
   },
   {
-    "fighter1": "Enrique Hecher Sosa",
-    "fighter2": "Luan Lacerda",
-    "odds1": -245,
-    "odds2": 200
+    "fighter1": "Michael Page",
+    "fighter2": "Sam Patterson",
+    "odds1": -190,
+    "odds2": 160
   },
   {
-    "fighter1": "Elijah Smith",
-    "fighter2": "Su Young You",
+    "fighter1": "Austen Lane",
+    "fighter2": "Iwo Baraniewski",
+    "odds1": 430,
+    "odds2": -590
+  },
+  {
+    "fighter1": "Christian Leroy Duncan",
+    "fighter2": "Roman Dolidze",
+    "odds1": -430,
+    "odds2": 340
+  },
+  {
+    "fighter1": "Losene Keita",
+    "fighter2": "Nathaniel Wood",
     "odds1": -260,
     "odds2": 215
   },
   {
-    "fighter1": "Chris Curtis",
-    "fighter2": "Myktybek Orolbai",
-    "odds1": 300,
-    "odds2": -375
+    "fighter1": "Brando Pericic",
+    "fighter2": "Louie Sutherland",
+    "odds1": -240,
+    "odds2": 198
   },
   {
-    "fighter1": "Bruno Silva",
-    "fighter2": "Charles Johnson",
-    "odds1": 132,
-    "odds2": -156
+    "fighter1": "Antonio Trocoli",
+    "fighter2": "Mantas Kondratavicius",
+    "odds1": 570,
+    "odds2": -820
   },
   {
-    "fighter1": "Brad Tavares",
-    "fighter2": "Eryk Anders",
-    "odds1": -108,
-    "odds2": -108
+    "fighter1": "Felipe Franco",
+    "fighter2": "Mario Pinto",
+    "odds1": 590,
+    "odds2": -850
   },
   {
-    "fighter1": "Bolaji Oki",
-    "fighter2": "Manoel Sousa",
-    "odds1": 225,
-    "odds2": -275
+    "fighter1": "Abdul-Kareem Al-Selwady",
+    "fighter2": "Shem Rock",
+    "odds1": 106,
+    "odds2": -124
   },
   {
-    "fighter1": "Beatriz Mesquita",
-    "fighter2": "Montserrat Rendon",
-    "odds1": -670,
-    "odds2": 490
+    "fighter1": "Ravena Oliveira",
+    "fighter2": "Shanelle Dyer",
+    "odds1": 385,
+    "odds2": -500
   }
 ]
