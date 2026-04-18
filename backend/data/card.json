@@ -1,128 +1,68 @@
 [
   {
-    "fighter1": "Carlos Ulberg",
-    "fighter2": "Jiri Prochazka",
-    "odds1": -104,
-    "odds2": -112
-  },
-  {
-    "fighter1": "Azamat Murzakanov",
-    "fighter2": "Paulo Henrique Costa",
-    "odds1": -230,
-    "odds2": 190
-  },
-  {
-    "fighter1": "Jordan Newman",
-    "fighter2": "Joshua Silveira",
-    "odds1": 124,
-    "odds2": -146
-  },
-  {
-    "fighter1": "Curtis Blaydes",
-    "fighter2": "Josh Hokit",
-    "odds1": -108,
-    "odds2": -108
-  },
-  {
-    "fighter1": "Raufeon Stots",
-    "fighter2": "Renat Khavalov",
-    "odds1": 230,
-    "odds2": -280
-  },
-  {
-    "fighter1": "Dominick Reyes",
-    "fighter2": "Johnny Walker",
-    "odds1": -158,
-    "odds2": 134
-  },
-  {
-    "fighter1": "Cub Swanson",
-    "fighter2": "Nate Landwehr",
-    "odds1": -116,
-    "odds2": -102
-  },
-  {
-    "fighter1": "Cheyden Leialoha",
-    "fighter2": "Gabriel Alves Braga",
-    "odds1": 750,
-    "odds2": -1200
-  },
-  {
-    "fighter1": "Shanna Young",
-    "fighter2": "Viviane Araujo",
-    "odds1": 460,
-    "odds2": -620
-  },
-  {
-    "fighter1": "Aaron Pico",
-    "fighter2": "Patricio Pitbull",
-    "odds1": -270,
-    "odds2": 220
-  },
-  {
-    "fighter1": "Kevin Holland",
-    "fighter2": "Randy Brown",
-    "odds1": -108,
-    "odds2": -108
-  },
-  {
-    "fighter1": "Esteban Ribovics",
-    "fighter2": "Mateusz Gamrot",
-    "odds1": 184,
-    "odds2": -220
-  },
-  {
-    "fighter1": "Lupita Godinez",
-    "fighter2": "Tatiana Suarez",
+    "fighter1": "Julien Leblanc",
+    "fighter2": "Robert Valentin",
     "odds1": 132,
     "odds2": -156
   },
   {
-    "fighter1": "Alexander Romanov",
-    "fighter2": "Rodrigo Nascimento",
-    "odds1": -250,
-    "odds2": 205
+    "fighter1": "Gokhan Saricam",
+    "fighter2": "Tanner Boser",
+    "odds1": -152,
+    "odds2": 128
   },
   {
-    "fighter1": "Chris Padilla",
-    "fighter2": "Marquel Mederos",
-    "odds1": -162,
-    "odds2": 136
+    "fighter1": "Jasmine Jasudavicius",
+    "fighter2": "Karine Silva",
+    "odds1": -310,
+    "odds2": 250
   },
   {
-    "fighter1": "Kelvin Gastelum",
-    "fighter2": "Vicente Luque",
-    "odds1": -270,
-    "odds2": 220
+    "fighter1": "Jai Herbert",
+    "fighter2": "Mandel Nallo",
+    "odds1": 144,
+    "odds2": -172
   },
   {
-    "fighter1": "Nate Jennerman",
-    "fighter2": "Valanti Atsas",
-    "odds1": 102,
-    "odds2": -120
+    "fighter1": "J.J. Aldrich",
+    "fighter2": "Jamey-Lyn Horth",
+    "odds1": 138,
+    "odds2": -164
   },
   {
-    "fighter1": "James Vake",
-    "fighter2": "Omar El Dafrawy",
-    "odds1": 205,
-    "odds2": -250
+    "fighter1": "Gilbert Burns",
+    "fighter2": "Mike Malott",
+    "odds1": 235,
+    "odds2": -290
   },
   {
-    "fighter1": "Borena Tsertsvadze",
-    "fighter2": "Jena Bishop",
-    "odds1": 310,
-    "odds2": -390
+    "fighter1": "Gauge Young",
+    "fighter2": "Thiago Moises",
+    "odds1": -146,
+    "odds2": 124
   },
   {
-    "fighter1": "Biaggio Ali Walsh",
-    "fighter2": "Dash Harris",
-    "odds1": -350,
-    "odds2": 280
+    "fighter1": "Dennis Buzukja",
+    "fighter2": "M\u00e1rcio Barbosa",
+    "odds1": 315,
+    "odds2": -400
   },
   {
-    "fighter1": "Charlie Radtke",
-    "fighter2": "Francisco Prado",
-    "odds1": -178,
-    "odds2": 150
+    "fighter1": "Charles Jourdain",
+    "fighter2": "Kyler Phillips",
+    "odds1": -138,
+    "odds2": 118
+  },
+  {
+    "fighter1": "John Castaneda",
+    "fighter2": "Mark Vologdin",
+    "odds1": -152,
+    "odds2": 128
+  },
+  {
+    "fighter1": "Jamie Siraj",
+    "fighter2": "John Yannis",
+    "odds1": -260,
+    "odds2": 215
   }
 ]
