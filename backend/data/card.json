@@ -1,67 +1,79 @@
 [
   {
-    "fighter1": "Julien Leblanc",
-    "fighter2": "Robert Valentin",
-    "odds1": 132,
-    "odds2": -156
+    "fighter1": "Aljamain Sterling",
+    "fighter2": "Youssef Zalal",
+    "odds1": 114,
+    "odds2": -134
   },
   {
-    "fighter1": "Gokhan Saricam",
-    "fighter2": "Tanner Boser",
-    "odds1": -152,
-    "odds2": 128
+    "fighter1": "Joselyne Edwards",
+    "fighter2": "Norma Dumont",
+    "odds1": 176,
+    "odds2": -210
   },
   {
-    "fighter1": "Jasmine Jasudavicius",
-    "fighter2": "Karine Silva",
-    "odds1": -310,
-    "odds2": 250
+    "fighter1": "Alex Hernandez",
+    "fighter2": "Rafa Garcia",
+    "odds1": -112,
+    "odds2": -104
   },
   {
-    "fighter1": "Jai Herbert",
-    "fighter2": "Mandel Nallo",
-    "odds1": 144,
-    "odds2": -172
+    "fighter1": "Davey Grant",
+    "fighter2": "Juan Martinetti",
+    "odds1": -126,
+    "odds2": 108
   },
   {
-    "fighter1": "J.J. Aldrich",
-    "fighter2": "Jamey-Lyn Horth",
-    "odds1": 138,
-    "odds2": -164
+    "fighter1": "Montel Jackson",
+    "fighter2": "Raoni Barcelos",
+    "odds1": -190,
+    "odds2": 160
   },
   {
-    "fighter1": "Gilbert Burns",
-    "fighter2": "Mike Malott",
-    "odds1": 235,
-    "odds2": -290
-  },
-  {
-    "fighter1": "Gauge Young",
-    "fighter2": "Thiago Moises",
+    "fighter1": "Marcus Buchecha",
+    "fighter2": "Ryan Spann",
     "odds1": -146,
     "odds2": 124
   },
   {
-    "fighter1": "Dennis Buzukja",
-    "fighter2": "M\u00e1rcio Barbosa",
-    "odds1": 315,
-    "odds2": -400
+    "fighter1": "Eric McConico",
+    "fighter2": "Rodolfo Vieira",
+    "odds1": 245,
+    "odds2": -300
   },
   {
-    "fighter1": "Charles Jourdain",
-    "fighter2": "Kyler Phillips",
-    "odds1": -138,
-    "odds2": 118
+    "fighter1": "Jackson McVey",
+    "fighter2": "Sedriques Dumas",
+    "odds1": -186,
+    "odds2": 156
   },
   {
-    "fighter1": "John Castaneda",
-    "fighter2": "Mark Vologdin",
-    "odds1": -152,
-    "odds2": 128
+    "fighter1": "Mayra Bueno Silva",
+    "fighter2": "Michelle Montague",
+    "odds1": 320,
+    "odds2": -420
   },
   {
-    "fighter1": "Jamie Siraj",
-    "fighter2": "John Yannis",
+    "fighter1": "Cody Durden",
+    "fighter2": "Jafel Filho",
+    "odds1": 480,
+    "odds2": -650
+  },
+  {
+    "fighter1": "Francis Marshall",
+    "fighter2": "Lucas Brennan",
+    "odds1": -520,
+    "odds2": 390
+  },
+  {
+    "fighter1": "Max Griffin",
+    "fighter2": "Victor Valenzuela",
+    "odds1": 108,
+    "odds2": -126
+  },
+  {
+    "fighter1": "Julia Polastri",
+    "fighter2": "Talita Alencar",
     "odds1": -260,
     "odds2": 215
   }
