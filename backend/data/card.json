@@ -1,80 +1,68 @@
 [
   {
-    "fighter1": "Aljamain Sterling",
-    "fighter2": "Youssef Zalal",
-    "odds1": 114,
-    "odds2": -134
+    "fighter1": "Emiliano Sordi",
+    "fighter2": "Simeon Powell",
+    "odds1": 340,
+    "odds2": -430
   },
   {
-    "fighter1": "Joselyne Edwards",
-    "fighter2": "Norma Dumont",
-    "odds1": 176,
-    "odds2": -210
+    "fighter1": "Florim Zendeli",
+    "fighter2": "Logan Storley",
+    "odds1": 220,
+    "odds2": -270
   },
   {
-    "fighter1": "Alex Hernandez",
-    "fighter2": "Rafa Garcia",
-    "odds1": -112,
-    "odds2": -104
+    "fighter1": "Leandro Higo",
+    "fighter2": "Magomed Magomedov",
+    "odds1": 420,
+    "odds2": -560
   },
   {
-    "fighter1": "Davey Grant",
-    "fighter2": "Juan Martinetti",
-    "odds1": -126,
-    "odds2": 108
+    "fighter1": "Aleksandr Chizov",
+    "fighter2": "Gadzhi Rabadanov",
+    "odds1": 610,
+    "odds2": -900
   },
   {
-    "fighter1": "Montel Jackson",
-    "fighter2": "Raoni Barcelos",
-    "odds1": -190,
-    "odds2": 160
+    "fighter1": "Rafael Alves",
+    "fighter2": "Rasul Magomedov",
+    "odds1": 460,
+    "odds2": -620
   },
   {
-    "fighter1": "Marcus Buchecha",
-    "fighter2": "Ryan Spann",
-    "odds1": -146,
-    "odds2": 124
-  },
-  {
-    "fighter1": "Eric McConico",
-    "fighter2": "Rodolfo Vieira",
+    "fighter1": "Cheyanne Bowers",
+    "fighter2": "Sabrinna de Sousa",
     "odds1": 245,
     "odds2": -300
   },
   {
-    "fighter1": "Jackson McVey",
-    "fighter2": "Sedriques Dumas",
-    "odds1": -186,
-    "odds2": 156
+    "fighter1": "Humberto Bandenay",
+    "fighter2": "Sang Won Kim",
+    "odds1": -184,
+    "odds2": 154
   },
   {
-    "fighter1": "Mayra Bueno Silva",
-    "fighter2": "Michelle Montague",
-    "odds1": 320,
-    "odds2": -420
+    "fighter1": "Qihui Yan",
+    "fighter2": "Taila Santos",
+    "odds1": 490,
+    "odds2": -670
   },
   {
-    "fighter1": "Cody Durden",
-    "fighter2": "Jafel Filho",
-    "odds1": 480,
-    "odds2": -650
+    "fighter1": "Bryce Logan",
+    "fighter2": "Joel Alvarez",
+    "odds1": 225,
+    "odds2": -275
   },
   {
-    "fighter1": "Francis Marshall",
-    "fighter2": "Lucas Brennan",
-    "odds1": -520,
-    "odds2": 390
+    "fighter1": "Brett Bye",
+    "fighter2": "Taylor Michels",
+    "odds1": -210,
+    "odds2": 176
   },
   {
-    "fighter1": "Max Griffin",
-    "fighter2": "Victor Valenzuela",
-    "odds1": 108,
-    "odds2": -126
-  },
-  {
-    "fighter1": "Julia Polastri",
-    "fighter2": "Talita Alencar",
-    "odds1": -260,
-    "odds2": 215
+    "fighter1": "Karl Williams",
+    "fighter2": "Maxwell Djantou Nana",
+    "odds1": -200,
+    "odds2": 168
   }
 ]
