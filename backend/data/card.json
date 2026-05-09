@@ -1,68 +1,80 @@
 [
   {
-    "fighter1": "Emiliano Sordi",
-    "fighter2": "Simeon Powell",
-    "odds1": 340,
-    "odds2": -430
+    "fighter1": "Khamzat Chimaev",
+    "fighter2": "Sean Strickland",
+    "odds1": -490,
+    "odds2": 380
   },
   {
-    "fighter1": "Florim Zendeli",
-    "fighter2": "Logan Storley",
-    "odds1": 220,
-    "odds2": -270
+    "fighter1": "Joshua Van",
+    "fighter2": "Tatsuro Taira",
+    "odds1": 136,
+    "odds2": -162
   },
   {
-    "fighter1": "Leandro Higo",
-    "fighter2": "Magomed Magomedov",
-    "odds1": 420,
-    "odds2": -560
+    "fighter1": "Alexander Volkov",
+    "fighter2": "Waldo Cortes-Acosta",
+    "odds1": -146,
+    "odds2": 124
   },
   {
-    "fighter1": "Aleksandr Chizov",
-    "fighter2": "Gadzhi Rabadanov",
-    "odds1": 610,
-    "odds2": -900
+    "fighter1": "Joaquin Buckley",
+    "fighter2": "Sean Brady",
+    "odds1": 146,
+    "odds2": -174
   },
   {
-    "fighter1": "Rafael Alves",
-    "fighter2": "Rasul Magomedov",
-    "odds1": 460,
-    "odds2": -620
+    "fighter1": "Jeremy Stephens",
+    "fighter2": "King Green",
+    "odds1": 315,
+    "odds2": -400
   },
   {
-    "fighter1": "Cheyanne Bowers",
-    "fighter2": "Sabrinna de Sousa",
-    "odds1": 245,
-    "odds2": -300
+    "fighter1": "Ateba Gautier",
+    "fighter2": "Ozzy Diaz",
+    "odds1": -1200,
+    "odds2": 750
   },
   {
-    "fighter1": "Humberto Bandenay",
-    "fighter2": "Sang Won Kim",
-    "odds1": -184,
-    "odds2": 154
+    "fighter1": "Joel Alvarez",
+    "fighter2": "Yaroslav Amosov",
+    "odds1": 150,
+    "odds2": -178
   },
   {
-    "fighter1": "Qihui Yan",
-    "fighter2": "Taila Santos",
-    "odds1": 490,
-    "odds2": -670
+    "fighter1": "Grant Dawson",
+    "fighter2": "Mateusz Rebecki",
+    "odds1": -146,
+    "odds2": 124
   },
   {
-    "fighter1": "Bryce Logan",
-    "fighter2": "Joel Alvarez",
-    "odds1": 225,
-    "odds2": -275
+    "fighter1": "Jared Gordon",
+    "fighter2": "Jim Miller",
+    "odds1": -290,
+    "odds2": 235
   },
   {
-    "fighter1": "Brett Bye",
-    "fighter2": "Taylor Michels",
-    "odds1": -210,
-    "odds2": 176
+    "fighter1": "Marco Tulio Silva",
+    "fighter2": "Roman Kopylov",
+    "odds1": -194,
+    "odds2": 162
   },
   {
-    "fighter1": "Karl Williams",
-    "fighter2": "Maxwell Djantou Nana",
-    "odds1": -200,
-    "odds2": 168
+    "fighter1": "Pat Sabatini",
+    "fighter2": "William Gomis",
+    "odds1": -176,
+    "odds2": 148
+  },
+  {
+    "fighter1": "Baysangur Susurkaev",
+    "fighter2": "Djorden Santos",
+    "odds1": -800,
+    "odds2": 560
+  },
+  {
+    "fighter1": "Clayton Carpenter",
+    "fighter2": "Jose Ochoa",
+    "odds1": 152,
+    "odds2": -180
   }
 ]
