@@ -1,80 +1,80 @@
 [
   {
-    "fighter1": "Khamzat Chimaev",
-    "fighter2": "Sean Strickland",
-    "odds1": -490,
-    "odds2": 380
+    "fighter1": "Arnold Allen",
+    "fighter2": "Melquizael Costa",
+    "odds1": -126,
+    "odds2": 108
   },
   {
-    "fighter1": "Joshua Van",
-    "fighter2": "Tatsuro Taira",
-    "odds1": 136,
-    "odds2": -162
-  },
-  {
-    "fighter1": "Alexander Volkov",
-    "fighter2": "Waldo Cortes-Acosta",
-    "odds1": -146,
-    "odds2": 124
-  },
-  {
-    "fighter1": "Joaquin Buckley",
-    "fighter2": "Sean Brady",
-    "odds1": 146,
-    "odds2": -174
-  },
-  {
-    "fighter1": "Jeremy Stephens",
-    "fighter2": "King Green",
-    "odds1": 315,
-    "odds2": -400
-  },
-  {
-    "fighter1": "Ateba Gautier",
-    "fighter2": "Ozzy Diaz",
-    "odds1": -1200,
-    "odds2": 750
-  },
-  {
-    "fighter1": "Joel Alvarez",
-    "fighter2": "Yaroslav Amosov",
-    "odds1": 150,
-    "odds2": -178
-  },
-  {
-    "fighter1": "Grant Dawson",
-    "fighter2": "Mateusz Rebecki",
-    "odds1": -146,
-    "odds2": 124
-  },
-  {
-    "fighter1": "Jared Gordon",
-    "fighter2": "Jim Miller",
-    "odds1": -290,
-    "odds2": 235
-  },
-  {
-    "fighter1": "Marco Tulio Silva",
-    "fighter2": "Roman Kopylov",
-    "odds1": -194,
-    "odds2": 162
-  },
-  {
-    "fighter1": "Pat Sabatini",
-    "fighter2": "William Gomis",
+    "fighter1": "Daniel Santos",
+    "fighter2": "Dooho Choi",
     "odds1": -176,
     "odds2": 148
   },
   {
-    "fighter1": "Baysangur Susurkaev",
-    "fighter2": "Djorden Santos",
-    "odds1": -800,
-    "odds2": 560
+    "fighter1": "Juan Diaz",
+    "fighter2": "Malcolm Wellmaker",
+    "odds1": 220,
+    "odds2": -270
   },
   {
-    "fighter1": "Clayton Carpenter",
-    "fighter2": "Jose Ochoa",
-    "odds1": 152,
-    "odds2": -180
+    "fighter1": "Christian Edwards",
+    "fighter2": "Modestas Bukauskas",
+    "odds1": 260,
+    "odds2": -320
+  },
+  {
+    "fighter1": "Benardo Sopaj",
+    "fighter2": "Timothy Cuamba",
+    "odds1": -136,
+    "odds2": 116
+  },
+  {
+    "fighter1": "Khaos Williams",
+    "fighter2": "Nikolay Veretennikov",
+    "odds1": -118,
+    "odds2": 100
+  },
+  {
+    "fighter1": "Ivan Erslan",
+    "fighter2": "Tuco Tokkos",
+    "odds1": -168,
+    "odds2": 142
+  },
+  {
+    "fighter1": "Artur Minev",
+    "fighter2": "Thomas Gantt",
+    "odds1": 166,
+    "odds2": -198
+  },
+  {
+    "fighter1": "Jacqueline Cavalcanti",
+    "fighter2": "Ketlen Vieira",
+    "odds1": -154,
+    "odds2": 130
+  },
+  {
+    "fighter1": "Andre Petroski",
+    "fighter2": "Cody Brundage",
+    "odds1": -164,
+    "odds2": 138
+  },
+  {
+    "fighter1": "Alice Ardelean",
+    "fighter2": "Polyana Viana",
+    "odds1": -200,
+    "odds2": 168
+  },
+  {
+    "fighter1": "Daniel Barez",
+    "fighter2": "Luis Gurule",
+    "odds1": 130,
+    "odds2": -154
+  },
+  {
+    "fighter1": "Nicolle Caliari",
+    "fighter2": "Shauna Bannon",
+    "odds1": -295,
+    "odds2": 240
   }
 ]
