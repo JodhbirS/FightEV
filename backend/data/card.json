@@ -1,62 +1,74 @@
 [
   {
-    "fighter1": "Assem Ghanem",
-    "fighter2": "Mohammad Fahmi",
-    "odds1": 110,
-    "odds2": -130
+    "fighter1": "Belal Muhammad",
+    "fighter2": "Gabriel Bonfim",
+    "odds1": -112,
+    "odds2": -104
   },
   {
-    "fighter1": "Benson Henderson",
-    "fighter2": "Patrick Habirora",
-    "odds1": 1200,
-    "odds2": -2500
+    "fighter1": "Brendan Allen",
+    "fighter2": "Edmen Shahbazyan",
+    "odds1": -180,
+    "odds2": 152
   },
   {
-    "fighter1": "Jake Hadley",
-    "fighter2": "Taylor Lapilus",
-    "odds1": 660,
-    "odds2": -1000
+    "fighter1": "Fares Ziam",
+    "fighter2": "Tom Nolan",
+    "odds1": -310,
+    "odds2": 250
   },
   {
-    "fighter1": "Boris Mbarga Atangana",
-    "fighter2": "Jared Gooden",
-    "odds1": -1200,
-    "odds2": 750
+    "fighter1": "Bryce Mitchell",
+    "fighter2": "Santiago Luna",
+    "odds1": -126,
+    "odds2": 108
   },
   {
-    "fighter1": "Marcirley Alves da Silva",
-    "fighter2": "Naoki Inoue",
-    "odds1": -116,
-    "odds2": -102
+    "fighter1": "Iwo Baraniewski",
+    "fighter2": "Junior Tafa",
+    "odds1": -390,
+    "odds2": 310
   },
   {
-    "fighter1": "Asael Adjoudj",
-    "fighter2": "Keisuke Sasu",
-    "odds1": -900,
-    "odds2": 610
+    "fighter1": "Alessandro Costa",
+    "fighter2": "Matt Schnell",
+    "odds1": -450,
+    "odds2": 350
   },
   {
-    "fighter1": "Baris Adiguzel",
-    "fighter2": "Gustavo Oliveira",
-    "odds1": -134,
-    "odds2": 114
+    "fighter1": "John Yannis",
+    "fighter2": "Marcus McGhee",
+    "odds1": 310,
+    "odds2": -390
   },
   {
-    "fighter1": "Donegi Abena",
-    "fighter2": "Joe Schilling",
-    "odds1": -1500,
-    "odds2": 870
+    "fighter1": "Bruno Silva",
+    "fighter2": "Edgar Chairez",
+    "odds1": -118,
+    "odds2": 100
   },
   {
-    "fighter1": "Khamzat Abaev",
-    "fighter2": "Luca Poclit",
-    "odds1": 188,
-    "odds2": -225
+    "fighter1": "Chelsea Chandler",
+    "fighter2": "Priscila Cachoeira",
+    "odds1": -124,
+    "odds2": 106
   },
   {
-    "fighter1": "Adam Meskini",
-    "fighter2": "Keweny Lopes",
-    "odds1": -194,
-    "odds2": 162
+    "fighter1": "Joanderson Brito",
+    "fighter2": "Jordan Leavitt",
+    "odds1": -178,
+    "odds2": 150
+  },
+  {
+    "fighter1": "Jeisla Chaves",
+    "fighter2": "Yuneisy Duben",
+    "odds1": -280,
+    "odds2": 230
+  },
+  {
+    "fighter1": "Ariane Carnelossi",
+    "fighter2": "Ketlen Souza",
+    "odds1": 260,
+    "odds2": -320
   }
 ]
