@@ -1,74 +1,68 @@
 [
   {
-    "fighter1": "Belal Muhammad",
-    "fighter2": "Gabriel Bonfim",
-    "odds1": -112,
-    "odds2": -104
+    "fighter1": "Ilia Topuria",
+    "fighter2": "Justin Gaethje",
+    "odds1": -550,
+    "odds2": 390
   },
   {
-    "fighter1": "Brendan Allen",
-    "fighter2": "Edmen Shahbazyan",
+    "fighter1": "Alex Pereira",
+    "fighter2": "Ciryl Gane",
+    "odds1": -110,
+    "odds2": -110
+  },
+  {
+    "fighter1": "Aiemann Zahabi",
+    "fighter2": "Sean O'Malley",
+    "odds1": 350,
+    "odds2": -480
+  },
+  {
+    "fighter1": "Derrick Lewis",
+    "fighter2": "Josh Hokit",
+    "odds1": 310,
+    "odds2": -420
+  },
+  {
+    "fighter1": "Mauricio Ruffy",
+    "fighter2": "Michael Chandler",
+    "odds1": -620,
+    "odds2": 430
+  },
+  {
+    "fighter1": "Bo Nickal",
+    "fighter2": "Kyle Daukaus",
+    "odds1": -320,
+    "odds2": 245
+  },
+  {
+    "fighter1": "Diego Lopes",
+    "fighter2": "Steve Garcia Jr.",
+    "odds1": -160,
+    "odds2": 130
+  },
+  {
+    "fighter1": "Ignacio Campos",
+    "fighter2": "Wasiu Adeshina",
+    "odds1": 265,
+    "odds2": -330
+  },
+  {
+    "fighter1": "Ayinda Octave",
+    "fighter2": "Patrick Ocheme",
+    "odds1": 225,
+    "odds2": -275
+  },
+  {
+    "fighter1": "Alain Majorique",
+    "fighter2": "Dwight Joseph",
+    "odds1": -142,
+    "odds2": 120
+  },
+  {
+    "fighter1": "Demba Seck",
+    "fighter2": "Jean Do Santos",
     "odds1": -180,
     "odds2": 152
-  },
-  {
-    "fighter1": "Fares Ziam",
-    "fighter2": "Tom Nolan",
-    "odds1": -310,
-    "odds2": 250
-  },
-  {
-    "fighter1": "Bryce Mitchell",
-    "fighter2": "Santiago Luna",
-    "odds1": -126,
-    "odds2": 108
-  },
-  {
-    "fighter1": "Iwo Baraniewski",
-    "fighter2": "Junior Tafa",
-    "odds1": -390,
-    "odds2": 310
-  },
-  {
-    "fighter1": "Alessandro Costa",
-    "fighter2": "Matt Schnell",
-    "odds1": -450,
-    "odds2": 350
-  },
-  {
-    "fighter1": "John Yannis",
-    "fighter2": "Marcus McGhee",
-    "odds1": 310,
-    "odds2": -390
-  },
-  {
-    "fighter1": "Bruno Silva",
-    "fighter2": "Edgar Chairez",
-    "odds1": -118,
-    "odds2": 100
-  },
-  {
-    "fighter1": "Chelsea Chandler",
-    "fighter2": "Priscila Cachoeira",
-    "odds1": -124,
-    "odds2": 106
-  },
-  {
-    "fighter1": "Joanderson Brito",
-    "fighter2": "Jordan Leavitt",
-    "odds1": -178,
-    "odds2": 150
-  },
-  {
-    "fighter1": "Jeisla Chaves",
-    "fighter2": "Yuneisy Duben",
-    "odds1": -280,
-    "odds2": 230
-  },
-  {
-    "fighter1": "Ariane Carnelossi",
-    "fighter2": "Ketlen Souza",
-    "odds1": 260,
-    "odds2": -320
   }
 ]
