@@ -1,68 +1,74 @@
 [
   {
-    "fighter1": "Ilia Topuria",
-    "fighter2": "Justin Gaethje",
-    "odds1": -550,
-    "odds2": 390
+    "fighter1": "Kyoji Horiguchi",
+    "fighter2": "Manel Kape",
+    "odds1": 132,
+    "odds2": -156
   },
   {
-    "fighter1": "Alex Pereira",
-    "fighter2": "Ciryl Gane",
-    "odds1": -110,
-    "odds2": -110
+    "fighter1": "Ion Cutelaba",
+    "fighter2": "Navajo Stirling",
+    "odds1": 260,
+    "odds2": -320
   },
   {
-    "fighter1": "Aiemann Zahabi",
-    "fighter2": "Sean O'Malley",
-    "odds1": 350,
-    "odds2": -480
+    "fighter1": "Christian Rodriguez",
+    "fighter2": "Hyder Amil",
+    "odds1": -200,
+    "odds2": 168
   },
   {
-    "fighter1": "Derrick Lewis",
-    "fighter2": "Josh Hokit",
-    "odds1": 310,
-    "odds2": -420
+    "fighter1": "Melsik Baghdasaryan",
+    "fighter2": "Murtazali Magomedov",
+    "odds1": 300,
+    "odds2": -375
   },
   {
-    "fighter1": "Mauricio Ruffy",
-    "fighter2": "Michael Chandler",
+    "fighter1": "Andre Fili",
+    "fighter2": "Vinicius Oliveira",
+    "odds1": 235,
+    "odds2": -290
+  },
+  {
+    "fighter1": "Andre Lima",
+    "fighter2": "Kevin Borjas",
     "odds1": -620,
+    "odds2": 460
+  },
+  {
+    "fighter1": "Beatriz Mesquita",
+    "fighter2": "Melissa Mullins",
+    "odds1": -590,
     "odds2": 430
   },
   {
-    "fighter1": "Bo Nickal",
-    "fighter2": "Kyle Daukaus",
-    "odds1": -320,
-    "odds2": 245
+    "fighter1": "Allan Nascimento",
+    "fighter2": "Mitch Raposo",
+    "odds1": -168,
+    "odds2": 142
   },
   {
-    "fighter1": "Diego Lopes",
-    "fighter2": "Steve Garcia Jr.",
-    "odds1": -160,
-    "odds2": 130
+    "fighter1": "Gaston Bolanos",
+    "fighter2": "Michael Aswell",
+    "odds1": 300,
+    "odds2": -375
   },
   {
-    "fighter1": "Ignacio Campos",
-    "fighter2": "Wasiu Adeshina",
-    "odds1": 265,
-    "odds2": -330
+    "fighter1": "Karol Rosa",
+    "fighter2": "Luana Santos",
+    "odds1": -116,
+    "odds2": -102
   },
   {
-    "fighter1": "Ayinda Octave",
-    "fighter2": "Patrick Ocheme",
-    "odds1": 225,
-    "odds2": -275
+    "fighter1": "Leon Shahbazyan",
+    "fighter2": "Levan Chokheli",
+    "odds1": 285,
+    "odds2": -355
   },
   {
-    "fighter1": "Alain Majorique",
-    "fighter2": "Dwight Joseph",
-    "odds1": -142,
-    "odds2": 120
-  },
-  {
-    "fighter1": "Demba Seck",
-    "fighter2": "Jean Do Santos",
-    "odds1": -180,
-    "odds2": 152
+    "fighter1": "Otari Tanzilovi",
+    "fighter2": "Shane Collins",
+    "odds1": 180,
+    "odds2": -215
   }
 ]
