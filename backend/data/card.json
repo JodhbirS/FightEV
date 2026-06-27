@@ -1,74 +1,74 @@
 [
   {
-    "fighter1": "Kyoji Horiguchi",
-    "fighter2": "Manel Kape",
-    "odds1": 132,
-    "odds2": -156
+    "fighter1": "AJ McKee",
+    "fighter2": "Salamat Isbulaev",
+    "odds1": -136,
+    "odds2": 116
   },
   {
-    "fighter1": "Ion Cutelaba",
-    "fighter2": "Navajo Stirling",
-    "odds1": 260,
-    "odds2": -320
+    "fighter1": "Liz Carmouche",
+    "fighter2": "Viviane Araujo",
+    "odds1": -196,
+    "odds2": 164
   },
   {
-    "fighter1": "Christian Rodriguez",
-    "fighter2": "Hyder Amil",
-    "odds1": -200,
-    "odds2": 168
+    "fighter1": "Alexander Shabliy",
+    "fighter2": "Alfie Davis",
+    "odds1": -550,
+    "odds2": 410
   },
   {
-    "fighter1": "Melsik Baghdasaryan",
-    "fighter2": "Murtazali Magomedov",
+    "fighter1": "Abraham Bably",
+    "fighter2": "Rob Wilkinson",
+    "odds1": -198,
+    "odds2": 166
+  },
+  {
+    "fighter1": "Ariane Lipski",
+    "fighter2": "Jena Bishop",
+    "odds1": -122,
+    "odds2": 104
+  },
+  {
+    "fighter1": "Ilara Joanne",
+    "fighter2": "Shannon Clark",
+    "odds1": 245,
+    "odds2": -300
+  },
+  {
+    "fighter1": "Justin Wetzell",
+    "fighter2": "Sarvarjon Hamidov",
     "odds1": 300,
     "odds2": -375
   },
   {
-    "fighter1": "Andre Fili",
-    "fighter2": "Vinicius Oliveira",
-    "odds1": 235,
-    "odds2": -290
+    "fighter1": "Cobey Fehr",
+    "fighter2": "Daniel Bzdigian",
+    "odds1": -1200,
+    "odds2": 750
   },
   {
-    "fighter1": "Andre Lima",
-    "fighter2": "Kevin Borjas",
-    "odds1": -620,
-    "odds2": 460
+    "fighter1": "Manuel Torres",
+    "fighter2": "Rafael Fiziev",
+    "odds1": -108,
+    "odds2": -108
   },
   {
-    "fighter1": "Beatriz Mesquita",
-    "fighter2": "Melissa Mullins",
-    "odds1": -590,
-    "odds2": 430
+    "fighter1": "Michel Pereira",
+    "fighter2": "Shara Magomedov",
+    "odds1": 315,
+    "odds2": -400
   },
   {
-    "fighter1": "Allan Nascimento",
-    "fighter2": "Mitch Raposo",
-    "odds1": -168,
-    "odds2": 142
+    "fighter1": "Matheus Camilo",
+    "fighter2": "Nazim Sadykhov",
+    "odds1": 154,
+    "odds2": -186
   },
   {
-    "fighter1": "Gaston Bolanos",
-    "fighter2": "Michael Aswell",
-    "odds1": 300,
-    "odds2": -375
-  },
-  {
-    "fighter1": "Karol Rosa",
-    "fighter2": "Luana Santos",
-    "odds1": -116,
-    "odds2": -102
-  },
-  {
-    "fighter1": "Leon Shahbazyan",
-    "fighter2": "Levan Chokheli",
-    "odds1": 285,
-    "odds2": -355
-  },
-  {
-    "fighter1": "Otari Tanzilovi",
-    "fighter2": "Shane Collins",
-    "odds1": 180,
-    "odds2": -215
+    "fighter1": "Asu Almabaev",
+    "fighter2": "Charles Johnson",
+    "odds1": -290,
+    "odds2": 235
   }
 ]
