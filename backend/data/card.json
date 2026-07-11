@@ -1,74 +1,86 @@
 [
   {
-    "fighter1": "AJ McKee",
-    "fighter2": "Salamat Isbulaev",
+    "fighter1": "Conor McGregor",
+    "fighter2": "Max Holloway",
+    "odds1": 215,
+    "odds2": -260
+  },
+  {
+    "fighter1": "Benoit Saint-Denis",
+    "fighter2": "Paddy Pimblett",
+    "odds1": -138,
+    "odds2": 118
+  },
+  {
+    "fighter1": "Cory Sandhagen",
+    "fighter2": "Mario Bautista",
     "odds1": -136,
     "odds2": 116
   },
   {
-    "fighter1": "Liz Carmouche",
-    "fighter2": "Viviane Araujo",
-    "odds1": -196,
-    "odds2": 164
+    "fighter1": "Brandon Royval",
+    "fighter2": "Lone'er Kavanagh",
+    "odds1": 180,
+    "odds2": -215
   },
   {
-    "fighter1": "Alexander Shabliy",
-    "fighter2": "Alfie Davis",
-    "odds1": -550,
-    "odds2": 410
+    "fighter1": "King Green",
+    "fighter2": "Terrance Mckinney",
+    "odds1": -106,
+    "odds2": -110
   },
   {
-    "fighter1": "Abraham Bably",
-    "fighter2": "Rob Wilkinson",
-    "odds1": -198,
-    "odds2": 166
+    "fighter1": "Nikita Krylov",
+    "fighter2": "Robert Whittaker",
+    "odds1": 102,
+    "odds2": -120
   },
   {
-    "fighter1": "Ariane Lipski",
-    "fighter2": "Jena Bishop",
-    "odds1": -122,
-    "odds2": 104
+    "fighter1": "Elisha Ellison",
+    "fighter2": "Gable Steveson",
+    "odds1": 900,
+    "odds2": -1600
   },
   {
-    "fighter1": "Ilara Joanne",
-    "fighter2": "Shannon Clark",
-    "odds1": 245,
-    "odds2": -300
+    "fighter1": "Adrian Yanez",
+    "fighter2": "Cody Garbrandt",
+    "odds1": -430,
+    "odds2": 340
   },
   {
-    "fighter1": "Justin Wetzell",
-    "fighter2": "Sarvarjon Hamidov",
-    "odds1": 300,
-    "odds2": -375
+    "fighter1": "Kai Kamaka",
+    "fighter2": "Luke Riley",
+    "odds1": 190,
+    "odds2": -230
   },
   {
-    "fighter1": "Cobey Fehr",
-    "fighter2": "Daniel Bzdigian",
-    "odds1": -1200,
-    "odds2": 750
+    "fighter1": "Tracy Cortez",
+    "fighter2": "Wang Cong",
+    "odds1": 102,
+    "odds2": -120
   },
   {
-    "fighter1": "Manuel Torres",
-    "fighter2": "Rafael Fiziev",
-    "odds1": -108,
-    "odds2": -108
+    "fighter1": "Cesar Almeida",
+    "fighter2": "Damian Pinas",
+    "odds1": 210,
+    "odds2": -255
   },
   {
-    "fighter1": "Michel Pereira",
-    "fighter2": "Shara Magomedov",
-    "odds1": 315,
-    "odds2": -400
+    "fighter1": "Farid Basharat",
+    "fighter2": "John Garza",
+    "odds1": -620,
+    "odds2": 460
   },
   {
-    "fighter1": "Matheus Camilo",
-    "fighter2": "Nazim Sadykhov",
-    "odds1": 154,
-    "odds2": -186
+    "fighter1": "Ryan Gandra",
+    "fighter2": "Zachary Reese",
+    "odds1": -134,
+    "odds2": 114
   },
   {
-    "fighter1": "Asu Almabaev",
-    "fighter2": "Charles Johnson",
-    "odds1": -290,
-    "odds2": 235
+    "fighter1": "Alessandro Costa",
+    "fighter2": "Cody Durden",
+    "odds1": -230,
+    "odds2": 190
   }
 ]
