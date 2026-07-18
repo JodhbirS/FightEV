@@ -1,86 +1,122 @@
 [
   {
-    "fighter1": "Conor McGregor",
-    "fighter2": "Max Holloway",
-    "odds1": 215,
-    "odds2": -260
+    "fighter1": "Dricus Du Plessis",
+    "fighter2": "Kamaru Usman",
+    "odds1": -210,
+    "odds2": 176
   },
   {
-    "fighter1": "Benoit Saint-Denis",
-    "fighter2": "Paddy Pimblett",
-    "odds1": -138,
-    "odds2": 118
+    "fighter1": "Christian Leroy Duncan",
+    "fighter2": "Jared Cannonier",
+    "odds1": -390,
+    "odds2": 310
   },
   {
-    "fighter1": "Cory Sandhagen",
-    "fighter2": "Mario Bautista",
-    "odds1": -136,
-    "odds2": 116
+    "fighter1": "Impa Kasanganay",
+    "fighter2": "Johnny Eblen",
+    "odds1": 460,
+    "odds2": -620
   },
   {
-    "fighter1": "Brandon Royval",
-    "fighter2": "Lone'er Kavanagh",
-    "odds1": 180,
-    "odds2": -215
+    "fighter1": "Chase Hooper",
+    "fighter2": "Mitch Ramirez",
+    "odds1": -355,
+    "odds2": 285
   },
   {
-    "fighter1": "King Green",
-    "fighter2": "Terrance Mckinney",
-    "odds1": -106,
-    "odds2": -110
+    "fighter1": "Lewis McGrillen",
+    "fighter2": "Rafael do Nascimento",
+    "odds1": -330,
+    "odds2": 265
   },
   {
-    "fighter1": "Nikita Krylov",
-    "fighter2": "Robert Whittaker",
-    "odds1": 102,
-    "odds2": -120
+    "fighter1": "Fatima Kline",
+    "fighter2": "Tabatha Ricci",
+    "odds1": -490,
+    "odds2": 380
   },
   {
-    "fighter1": "Elisha Ellison",
-    "fighter2": "Gable Steveson",
-    "odds1": 900,
-    "odds2": -1600
+    "fighter1": "Caolan Loughran",
+    "fighter2": "Julio Arce",
+    "odds1": 142,
+    "odds2": -168
   },
   {
-    "fighter1": "Adrian Yanez",
-    "fighter2": "Cody Garbrandt",
-    "odds1": -430,
-    "odds2": 340
+    "fighter1": "Alberto Montes",
+    "fighter2": "Tommy McMillen",
+    "odds1": 146,
+    "odds2": -174
   },
   {
-    "fighter1": "Kai Kamaka",
-    "fighter2": "Luke Riley",
-    "odds1": 190,
-    "odds2": -230
+    "fighter1": "Biaggio Ali Walsh",
+    "fighter2": "Gamid Khizriev",
+    "odds1": 400,
+    "odds2": -520
   },
   {
-    "fighter1": "Tracy Cortez",
-    "fighter2": "Wang Cong",
-    "odds1": 102,
-    "odds2": -120
+    "fighter1": "Austin Bashi",
+    "fighter2": "Jose Delgado",
+    "odds1": -126,
+    "odds2": 108
   },
   {
-    "fighter1": "Cesar Almeida",
-    "fighter2": "Damian Pinas",
-    "odds1": 210,
-    "odds2": -255
+    "fighter1": "Jean-Paul Lebosnoyani",
+    "fighter2": "Seok Hyun Ko",
+    "odds1": 152,
+    "odds2": -180
   },
   {
-    "fighter1": "Farid Basharat",
-    "fighter2": "John Garza",
-    "odds1": -620,
-    "odds2": 460
+    "fighter1": "Aleksandra Savicheva",
+    "fighter2": "Andrea Vazquez",
+    "odds1": -520,
+    "odds2": 400
   },
   {
-    "fighter1": "Ryan Gandra",
-    "fighter2": "Zachary Reese",
-    "odds1": -134,
-    "odds2": 114
+    "fighter1": "Felipe Franco",
+    "fighter2": "Levi Rodrigues",
+    "odds1": 122,
+    "odds2": -144
   },
   {
-    "fighter1": "Alessandro Costa",
-    "fighter2": "Cody Durden",
-    "odds1": -230,
-    "odds2": 190
+    "fighter1": "Ashley Thiner",
+    "fighter2": "Mia Grawe",
+    "odds1": -275,
+    "odds2": 225
+  },
+  {
+    "fighter1": "Damien Anderson",
+    "fighter2": "Ezra Elliott",
+    "odds1": -120,
+    "odds2": 102
+  },
+  {
+    "fighter1": "Jackson Glass",
+    "fighter2": "Zak Flessas",
+    "odds1": -1500,
+    "odds2": 870
+  },
+  {
+    "fighter1": "Alden Coria",
+    "fighter2": "Stewart Nicoll",
+    "odds1": -1150,
+    "odds2": 730
+  },
+  {
+    "fighter1": "Borena Tsertsvadze",
+    "fighter2": "Victoria Alba",
+    "odds1": -245,
+    "odds2": 200
+  },
+  {
+    "fighter1": "Anna Melisano",
+    "fighter2": "Dione Barbosa",
+    "odds1": 460,
+    "odds2": -620
+  },
+  {
+    "fighter1": "Alvin Hines",
+    "fighter2": "RJ Harris",
+    "odds1": -118,
+    "odds2": 100
   }
 ]
