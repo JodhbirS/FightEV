@@ -1,38 +1,68 @@
 [
   {
-    "fighter1": "Daniel Rodriguez",
-    "fighter2": "Uros Medic",
-    "odds1": 315,
-    "odds2": -400
+    "fighter1": "Mateusz Gamrot",
+    "fighter2": "Quillan Salkilld",
+    "odds1": 122,
+    "odds2": -144
   },
   {
-    "fighter1": "Jan Blachowicz",
-    "fighter2": "Navajo Stirling",
-    "odds1": 260,
-    "odds2": -320
+    "fighter1": "Billy Quarantillo",
+    "fighter2": "Carlos Diego Ferreira",
+    "odds1": 148,
+    "odds2": -176
   },
   {
-    "fighter1": "Aleksandar Rakic",
-    "fighter2": "Marcin Tybura",
-    "odds1": -390,
-    "odds2": 310
+    "fighter1": "Darren Elkins",
+    "fighter2": "Yadier DelValle",
+    "odds1": 590,
+    "odds2": -850
   },
   {
-    "fighter1": "Dusko Todorovic",
-    "fighter2": "Robert Valentin",
-    "odds1": 134,
-    "odds2": -158
+    "fighter1": "Alexia Thainara",
+    "fighter2": "Amanda Lemos",
+    "odds1": -250,
+    "odds2": 205
   },
   {
-    "fighter1": "Gilbert Urbina",
-    "fighter2": "Vlasto Cepo",
-    "odds1": 270,
-    "odds2": -335
+    "fighter1": "Billy Goff",
+    "fighter2": "Ty Miller",
+    "odds1": 310,
+    "odds2": -390
   },
   {
-    "fighter1": "Milo\u0161 Jani\u010di\u0107",
-    "fighter2": "Noah Gugnon",
-    "odds1": -126,
-    "odds2": 108
+    "fighter1": "Guilherme Pat",
+    "fighter2": "Steven Asplund",
+    "odds1": 250,
+    "odds2": -310
+  },
+  {
+    "fighter1": "Jose Montanha",
+    "fighter2": "Louie Sutherland",
+    "odds1": 166,
+    "odds2": -198
+  },
+  {
+    "fighter1": "Bruno Lopes",
+    "fighter2": "Diyar Nurgozhay",
+    "odds1": 138,
+    "odds2": -164
+  },
+  {
+    "fighter1": "Manoel Sousa",
+    "fighter2": "Richie Miranda",
+    "odds1": -330,
+    "odds2": 265
+  },
+  {
+    "fighter1": "Gianni Vazquez",
+    "fighter2": "Miles Johns",
+    "odds1": 152,
+    "odds2": -180
+  },
+  {
+    "fighter1": "Juliana Miller",
+    "fighter2": "Ravena Oliveira",
+    "odds1": -320,
+    "odds2": 260
   }
 ]
