@@ -1,68 +1,74 @@
 [
   {
-    "fighter1": "Mateusz Gamrot",
-    "fighter2": "Quillan Salkilld",
-    "odds1": 122,
-    "odds2": -144
+    "fighter1": "Ian Garry",
+    "fighter2": "Islam Makhachev",
+    "odds1": 290,
+    "odds2": -360
   },
   {
-    "fighter1": "Billy Quarantillo",
-    "fighter2": "Carlos Diego Ferreira",
-    "odds1": 148,
-    "odds2": -176
+    "fighter1": "Gillian Robertson",
+    "fighter2": "Mackenzie Dern",
+    "odds1": 168,
+    "odds2": -200
   },
   {
-    "fighter1": "Darren Elkins",
-    "fighter2": "Yadier DelValle",
-    "odds1": 590,
-    "odds2": -850
+    "fighter1": "Jalin Turner",
+    "fighter2": "Kau\u00ea Fernandes",
+    "odds1": -116,
+    "odds2": -104
   },
   {
-    "fighter1": "Alexia Thainara",
-    "fighter2": "Amanda Lemos",
-    "odds1": -250,
-    "odds2": 205
+    "fighter1": "Dustin Stoltzfus",
+    "fighter2": "Mansur Abdul-Malik",
+    "odds1": 520,
+    "odds2": -720
   },
   {
-    "fighter1": "Billy Goff",
-    "fighter2": "Ty Miller",
-    "odds1": 310,
-    "odds2": -390
+    "fighter1": "Edson Barboza",
+    "fighter2": "Esteban Ribovics",
+    "odds1": 530,
+    "odds2": -750
   },
   {
-    "fighter1": "Guilherme Pat",
-    "fighter2": "Steven Asplund",
-    "odds1": 250,
-    "odds2": -310
+    "fighter1": "Chidi Njokuani",
+    "fighter2": "Joel Alvarez",
+    "odds1": 240,
+    "odds2": -295
   },
   {
-    "fighter1": "Jose Montanha",
-    "fighter2": "Louie Sutherland",
-    "odds1": 166,
-    "odds2": -198
+    "fighter1": "Charles Johnson",
+    "fighter2": "Eduardo Chapolin",
+    "odds1": -120,
+    "odds2": 102
   },
   {
-    "fighter1": "Bruno Lopes",
-    "fighter2": "Diyar Nurgozhay",
-    "odds1": 138,
-    "odds2": -164
-  },
-  {
-    "fighter1": "Manoel Sousa",
-    "fighter2": "Richie Miranda",
-    "odds1": -330,
-    "odds2": 265
-  },
-  {
-    "fighter1": "Gianni Vazquez",
-    "fighter2": "Miles Johns",
-    "odds1": 152,
-    "odds2": -180
-  },
-  {
-    "fighter1": "Juliana Miller",
-    "fighter2": "Ravena Oliveira",
+    "fighter1": "Donte Johnson",
+    "fighter2": "Eric McConico",
     "odds1": -320,
-    "odds2": 260
+    "odds2": 250
+  },
+  {
+    "fighter1": "Tresean Gore",
+    "fighter2": "Vicente Luque",
+    "odds1": -118,
+    "odds2": 100
+  },
+  {
+    "fighter1": "Lucas Fernando",
+    "fighter2": "Rafael Tobias",
+    "odds1": -295,
+    "odds2": 240
+  },
+  {
+    "fighter1": "Neil Magny",
+    "fighter2": "Ramiz Brahimaj",
+    "odds1": 130,
+    "odds2": -154
+  },
+  {
+    "fighter1": "Jeremiah Wells",
+    "fighter2": "Myktybek Orolbai",
+    "odds1": 750,
+    "odds2": -1200
   }
 ]
