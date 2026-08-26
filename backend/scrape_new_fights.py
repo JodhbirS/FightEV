@@ -70,12 +70,33 @@ def normalize_wiki_method(raw: str) -> str:
     return m if m else "Decision"
 
 
+def normalize_name(s: str) -> str:
+    if not s:
+        return ""
+    import unicodedata
+    s = unicodedata.normalize("NFKD", s).encode("ASCII", "ignore").decode("utf-8")
+    s = re.sub(r"[\'\".\-]", " ", s)
+    s = re.sub(r"\s+", " ", s).strip().lower()
+    return s
+
+
 def get_or_create_fighter(session, name: str, weight_class: str | None = None) -> Fighter:
+    # 1. Exact case-insensitive match
     fighter = session.query(Fighter).filter(Fighter.name.ilike(name)).first()
     if fighter:
         if weight_class and not fighter.weight_class:
             fighter.weight_class = weight_class
         return fighter
+
+    # 2. Normalized name match (accents, hyphens, punctuation)
+    norm = normalize_name(name)
+    all_fighters = session.query(Fighter).all()
+    for f in all_fighters:
+        if normalize_name(f.name) == norm:
+            if weight_class and not f.weight_class:
+                f.weight_class = weight_class
+            return f
+
     fighter = Fighter(name=name, weight_class=weight_class)
     session.add(fighter)
     session.flush()
@@ -84,11 +105,9 @@ def get_or_create_fighter(session, name: str, weight_class: str | None = None) -
 
 def extract_event_core(name: str) -> str:
     name_clean = re.sub(r"\(.*?\)|\[.*?\]", "", name).strip().lower()
-    m = re.search(r"(ufc\s*\d+)", name_clean)
+    name_clean = re.sub(r"ufc\s*(?:fight\s*night|on\s*(?:espn|fox|fuel\s*tv|fx|abc))", "ufc_fn", name_clean)
+    m = re.search(r"(ufc_fn\s*\d+|ufc\s*\d+)", name_clean)
     if m:
-        return re.sub(r"\s+", " ", m.group(1))
-    m = re.search(r"(ufc\s*fight\s*night\s*\d*)", name_clean)
-    if m and m.group(1) != "ufc fight night":
         return re.sub(r"\s+", " ", m.group(1))
     return name_clean.split(":")[0].strip()
 
@@ -192,7 +211,18 @@ def scrape_wikipedia_events(session) -> int:
                     for a in tr.find_all("a"):
                         title = a.get("title", "")
                         href = a.get("href", "")
-                        if "UFC" in title and "rankings" not in title.lower() and "apex" not in title.lower() and "list" not in title.lower():
+                        title_lower = title.lower()
+                        href_lower = href.lower()
+                        if (
+                            "ufc" in title_lower
+                            and "rankings" not in title_lower
+                            and "apex" not in title_lower
+                            and "list" not in title_lower
+                            and "in ufc" not in title_lower
+                            and "in_ufc" not in href_lower
+                            and "in mma" not in title_lower
+                            and "in_mma" not in href_lower
+                        ):
                             page_name = href.replace("/wiki/", "")
                             text = a.get_text(strip=True)
                             if page_name and (page_name, text) not in event_pages:
