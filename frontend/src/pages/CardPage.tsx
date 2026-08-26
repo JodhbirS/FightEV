@@ -140,6 +140,11 @@ export default function CardPage() {
                     </span>
                     <span className={`card-ev ${isF1Positive ? 'pos' : 'neg'}`}>
                       EV: {fight.ev1 > 0 ? '+' : ''}{(fight.ev1 * 100).toFixed(1)}%
+                      {isF1Positive && (fight.kelly1 ?? 0) > 0 && (
+                        <span className="card-kelly-badge" title="Suggested Quarter-Kelly bet size">
+                          {fight.kelly1}u
+                        </span>
+                      )}
                     </span>
                   </div>
                 </div>
@@ -172,6 +177,11 @@ export default function CardPage() {
                     </span>
                     <span className={`card-ev ${isF2Positive ? 'pos' : 'neg'}`}>
                       EV: {fight.ev2 > 0 ? '+' : ''}{(fight.ev2 * 100).toFixed(1)}%
+                      {isF2Positive && (fight.kelly2 ?? 0) > 0 && (
+                        <span className="card-kelly-badge" title="Suggested Quarter-Kelly bet size">
+                          {fight.kelly2}u
+                        </span>
+                      )}
                     </span>
                   </div>
                 </div>

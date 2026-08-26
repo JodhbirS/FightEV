@@ -116,6 +116,8 @@ class FightOut(BaseModel):
     ev1: float
     ev2: float
     predWinner: int
+    kelly1: float = 0.0
+    kelly2: float = 0.0
 
 
 @app.get("/fights", response_model=List[FightOut], summary="Upcoming fight card predictions")
@@ -135,10 +137,12 @@ def get_fighters(
     limit: int = Query(default=20, ge=1, le=100, description="Number of fighters per page"),
     offset: int = Query(default=0, ge=0, description="Number of fighters to skip"),
     search: str = Query(default="", description="Filter fighters by name (case-insensitive)"),
+    division: str = Query(default="", description="Filter fighters by weight class / division"),
     db: Session = Depends(get_db),
 ):
     """
     Return a paginated list of UFC fighters with their current Elo rating.
+    Supports optional name search and weight class division filtering.
     Fighters who have not fought in > 1.5 years have their current_elo set to 0.0
     and is_active set to False. Active fighters are ordered by highest Elo first.
     """
@@ -171,6 +175,9 @@ def get_fighters(
 
     if search:
         query = query.filter(Fighter.name.ilike(f"%{search}%"))
+
+    if division:
+        query = query.filter(Fighter.weight_class.ilike(f"%{division}%"))
 
     total = query.count()
 

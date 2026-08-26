@@ -29,23 +29,6 @@ def get_method_factor(method: str, rnd: int = 1) -> float:
     return 1.00
 
 
-def apply_inactivity_decay(current_elo: float, last_fight_idx: int | None, current_fight_idx: int) -> float:
-    """
-    Apply mild regression towards the baseline rating (1000.0) if a fighter has
-    been inactive for > 450 UFC fights (~12 months).
-    """
-    if last_fight_idx is None:
-        return current_elo
-    gap = current_fight_idx - last_fight_idx
-    INACTIVITY_THRESHOLD = 450
-    if gap > INACTIVITY_THRESHOLD:
-        # Number of inactivity periods (each ~100 fights = ~2.5 months)
-        periods = min(15.0, (gap - INACTIVITY_THRESHOLD) / 100.0)
-        decay = 0.985 ** periods
-        return 1000.0 + (current_elo - 1000.0) * decay
-    return current_elo
-
-
 class UFCEloEngine:
     def __init__(
         self,
@@ -57,8 +40,6 @@ class UFCEloEngine:
 
         self.ratings = defaultdict(lambda: self.initial_elo)
         self.bouts = defaultdict(int)
-        self.last_fight = {}
-        self.fight_counter = 0
 
     def _expected(self, ra: float, rb: float) -> float:
         return 1.0 / (1.0 + 10 ** ((rb - ra) / 400.0))
@@ -78,13 +59,7 @@ class UFCEloEngine:
         except Exception:
             rnd = 1
 
-        self.fight_counter += 1
-        current_idx = self.fight_counter
-
-        # Apply mild ring rust / inactivity decay before fight
-        ra = apply_inactivity_decay(self.ratings[f1], self.last_fight.get(f1), current_idx)
-        rb = apply_inactivity_decay(self.ratings[f2], self.last_fight.get(f2), current_idx)
-
+        ra, rb = self.ratings[f1], self.ratings[f2]
         ea = self._expected(ra, rb)
         eb = 1.0 - ea
 
@@ -101,15 +76,12 @@ class UFCEloEngine:
         self.ratings[f1] = round(ra + k1 * (sa - ea), 2)
         self.ratings[f2] = round(rb + k2 * (sb - eb), 2)
 
-        self.last_fight[f1] = current_idx
-        self.last_fight[f2] = current_idx
         self.bouts[f1] += 1
         self.bouts[f2] += 1
 
     def get_rating(self, fighter: str) -> float:
-        """Get current rating with up-to-date inactivity decay applied."""
-        current_idx = self.fight_counter
-        return apply_inactivity_decay(self.ratings[fighter], self.last_fight.get(fighter), current_idx)
+        """Get current rating."""
+        return self.ratings[fighter]
 
     def win_prob(self, f1: str, f2: str) -> float:
         return self._expected(self.get_rating(f1), self.get_rating(f2))
@@ -124,11 +96,28 @@ def implied_prob(odds: int) -> float:
     return (100 / (odds + 100)) if odds > 0 else (-odds / (-odds + 100))
 
 
+def calculate_kelly_unit(win_prob: float, odds: int, fraction: float = 0.25) -> float:
+    """
+    Calculate suggested bet sizing in units using a conservative Quarter-Kelly Criterion (0.25x).
+    Returns suggested unit size rounded to 1 decimal place (e.g., 0.5u - 2.5u).
+    Returns 0.0 if EV is negative or zero.
+    """
+    if win_prob <= 0 or win_prob >= 1:
+        return 0.0
+    b = (odds / 100.0) if odds > 0 else (100.0 / abs(odds))
+    q = 1.0 - win_prob
+    kelly_full = (b * win_prob - q) / b
+    if kelly_full <= 0:
+        return 0.0
+    unit = round(min(3.0, max(0.1, kelly_full * fraction * 10.0)), 1)
+    return unit
+
+
 def compute_metrics(
     engine: UFCEloEngine,
     fights: list[tuple[str, str, int, int]],
 ) -> list[dict]:
-    """Compute Elo probabilities, implied probabilities, and EV for a list of fights."""
+    """Compute Elo probabilities, implied probabilities, EV, and Kelly unit sizing for fights."""
     results = []
     for f1, f2, o1, o2 in fights:
         p1 = engine.win_prob(f1, f2)
@@ -138,6 +127,8 @@ def compute_metrics(
         ev1 = p1 - imp1
         ev2 = p2 - imp2
         pred = 1 if p1 >= p2 else 2
+        kelly1 = calculate_kelly_unit(p1, o1) if ev1 > 0 else 0.0
+        kelly2 = calculate_kelly_unit(p2, o2) if ev2 > 0 else 0.0
         results.append({
             "fighter1": f1,
             "fighter2": f2,
@@ -150,5 +141,7 @@ def compute_metrics(
             "ev1": ev1,
             "ev2": ev2,
             "predWinner": pred,
+            "kelly1": kelly1,
+            "kelly2": kelly2,
         })
     return results

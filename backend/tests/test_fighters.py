@@ -179,6 +179,14 @@ class TestGetFighters:
         assert data["total"] >= 1
         assert any("Jones" in f["name"] for f in data["fighters"])
 
+    def test_division_filter(self):
+        """GET /fighters?division=Heavyweight returns matching division fighters."""
+        resp = client.get("/fighters?division=Heavyweight")
+        assert resp.status_code == 200
+        data = resp.json()
+        assert data["total"] >= 1
+        assert all("Heavyweight" in (f["weight_class"] or "") for f in data["fighters"])
+
     def test_fighter_has_elo(self):
         """Each fighter in the list has a numeric current_elo."""
         resp = client.get("/fighters")

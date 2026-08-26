@@ -27,6 +27,21 @@ const itemVariants = {
   show: { opacity: 1, y: 0, transition: { duration: 0.15 } },
 };
 
+const DIVISIONS = [
+  'All',
+  'Flyweight',
+  'Bantamweight',
+  'Featherweight',
+  'Lightweight',
+  'Welterweight',
+  'Middleweight',
+  'Light Heavyweight',
+  'Heavyweight',
+  "Women's Strawweight",
+  "Women's Flyweight",
+  "Women's Bantamweight",
+];
+
 export default function FightersPage() {
   const [fighters, setFighters] = useState<FighterListItem[]>([]);
   const [total, setTotal] = useState(0);
@@ -35,13 +50,15 @@ export default function FightersPage() {
   const [error, setError] = useState<string | null>(null);
   const [search, setSearch] = useState('');
   const [searchInput, setSearchInput] = useState('');
+  const [division, setDivision] = useState('All');
   const navigate = useNavigate();
 
-  const fetchData = useCallback(async (off: number, q: string) => {
+  const fetchData = useCallback(async (off: number, q: string, div: string) => {
     setLoading(true);
     setError(null);
     try {
-      const data = await getFighters(PAGE_SIZE, off, q);
+      const divFilter = div === 'All' ? '' : div;
+      const data = await getFighters(PAGE_SIZE, off, q, divFilter);
       setFighters(data.fighters);
       setTotal(data.total);
     } catch {
@@ -52,13 +69,18 @@ export default function FightersPage() {
   }, []);
 
   useEffect(() => {
-    fetchData(offset, search);
-  }, [offset, search, fetchData]);
+    fetchData(offset, search, division);
+  }, [offset, search, division, fetchData]);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     setOffset(0);
     setSearch(searchInput);
+  };
+
+  const handleDivisionChange = (div: string) => {
+    setDivision(div);
+    setOffset(0);
   };
 
   const totalPages = Math.ceil(total / PAGE_SIZE);
@@ -98,6 +120,22 @@ export default function FightersPage() {
           className="search-input"
         />
       </form>
+
+      {/* Division filter chips */}
+      <div className="division-chips" role="tablist" aria-label="Weight class divisions">
+        {DIVISIONS.map((d) => (
+          <button
+            key={d}
+            type="button"
+            className={`division-chip ${division === d ? 'active' : ''}`}
+            onClick={() => handleDivisionChange(d)}
+            role="tab"
+            aria-selected={division === d}
+          >
+            {d}
+          </button>
+        ))}
+      </div>
 
       {loading && <div className="status-msg">Loading fighters…</div>}
       {error && <div className="status-msg" style={{ color: 'var(--ink-2)' }}>{error}</div>}

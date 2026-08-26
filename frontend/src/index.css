@@ -280,6 +280,21 @@ a {
   color: var(--ink-3);
 }
 
+.card-kelly-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.625rem;
+  font-weight: 700;
+  color: var(--pos);
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.22);
+  padding: 1px 5px;
+  border-radius: var(--r-sm);
+  margin-left: 5px;
+  letter-spacing: 0.01em;
+  vertical-align: middle;
+}
+
 /* VS Badge */
 .vs-circle {
   width: 24px;
@@ -484,6 +499,49 @@ a {
 
 .search-input::placeholder {
   color: var(--ink-3);
+}
+
+/* ─── Division Filter Chips ──────────────────────────────── */
+
+.division-chips {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+  margin-bottom: 12px;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.division-chips::-webkit-scrollbar {
+  display: none;
+}
+
+.division-chip {
+  flex-shrink: 0;
+  font-family: var(--ff);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: var(--r-full);
+  background: var(--card-bg);
+  border: 1px solid var(--line);
+  color: var(--ink-2);
+  cursor: pointer;
+  transition: all 0.12s ease;
+  white-space: nowrap;
+}
+
+.division-chip:hover {
+  border-color: var(--ink-3);
+  color: var(--ink);
+}
+
+.division-chip.active {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: #FFFFFF;
+  font-weight: 600;
 }
 
 /* ─── Fighters Directory Card List ───────────────────────── */

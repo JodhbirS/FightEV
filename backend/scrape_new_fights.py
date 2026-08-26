@@ -27,7 +27,7 @@ else:
 
 from database import Base
 from models import Fighter, Fight, EloSnapshot
-from elo_engine import get_method_factor, apply_inactivity_decay
+from elo_engine import get_method_factor
 
 WIKI_HEADERS = {"User-Agent": "FightEV-Bot/1.0 (https://fightev.app; dev@fightev.app)"}
 
@@ -114,7 +114,7 @@ def fight_exists(session, event: str, f1_id: int, f2_id: int) -> bool:
 
 
 def recompute_elo(session):
-    """Recompute all Elo snapshots from scratch using round-based K-factor and inactivity decay."""
+    """Recompute all Elo snapshots from scratch using round-calibrated K-factor."""
     session.query(EloSnapshot).delete()
     session.flush()
 
@@ -124,14 +124,12 @@ def recompute_elo(session):
     BASE_K = 40.0
     ratings = defaultdict(lambda: INITIAL_ELO)
     bouts = defaultdict(int)
-    last_fight = {}
 
-    for idx, fight in enumerate(fights, 1):
+    for fight in fights:
         f1_id, f2_id = fight.fighter_1_id, fight.fighter_2_id
 
-        # Apply mild ring rust / inactivity decay before fight
-        ra = apply_inactivity_decay(ratings[f1_id], last_fight.get(f1_id), idx)
-        rb = apply_inactivity_decay(ratings[f2_id], last_fight.get(f2_id), idx)
+        ra = ratings[f1_id]
+        rb = ratings[f2_id]
 
         ea = 1.0 / (1.0 + 10 ** ((rb - ra) / 400.0))
         eb = 1.0 - ea
@@ -167,8 +165,6 @@ def recompute_elo(session):
 
         ratings[f1_id] = new_ra
         ratings[f2_id] = new_rb
-        last_fight[f1_id] = idx
-        last_fight[f2_id] = idx
         bouts[f1_id] += 1
         bouts[f2_id] += 1
 
