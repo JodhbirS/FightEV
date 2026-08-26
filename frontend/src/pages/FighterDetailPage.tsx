@@ -148,7 +148,7 @@ export default function FighterDetailPage() {
         <div className="stat-summary">
           <div className="stat-block">
             <span className="stat-val" style={{ color: fighter.current_elo > 0 ? 'var(--blue)' : 'var(--ink-3)', fontSize: fighter.current_elo > 0 ? '1.125rem' : '0.85rem', fontWeight: 600 }}>
-              {fighter.current_elo > 0 ? Math.round(fighter.current_elo) : "Hasn't Fought"}
+              {fighter.current_elo > 0 ? Math.round(fighter.current_elo) : 'Inactive'}
             </span>
             <span className="stat-label">{fighter.current_elo > 0 ? 'Elo Rating' : 'Status'}</span>
           </div>
