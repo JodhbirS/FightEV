@@ -538,6 +538,18 @@ a {
   color: var(--pos);
 }
 
+.fighter-item-elo.inactive {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  color: var(--ink-3);
+  background: var(--bg-subtle);
+  border: 1px solid var(--line);
+  padding: 2px 6px;
+  border-radius: var(--r-full);
+  display: inline-block;
+  letter-spacing: 0.01em;
+}
+
 /* ─── Detail Page ────────────────────────────────────────── */
 
 .detail-card-panel {

@@ -128,8 +128,8 @@ export default function FightersPage() {
               >
                 <span className="fighter-item-name">{f.name}</span>
                 <span className="fighter-item-wc">{f.weight_class || '—'}</span>
-                <span className={`fighter-item-elo ${f.current_elo >= 1100 ? 'high' : ''}`}>
-                  {Math.round(f.current_elo)}
+                <span className={`fighter-item-elo ${f.current_elo >= 1100 ? 'high' : ''} ${f.current_elo === 0 ? 'inactive' : ''}`}>
+                  {f.current_elo > 0 ? Math.round(f.current_elo) : "Hasn't Fought"}
                 </span>
               </motion.div>
             ))}

@@ -21,6 +21,7 @@ export interface FighterListItem {
   name: string;
   weight_class: string | null;
   current_elo: number;
+  is_active?: boolean;
 }
 
 export interface FighterListResponse {
@@ -54,6 +55,7 @@ export interface FighterDetail {
   name: string;
   weight_class: string | null;
   current_elo: number;
+  is_active?: boolean;
   total_fights: number;
   wins: number;
   losses: number;

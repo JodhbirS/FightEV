@@ -9,6 +9,7 @@ class FighterListItem(BaseModel):
     name: str
     weight_class: Optional[str] = None
     current_elo: float
+    is_active: bool = True
 
     model_config = {"from_attributes": True}
 
@@ -50,6 +51,7 @@ class FighterDetail(BaseModel):
     name: str
     weight_class: Optional[str] = None
     current_elo: float
+    is_active: bool = True
     total_fights: int
     wins: int
     losses: int

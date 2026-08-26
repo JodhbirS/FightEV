@@ -6,7 +6,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import List
 from sqlalchemy.orm import Session
-from sqlalchemy import func
+from sqlalchemy import func, case
 
 from database import engine, get_db, Base, SessionLocal
 from models import Fighter, Fight, EloSnapshot
@@ -127,6 +127,9 @@ def get_fights():
 
 # --- New endpoints ---
 
+INACTIVITY_FIGHT_THRESHOLD = 750  # ~1.5 years of UFC events (~500 fights/yr)
+
+
 @app.get("/fighters", response_model=FighterListResponse, summary="Paginated list of fighters")
 def get_fighters(
     limit: int = Query(default=20, ge=1, le=100, description="Number of fighters per page"),
@@ -136,11 +139,11 @@ def get_fighters(
 ):
     """
     Return a paginated list of UFC fighters with their current Elo rating.
-
-    Supports optional name search filtering. Results are ordered by current Elo
-    rating (highest first).
+    Fighters who have not fought in > 1.5 years have their current_elo set to 0.0
+    and is_active set to False. Active fighters are ordered by highest Elo first.
     """
-    # Base query: fighters with their latest Elo snapshot
+    max_fight_id = db.query(func.max(Fight.id)).scalar() or 0
+
     latest_snap = (
         db.query(
             EloSnapshot.fighter_id,
@@ -155,7 +158,8 @@ def get_fighters(
             Fighter.id,
             Fighter.name,
             Fighter.weight_class,
-            EloSnapshot.elo_after.label("current_elo"),
+            EloSnapshot.elo_after.label("raw_elo"),
+            latest_snap.c.max_fight_id.label("last_fight_id"),
         )
         .join(latest_snap, Fighter.id == latest_snap.c.fighter_id)
         .join(
@@ -170,22 +174,30 @@ def get_fighters(
 
     total = query.count()
 
+    is_active_case = case(
+        (latest_snap.c.max_fight_id >= max_fight_id - INACTIVITY_FIGHT_THRESHOLD, 1),
+        else_=0,
+    )
+
     rows = (
-        query.order_by(EloSnapshot.elo_after.desc())
+        query.order_by(is_active_case.desc(), EloSnapshot.elo_after.desc())
         .offset(offset)
         .limit(limit)
         .all()
     )
 
-    fighters = [
-        FighterListItem(
-            id=row.id,
-            name=row.name,
-            weight_class=row.weight_class,
-            current_elo=row.current_elo,
+    fighters = []
+    for row in rows:
+        is_active = bool(row.last_fight_id >= max_fight_id - INACTIVITY_FIGHT_THRESHOLD)
+        fighters.append(
+            FighterListItem(
+                id=row.id,
+                name=row.name,
+                weight_class=row.weight_class,
+                current_elo=round(row.raw_elo, 1) if is_active else 0.0,
+                is_active=is_active,
+            )
         )
-        for row in rows
-    ]
 
     return FighterListResponse(
         total=total,
@@ -196,6 +208,8 @@ def get_fighters(
 
 
 def _build_fighter_detail(fighter: Fighter, db: Session) -> FighterDetail:
+    max_fight_id = db.query(func.max(Fight.id)).scalar() or 0
+
     # Get all Elo snapshots for this fighter, ordered by fight ID (chronological)
     snapshots = (
         db.query(EloSnapshot)
@@ -204,8 +218,9 @@ def _build_fighter_detail(fighter: Fighter, db: Session) -> FighterDetail:
         .all()
     )
 
-    # Get current Elo (last snapshot)
-    current_elo = snapshots[-1].elo_after if snapshots else 1000.0
+    last_snap = snapshots[-1] if snapshots else None
+    is_active = bool(last_snap and (last_snap.fight_id >= max_fight_id - INACTIVITY_FIGHT_THRESHOLD))
+    current_elo = round(last_snap.elo_after, 2) if (last_snap and is_active) else 0.0
 
     # Build fight history + elo history
     fight_history = []
@@ -247,6 +262,7 @@ def _build_fighter_detail(fighter: Fighter, db: Session) -> FighterDetail:
         name=fighter.name,
         weight_class=fighter.weight_class,
         current_elo=current_elo,
+        is_active=is_active,
         total_fights=len(snapshots),
         wins=wins,
         losses=losses,
