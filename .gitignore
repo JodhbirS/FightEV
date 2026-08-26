@@ -157,3 +157,6 @@ __pycache__/
 
 # VSCode
 .vscode/
+
+# Track SQLite database (committed to repo, updated by scraper)
+!backend/data/*.db

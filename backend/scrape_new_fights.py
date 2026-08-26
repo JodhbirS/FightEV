@@ -1,77 +1,297 @@
+"""
+Scrape new UFC fights and upsert into the SQLite database.
+Also scrapes weight classes and updates fighter profiles.
+
+Run from repo root:  python backend/scrape_new_fights.py
+"""
+import os
+import re
+import sys
+import math
+import time
+import urllib.parse
+from collections import defaultdict
+
 import requests
 from bs4 import BeautifulSoup
-import pandas as pd
-import time
-import os
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
 
-base_url = "http://ufcstats.com/statistics/events/completed?page="
+# Allow running from either repo root or backend/
+if os.path.basename(os.getcwd()) == "backend":
+    sys.path.insert(0, ".")
+    DB_PATH = "data/fightev.db"
+    CSV_PATH = "data/ufcfights.csv"
+else:
+    sys.path.insert(0, "backend")
+    DB_PATH = "backend/data/fightev.db"
+    CSV_PATH = "backend/data/ufcfights.csv"
 
-def get_page_html(page: int) -> BeautifulSoup:
-    resp = requests.get(f"{base_url}{page}")
-    resp.raise_for_status()
-    return BeautifulSoup(resp.content, "html.parser")
+from database import Base
+from models import Fighter, Fight, EloSnapshot
+
+WIKI_HEADERS = {"User-Agent": "FightEV-Bot/1.0 (https://fightev.app; dev@fightev.app)"}
+
+
+def clean_method(raw: str) -> str:
+    """Strip whitespace/newline artifacts from scraped method strings."""
+    return re.sub(r"\s+", " ", str(raw)).strip()
+
+
+def normalise_result(raw: str) -> str:
+    r = re.sub(r"\s+", " ", str(raw)).strip().lower()
+    if r.startswith("draw"):
+        return "draw"
+    if r.startswith("nc"):
+        return "nc"
+    if "def" in r:
+        return "win"
+    return r
+
+
+def normalize_wiki_method(raw: str) -> str:
+    full = raw.lower()
+    if "unanimous" in full:
+        return "U-DEC"
+    elif "split" in full:
+        return "S-DEC"
+    elif "majority" in full:
+        return "M-DEC"
+    elif "submission" in full or "sub" in full:
+        match = re.search(r"\((.*?)\)", raw)
+        sub_type = match.group(1).title() if match else ""
+        return f"SUB {sub_type}".strip()
+    elif "tko" in full or "ko" in full:
+        match = re.search(r"\((.*?)\)", raw)
+        ko_type = match.group(1).title() if match else ""
+        return f"KO/TKO {ko_type}".strip()
+    elif "decision" in full:
+        return "U-DEC"
+    m = re.sub(r"\(.*?\)|\[.*?\]", "", raw).strip()
+    return m if m else "Decision"
+
+
+def get_or_create_fighter(session, name: str, weight_class: str | None = None) -> Fighter:
+    fighter = session.query(Fighter).filter(Fighter.name.ilike(name)).first()
+    if fighter:
+        if weight_class and not fighter.weight_class:
+            fighter.weight_class = weight_class
+        return fighter
+    fighter = Fighter(name=name, weight_class=weight_class)
+    session.add(fighter)
+    session.flush()
+    return fighter
+
+
+def fight_exists(session, event: str, f1_id: int, f2_id: int) -> bool:
+    """Check if this bout between these two fighters at this event already exists."""
+    return (
+        session.query(Fight)
+        .filter(
+            Fight.event == event,
+            (
+                ((Fight.fighter_1_id == f1_id) & (Fight.fighter_2_id == f2_id))
+                | ((Fight.fighter_1_id == f2_id) & (Fight.fighter_2_id == f1_id))
+            ),
+        )
+        .first()
+        is not None
+    )
+
+
+def recompute_elo(session):
+    """Recompute all Elo snapshots from scratch."""
+    session.query(EloSnapshot).delete()
+    session.flush()
+
+    fights = session.query(Fight).order_by(Fight.id.asc()).all()
+
+    INITIAL_ELO = 1000.0
+    BASE_K = 40.0
+    METHOD_BOOST = 1.15
+    ratings = defaultdict(lambda: INITIAL_ELO)
+    bouts = defaultdict(int)
+
+    for fight in fights:
+        f1_id, f2_id = fight.fighter_1_id, fight.fighter_2_id
+        ra, rb = ratings[f1_id], ratings[f2_id]
+        ea = 1.0 / (1.0 + 10 ** ((rb - ra) / 400.0))
+        eb = 1.0 - ea
+
+        result = fight.result
+        if result == "win":
+            sa, sb = 1.0, 0.0
+            f1_r, f2_r = "win", "loss"
+        elif result == "draw":
+            sa, sb = 0.5, 0.5
+            f1_r, f2_r = "draw", "draw"
+        else:
+            sa, sb = 0.0, 0.0
+            f1_r, f2_r = "nc", "nc"
+
+        m = fight.method.upper()
+        k1 = BASE_K / math.sqrt(max(1, bouts[f1_id]))
+        k2 = BASE_K / math.sqrt(max(1, bouts[f2_id]))
+        if "KO" in m or "SUB" in m:
+            k1 *= METHOD_BOOST
+            k2 *= METHOD_BOOST
+
+        new_ra = round(ra + k1 * (sa - ea), 2)
+        new_rb = round(rb + k2 * (sb - eb), 2)
+
+        session.add(EloSnapshot(
+            fighter_id=f1_id, fight_id=fight.id,
+            elo_before=ra, elo_after=new_ra,
+            opponent_id=f2_id, result=f1_r,
+        ))
+        session.add(EloSnapshot(
+            fighter_id=f2_id, fight_id=fight.id,
+            elo_before=rb, elo_after=new_rb,
+            opponent_id=f1_id, result=f2_r,
+        ))
+
+        ratings[f1_id] = new_ra
+        ratings[f2_id] = new_rb
+        bouts[f1_id] += 1
+        bouts[f2_id] += 1
+
+    session.flush()
+
+
+def scrape_wikipedia_events(session) -> int:
+    """Scrape recent completed UFC events from Wikipedia."""
+    print("Checking completed UFC events on Wikipedia...")
+    url = "https://en.wikipedia.org/w/api.php?action=parse&page=2026_in_UFC&prop=text&format=json"
+    res = requests.get(url, headers=WIKI_HEADERS)
+    if res.status_code != 200:
+        return 0
+
+    pdata = res.json()
+    html = pdata.get("parse", {}).get("text", {}).get("*", "")
+    soup = BeautifulSoup(html, "html.parser")
+
+    event_links = []
+    tables = soup.find_all("table", {"class": "wikitable"})
+    for t in tables:
+        for tr in t.find_all("tr"):
+            tds = tr.find_all(["td", "th"])
+            if len(tds) >= 3:
+                # Check if it has an event number / link
+                links = tr.find_all("a")
+                for a in links:
+                    title = a.get("title", "")
+                    if "UFC" in title and "2026" not in title and "rankings" not in title.lower() and "apex" not in title.lower():
+                        href = a.get("href", "")
+                        page_name = href.replace("/wiki/", "")
+                        if page_name and page_name not in [x[0] for x in event_links]:
+                            event_links.append((page_name, a.get_text(strip=True)))
+
+    print(f"Found {len(event_links)} candidate events to check.")
+
+    new_fights = 0
+    # Process events in chronological order (from older to newest)
+    for page_name, ev_title in reversed(event_links):
+        parse_url = f"https://en.wikipedia.org/w/api.php?action=parse&page={urllib.parse.quote(page_name)}&prop=text&format=json"
+        try:
+            r = requests.get(parse_url, headers=WIKI_HEADERS, timeout=8)
+            if r.status_code != 200:
+                continue
+            ev_data = r.json()
+            ev_html = ev_data.get("parse", {}).get("text", {}).get("*", "")
+            ev_soup = BeautifulSoup(ev_html, "html.parser")
+
+            tables = ev_soup.find_all("table", {"class": "toccolours"}) + ev_soup.find_all("table", {"class": "wikitable"})
+            event_name = ev_title.replace("_", " ")
+
+            for t in tables:
+                for tr in t.find_all("tr"):
+                    tds = [td.get_text(strip=True) for td in tr.find_all(["td", "th"])]
+                    if len(tds) >= 7 and any(sep in tds[2].lower() for sep in ["def.", "def"]):
+                        wc = tds[0]
+                        f1_name = re.sub(r"\(.*?\)|\[.*?\]", "", tds[1]).strip()
+                        res_word = tds[2].strip()
+                        f2_name = re.sub(r"\(.*?\)|\[.*?\]", "", tds[3]).strip()
+                        raw_method = re.sub(r"\[.*?\]", "", tds[4]).strip()
+                        rnd_str = tds[5].strip()
+                        tm_str = tds[6].strip()
+
+                        if not f1_name or not f2_name or "fighter" in f1_name.lower():
+                            continue
+
+                        result = "win" if "def" in res_word.lower() else "draw"
+                        method = normalize_wiki_method(raw_method)
+                        try:
+                            rnd = int(rnd_str)
+                        except Exception:
+                            rnd = 1
+
+                        f1 = get_or_create_fighter(session, f1_name, wc)
+                        f2 = get_or_create_fighter(session, f2_name, wc)
+
+                        if not fight_exists(session, event_name, f1.id, f2.id):
+                            session.add(Fight(
+                                event=event_name,
+                                fighter_1_id=f1.id,
+                                fighter_2_id=f2.id,
+                                result=result,
+                                method=method,
+                                round=rnd,
+                                time=tm_str,
+                            ))
+                            new_fights += 1
+                            print(f"  + Added fight: {event_name} | {f1_name} def. {f2_name} ({method})")
+
+            time.sleep(0.3)
+        except Exception as e:
+            print(f"Error parsing event {page_name}: {e}")
+
+    return new_fights
+
+
+def export_csv(session):
+    """Sync all fights from DB to CSV so the CSV remains completely up-to-date."""
+    import pandas as pd
+    fights = session.query(Fight).order_by(Fight.id.desc()).all()
+    fighters = {f.id: f.name for f in session.query(Fighter).all()}
+
+    rows = []
+    for f in fights:
+        rows.append({
+            "event": f.event,
+            "fighter_1": fighters.get(f.fighter_1_id, "Unknown"),
+            "fighter_2": fighters.get(f.fighter_2_id, "Unknown"),
+            "result": f.result,
+            "method": f.method,
+            "round": f.round,
+            "time": f.time,
+        })
+
+    df = pd.DataFrame(rows)
+    df.to_csv(CSV_PATH, index=False)
+    print(f"Exported {len(rows)} fights to {CSV_PATH}")
+
 
 def main():
-    csv_path = "backend/data/ufcfights.csv"
-    cols = ["event","fighter_1","fighter_2","result","method","round","time"]
+    os.makedirs(os.path.dirname(DB_PATH), exist_ok=True)
+    engine = create_engine(f"sqlite:///{DB_PATH}", connect_args={"check_same_thread": False})
+    Base.metadata.create_all(bind=engine)
+    Session = sessionmaker(bind=engine)
+    session = Session()
 
-    if os.path.exists(csv_path):
-        df_existing = pd.read_csv(csv_path, dtype=str)
-        existing_set = set(df_existing[cols].itertuples(index=False, name=None))
+    new_fights = scrape_wikipedia_events(session)
+
+    if new_fights > 0:
+        session.flush()
+        print(f"Added {new_fights} new fights. Recomputing Elo ratings...")
+        recompute_elo(session)
+        session.commit()
+        export_csv(session)
+        print(f"Successfully updated database and CSV with {new_fights} new fights!")
     else:
-        df_existing = pd.DataFrame(columns=cols)
-        existing_set = set()
+        session.commit()
+        export_csv(session)
+        print("Database is already up-to-date with all recent UFC events.")
 
-    new_rows = []
-    page = 1
-
-    while True:
-        soup = get_page_html(page)
-        links = soup.find_all("a", class_="b-link b-link_style_black")
-        if not links:
-            break
-
-        for ev in links:
-            event_name = ev.text.strip()
-            event_url  = ev["href"]
-
-            r = requests.get(event_url); r.raise_for_status()
-            s = BeautifulSoup(r.content, "html.parser")
-            table = s.find("tbody")
-            if not table:
-                continue
-
-            for tr in table.find_all("tr"):
-                cells = tr.find_all("td")
-                if len(cells) < 7:
-                    continue
-
-                row = {
-                    "event":     event_name,
-                    "fighter_1": cells[1].find_all("p")[0].text.strip(),
-                    "fighter_2": cells[1].find_all("p")[1].text.strip(),
-                    "result":    cells[0].text.strip(),
-                    "method":    cells[7].text.strip(),
-                    "round":     cells[8].text.strip(),
-                    "time":      cells[9].text.strip(),
-                }
-
-                key = tuple(row[c] for c in cols)
-                if key not in existing_set:
-                    existing_set.add(key)
-                    new_rows.append(row)
-
-            time.sleep(1)
-
-        page += 1
-
-    if new_rows:
-        df_new = pd.DataFrame(new_rows, columns=cols)
-        df_combined = pd.concat([df_new, df_existing], ignore_index=True)
-        df_combined.to_csv(csv_path, index=False)
-        print(f"Prepended {len(new_rows)} new fights to {csv_path}")
-    else:
-        print("No new fights to prepend.")
 
 if __name__ == "__main__":
     main()

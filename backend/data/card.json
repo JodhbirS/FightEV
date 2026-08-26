@@ -1,146 +1,80 @@
 [
   {
-    "fighter1": "Anthony Hernandez",
-    "fighter2": "Gregory Rodrigues",
-    "odds1": -215,
-    "odds2": 180
+    "fighter1": "Song Yadong",
+    "fighter2": "Umar Nurmagomedov",
+    "odds1": 360,
+    "odds2": -530
   },
   {
-    "fighter1": "Sergey Spivak",
-    "fighter2": "Vitor Petrino",
+    "fighter1": "Denise Gomes",
+    "fighter2": "Yan Xiaonan",
     "odds1": 132,
-    "odds2": -156
+    "odds2": -170
   },
   {
-    "fighter1": "Reinier de Ridder",
-    "fighter2": "Roman Dolidze",
-    "odds1": -390,
-    "odds2": 310
+    "fighter1": "Aori Qileng",
+    "fighter2": "Kai Asakura",
+    "odds1": 300,
+    "odds2": -430
   },
   {
-    "fighter1": "Gadzhi Rabadanov",
-    "fighter2": "Tracy Reeder",
-    "odds1": -3500,
-    "odds2": 1400
+    "fighter1": "Alex Perez",
+    "fighter2": "Su Mudaerji",
+    "odds1": 180,
+    "odds2": -235
   },
   {
-    "fighter1": "Marquel Mederos",
-    "fighter2": "Mason Jones",
-    "odds1": 275,
-    "odds2": -340
+    "fighter1": "Levi Rodrigues",
+    "fighter2": "Liu Ce",
+    "odds1": 152,
+    "odds2": -196
   },
   {
-    "fighter1": "Luke Trainer",
-    "fighter2": "Roland Dunlap",
-    "odds1": -490,
-    "odds2": 380
+    "fighter1": "Bilal Hasan",
+    "fighter2": "Nilson Rojas",
+    "odds1": -650,
+    "odds2": 420
   },
   {
-    "fighter1": "Carli Judice",
-    "fighter2": "Jeisla Chaves",
-    "odds1": -590,
-    "odds2": 430
+    "fighter1": "Andre Lima",
+    "fighter2": "Namsrai Batbayar",
+    "odds1": -265,
+    "odds2": 200
   },
   {
-    "fighter1": "Anthony Wint",
-    "fighter2": "Terrance Chatman",
-    "odds1": -1200,
-    "odds2": 750
+    "fighter1": "Kevin Borjas",
+    "fighter2": "Rei Tsuruya",
+    "odds1": 420,
+    "odds2": -650
   },
   {
-    "fighter1": "Sabrinna de Sousa",
-    "fighter2": "Taila Santos",
-    "odds1": 126,
-    "odds2": -148
+    "fighter1": "Francesco Nuzzi",
+    "fighter2": "Long Xiao",
+    "odds1": 152,
+    "odds2": -196
   },
   {
-    "fighter1": "Marcirley Alves da Silva",
-    "fighter2": "Nkosi Ndebele",
-    "odds1": -190,
-    "odds2": 160
+    "fighter1": "Jack Jenkins",
+    "fighter2": "Sean Woodson",
+    "odds1": 128,
+    "odds2": -164
   },
   {
-    "fighter1": "Makkasharip Zaynukov",
-    "fighter2": "Natan Schulte",
-    "odds1": -172,
-    "odds2": 144
+    "fighter1": "Hector Santiago",
+    "fighter2": "Lawrence Lui",
+    "odds1": 230,
+    "odds2": -310
   },
   {
-    "fighter1": "Javid Basharat",
-    "fighter2": "Movsar Ibragimov",
-    "odds1": -250,
-    "odds2": 205
+    "fighter1": "Jingnan Xiong",
+    "fighter2": "Julia Polastri",
+    "odds1": 176,
+    "odds2": -230
   },
   {
-    "fighter1": "Gino van Steenis",
-    "fighter2": "Robert Watley",
-    "odds1": -190,
-    "odds2": 160
-  },
-  {
-    "fighter1": "Eoin Sheridan",
-    "fighter2": "James Vake",
-    "odds1": -620,
-    "odds2": 460
-  },
-  {
-    "fighter1": "Daniel Marcos",
-    "fighter2": "Magomed Magomedov",
-    "odds1": -162,
-    "odds2": 136
-  },
-  {
-    "fighter1": "Cris Cyborg",
-    "fighter2": "Ketlen Vieira",
-    "odds1": -450,
-    "odds2": 350
-  },
-  {
-    "fighter1": "Jamall Emmers",
-    "fighter2": "Lerryan Douglas",
-    "odds1": 310,
-    "odds2": -400
-  },
-  {
-    "fighter1": "Kennedy Nzechukwu",
-    "fighter2": "Shamil Gaziev",
-    "odds1": 106,
-    "odds2": -124
-  },
-  {
-    "fighter1": "Chris Padilla",
-    "fighter2": "Nasrat Haqparast",
-    "odds1": -116,
-    "odds2": -102
-  },
-  {
-    "fighter1": "M\u00e1rcio Barbosa",
-    "fighter2": "Ryan Kuse",
-    "odds1": -900,
-    "odds2": 610
-  },
-  {
-    "fighter1": "Gauge Young",
-    "fighter2": "Stan Dorsainvil",
-    "odds1": -164,
-    "odds2": 138
-  },
-  {
-    "fighter1": "Jackson McVey",
-    "fighter2": "Wes Schultz",
-    "odds1": -174,
-    "odds2": 146
-  },
-  {
-    "fighter1": "Dakota Bush",
-    "fighter2": "Morquez Forest",
-    "odds1": -205,
-    "odds2": 172
-  },
-  {
-    "fighter1": "Elise Reed",
-    "fighter2": "Shanelle Dyer",
-    "odds1": 590,
-    "odds2": -850
+    "fighter1": "Cameron Nelson",
+    "fighter2": "Meng Ding",
+    "odds1": 112,
+    "odds2": -142
   }
 ]

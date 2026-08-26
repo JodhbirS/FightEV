@@ -4,4 +4,8 @@ pandas
 requests
 beautifulsoup4
 pydantic
+pydantic-settings
 python-dotenv
+sqlalchemy
+httpx
+pytest

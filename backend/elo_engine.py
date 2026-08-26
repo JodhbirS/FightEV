@@ -53,6 +53,34 @@ class UFCEloEngine:
             self.bouts[f1] += 1
             self.bouts[f2] += 1
 
+    def process_single_fight(self, row):
+        """Process a single fight row (needs .fighter_1, .fighter_2, .result, .method attrs)."""
+        f1, f2 = row.fighter_1, row.fighter_2
+        res = row.result.lower()
+        method = getattr(row, "method", "")
+
+        _ = self.ratings[f1]; _ = self.ratings[f2]
+
+        ra, rb = self.ratings[f1], self.ratings[f2]
+        ea = self._expected(ra, rb)
+        eb = 1.0 - ea
+
+        if res == "win":
+            sa, sb = 1.0, 0.0
+        elif res == "draw":
+            sa, sb = 0.5, 0.5
+        else:
+            sa, sb = 0.0, 0.0
+
+        k1 = self._k(f1, method)
+        k2 = self._k(f2, method)
+
+        self.ratings[f1] = round(ra + k1 * (sa - ea), 2)
+        self.ratings[f2] = round(rb + k2 * (sb - eb), 2)
+
+        self.bouts[f1] += 1
+        self.bouts[f2] += 1
+
     def get_rating(self, fighter: str) -> float:
         return self.ratings[fighter]
 
