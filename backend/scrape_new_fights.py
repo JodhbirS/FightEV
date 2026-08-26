@@ -27,6 +27,7 @@ else:
 
 from database import Base
 from models import Fighter, Fight, EloSnapshot
+from elo_engine import get_method_factor, apply_inactivity_decay
 
 WIKI_HEADERS = {"User-Agent": "FightEV-Bot/1.0 (https://fightev.app; dev@fightev.app)"}
 
@@ -94,7 +95,6 @@ def extract_event_core(name: str) -> str:
 
 def fight_exists(session, event: str, f1_id: int, f2_id: int) -> bool:
     """Check if this bout between these two fighters at this event already exists."""
-    # Find all prior bouts between these two fighters
     existing = (
         session.query(Fight)
         .filter(
@@ -115,8 +115,6 @@ def fight_exists(session, event: str, f1_id: int, f2_id: int) -> bool:
 
 def recompute_elo(session):
     """Recompute all Elo snapshots from scratch using round-based K-factor and inactivity decay."""
-    from elo_engine import get_method_factor, apply_inactivity_decay
-
     session.query(EloSnapshot).delete()
     session.flush()
 
@@ -178,66 +176,80 @@ def recompute_elo(session):
 
 
 def scrape_wikipedia_events(session) -> int:
-    """Scrape recent completed UFC events from Wikipedia."""
-    print("Checking completed UFC events on Wikipedia...")
-    url = "https://en.wikipedia.org/w/api.php?action=parse&page=2026_in_UFC&prop=text&format=json"
-    res = requests.get(url, headers=WIKI_HEADERS)
-    if res.status_code != 200:
-        return 0
+    """Scrape recent completed UFC events from Wikipedia with full redirect following."""
+    print("Collecting candidate UFC events from Wikipedia...")
+    event_pages = []
 
-    pdata = res.json()
-    html = pdata.get("parse", {}).get("text", {}).get("*", "")
-    soup = BeautifulSoup(html, "html.parser")
+    for source_page in ["2026_in_UFC", "List_of_UFC_events"]:
+        url = f"https://en.wikipedia.org/w/api.php?action=parse&page={source_page}&prop=text&format=json&redirects=1"
+        try:
+            res = requests.get(url, headers=WIKI_HEADERS, timeout=10)
+            if res.status_code != 200:
+                continue
+            pdata = res.json()
+            html = pdata.get("parse", {}).get("text", {}).get("*", "")
+            soup = BeautifulSoup(html, "html.parser")
 
-    event_links = []
-    tables = soup.find_all("table", {"class": "wikitable"})
-    for t in tables:
-        for tr in t.find_all("tr"):
-            tds = tr.find_all(["td", "th"])
-            if len(tds) >= 3:
-                # Check if it has an event number / link
-                links = tr.find_all("a")
-                for a in links:
-                    title = a.get("title", "")
-                    if "UFC" in title and "2026" not in title and "rankings" not in title.lower() and "apex" not in title.lower():
+            tables = soup.find_all("table", {"class": "wikitable"})
+            for t in tables:
+                for tr in t.find_all("tr"):
+                    for a in tr.find_all("a"):
+                        title = a.get("title", "")
                         href = a.get("href", "")
-                        page_name = href.replace("/wiki/", "")
-                        if page_name and page_name not in [x[0] for x in event_links]:
-                            event_links.append((page_name, a.get_text(strip=True)))
+                        if "UFC" in title and "rankings" not in title.lower() and "apex" not in title.lower() and "list" not in title.lower():
+                            page_name = href.replace("/wiki/", "")
+                            text = a.get_text(strip=True)
+                            if page_name and (page_name, text) not in event_pages:
+                                event_pages.append((page_name, text))
+        except Exception as e:
+            print(f"Error fetching {source_page}: {e}")
 
-    print(f"Found {len(event_links)} candidate events to check.")
+    print(f"Checking {len(event_pages)} candidate event pages for new/missing fights...")
 
     new_fights = 0
     # Process events in chronological order (from older to newest)
-    for page_name, ev_title in reversed(event_links):
-        parse_url = f"https://en.wikipedia.org/w/api.php?action=parse&page={urllib.parse.quote(page_name)}&prop=text&format=json"
+    for page_name, ev_title in reversed(event_pages):
+        parse_url = f"https://en.wikipedia.org/w/api.php?action=parse&page={urllib.parse.quote(page_name)}&prop=text&format=json&redirects=1"
         try:
             r = requests.get(parse_url, headers=WIKI_HEADERS, timeout=8)
             if r.status_code != 200:
                 continue
             ev_data = r.json()
+            real_title = ev_data.get("parse", {}).get("title", ev_title)
             ev_html = ev_data.get("parse", {}).get("text", {}).get("*", "")
             ev_soup = BeautifulSoup(ev_html, "html.parser")
 
             tables = ev_soup.find_all("table", {"class": "toccolours"}) + ev_soup.find_all("table", {"class": "wikitable"})
-            event_name = ev_title.replace("_", " ")
+            event_name = real_title.replace("_", " ")
 
             for t in tables:
                 for tr in t.find_all("tr"):
                     tds = [td.get_text(strip=True) for td in tr.find_all(["td", "th"])]
-                    if len(tds) >= 7 and any(sep in tds[2].lower() for sep in ["def.", "def"]):
+                    if len(tds) >= 7 and any(sep in tds[2].lower() for sep in ["def.", "def", "vs.", "vs"]):
                         wc = tds[0]
                         f1_name = re.sub(r"\(.*?\)|\[.*?\]", "", tds[1]).strip()
-                        res_word = tds[2].strip()
+                        res_word = tds[2].strip().lower()
                         f2_name = re.sub(r"\(.*?\)|\[.*?\]", "", tds[3]).strip()
                         raw_method = re.sub(r"\[.*?\]", "", tds[4]).strip()
                         rnd_str = tds[5].strip()
                         tm_str = tds[6].strip()
 
-                        if not f1_name or not f2_name or "fighter" in f1_name.lower():
+                        if not f1_name or not f2_name or "fighter" in f1_name.lower() or "weight" in f1_name.lower():
                             continue
 
-                        result = "win" if "def" in res_word.lower() else "draw"
+                        # Check if it has a completed result
+                        if not raw_method or raw_method == "—" or "tba" in raw_method.lower():
+                            continue
+
+                        if "def" in res_word:
+                            result = "win"
+                        elif "draw" in raw_method.lower() or "draw" in res_word:
+                            result = "draw"
+                        elif "nc" in raw_method.lower() or "no contest" in raw_method.lower():
+                            result = "nc"
+                        else:
+                            result = "win"
+
                         method = normalize_wiki_method(raw_method)
                         try:
                             rnd = int(rnd_str)
@@ -258,11 +270,11 @@ def scrape_wikipedia_events(session) -> int:
                                 time=tm_str,
                             ))
                             new_fights += 1
-                            print(f"  + Added fight: {event_name} | {f1_name} def. {f2_name} ({method})")
+                            print(f"  + Added fight: {event_name} | {f1_name} def. {f2_name} ({method}) R{rnd} {tm_str}")
 
-            time.sleep(0.3)
+            time.sleep(0.15)
         except Exception as e:
-            print(f"Error parsing event {page_name}: {e}")
+            pass
 
     return new_fights
 
