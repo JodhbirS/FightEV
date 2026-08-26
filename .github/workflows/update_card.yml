@@ -1,15 +1,16 @@
-name: Update UFC Fight Card
+name: Refresh UFC Fight Card & Odds
 
 on:
   schedule:
-    - cron: '0 16 * * 6'  # Saturday at noon EST
+    # Runs every 12 hours on Thursdays, Fridays, and Saturdays (UTC)
+    - cron: '0 */12 * * 4,5,6'
   workflow_dispatch:
 
 permissions:
   contents: write
 
 jobs:
-  update-card:
+  refresh-card:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
@@ -23,19 +24,19 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install requests python-dotenv
+          pip install -r backend/requirements.txt
 
-      - name: Run card update script
+      - name: Fetch latest UFC odds & official bout order
         run: python backend/update_card.py
         env:
           ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
 
-      - name: Commit and push updates
+      - name: Commit and push updated card
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add backend/data/card.json
-          git commit -m "Saturday: update UFC fight card" || echo "No changes to commit"
+          git commit -m "Automated: update UFC fight card & odds" || echo "No changes to commit"
           git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

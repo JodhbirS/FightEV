@@ -38,11 +38,12 @@ def _load_elo_engine():
 
         class _Row:
             """Mimics a DataFrame row for the existing Elo engine."""
-            def __init__(self, f1_name, f2_name, result, method):
+            def __init__(self, f1_name, f2_name, result, method, round_num):
                 self.fighter_1 = f1_name
                 self.fighter_2 = f2_name
                 self.result = result
                 self.method = method
+                self.round = round_num
 
         # Build fighter ID->name lookup
         fighters = {f.id: f.name for f in db.query(Fighter).all()}
@@ -53,6 +54,7 @@ def _load_elo_engine():
                 fighters[fight.fighter_2_id],
                 fight.result,
                 fight.method,
+                fight.round,
             )
             _elo_engine.process_single_fight(row)
     finally:

@@ -98,7 +98,9 @@ def fight_exists(session, event: str, f1_id: int, f2_id: int) -> bool:
 
 
 def recompute_elo(session):
-    """Recompute all Elo snapshots from scratch."""
+    """Recompute all Elo snapshots from scratch using round-based K-factor and inactivity decay."""
+    from elo_engine import get_method_factor, apply_inactivity_decay
+
     session.query(EloSnapshot).delete()
     session.flush()
 
@@ -106,13 +108,17 @@ def recompute_elo(session):
 
     INITIAL_ELO = 1000.0
     BASE_K = 40.0
-    METHOD_BOOST = 1.15
     ratings = defaultdict(lambda: INITIAL_ELO)
     bouts = defaultdict(int)
+    last_fight = {}
 
-    for fight in fights:
+    for idx, fight in enumerate(fights, 1):
         f1_id, f2_id = fight.fighter_1_id, fight.fighter_2_id
-        ra, rb = ratings[f1_id], ratings[f2_id]
+
+        # Apply mild ring rust / inactivity decay before fight
+        ra = apply_inactivity_decay(ratings[f1_id], last_fight.get(f1_id), idx)
+        rb = apply_inactivity_decay(ratings[f2_id], last_fight.get(f2_id), idx)
+
         ea = 1.0 / (1.0 + 10 ** ((rb - ra) / 400.0))
         eb = 1.0 - ea
 
@@ -127,12 +133,9 @@ def recompute_elo(session):
             sa, sb = 0.0, 0.0
             f1_r, f2_r = "nc", "nc"
 
-        m = fight.method.upper()
-        k1 = BASE_K / math.sqrt(max(1, bouts[f1_id]))
-        k2 = BASE_K / math.sqrt(max(1, bouts[f2_id]))
-        if "KO" in m or "SUB" in m:
-            k1 *= METHOD_BOOST
-            k2 *= METHOD_BOOST
+        mf = get_method_factor(fight.method, fight.round)
+        k1 = (BASE_K / math.sqrt(max(1, bouts[f1_id]))) * mf
+        k2 = (BASE_K / math.sqrt(max(1, bouts[f2_id]))) * mf
 
         new_ra = round(ra + k1 * (sa - ea), 2)
         new_rb = round(rb + k2 * (sb - eb), 2)
@@ -150,6 +153,8 @@ def recompute_elo(session):
 
         ratings[f1_id] = new_ra
         ratings[f2_id] = new_rb
+        last_fight[f1_id] = idx
+        last_fight[f2_id] = idx
         bouts[f1_id] += 1
         bouts[f2_id] += 1
 
