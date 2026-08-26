@@ -81,20 +81,36 @@ def get_or_create_fighter(session, name: str, weight_class: str | None = None) -
     return fighter
 
 
+def extract_event_core(name: str) -> str:
+    name_clean = re.sub(r"\(.*?\)|\[.*?\]", "", name).strip().lower()
+    m = re.search(r"(ufc\s*\d+)", name_clean)
+    if m:
+        return re.sub(r"\s+", " ", m.group(1))
+    m = re.search(r"(ufc\s*fight\s*night\s*\d*)", name_clean)
+    if m and m.group(1) != "ufc fight night":
+        return re.sub(r"\s+", " ", m.group(1))
+    return name_clean.split(":")[0].strip()
+
+
 def fight_exists(session, event: str, f1_id: int, f2_id: int) -> bool:
     """Check if this bout between these two fighters at this event already exists."""
-    return (
+    # Find all prior bouts between these two fighters
+    existing = (
         session.query(Fight)
         .filter(
-            Fight.event == event,
-            (
-                ((Fight.fighter_1_id == f1_id) & (Fight.fighter_2_id == f2_id))
-                | ((Fight.fighter_1_id == f2_id) & (Fight.fighter_2_id == f1_id))
-            ),
+            ((Fight.fighter_1_id == f1_id) & (Fight.fighter_2_id == f2_id))
+            | ((Fight.fighter_1_id == f2_id) & (Fight.fighter_2_id == f1_id))
         )
-        .first()
-        is not None
+        .all()
     )
+    if not existing:
+        return False
+
+    target_core = extract_event_core(event)
+    for f in existing:
+        if extract_event_core(f.event) == target_core or f.event.lower() == event.lower():
+            return True
+    return False
 
 
 def recompute_elo(session):
