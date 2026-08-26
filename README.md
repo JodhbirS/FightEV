@@ -1,30 +1,31 @@
-# UFC Fights EV Predictor
+# FightEV — UFC Predictions & Elo Ratings
 
-A simple React + TypeScript frontend showing main UFC fight cards with sportsbook odds, alongside my Python Elo‑based win probabilities & expected value (EV) model. Positive‑EV fighters are highlighted in green; negative‑EV fighters in red. The new fight card is uploaded at noon on the day of the fight, and the fight data is scraped the next morning. Screenshot below shows data from UFC 320.
+A clean React + TypeScript web app displaying upcoming UFC fight cards with live sportsbook odds alongside a Python Elo-based win probability & expected value (EV) model. Positive-EV picks are highlighted in green with suggested Kelly unit sizing. The fight card is refreshed automatically on fight weekends, and completed results and Elo ratings are updated every Sunday morning.
 
 If you use this to place your own bets, please do so at your own discretion.
 
 <p align="center">
-  <img src="./assets/ufc_predictions.png" alt="UFC Predictions UI" width="600"/>
+  <img src="./assets/ufc_predictions.png" alt="FightEV UI" width="600"/>
 </p>
 
 ## Features
 
-- **Odds & implied probabilities** from UFC’s official site  
-- **Elo model** built in Python 
-- **Expected value (EV)** calculation & color‑coded borders  
-- **“Predicted Winner”** badge under the fighter with Elo > 50%
-- **Update Fight Data Weekly** with a GitHub Actions Workflow setup with the scraper
-- **Update Fight Cards Weekly** with a GitHub Actions Workflow setup with an odds API
+- **Live Odds & Implied Probabilities** from The Odds API
+- **Round-Calibrated Elo Model** built in Python
+- **Expected Value (+EV) Calculation** & highlighted edge cards
+- **Quarter-Kelly Criterion** suggested bet unit sizing (`0.5u` – `3.0u`)
+- **Interactive Fight History Popups** showing a fighter's last 5 UFC bouts
+- **Fighters Directory & Profiles** with weight class division filters and career Elo charts
+- **Automated Workflows** on GitHub Actions to refresh cards and update historical Elo ratings weekly
 
 ## Tech Stack
 
-- **Frontend:** React, TypeScript, Vite 
-- **Backend:** Python, FastAPI, GitHub Actions
-- **Data:** UFC Stats scraping, Elo engine, Odds API
+- **Frontend:** React, TypeScript, Vite, Framer Motion, Recharts
+- **Backend:** Python, FastAPI, SQLite, SQLAlchemy
+- **Data & Automation:** Beautiful Soup, The Odds API, GitHub Actions
 
 ## Getting Started
 
 ```bash
 docker compose up --build
-
+```
