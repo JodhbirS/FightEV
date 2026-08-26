@@ -16,6 +16,7 @@ from schemas import (
     FighterDetail,
     FightHistoryItem,
     EloPoint,
+    FightOut,
 )
 from elo_engine import UFCEloEngine, compute_metrics
 
@@ -102,24 +103,6 @@ def _load_current_card():
         return []
 
 
-# --- Existing endpoint ---
-
-class FightOut(BaseModel):
-    fighter1: str
-    fighter2: str
-    odds1: int
-    odds2: int
-    eloProb1: float
-    eloProb2: float
-    impProb1: float
-    impProb2: float
-    ev1: float
-    ev2: float
-    predWinner: int
-    kelly1: float = 0.0
-    kelly2: float = 0.0
-
-
 @app.get("/fights", response_model=List[FightOut], summary="Upcoming fight card predictions")
 def get_fights():
     """Return the current UFC fight card with Elo-based predictions and expected value analysis."""
@@ -127,9 +110,8 @@ def get_fights():
     return compute_metrics(_elo_engine, fights)
 
 
-# --- New endpoints ---
-
 INACTIVITY_FIGHT_THRESHOLD = 750  # ~1.5 years of UFC events (~500 fights/yr)
+
 
 
 @app.get("/fighters", response_model=FighterListResponse, summary="Paginated list of fighters")

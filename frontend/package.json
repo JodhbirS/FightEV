@@ -1,6 +1,6 @@
 {
-  "name": "ufc-last-night",
-  "version": "0.0.1",
+  "name": "fightev",
+  "version": "1.0.0",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

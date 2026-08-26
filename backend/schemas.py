@@ -60,3 +60,22 @@ class FighterDetail(BaseModel):
     elo_history: list[EloPoint]
 
     model_config = {"from_attributes": True}
+
+
+# --- /fights card predictions ---
+
+class FightOut(BaseModel):
+    fighter1: str
+    fighter2: str
+    odds1: int
+    odds2: int
+    eloProb1: float
+    eloProb2: float
+    impProb1: float
+    impProb2: float
+    ev1: float
+    ev2: float
+    predWinner: int
+    kelly1: float = 0.0
+    kelly2: float = 0.0
+
