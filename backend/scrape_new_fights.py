@@ -21,11 +21,9 @@ from sqlalchemy.orm import sessionmaker
 if os.path.basename(os.getcwd()) == "backend":
     sys.path.insert(0, ".")
     DB_PATH = "data/fightev.db"
-    CSV_PATH = "data/ufcfights.csv"
 else:
     sys.path.insert(0, "backend")
     DB_PATH = "backend/data/fightev.db"
-    CSV_PATH = "backend/data/ufcfights.csv"
 
 from database import Base
 from models import Fighter, Fight, EloSnapshot
@@ -248,29 +246,6 @@ def scrape_wikipedia_events(session) -> int:
     return new_fights
 
 
-def export_csv(session):
-    """Sync all fights from DB to CSV so the CSV remains completely up-to-date."""
-    import pandas as pd
-    fights = session.query(Fight).order_by(Fight.id.desc()).all()
-    fighters = {f.id: f.name for f in session.query(Fighter).all()}
-
-    rows = []
-    for f in fights:
-        rows.append({
-            "event": f.event,
-            "fighter_1": fighters.get(f.fighter_1_id, "Unknown"),
-            "fighter_2": fighters.get(f.fighter_2_id, "Unknown"),
-            "result": f.result,
-            "method": f.method,
-            "round": f.round,
-            "time": f.time,
-        })
-
-    df = pd.DataFrame(rows)
-    df.to_csv(CSV_PATH, index=False)
-    print(f"Exported {len(rows)} fights to {CSV_PATH}")
-
-
 def main():
     os.makedirs(os.path.dirname(DB_PATH), exist_ok=True)
     engine = create_engine(f"sqlite:///{DB_PATH}", connect_args={"check_same_thread": False})
@@ -285,11 +260,9 @@ def main():
         print(f"Added {new_fights} new fights. Recomputing Elo ratings...")
         recompute_elo(session)
         session.commit()
-        export_csv(session)
-        print(f"Successfully updated database and CSV with {new_fights} new fights!")
+        print(f"Successfully updated database with {new_fights} new fights!")
     else:
         session.commit()
-        export_csv(session)
         print("Database is already up-to-date with all recent UFC events.")
 
 

@@ -17,8 +17,7 @@ from schemas import (
     FightHistoryItem,
     EloPoint,
 )
-from elo_engine import UFCEloEngine
-from predictions import compute_metrics
+from elo_engine import UFCEloEngine, compute_metrics
 
 # --- Startup: create tables + load Elo engine for card predictions ---
 
