@@ -1,62 +1,56 @@
 [
   {
-    "fighter1": "Ahejiang Ailinuer",
-    "fighter2": "George Mangos",
-    "odds1": 400,
-    "odds2": -550
-  },
-  {
-    "fighter1": "Kasib Murdoch",
-    "fighter2": "Rabindra Dhant",
-    "odds1": -225,
-    "odds2": 185
-  },
-  {
-    "fighter1": "Dagiisuren Chagnaadorj",
-    "fighter2": "Young Jae Song",
-    "odds1": 130,
-    "odds2": -155
-  },
-  {
-    "fighter1": "Chungreng Koren",
-    "fighter2": "Ryo Tajima",
-    "odds1": 115,
-    "odds2": -140
-  },
-  {
-    "fighter1": "Jiniushiyue",
-    "fighter2": "Takeru Uchida",
-    "odds1": -260,
-    "odds2": 210
-  },
-  {
-    "fighter1": "Bo Hyun Park",
-    "fighter2": "Farida Abdueva",
-    "odds1": 240,
-    "odds2": -300
-  },
-  {
-    "fighter1": "Joseph Larcinese",
-    "fighter2": "Takaya Suzuki",
-    "odds1": 400,
-    "odds2": -550
-  },
-  {
-    "fighter1": "Bo Meng",
-    "fighter2": "Machi Fukuda",
-    "odds1": -240,
-    "odds2": 195
-  },
-  {
     "fighter1": "Darrius Flowers",
     "fighter2": "Hayisaer Maheshate",
-    "odds1": 175,
-    "odds2": -215
+    "odds1": 165,
+    "odds2": -200
   },
   {
     "fighter1": "Tre'ston Vines",
     "fighter2": "Yilizhati Maimaitijiang",
-    "odds1": 160,
-    "odds2": -195
+    "odds1": 110,
+    "odds2": -130
+  },
+  {
+    "fighter1": "Ahejiang Ailinuer",
+    "fighter2": "George Mangos",
+    "odds1": 425,
+    "odds2": -600
+  },
+  {
+    "fighter1": "Kasib Murdoch",
+    "fighter2": "Rabindra Dhant",
+    "odds1": -210,
+    "odds2": 170
+  },
+  {
+    "fighter1": "Bo Meng",
+    "fighter2": "Machi Fukuda",
+    "odds1": -275,
+    "odds2": 220
+  },
+  {
+    "fighter1": "Joseph Larcinese",
+    "fighter2": "Takaya Suzuki",
+    "odds1": 450,
+    "odds2": -650
+  },
+  {
+    "fighter1": "Dagiisuren Chagnaadorj",
+    "fighter2": "Young Jae Song",
+    "odds1": 135,
+    "odds2": -165
+  },
+  {
+    "fighter1": "Chungreng Koren",
+    "fighter2": "Ryo Tajima",
+    "odds1": 100,
+    "odds2": -120
+  },
+  {
+    "fighter1": "Bo Hyun Park",
+    "fighter2": "Farida Abdueva",
+    "odds1": 260,
+    "odds2": -325
   }
 ]
