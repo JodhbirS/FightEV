@@ -1,80 +1,62 @@
 [
   {
-    "fighter1": "Song Yadong",
-    "fighter2": "Umar Nurmagomedov",
-    "odds1": 360,
-    "odds2": -530
+    "fighter1": "Ahejiang Ailinuer",
+    "fighter2": "George Mangos",
+    "odds1": 400,
+    "odds2": -550
   },
   {
-    "fighter1": "Denise Gomes",
-    "fighter2": "Yan Xiaonan",
-    "odds1": 132,
-    "odds2": -170
+    "fighter1": "Kasib Murdoch",
+    "fighter2": "Rabindra Dhant",
+    "odds1": -225,
+    "odds2": 185
   },
   {
-    "fighter1": "Aori Qileng",
-    "fighter2": "Kai Asakura",
-    "odds1": 300,
-    "odds2": -430
+    "fighter1": "Dagiisuren Chagnaadorj",
+    "fighter2": "Young Jae Song",
+    "odds1": 130,
+    "odds2": -155
   },
   {
-    "fighter1": "Alex Perez",
-    "fighter2": "Su Mudaerji",
-    "odds1": 180,
-    "odds2": -235
+    "fighter1": "Chungreng Koren",
+    "fighter2": "Ryo Tajima",
+    "odds1": 115,
+    "odds2": -140
   },
   {
-    "fighter1": "Levi Rodrigues",
-    "fighter2": "Liu Ce",
-    "odds1": 152,
-    "odds2": -196
+    "fighter1": "Jiniushiyue",
+    "fighter2": "Takeru Uchida",
+    "odds1": -260,
+    "odds2": 210
   },
   {
-    "fighter1": "Bilal Hasan",
-    "fighter2": "Nilson Rojas",
-    "odds1": -650,
-    "odds2": 420
+    "fighter1": "Bo Hyun Park",
+    "fighter2": "Farida Abdueva",
+    "odds1": 240,
+    "odds2": -300
   },
   {
-    "fighter1": "Andre Lima",
-    "fighter2": "Namsrai Batbayar",
-    "odds1": -265,
-    "odds2": 200
+    "fighter1": "Joseph Larcinese",
+    "fighter2": "Takaya Suzuki",
+    "odds1": 400,
+    "odds2": -550
   },
   {
-    "fighter1": "Kevin Borjas",
-    "fighter2": "Rei Tsuruya",
-    "odds1": 420,
-    "odds2": -650
+    "fighter1": "Bo Meng",
+    "fighter2": "Machi Fukuda",
+    "odds1": -240,
+    "odds2": 195
   },
   {
-    "fighter1": "Francesco Nuzzi",
-    "fighter2": "Long Xiao",
-    "odds1": 152,
-    "odds2": -196
+    "fighter1": "Darrius Flowers",
+    "fighter2": "Hayisaer Maheshate",
+    "odds1": 175,
+    "odds2": -215
   },
   {
-    "fighter1": "Jack Jenkins",
-    "fighter2": "Sean Woodson",
-    "odds1": 128,
-    "odds2": -164
-  },
-  {
-    "fighter1": "Hector Santiago",
-    "fighter2": "Lawrence Lui",
-    "odds1": 230,
-    "odds2": -310
-  },
-  {
-    "fighter1": "Jingnan Xiong",
-    "fighter2": "Julia Polastri",
-    "odds1": 176,
-    "odds2": -230
-  },
-  {
-    "fighter1": "Cameron Nelson",
-    "fighter2": "Meng Ding",
-    "odds1": 112,
-    "odds2": -142
+    "fighter1": "Tre'ston Vines",
+    "fighter2": "Yilizhati Maimaitijiang",
+    "odds1": 160,
+    "odds2": -195
   }
 ]
