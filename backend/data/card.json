@@ -39,42 +39,42 @@
     "fighter1": "Namsrai Batbayar",
     "fighter2": "Andr\u00e9 Lima",
     "odds1": 225,
-    "odds2": -290
+    "odds2": -275
   },
   {
     "fighter1": "Rei Tsuruya",
     "fighter2": "Kevin Borjas",
-    "odds1": -900,
-    "odds2": 570
+    "odds1": -850,
+    "odds2": 590
   },
   {
     "fighter1": "Xiao Long",
     "fighter2": "Francesco Nuzzi",
-    "odds1": -188,
+    "odds1": -180,
     "odds2": 152
   },
   {
     "fighter1": "Jack Jenkins",
     "fighter2": "Sean Woodson",
-    "odds1": 122,
-    "odds2": -150
+    "odds1": 124,
+    "odds2": -146
   },
   {
     "fighter1": "Lawrence Lui",
     "fighter2": "Hector Santiago",
-    "odds1": -325,
-    "odds2": 250
+    "odds1": -320,
+    "odds2": 260
   },
   {
     "fighter1": "Xiong Jingnan",
     "fighter2": "Julia Polastri",
-    "odds1": 210,
-    "odds2": -265
+    "odds1": 215,
+    "odds2": -260
   },
   {
     "fighter1": "Ding Meng",
     "fighter2": "Cameron Nelson",
-    "odds1": -152,
-    "odds2": 124
+    "odds1": -148,
+    "odds2": 126
   }
 ]
