@@ -1,80 +1,86 @@
 [
   {
-    "fighter1": "Umar Nurmagomedov",
-    "fighter2": "Song Yadong",
-    "odds1": -620,
-    "odds2": 460
+    "fighter1": "Dan Hooker",
+    "fighter2": "Salahdine Parnasse",
+    "odds1": 350,
+    "odds2": -480
   },
   {
-    "fighter1": "Yan Xiaonan",
-    "fighter2": "Denise Gomes",
-    "odds1": -154,
-    "odds2": 130
+    "fighter1": "Far\u00e8s Ziam",
+    "fighter2": "Axel Sola",
+    "odds1": -144,
+    "odds2": 118
   },
   {
-    "fighter1": "Aori Qileng",
-    "fighter2": "Kai Asakura",
-    "odds1": 385,
-    "odds2": -500
+    "fighter1": "Michael Page",
+    "fighter2": "Nursulton Ruziboev",
+    "odds1": -110,
+    "odds2": -110
   },
   {
-    "fighter1": "Su Mudaerji",
-    "fighter2": "Alex Perez",
+    "fighter1": "Daniil Donchenko",
+    "fighter2": "Punahele Soriano",
     "odds1": -215,
-    "odds2": 180
+    "odds2": 172
   },
   {
-    "fighter1": "Liu Ce",
-    "fighter2": "Levi Rodrigues Jr.",
-    "odds1": -168,
-    "odds2": 142
+    "fighter1": "Morgan Charri\u00e8re",
+    "fighter2": "Felipe Lima",
+    "odds1": 160,
+    "odds2": -200
   },
   {
-    "fighter1": "Bilal Hasan",
-    "fighter2": "Nilson Rojas",
-    "odds1": -850,
-    "odds2": 590
+    "fighter1": "Losene Keita",
+    "fighter2": "Muhammad Naimov",
+    "odds1": -280,
+    "odds2": 220
   },
   {
-    "fighter1": "Namsrai Batbayar",
-    "fighter2": "Andr\u00e9 Lima",
-    "odds1": 220,
-    "odds2": -270
+    "fighter1": "Mario Pinto",
+    "fighter2": "Ryan Spann",
+    "odds1": -265,
+    "odds2": 210
   },
   {
-    "fighter1": "Rei Tsuruya",
-    "fighter2": "Kevin Borjas",
-    "odds1": -850,
-    "odds2": 590
+    "fighter1": "Kurtis Campbell",
+    "fighter2": "Trevor Peek",
+    "odds1": -355,
+    "odds2": 270
   },
   {
-    "fighter1": "Xiao Long",
-    "fighter2": "Francesco Nuzzi",
-    "odds1": -172,
+    "fighter1": "Oumar Sy",
+    "fighter2": "Modestas Bukauskas",
+    "odds1": -178,
     "odds2": 144
   },
   {
-    "fighter1": "Jack Jenkins",
-    "fighter2": "Sean Woodson",
-    "odds1": 124,
-    "odds2": -146
+    "fighter1": "Nathaniel Wood",
+    "fighter2": "Mairon Santos",
+    "odds1": 110,
+    "odds2": -130
   },
   {
-    "fighter1": "Lawrence Lui",
-    "fighter2": "Hector Santiago",
-    "odds1": -340,
-    "odds2": 275
+    "fighter1": "Michael Aljarouj",
+    "fighter2": "Fabi\u00e0 Sintes",
+    "odds1": -162,
+    "odds2": 132
   },
   {
-    "fighter1": "Xiong Jingnan",
-    "fighter2": "Julia Polastri",
-    "odds1": 188,
-    "odds2": -225
+    "fighter1": "Nora Cornolle",
+    "fighter2": "Klaudia Sygu\u0142a",
+    "odds1": -134,
+    "odds2": 110
   },
   {
-    "fighter1": "Ding Meng",
-    "fighter2": "Cameron Nelson",
-    "odds1": -154,
-    "odds2": 130
+    "fighter1": "Matthieu Letho Duclos",
+    "fighter2": "Luis Felipe Dias",
+    "odds1": -130,
+    "odds2": 105
+  },
+  {
+    "fighter1": "Delphine Benouaich",
+    "fighter2": "Sofia Montenegro",
+    "odds1": -162,
+    "odds2": 126
   }
 ]
