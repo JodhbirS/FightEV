@@ -26,14 +26,14 @@
   {
     "fighter1": "Liu Ce",
     "fighter2": "Levi Rodrigues Jr.",
-    "odds1": -184,
-    "odds2": 154
+    "odds1": -168,
+    "odds2": 142
   },
   {
     "fighter1": "Bilal Hasan",
     "fighter2": "Nilson Rojas",
-    "odds1": -820,
-    "odds2": 570
+    "odds1": -850,
+    "odds2": 590
   },
   {
     "fighter1": "Namsrai Batbayar",
@@ -44,14 +44,14 @@
   {
     "fighter1": "Rei Tsuruya",
     "fighter2": "Kevin Borjas",
-    "odds1": -900,
-    "odds2": 610
+    "odds1": -850,
+    "odds2": 590
   },
   {
     "fighter1": "Xiao Long",
     "fighter2": "Francesco Nuzzi",
-    "odds1": -166,
-    "odds2": 140
+    "odds1": -172,
+    "odds2": 144
   },
   {
     "fighter1": "Jack Jenkins",
@@ -74,7 +74,7 @@
   {
     "fighter1": "Ding Meng",
     "fighter2": "Cameron Nelson",
-    "odds1": -158,
-    "odds2": 134
+    "odds1": -154,
+    "odds2": 130
   }
 ]
