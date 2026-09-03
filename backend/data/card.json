@@ -2,14 +2,14 @@
   {
     "fighter1": "Dan Hooker",
     "fighter2": "Salahdine Parnasse",
-    "odds1": 350,
-    "odds2": -480
+    "odds1": 440,
+    "odds2": -700
   },
   {
     "fighter1": "Far\u00e8s Ziam",
     "fighter2": "Axel Sola",
-    "odds1": -144,
-    "odds2": 118
+    "odds1": -164,
+    "odds2": 128
   },
   {
     "fighter1": "Michael Page",
@@ -20,62 +20,62 @@
   {
     "fighter1": "Daniil Donchenko",
     "fighter2": "Punahele Soriano",
-    "odds1": -215,
-    "odds2": 172
-  },
-  {
-    "fighter1": "Morgan Charri\u00e8re",
-    "fighter2": "Felipe Lima",
-    "odds1": 160,
-    "odds2": -200
-  },
-  {
-    "fighter1": "Losene Keita",
-    "fighter2": "Muhammad Naimov",
-    "odds1": -280,
-    "odds2": 220
-  },
-  {
-    "fighter1": "Mario Pinto",
-    "fighter2": "Ryan Spann",
     "odds1": -265,
-    "odds2": 210
+    "odds2": 200
   },
   {
     "fighter1": "Kurtis Campbell",
     "fighter2": "Trevor Peek",
-    "odds1": -355,
-    "odds2": 270
+    "odds1": -410,
+    "odds2": 290
+  },
+  {
+    "fighter1": "Losene Keita",
+    "fighter2": "Muhammad Naimov",
+    "odds1": -390,
+    "odds2": 280
+  },
+  {
+    "fighter1": "Morgan Charri\u00e8re",
+    "fighter2": "Felipe Lima",
+    "odds1": 154,
+    "odds2": -200
+  },
+  {
+    "fighter1": "Mario Pinto",
+    "fighter2": "Ryan Spann",
+    "odds1": -310,
+    "odds2": 230
   },
   {
     "fighter1": "Oumar Sy",
     "fighter2": "Modestas Bukauskas",
-    "odds1": -178,
-    "odds2": 144
+    "odds1": -225,
+    "odds2": 172
   },
   {
     "fighter1": "Nathaniel Wood",
-    "fighter2": "Mairon Santos",
-    "odds1": 110,
-    "odds2": -130
+    "fighter2": "Pavel Andrusca",
+    "odds1": -330,
+    "odds2": 240
   },
   {
     "fighter1": "Michael Aljarouj",
     "fighter2": "Fabi\u00e0 Sintes",
-    "odds1": -162,
-    "odds2": 132
+    "odds1": -148,
+    "odds2": 114
   },
   {
     "fighter1": "Nora Cornolle",
     "fighter2": "Klaudia Sygu\u0142a",
-    "odds1": -134,
-    "odds2": 110
+    "odds1": -130,
+    "odds2": 102
   },
   {
     "fighter1": "Matthieu Letho Duclos",
     "fighter2": "Luis Felipe Dias",
-    "odds1": -130,
-    "odds2": 105
+    "odds1": -110,
+    "odds2": -110
   },
   {
     "fighter1": "Delphine Benouaich",
