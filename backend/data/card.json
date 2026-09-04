@@ -8,8 +8,8 @@
   {
     "fighter1": "Far\u00e8s Ziam",
     "fighter2": "Axel Sola",
-    "odds1": -152,
-    "odds2": 124
+    "odds1": -158,
+    "odds2": 128
   },
   {
     "fighter1": "Michael Page",
@@ -20,20 +20,20 @@
   {
     "fighter1": "Daniil Donchenko",
     "fighter2": "Punahele Soriano",
-    "odds1": -250,
-    "odds2": 198
+    "odds1": -240,
+    "odds2": 190
   },
   {
     "fighter1": "Kurtis Campbell",
     "fighter2": "Trevor Peek",
-    "odds1": -400,
-    "odds2": 290
+    "odds1": -420,
+    "odds2": 310
   },
   {
     "fighter1": "Losene Keita",
     "fighter2": "Muhammad Naimov",
-    "odds1": -385,
-    "odds2": 290
+    "odds1": -420,
+    "odds2": 310
   },
   {
     "fighter1": "Morgan Charri\u00e8re",
@@ -44,14 +44,14 @@
   {
     "fighter1": "Mario Pinto",
     "fighter2": "Ryan Spann",
-    "odds1": -300,
-    "odds2": 235
+    "odds1": -325,
+    "odds2": 250
   },
   {
     "fighter1": "Oumar Sy",
     "fighter2": "Modestas Bukauskas",
-    "odds1": -215,
-    "odds2": 172
+    "odds1": -230,
+    "odds2": 184
   },
   {
     "fighter1": "Nathaniel Wood",
@@ -62,25 +62,25 @@
   {
     "fighter1": "Michael Aljarouj",
     "fighter2": "Fabi\u00e0 Sintes",
-    "odds1": -130,
-    "odds2": 108
+    "odds1": -120,
+    "odds2": -102
   },
   {
     "fighter1": "Nora Cornolle",
     "fighter2": "Klaudia Sygu\u0142a",
-    "odds1": -114,
-    "odds2": -106
+    "odds1": -110,
+    "odds2": -110
   },
   {
     "fighter1": "Matthieu Letho Duclos",
     "fighter2": "Luis Felipe Dias",
-    "odds1": -112,
-    "odds2": -108
+    "odds1": -110,
+    "odds2": -110
   },
   {
     "fighter1": "Delphine Benouaich",
     "fighter2": "Sofia Montenegro",
-    "odds1": -148,
-    "odds2": 120
+    "odds1": -154,
+    "odds2": 126
   }
 ]
