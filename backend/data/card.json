@@ -2,14 +2,14 @@
   {
     "fighter1": "Dan Hooker",
     "fighter2": "Salahdine Parnasse",
-    "odds1": 430,
-    "odds2": -590
+    "odds1": 385,
+    "odds2": -500
   },
   {
     "fighter1": "Far\u00e8s Ziam",
     "fighter2": "Axel Sola",
-    "odds1": -154,
-    "odds2": 132
+    "odds1": -158,
+    "odds2": 134
   },
   {
     "fighter1": "Michael Page",
@@ -44,8 +44,8 @@
   {
     "fighter1": "Mario Pinto",
     "fighter2": "Ryan Spann",
-    "odds1": -330,
-    "odds2": 265
+    "odds1": -320,
+    "odds2": 260
   },
   {
     "fighter1": "Oumar Sy",
@@ -62,14 +62,14 @@
   {
     "fighter1": "Michael Aljarouj",
     "fighter2": "Fabi\u00e0 Sintes",
-    "odds1": -118,
-    "odds2": 100
+    "odds1": -126,
+    "odds2": 108
   },
   {
     "fighter1": "Nora Cornolle",
     "fighter2": "Klaudia Sygu\u0142a",
-    "odds1": -108,
-    "odds2": -108
+    "odds1": -104,
+    "odds2": -112
   },
   {
     "fighter1": "Matthieu Letho Duclos",
@@ -80,7 +80,7 @@
   {
     "fighter1": "Delphine Benouaich",
     "fighter2": "Sofia Montenegro",
-    "odds1": -144,
-    "odds2": 122
+    "odds1": -136,
+    "odds2": 116
   }
 ]
