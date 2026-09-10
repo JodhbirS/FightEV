@@ -1,86 +1,80 @@
 [
   {
-    "fighter1": "Dan Hooker",
-    "fighter2": "Salahdine Parnasse",
-    "odds1": 385,
-    "odds2": -500
-  },
-  {
-    "fighter1": "Far\u00e8s Ziam",
-    "fighter2": "Axel Sola",
-    "odds1": -158,
-    "odds2": 134
-  },
-  {
-    "fighter1": "Michael Page",
-    "fighter2": "Nursulton Ruziboev",
-    "odds1": -110,
-    "odds2": -110
-  },
-  {
-    "fighter1": "Daniil Donchenko",
-    "fighter2": "Punahele Soriano",
-    "odds1": -230,
-    "odds2": 190
-  },
-  {
-    "fighter1": "Kurtis Campbell",
-    "fighter2": "Trevor Peek",
-    "odds1": -405,
-    "odds2": 320
-  },
-  {
-    "fighter1": "Losene Keita",
-    "fighter2": "Muhammad Naimov",
-    "odds1": -390,
+    "fighter1": "Jean Silva",
+    "fighter2": "Jose Delgado",
+    "odds1": -440,
     "odds2": 310
   },
   {
-    "fighter1": "Morgan Charri\u00e8re",
-    "fighter2": "Felipe Lima",
-    "odds1": 164,
+    "fighter1": "Brandon Moreno",
+    "fighter2": "Joseph Morales",
+    "odds1": 100,
+    "odds2": -128
+  },
+  {
+    "fighter1": "Tommy McMillen",
+    "fighter2": "Marwan Rahiki",
+    "odds1": -178,
+    "odds2": 138
+  },
+  {
+    "fighter1": "Manon Fiorot",
+    "fighter2": "Alexa Grasso",
+    "odds1": -265,
+    "odds2": 200
+  },
+  {
+    "fighter1": "Waldo Cortes Acosta",
+    "fighter2": "Curtis Blaydes",
+    "odds1": -225,
+    "odds2": 172
+  },
+  {
+    "fighter1": "David Mart\u00ednez",
+    "fighter2": "Dan Ige",
+    "odds1": -400,
+    "odds2": 285
+  },
+  {
+    "fighter1": "Tim Elliott",
+    "fighter2": "\u00c9dgar Ch\u00e1irez",
+    "odds1": 180,
+    "odds2": -235
+  },
+  {
+    "fighter1": "Ignacio Bahamondes",
+    "fighter2": "Muslim Salikhov",
+    "odds1": -590,
+    "odds2": 390
+  },
+  {
+    "fighter1": "Yousri Belgaroui",
+    "fighter2": "Djorden Santos",
+    "odds1": -950,
+    "odds2": 540
+  },
+  {
+    "fighter1": "Drakkar Klose",
+    "fighter2": "Thomas Gantt",
+    "odds1": 340,
+    "odds2": -500
+  },
+  {
+    "fighter1": "Rafa Garc\u00eda",
+    "fighter2": "Rong Zhu",
+    "odds1": 152,
     "odds2": -196
   },
   {
-    "fighter1": "Mario Pinto",
-    "fighter2": "Ryan Spann",
-    "odds1": -320,
-    "odds2": 260
+    "fighter1": "Sean King",
+    "fighter2": "Jessie Rosas",
+    "odds1": -180,
+    "odds2": 140
   },
   {
-    "fighter1": "Oumar Sy",
-    "fighter2": "Modestas Bukauskas",
-    "odds1": -240,
-    "odds2": 198
-  },
-  {
-    "fighter1": "Nathaniel Wood",
-    "fighter2": "Pavel Andrusca",
-    "odds1": -300,
-    "odds2": 245
-  },
-  {
-    "fighter1": "Michael Aljarouj",
-    "fighter2": "Fabi\u00e0 Sintes",
-    "odds1": -126,
-    "odds2": 108
-  },
-  {
-    "fighter1": "Nora Cornolle",
-    "fighter2": "Klaudia Sygu\u0142a",
-    "odds1": -104,
-    "odds2": -112
-  },
-  {
-    "fighter1": "Matthieu Letho Duclos",
-    "fighter2": "Luis Felipe Dias",
-    "odds1": -110,
-    "odds2": -110
-  },
-  {
-    "fighter1": "Delphine Benouaich",
-    "fighter2": "Sofia Montenegro",
-    "odds1": -136,
-    "odds2": 116
+    "fighter1": "JJ Aldrich",
+    "fighter2": "Regina Tarin",
+    "odds1": 215,
+    "odds2": -290
   }
 ]
