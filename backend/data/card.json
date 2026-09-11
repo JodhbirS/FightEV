@@ -8,14 +8,14 @@
   {
     "fighter1": "Brandon Moreno",
     "fighter2": "Joseph Morales",
-    "odds1": 102,
-    "odds2": -124
+    "odds1": -110,
+    "odds2": -110
   },
   {
     "fighter1": "Tommy McMillen",
     "fighter2": "Marwan Rahiki",
-    "odds1": -170,
-    "odds2": 138
+    "odds1": -162,
+    "odds2": 132
   },
   {
     "fighter1": "Manon Fiorot",
@@ -32,14 +32,14 @@
   {
     "fighter1": "David Mart\u00ednez",
     "fighter2": "Dan Ige",
-    "odds1": -430,
-    "odds2": 320
+    "odds1": -480,
+    "odds2": 350
   },
   {
     "fighter1": "Tim Elliott",
     "fighter2": "\u00c9dgar Ch\u00e1irez",
-    "odds1": 194,
-    "odds2": -245
+    "odds1": 176,
+    "odds2": -220
   },
   {
     "fighter1": "Ignacio Bahamondes",
@@ -50,8 +50,8 @@
   {
     "fighter1": "Yousri Belgaroui",
     "fighter2": "Djorden Santos",
-    "odds1": -850,
-    "odds2": 540
+    "odds1": -900,
+    "odds2": 570
   },
   {
     "fighter1": "Drakkar Klose",
@@ -62,8 +62,8 @@
   {
     "fighter1": "Rafa Garc\u00eda",
     "fighter2": "Rong Zhu",
-    "odds1": 140,
-    "odds2": -172
+    "odds1": 130,
+    "odds2": -160
   },
   {
     "fighter1": "Sean King",
