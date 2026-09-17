@@ -38,14 +38,14 @@
   {
     "fighter1": "Tai Tuivasa",
     "fighter2": "Robelis Despaigne",
-    "odds1": 500,
-    "odds2": -850
+    "odds1": 480,
+    "odds2": -800
   },
   {
     "fighter1": "Michael Aswell Jr.",
     "fighter2": "Yoo Joo-sang",
-    "odds1": 220,
-    "odds2": -295
+    "odds1": 215,
+    "odds2": -290
   },
   {
     "fighter1": "Ryan Gandra",
@@ -56,19 +56,19 @@
   {
     "fighter1": "Edmen Shahbazyan",
     "fighter2": "Brunno Ferreira",
-    "odds1": -170,
-    "odds2": 132
+    "odds1": -184,
+    "odds2": 142
   },
   {
     "fighter1": "Casey O'Neill",
     "fighter2": "Eduarda Moura",
-    "odds1": -230,
-    "odds2": 176
+    "odds1": -235,
+    "odds2": 180
   },
   {
     "fighter1": "Giga Chikadze",
     "fighter2": "Joanderson Brito",
-    "odds1": 285,
-    "odds2": -400
+    "odds1": 300,
+    "odds2": -430
   }
 ]
