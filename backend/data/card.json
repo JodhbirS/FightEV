@@ -1,80 +1,74 @@
 [
   {
-    "fighter1": "Jean Silva",
-    "fighter2": "Jose Delgado",
-    "odds1": -430,
-    "odds2": 340
+    "fighter1": "Joshua Van",
+    "fighter2": "Alexandre Pantoja",
+    "odds1": -136,
+    "odds2": 106
   },
   {
-    "fighter1": "Brandon Moreno",
-    "fighter2": "Joseph Morales",
-    "odds1": -102,
-    "odds2": -116
+    "fighter1": "Arman Tsarukyan",
+    "fighter2": "Maur\u00edcio Ruffy",
+    "odds1": -350,
+    "odds2": 255
   },
   {
-    "fighter1": "Tommy McMillen",
-    "fighter2": "Marwan Rahiki",
-    "odds1": -156,
+    "fighter1": "Patr\u00edcio Pitbull",
+    "fighter2": "Choi Doo-ho",
+    "odds1": -110,
+    "odds2": -110
+  },
+  {
+    "fighter1": "Gable Steveson",
+    "fighter2": "Sean Sharaf",
+    "odds1": -2500,
+    "odds2": 900
+  },
+  {
+    "fighter1": "Alonzo Menifield",
+    "fighter2": "Iwo Baraniewski",
+    "odds1": 200,
+    "odds2": -265
+  },
+  {
+    "fighter1": "Marlon Vera",
+    "fighter2": "Charles Jourdain",
+    "odds1": 180,
+    "odds2": -235
+  },
+  {
+    "fighter1": "Tai Tuivasa",
+    "fighter2": "Robelis Despaigne",
+    "odds1": 500,
+    "odds2": -850
+  },
+  {
+    "fighter1": "Michael Aswell Jr.",
+    "fighter2": "Yoo Joo-sang",
+    "odds1": 220,
+    "odds2": -295
+  },
+  {
+    "fighter1": "Ryan Gandra",
+    "fighter2": "Osman Diaz",
+    "odds1": -110,
+    "odds2": -110
+  },
+  {
+    "fighter1": "Edmen Shahbazyan",
+    "fighter2": "Brunno Ferreira",
+    "odds1": -170,
     "odds2": 132
   },
   {
-    "fighter1": "Manon Fiorot",
-    "fighter2": "Alexa Grasso",
-    "odds1": -270,
-    "odds2": 220
+    "fighter1": "Casey O'Neill",
+    "fighter2": "Eduarda Moura",
+    "odds1": -230,
+    "odds2": 176
   },
   {
-    "fighter1": "Waldo Cortes Acosta",
-    "fighter2": "Curtis Blaydes",
-    "odds1": -210,
-    "odds2": 172
-  },
-  {
-    "fighter1": "David Mart\u00ednez",
-    "fighter2": "Dan Ige",
-    "odds1": -460,
-    "odds2": 360
-  },
-  {
-    "fighter1": "Tim Elliott",
-    "fighter2": "\u00c9dgar Ch\u00e1irez",
-    "odds1": 180,
-    "odds2": -215
-  },
-  {
-    "fighter1": "Ignacio Bahamondes",
-    "fighter2": "Muslim Salikhov",
-    "odds1": -550,
-    "odds2": 410
-  },
-  {
-    "fighter1": "Yousri Belgaroui",
-    "fighter2": "Djorden Santos",
-    "odds1": -850,
-    "odds2": 590
-  },
-  {
-    "fighter1": "Drakkar Klose",
-    "fighter2": "Thomas Gantt",
-    "odds1": 340,
-    "odds2": -430
-  },
-  {
-    "fighter1": "Rafa Garc\u00eda",
-    "fighter2": "Rong Zhu",
-    "odds1": 138,
-    "odds2": -164
-  },
-  {
-    "fighter1": "Sean King III",
-    "fighter2": "Jessie Rosas",
-    "odds1": -215,
-    "odds2": 180
-  },
-  {
-    "fighter1": "JJ Aldrich",
-    "fighter2": "Regina Tarin",
-    "odds1": 235,
-    "odds2": -290
+    "fighter1": "Giga Chikadze",
+    "fighter2": "Joanderson Brito",
+    "odds1": 285,
+    "odds2": -400
   }
 ]
