@@ -8,8 +8,8 @@
   {
     "fighter1": "Arman Tsarukyan",
     "fighter2": "Maur\u00edcio Ruffy",
-    "odds1": -350,
-    "odds2": 255
+    "odds1": -325,
+    "odds2": 250
   },
   {
     "fighter1": "Patr\u00edcio Pitbull",
@@ -20,32 +20,32 @@
   {
     "fighter1": "Gable Steveson",
     "fighter2": "Sean Sharaf",
-    "odds1": -2500,
-    "odds2": 900
+    "odds1": -2200,
+    "odds2": 980
   },
   {
     "fighter1": "Alonzo Menifield",
     "fighter2": "Iwo Baraniewski",
-    "odds1": 200,
-    "odds2": -265
+    "odds1": 198,
+    "odds2": -250
   },
   {
     "fighter1": "Marlon Vera",
     "fighter2": "Charles Jourdain",
     "odds1": 180,
-    "odds2": -235
+    "odds2": -225
   },
   {
     "fighter1": "Tai Tuivasa",
     "fighter2": "Robelis Despaigne",
-    "odds1": 480,
-    "odds2": -800
+    "odds1": 490,
+    "odds2": -750
   },
   {
     "fighter1": "Michael Aswell Jr.",
     "fighter2": "Yoo Joo-sang",
-    "odds1": 215,
-    "odds2": -290
+    "odds1": 198,
+    "odds2": -250
   },
   {
     "fighter1": "Ryan Gandra",
@@ -56,19 +56,19 @@
   {
     "fighter1": "Edmen Shahbazyan",
     "fighter2": "Brunno Ferreira",
-    "odds1": -184,
+    "odds1": -176,
     "odds2": 142
   },
   {
     "fighter1": "Casey O'Neill",
     "fighter2": "Eduarda Moura",
     "odds1": -235,
-    "odds2": 180
+    "odds2": 186
   },
   {
     "fighter1": "Giga Chikadze",
     "fighter2": "Joanderson Brito",
-    "odds1": 300,
-    "odds2": -430
+    "odds1": 310,
+    "odds2": -420
   }
 ]
