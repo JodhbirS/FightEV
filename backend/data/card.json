@@ -1,74 +1,74 @@
 [
   {
-    "fighter1": "Joshua Van",
-    "fighter2": "Alexandre Pantoja",
-    "odds1": -146,
+    "fighter1": "Raul Rosas Jr.",
+    "fighter2": "Raoni Barcelos",
+    "odds1": -162,
+    "odds2": 136
+  },
+  {
+    "fighter1": "Rodolfo Vieira",
+    "fighter2": "Robert Bryczek",
+    "odds1": -162,
+    "odds2": 136
+  },
+  {
+    "fighter1": "Mehemmedeli Osmanli",
+    "fighter2": "Ilimbek Akylbek uulu",
+    "odds1": -290,
+    "odds2": 235
+  },
+  {
+    "fighter1": "Melissa Amaya",
+    "fighter2": "Valesca Machado",
+    "odds1": 170,
+    "odds2": -205
+  },
+  {
+    "fighter1": "Brady Hiestand",
+    "fighter2": "Rinya Nakamura",
+    "odds1": 300,
+    "odds2": -380
+  },
+  {
+    "fighter1": "Rodolfo Bellato",
+    "fighter2": "Christian Edwards",
+    "odds1": -180,
+    "odds2": 150
+  },
+  {
+    "fighter1": "Josiah Harrell",
+    "fighter2": "Elves Brener",
+    "odds1": -110,
+    "odds2": -110
+  },
+  {
+    "fighter1": "Montel Jackson",
+    "fighter2": "Ricky Sim\u00f3n",
+    "odds1": -198,
+    "odds2": 164
+  },
+  {
+    "fighter1": "Norma Dumont",
+    "fighter2": "Ail\u00edn P\u00e9rez",
+    "odds1": 124,
+    "odds2": -148
+  },
+  {
+    "fighter1": "John Casta\u00f1eda",
+    "fighter2": "Alateng Heili",
+    "odds1": -345,
+    "odds2": 275
+  },
+  {
+    "fighter1": "Mickey Gall",
+    "fighter2": "Sedriques Dumas",
+    "odds1": -148,
     "odds2": 124
   },
   {
-    "fighter1": "Arman Tsarukyan",
-    "fighter2": "Maur\u00edcio Ruffy",
-    "odds1": -310,
-    "odds2": 250
-  },
-  {
-    "fighter1": "Patr\u00edcio Pitbull",
-    "fighter2": "Choi Doo-ho",
-    "odds1": -110,
-    "odds2": -110
-  },
-  {
-    "fighter1": "Gable Steveson",
-    "fighter2": "Sean Sharaf",
-    "odds1": -2200,
-    "odds2": 1100
-  },
-  {
-    "fighter1": "Alonzo Menifield",
-    "fighter2": "Iwo Baraniewski",
-    "odds1": 184,
-    "odds2": -220
-  },
-  {
-    "fighter1": "Marlon Vera",
-    "fighter2": "Charles Jourdain",
-    "odds1": 168,
-    "odds2": -200
-  },
-  {
-    "fighter1": "Tai Tuivasa",
-    "fighter2": "Robelis Despaigne",
-    "odds1": 400,
-    "odds2": -520
-  },
-  {
-    "fighter1": "Michael Aswell Jr.",
-    "fighter2": "Yoo Joo-sang",
-    "odds1": 162,
-    "odds2": -194
-  },
-  {
-    "fighter1": "Ryan Gandra",
-    "fighter2": "Osman Diaz",
-    "odds1": -110,
-    "odds2": -110
-  },
-  {
-    "fighter1": "Edmen Shahbazyan",
-    "fighter2": "Brunno Ferreira",
-    "odds1": -190,
-    "odds2": 160
-  },
-  {
-    "fighter1": "Casey O'Neill",
-    "fighter2": "Eduarda Moura",
-    "odds1": -230,
-    "odds2": 190
-  },
-  {
-    "fighter1": "Giga Chikadze",
-    "fighter2": "Joanderson Brito",
-    "odds1": 340,
-    "odds2": -430
+    "fighter1": "Vanessa Demopoulos",
+    "fighter2": "Yazmin Jauregui",
+    "odds1": 650,
+    "odds2": -1000
   }
 ]
