@@ -8,26 +8,26 @@
   {
     "fighter1": "Norma Dumont",
     "fighter2": "Ail\u00edn P\u00e9rez",
-    "odds1": 120,
-    "odds2": -142
+    "odds1": 130,
+    "odds2": -155
   },
   {
     "fighter1": "Luis Hernandez",
     "fighter2": "Sedriques Dumas",
-    "odds1": -192,
-    "odds2": 160
+    "odds1": -238,
+    "odds2": 195
   },
   {
     "fighter1": "Mehemmedeli Osmanli",
     "fighter2": "Ilimbek Akylbek uulu",
-    "odds1": -285,
-    "odds2": 230
+    "odds1": -298,
+    "odds2": 240
   },
   {
     "fighter1": "Melissa Amaya",
     "fighter2": "Valesca Machado",
-    "odds1": 190,
-    "odds2": -230
+    "odds1": 195,
+    "odds2": -238
   },
   {
     "fighter1": "Brady Hiestand",
@@ -44,8 +44,8 @@
   {
     "fighter1": "Rodolfo Bellato",
     "fighter2": "Christian Edwards",
-    "odds1": -180,
-    "odds2": 150
+    "odds1": -185,
+    "odds2": 154
   },
   {
     "fighter1": "Elves Brener",
@@ -56,19 +56,19 @@
   {
     "fighter1": "Montel Jackson",
     "fighter2": "Ricky Sim\u00f3n",
-    "odds1": -205,
-    "odds2": 170
+    "odds1": -218,
+    "odds2": 180
   },
   {
     "fighter1": "John Casta\u00f1eda",
     "fighter2": "Alateng Heili",
-    "odds1": -355,
-    "odds2": 280
+    "odds1": -395,
+    "odds2": 310
   },
   {
     "fighter1": "Vanessa Demopoulos",
     "fighter2": "Yazmin Jauregui",
-    "odds1": 625,
-    "odds2": -950
+    "odds1": 675,
+    "odds2": -1050
   }
 ]
