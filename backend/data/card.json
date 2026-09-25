@@ -6,28 +6,40 @@
     "odds2": 130
   },
   {
-    "fighter1": "Rodolfo Vieira",
-    "fighter2": "Robert Bryczek",
-    "odds1": -155,
-    "odds2": 130
+    "fighter1": "Norma Dumont",
+    "fighter2": "Ail\u00edn P\u00e9rez",
+    "odds1": 120,
+    "odds2": -142
+  },
+  {
+    "fighter1": "Luis Hernandez",
+    "fighter2": "Sedriques Dumas",
+    "odds1": -192,
+    "odds2": 160
   },
   {
     "fighter1": "Mehemmedeli Osmanli",
     "fighter2": "Ilimbek Akylbek uulu",
-    "odds1": -290,
-    "odds2": 235
+    "odds1": -285,
+    "odds2": 230
   },
   {
     "fighter1": "Melissa Amaya",
     "fighter2": "Valesca Machado",
-    "odds1": 180,
-    "odds2": -218
+    "odds1": 190,
+    "odds2": -230
   },
   {
     "fighter1": "Brady Hiestand",
     "fighter2": "Rinya Nakamura",
-    "odds1": 300,
-    "odds2": -380
+    "odds1": 310,
+    "odds2": -395
+  },
+  {
+    "fighter1": "Rodolfo Vieira",
+    "fighter2": "Robert Bryczek",
+    "odds1": -162,
+    "odds2": 136
   },
   {
     "fighter1": "Rodolfo Bellato",
@@ -36,8 +48,8 @@
     "odds2": 150
   },
   {
-    "fighter1": "Josiah Harrell",
-    "fighter2": "Elves Brener",
+    "fighter1": "Elves Brener",
+    "fighter2": "Josiah Harrell",
     "odds1": -110,
     "odds2": -110
   },
@@ -48,22 +60,10 @@
     "odds2": 170
   },
   {
-    "fighter1": "Norma Dumont",
-    "fighter2": "Ail\u00edn P\u00e9rez",
-    "odds1": 120,
-    "odds2": -142
-  },
-  {
     "fighter1": "John Casta\u00f1eda",
     "fighter2": "Alateng Heili",
-    "odds1": -340,
-    "odds2": 270
-  },
-  {
-    "fighter1": "Mickey Gall",
-    "fighter2": "Sedriques Dumas",
-    "odds1": -142,
-    "odds2": 120
+    "odds1": -355,
+    "odds2": 280
   },
   {
     "fighter1": "Vanessa Demopoulos",
