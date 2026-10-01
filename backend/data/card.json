@@ -1,74 +1,86 @@
 [
   {
-    "fighter1": "Raul Rosas Jr.",
-    "fighter2": "Raoni Barcelos",
-    "odds1": -148,
-    "odds2": 124
+    "fighter1": "Nat\u00e1lia Silva",
+    "fighter2": "Wang Cong",
+    "odds1": -215,
+    "odds2": 164
   },
   {
-    "fighter1": "Norma Dumont",
-    "fighter2": "Ail\u00edn P\u00e9rez",
-    "odds1": 136,
-    "odds2": -162
+    "fighter1": "Deiveson Figueiredo",
+    "fighter2": "Payton Talbott",
+    "odds1": 420,
+    "odds2": -650
   },
   {
-    "fighter1": "Luis Hernandez",
-    "fighter2": "Sedriques Dumas",
-    "odds1": -238,
-    "odds2": 195
+    "fighter1": "King Green",
+    "fighter2": "Esteban Ribovics",
+    "odds1": 200,
+    "odds2": -265
   },
   {
-    "fighter1": "Mehemmedeli Osmanli",
-    "fighter2": "Ilimbek Akylbek uulu",
-    "odds1": -305,
-    "odds2": 245
+    "fighter1": "Roberto Soldi\u0107",
+    "fighter2": "Khaos Williams",
+    "odds1": -280,
+    "odds2": 210
   },
   {
-    "fighter1": "Melissa Amaya",
-    "fighter2": "Valesca Machado",
-    "odds1": 180,
-    "odds2": -218
+    "fighter1": "Ateba Gautier",
+    "fighter2": "Roman Kopylov",
+    "odds1": -235,
+    "odds2": 180
   },
   {
-    "fighter1": "Brady Hiestand",
-    "fighter2": "Rinya Nakamura",
-    "odds1": 300,
-    "odds2": -380
-  },
-  {
-    "fighter1": "Rodolfo Vieira",
-    "fighter2": "Robert Bryczek",
+    "fighter1": "Imanol Rodr\u00edguez",
+    "fighter2": "Alden Coria",
     "odds1": -166,
-    "odds2": 140
+    "odds2": 130
   },
   {
-    "fighter1": "Rodolfo Bellato",
-    "fighter2": "Christian Edwards",
-    "odds1": -180,
-    "odds2": 150
+    "fighter1": "Damian Pinas",
+    "fighter2": "Andrey Pulyaev",
+    "odds1": -530,
+    "odds2": 360
   },
   {
-    "fighter1": "Elves Brener",
-    "fighter2": "Josiah Harrell",
+    "fighter1": "Marcus McGhee",
+    "fighter2": "Anthony Romero",
+    "odds1": -480,
+    "odds2": 330
+  },
+  {
+    "fighter1": "Anthony Wint",
+    "fighter2": "Lucas Armand",
+    "odds1": -590,
+    "odds2": 390
+  },
+  {
+    "fighter1": "Johnny Walker",
+    "fighter2": "Mick Parkin",
     "odds1": -110,
     "odds2": -110
   },
   {
-    "fighter1": "Montel Jackson",
-    "fighter2": "Ricky Sim\u00f3n",
-    "odds1": -230,
-    "odds2": 190
+    "fighter1": "Rafael Dos Anjos",
+    "fighter2": "Alexander Hernandez",
+    "odds1": 200,
+    "odds2": -265
   },
   {
-    "fighter1": "John Casta\u00f1eda",
-    "fighter2": "Alateng Heili",
-    "odds1": -395,
-    "odds2": 310
+    "fighter1": "Marvin Vettori",
+    "fighter2": "Ismail Naurdiev",
+    "odds1": 110,
+    "odds2": -140
   },
   {
-    "fighter1": "Vanessa Demopoulos",
-    "fighter2": "Yazmin Jauregui",
-    "odds1": 675,
-    "odds2": -1050
+    "fighter1": "Jacobe Smith",
+    "fighter2": "Bruce Whitehead",
+    "odds1": -1000,
+    "odds2": 560
+  },
+  {
+    "fighter1": "Court McGee",
+    "fighter2": "Eric Nolan",
+    "odds1": 200,
+    "odds2": -265
   }
 ]
