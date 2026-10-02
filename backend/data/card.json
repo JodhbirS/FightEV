@@ -2,55 +2,55 @@
   {
     "fighter1": "Nat\u00e1lia Silva",
     "fighter2": "Wang Cong",
-    "odds1": -215,
+    "odds1": -205,
     "odds2": 164
   },
   {
     "fighter1": "Deiveson Figueiredo",
     "fighter2": "Payton Talbott",
-    "odds1": 480,
-    "odds2": -800
+    "odds1": 490,
+    "odds2": -750
   },
   {
     "fighter1": "King Green",
     "fighter2": "Esteban Ribovics",
     "odds1": 190,
-    "odds2": -250
+    "odds2": -240
   },
   {
     "fighter1": "Roberto Soldi\u0107",
     "fighter2": "Khaos Williams",
-    "odds1": -280,
+    "odds1": -265,
     "odds2": 210
   },
   {
     "fighter1": "Ateba Gautier",
     "fighter2": "Roman Kopylov",
-    "odds1": -235,
-    "odds2": 180
+    "odds1": -245,
+    "odds2": 194
   },
   {
     "fighter1": "Imanol Rodr\u00edguez",
     "fighter2": "Alden Coria",
-    "odds1": -166,
-    "odds2": 130
+    "odds1": -152,
+    "odds2": 124
   },
   {
     "fighter1": "Damian Pinas",
     "fighter2": "Andrey Pulyaev",
-    "odds1": -620,
-    "odds2": 400
+    "odds1": -590,
+    "odds2": 410
   },
   {
     "fighter1": "Marcus McGhee",
     "fighter2": "Anthony Romero",
-    "odds1": -480,
+    "odds1": -450,
     "odds2": 330
   },
   {
     "fighter1": "Anthony Wint",
     "fighter2": "Lucas Armand",
-    "odds1": -590,
+    "odds1": -550,
     "odds2": 390
   },
   {
@@ -60,27 +60,27 @@
     "odds2": -110
   },
   {
+    "fighter1": "Jacobe Smith",
+    "fighter2": "Bruce Whitehead",
+    "odds1": -1000,
+    "odds2": 610
+  },
+  {
     "fighter1": "Rafael Dos Anjos",
     "fighter2": "Alexander Hernandez",
-    "odds1": 230,
-    "odds2": -310
+    "odds1": 235,
+    "odds2": -300
   },
   {
     "fighter1": "Marvin Vettori",
     "fighter2": "Ismail Naurdiev",
-    "odds1": 112,
-    "odds2": -142
-  },
-  {
-    "fighter1": "Jacobe Smith",
-    "fighter2": "Bruce Whitehead",
-    "odds1": -1000,
-    "odds2": 560
+    "odds1": 114,
+    "odds2": -140
   },
   {
     "fighter1": "Court McGee",
     "fighter2": "Eric Nolan",
-    "odds1": 200,
-    "odds2": -265
+    "odds1": 194,
+    "odds2": -245
   }
 ]
