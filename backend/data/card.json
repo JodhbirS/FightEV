@@ -1,86 +1,74 @@
 [
   {
-    "fighter1": "Nat\u00e1lia Silva",
-    "fighter2": "Wang Cong",
-    "odds1": -205,
-    "odds2": 164
+    "fighter1": "Brendan Allen",
+    "fighter2": "Christian Leroy Duncan",
+    "odds1": -150,
+    "odds2": 118
   },
   {
-    "fighter1": "Deiveson Figueiredo",
-    "fighter2": "Payton Talbott",
-    "odds1": 490,
-    "odds2": -750
+    "fighter1": "Jai Herbert",
+    "fighter2": "Matheus Camilo",
+    "odds1": 148,
+    "odds2": -192
   },
   {
-    "fighter1": "King Green",
-    "fighter2": "Esteban Ribovics",
-    "odds1": 190,
-    "odds2": -240
-  },
-  {
-    "fighter1": "Roberto Soldi\u0107",
-    "fighter2": "Khaos Williams",
-    "odds1": -265,
-    "odds2": 210
-  },
-  {
-    "fighter1": "Ateba Gautier",
-    "fighter2": "Roman Kopylov",
-    "odds1": -245,
-    "odds2": 194
-  },
-  {
-    "fighter1": "Imanol Rodr\u00edguez",
-    "fighter2": "Alden Coria",
-    "odds1": -152,
-    "odds2": 124
-  },
-  {
-    "fighter1": "Damian Pinas",
-    "fighter2": "Andrey Pulyaev",
-    "odds1": -590,
-    "odds2": 410
-  },
-  {
-    "fighter1": "Marcus McGhee",
-    "fighter2": "Anthony Romero",
-    "odds1": -450,
-    "odds2": 330
-  },
-  {
-    "fighter1": "Anthony Wint",
-    "fighter2": "Lucas Armand",
-    "odds1": -550,
-    "odds2": 390
-  },
-  {
-    "fighter1": "Johnny Walker",
-    "fighter2": "Mick Parkin",
+    "fighter1": "Loopy Godinez",
+    "fighter2": "Ketlen Souza",
     "odds1": -110,
     "odds2": -110
   },
   {
-    "fighter1": "Jacobe Smith",
-    "fighter2": "Bruce Whitehead",
-    "odds1": -1000,
-    "odds2": 610
+    "fighter1": "Andre Fili",
+    "fighter2": "Kai Kamaka III",
+    "odds1": -164,
+    "odds2": 128
   },
   {
-    "fighter1": "Rafael Dos Anjos",
-    "fighter2": "Alexander Hernandez",
-    "odds1": 235,
-    "odds2": -300
+    "fighter1": "Julius Walker",
+    "fighter2": "Gerald Meerschaert",
+    "odds1": -265,
+    "odds2": 200
   },
   {
-    "fighter1": "Marvin Vettori",
-    "fighter2": "Ismail Naurdiev",
-    "odds1": 114,
+    "fighter1": "Malcolm Wellmaker",
+    "fighter2": "Otari Tanzilovi",
+    "odds1": -215,
+    "odds2": 164
+  },
+  {
+    "fighter1": "Francisco Prado",
+    "fighter2": "Ismael Bonfim",
+    "odds1": 100,
+    "odds2": -128
+  },
+  {
+    "fighter1": "Niko Price",
+    "fighter2": "Leon Shahbazyan",
+    "odds1": 120,
     "odds2": -140
   },
   {
-    "fighter1": "Court McGee",
-    "fighter2": "Eric Nolan",
-    "odds1": 194,
-    "odds2": -245
+    "fighter1": "Felipe Franco",
+    "fighter2": "Brendson Ribeiro",
+    "odds1": -340,
+    "odds2": 250
+  },
+  {
+    "fighter1": "Allen Frye Jr.",
+    "fighter2": "RJ Harris",
+    "odds1": 180,
+    "odds2": -235
+  },
+  {
+    "fighter1": "Alice Pereira",
+    "fighter2": "Darya Zheleznyakova",
+    "odds1": -138,
+    "odds2": 108
+  },
+  {
+    "fighter1": "Ernesta Kareckait\u0117",
+    "fighter2": "Melissa Gatto",
+    "odds1": 136,
+    "odds2": -174
   }
 ]
