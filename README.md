@@ -12,7 +12,7 @@ If you use this to place your own bets, please do so at your own discretion.
 
 - **Live Odds & Implied Probabilities** from The Odds API
 - **Round-Calibrated Elo Model** built in Python
-- **Method-of-Victory Predictions** based on smoothed fighter winning-method history
+- **Matchup-Aware Method Predictions** combining the predicted winner's winning methods with the opponent's losing methods
 - **Expected Value (+EV) Calculation** & highlighted edge cards
 - **Quarter-Kelly Criterion** suggested bet unit sizing (`0.5u` – `3.0u`)
 - **Interactive Fight History Popups** showing a fighter's last 5 UFC bouts

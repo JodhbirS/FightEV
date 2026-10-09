@@ -35,3 +35,29 @@ def test_method_prediction_falls_back_to_global_mix():
 
     assert sum(probabilities.values()) == 1.0
     assert probabilities["Submission"] > probabilities["KO/TKO"]
+
+
+def test_method_prediction_uses_opponents_loss_history():
+    engine = UFCEloEngine()
+
+    for index in range(10):
+        engine.process_single_fight(SimpleNamespace(
+            fighter_1="Winner",
+            fighter_2=f"Ko Opponent {index}",
+            result="win",
+            method="KO/TKO",
+            round=1,
+        ))
+        engine.process_single_fight(SimpleNamespace(
+            fighter_1="Winner",
+            fighter_2=f"Decision Opponent {index}",
+            result="win",
+            method="U-DEC",
+            round=5,
+        ))
+
+    ko_matchup = engine.method_probabilities("Winner", "Ko Opponent 0")
+    decision_matchup = engine.method_probabilities("Winner", "Decision Opponent 0")
+
+    assert ko_matchup["KO/TKO"] > ko_matchup["Decision"]
+    assert decision_matchup["Decision"] > decision_matchup["KO/TKO"]

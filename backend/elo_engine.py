@@ -57,7 +57,9 @@ class UFCEloEngine:
         self.ratings = defaultdict(lambda: self.initial_elo)
         self.bouts = defaultdict(int)
         self.method_wins = defaultdict(Counter)
+        self.method_losses = defaultdict(Counter)
         self.method_totals = Counter()
+        self.loss_method_totals = Counter()
 
     def _expected(self, ra: float, rb: float) -> float:
         return 1.0 / (1.0 + 10 ** ((rb - ra) / 400.0))
@@ -101,32 +103,68 @@ class UFCEloEngine:
             category = categorize_method(method)
             self.method_wins[f1][category] += 1
             self.method_totals[category] += 1
+            self.method_losses[f2][category] += 1
+            self.loss_method_totals[category] += 1
 
-    def method_probabilities(self, fighter: str) -> dict[str, float]:
-        """Return a smoothed distribution of methods for a fighter's wins."""
-        total_wins = sum(self.method_totals.values())
-        if total_wins:
+    @staticmethod
+    def _smoothed_distribution(
+        counts: Counter,
+        totals: Counter,
+        categories: tuple[str, ...],
+        prior_weight: float = 3.0,
+    ) -> dict[str, float]:
+        total = sum(totals.values())
+        if total:
             global_probs = {
-                category: self.method_totals[category] / total_wins
-                for category in METHOD_CATEGORIES
+                category: totals[category] / total
+                for category in categories
             }
         else:
-            global_probs = {category: 1.0 / len(METHOD_CATEGORIES) for category in METHOD_CATEGORIES}
+            global_probs = {category: 1.0 / len(categories) for category in categories}
 
-        fighter_wins = sum(self.method_wins[fighter].values())
-        prior_weight = 3.0
-        denominator = fighter_wins + prior_weight
+        observed = sum(counts.values())
+        denominator = observed + prior_weight
         return {
             category: (
-                self.method_wins[fighter][category]
-                + prior_weight * global_probs[category]
+                counts[category] + prior_weight * global_probs[category]
             ) / denominator
-            for category in METHOD_CATEGORIES
+            for category in categories
         }
 
-    def predicted_method(self, fighter: str) -> tuple[str, float]:
-        """Return the most likely winning method and its probability."""
-        probabilities = self.method_probabilities(fighter)
+    def method_probabilities(
+        self,
+        fighter: str,
+        opponent: str | None = None,
+    ) -> dict[str, float]:
+        """Return matchup-aware probabilities for how ``fighter`` wins.
+
+        The fighter's winning-method profile is combined with the opponent's
+        losing-method profile. Global method rates provide smoothing for sparse
+        fighter histories.
+        """
+        offense = self._smoothed_distribution(
+            self.method_wins[fighter],
+            self.method_totals,
+            METHOD_CATEGORIES,
+        )
+        if opponent is None:
+            return offense
+
+        defense = self._smoothed_distribution(
+            self.method_losses[opponent],
+            self.loss_method_totals,
+            METHOD_CATEGORIES,
+        )
+        combined = {
+            category: (offense[category] + defense[category]) / 2.0
+            for category in METHOD_CATEGORIES
+        }
+        total = sum(combined.values())
+        return {category: probability / total for category, probability in combined.items()}
+
+    def predicted_method(self, fighter: str, opponent: str | None = None) -> tuple[str, float]:
+        """Return the most likely winning method in a matchup."""
+        probabilities = self.method_probabilities(fighter, opponent)
         category = max(probabilities, key=probabilities.get)
         return category, probabilities[category]
 
@@ -179,7 +217,8 @@ def compute_metrics(
         ev2 = p2 - imp2
         pred = 1 if p1 >= p2 else 2
         predicted_fighter = f1 if pred == 1 else f2
-        pred_method, pred_method_prob = engine.predicted_method(predicted_fighter)
+        opponent = f2 if pred == 1 else f1
+        pred_method, pred_method_prob = engine.predicted_method(predicted_fighter, opponent)
         kelly1 = calculate_kelly_unit(p1, o1) if ev1 > 0 else 0.0
         kelly2 = calculate_kelly_unit(p2, o2) if ev2 > 0 else 0.0
         results.append({
