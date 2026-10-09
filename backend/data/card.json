@@ -2,13 +2,13 @@
   {
     "fighter1": "Brendan Allen",
     "fighter2": "Christian Leroy Duncan",
-    "odds1": -138,
-    "odds2": 108
+    "odds1": -134,
+    "odds2": 110
   },
   {
     "fighter1": "Matheus Camilo",
     "fighter2": "Jai Herbert",
-    "odds1": -205,
+    "odds1": -194,
     "odds2": 158
   },
   {
@@ -20,55 +20,55 @@
   {
     "fighter1": "Andre Fili",
     "fighter2": "Kai Kamaka III",
-    "odds1": -160,
-    "odds2": 124
+    "odds1": -154,
+    "odds2": 126
   },
   {
     "fighter1": "Malcolm Wellmaker",
     "fighter2": "Otari Tanzilovi",
-    "odds1": -245,
-    "odds2": 186
+    "odds1": -230,
+    "odds2": 184
   },
   {
     "fighter1": "Julius Walker",
     "fighter2": "Gerald Meerschaert",
-    "odds1": -330,
-    "odds2": 240
+    "odds1": -310,
+    "odds2": 235
   },
   {
     "fighter1": "Francisco Prado",
     "fighter2": "Ismael Bonfim",
-    "odds1": -113,
-    "odds2": -113
+    "odds1": -122,
+    "odds2": 100
   },
   {
     "fighter1": "Niko Price",
     "fighter2": "Leon Shahbazyan",
     "odds1": 120,
-    "odds2": -154
+    "odds2": -148
   },
   {
     "fighter1": "Felipe Franco",
     "fighter2": "Brendson Ribeiro",
-    "odds1": -400,
-    "odds2": 285
+    "odds1": -385,
+    "odds2": 290
   },
   {
     "fighter1": "Allen Frye Jr.",
     "fighter2": "RJ Harris",
-    "odds1": 255,
-    "odds2": -350
+    "odds1": 250,
+    "odds2": -325
   },
   {
     "fighter1": "Alice Pereira",
     "fighter2": "Darya Zheleznyakova",
-    "odds1": -150,
+    "odds1": -144,
     "odds2": 118
   },
   {
     "fighter1": "Ernesta Kareckait\u0117",
     "fighter2": "Melissa Gatto",
-    "odds1": -106,
-    "odds2": -120
+    "odds1": -105,
+    "odds2": -115
   }
 ]
