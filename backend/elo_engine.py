@@ -1,5 +1,21 @@
 import math
 from collections import defaultdict
+from collections import Counter
+
+
+METHOD_CATEGORIES = ("KO/TKO", "Submission", "Decision", "Other")
+
+
+def categorize_method(method: str) -> str:
+    """Map historical method text to a small set of prediction categories."""
+    normalized = str(method).upper()
+    if "SUB" in normalized:
+        return "Submission"
+    if "KO" in normalized or "TKO" in normalized:
+        return "KO/TKO"
+    if "DEC" in normalized or "DECISION" in normalized:
+        return "Decision"
+    return "Other"
 
 
 def get_method_factor(method: str, rnd: int = 1) -> float:
@@ -40,6 +56,8 @@ class UFCEloEngine:
 
         self.ratings = defaultdict(lambda: self.initial_elo)
         self.bouts = defaultdict(int)
+        self.method_wins = defaultdict(Counter)
+        self.method_totals = Counter()
 
     def _expected(self, ra: float, rb: float) -> float:
         return 1.0 / (1.0 + 10 ** ((rb - ra) / 400.0))
@@ -78,6 +96,39 @@ class UFCEloEngine:
 
         self.bouts[f1] += 1
         self.bouts[f2] += 1
+
+        if res == "win":
+            category = categorize_method(method)
+            self.method_wins[f1][category] += 1
+            self.method_totals[category] += 1
+
+    def method_probabilities(self, fighter: str) -> dict[str, float]:
+        """Return a smoothed distribution of methods for a fighter's wins."""
+        total_wins = sum(self.method_totals.values())
+        if total_wins:
+            global_probs = {
+                category: self.method_totals[category] / total_wins
+                for category in METHOD_CATEGORIES
+            }
+        else:
+            global_probs = {category: 1.0 / len(METHOD_CATEGORIES) for category in METHOD_CATEGORIES}
+
+        fighter_wins = sum(self.method_wins[fighter].values())
+        prior_weight = 3.0
+        denominator = fighter_wins + prior_weight
+        return {
+            category: (
+                self.method_wins[fighter][category]
+                + prior_weight * global_probs[category]
+            ) / denominator
+            for category in METHOD_CATEGORIES
+        }
+
+    def predicted_method(self, fighter: str) -> tuple[str, float]:
+        """Return the most likely winning method and its probability."""
+        probabilities = self.method_probabilities(fighter)
+        category = max(probabilities, key=probabilities.get)
+        return category, probabilities[category]
 
     def get_rating(self, fighter: str) -> float:
         """Get current rating."""
@@ -127,6 +178,8 @@ def compute_metrics(
         ev1 = p1 - imp1
         ev2 = p2 - imp2
         pred = 1 if p1 >= p2 else 2
+        predicted_fighter = f1 if pred == 1 else f2
+        pred_method, pred_method_prob = engine.predicted_method(predicted_fighter)
         kelly1 = calculate_kelly_unit(p1, o1) if ev1 > 0 else 0.0
         kelly2 = calculate_kelly_unit(p2, o2) if ev2 > 0 else 0.0
         results.append({
@@ -141,6 +194,8 @@ def compute_metrics(
             "ev1": ev1,
             "ev2": ev2,
             "predWinner": pred,
+            "predMethod": pred_method,
+            "predMethodProb": pred_method_prob,
             "kelly1": kelly1,
             "kelly2": kelly2,
         })

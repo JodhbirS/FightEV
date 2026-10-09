@@ -12,6 +12,8 @@ export interface FightOut {
   ev1: number;
   ev2: number;
   predWinner: number;
+  predMethod: string;
+  predMethodProb: number;
   kelly1?: number;
   kelly2?: number;
 }

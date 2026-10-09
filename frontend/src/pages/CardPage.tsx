@@ -134,6 +134,11 @@ export default function CardPage() {
                   <div className="card-odds">
                     {fight.odds1 > 0 ? `+${fight.odds1}` : fight.odds1}
                   </div>
+                  {fight.predWinner === 1 && (
+                    <div className="card-method">
+                      {fight.predMethod} ({(fight.predMethodProb * 100).toFixed(0)}%)
+                    </div>
+                  )}
                   <div className="card-bottom">
                     <span className="card-elo">
                       Elo: {(fight.eloProb1 * 100).toFixed(1)}%
@@ -171,6 +176,11 @@ export default function CardPage() {
                   <div className="card-odds">
                     {fight.odds2 > 0 ? `+${fight.odds2}` : fight.odds2}
                   </div>
+                  {fight.predWinner === 2 && (
+                    <div className="card-method">
+                      {fight.predMethod} ({(fight.predMethodProb * 100).toFixed(0)}%)
+                    </div>
+                  )}
                   <div className="card-bottom">
                     <span className="card-elo">
                       Elo: {(fight.eloProb2 * 100).toFixed(1)}%

@@ -76,6 +76,7 @@ class FightOut(BaseModel):
     ev1: float
     ev2: float
     predWinner: int
+    predMethod: str
+    predMethodProb: float
     kelly1: float = 0.0
     kelly2: float = 0.0
-

@@ -255,6 +255,12 @@ a {
   color: var(--blue);
 }
 
+.card-method {
+  font-size: 0.6875rem;
+  color: var(--ink-2);
+  font-weight: 500;
+}
+
 .card-bottom {
   display: flex;
   align-items: center;
