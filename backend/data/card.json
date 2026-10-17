@@ -2,56 +2,56 @@
   {
     "fighter1": "Joaquin Buckley",
     "fighter2": "Mike Malott",
-    "odds1": 114,
-    "odds2": -140
+    "odds1": 116,
+    "odds2": -136
   },
   {
     "fighter1": "Erin Blanchfield",
     "fighter2": "Jasmine Jasudavicius",
-    "odds1": -340,
-    "odds2": 260
+    "odds1": -330,
+    "odds2": 265
   },
   {
     "fighter1": "Kyle Nelson",
     "fighter2": "Cristian P\u00e9rez",
-    "odds1": 290,
-    "odds2": -385
+    "odds1": 295,
+    "odds2": -370
   },
   {
     "fighter1": "Marc-Andr\u00e9 Barriault",
     "fighter2": "Kyle Daukaus",
-    "odds1": 160,
-    "odds2": -200
+    "odds1": 164,
+    "odds2": -196
   },
   {
     "fighter1": "Louis Jourdain",
     "fighter2": "Timothy Cuamba",
-    "odds1": -188,
+    "odds1": -180,
     "odds2": 152
   },
   {
     "fighter1": "Mandel Nallo",
     "fighter2": "Nate Landwehr",
     "odds1": -290,
-    "odds2": 225
+    "odds2": 235
   },
   {
     "fighter1": "Tanner Boser",
     "fighter2": "Jhonata Diniz",
-    "odds1": 198,
-    "odds2": -250
+    "odds1": 188,
+    "odds2": -225
   },
   {
     "fighter1": "Julien Leblanc",
     "fighter2": "Nick Galanti",
-    "odds1": 440,
+    "odds1": 480,
     "odds2": -650
   },
   {
     "fighter1": "Javad Mahjoub",
     "fighter2": "Joel Faglier",
-    "odds1": 112,
-    "odds2": -140
+    "odds1": 114,
+    "odds2": -134
   },
   {
     "fighter1": "Katlyn Cerminara",
@@ -62,19 +62,19 @@
   {
     "fighter1": "Chad Anheliger",
     "fighter2": "Steven Koslow",
-    "odds1": 134,
-    "odds2": -164
+    "odds1": 136,
+    "odds2": -158
   },
   {
     "fighter1": "Melissa Croden",
     "fighter2": "Chelsea Chandler",
-    "odds1": -310,
-    "odds2": 240
+    "odds1": -300,
+    "odds2": 245
   },
   {
     "fighter1": "Cody Chovancek",
     "fighter2": "You Su-young",
-    "odds1": -144,
-    "odds2": 118
+    "odds1": -126,
+    "odds2": 108
   }
 ]
