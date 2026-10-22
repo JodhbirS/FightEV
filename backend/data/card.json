@@ -1,80 +1,86 @@
 [
   {
-    "fighter1": "Joaquin Buckley",
-    "fighter2": "Mike Malott",
-    "odds1": 116,
-    "odds2": -136
+    "fighter1": "Alexander Volkanovski",
+    "fighter2": "Movsar Evloev",
+    "odds1": -113,
+    "odds2": -113
   },
   {
-    "fighter1": "Erin Blanchfield",
-    "fighter2": "Jasmine Jasudavicius",
-    "odds1": -330,
-    "odds2": 265
+    "fighter1": "Petr Yan",
+    "fighter2": "Merab Dvalishvili",
+    "odds1": -154,
+    "odds2": 120
   },
   {
-    "fighter1": "Kyle Nelson",
-    "fighter2": "Cristian P\u00e9rez",
-    "odds1": 275,
-    "odds2": -340
-  },
-  {
-    "fighter1": "Marc-Andr\u00e9 Barriault",
-    "fighter2": "Kyle Daukaus",
-    "odds1": 164,
-    "odds2": -196
-  },
-  {
-    "fighter1": "Louis Jourdain",
-    "fighter2": "Timothy Cuamba",
-    "odds1": -166,
-    "odds2": 140
-  },
-  {
-    "fighter1": "Mandel Nallo",
-    "fighter2": "Nate Landwehr",
-    "odds1": -290,
-    "odds2": 235
-  },
-  {
-    "fighter1": "Tanner Boser",
-    "fighter2": "Jhonata Diniz",
-    "odds1": 184,
-    "odds2": -220
-  },
-  {
-    "fighter1": "Julien Leblanc",
-    "fighter2": "Nick Galanti",
-    "odds1": 480,
-    "odds2": -650
-  },
-  {
-    "fighter1": "Javad Mahjoub",
-    "fighter2": "Joel Faglier",
-    "odds1": 112,
-    "odds2": -132
-  },
-  {
-    "fighter1": "Katlyn Cerminara",
-    "fighter2": "Mackenzie Stiller",
+    "fighter1": "Lone'er Kavanagh",
+    "fighter2": "Ramazan Temirov",
     "odds1": -110,
     "odds2": -110
   },
   {
-    "fighter1": "Chad Anheliger",
-    "fighter2": "Steven Koslow",
-    "odds1": 140,
-    "odds2": -166
+    "fighter1": "Alexander Volkov",
+    "fighter2": "Rizvan Kuniev",
+    "odds1": -136,
+    "odds2": 106
   },
   {
-    "fighter1": "Melissa Croden",
-    "fighter2": "Chelsea Chandler",
-    "odds1": -335,
-    "odds2": 270
-  },
-  {
-    "fighter1": "Cody Chovancek",
-    "fighter2": "You Su-young",
-    "odds1": -126,
+    "fighter1": "Aaron Pico",
+    "fighter2": "Losene Keita",
+    "odds1": -138,
     "odds2": 108
+  },
+  {
+    "fighter1": "Azamat Murzakanov",
+    "fighter2": "Dominick Reyes",
+    "odds1": -230,
+    "odds2": 176
+  },
+  {
+    "fighter1": "Nikita Krylov",
+    "fighter2": "Abdul Rakhman Yakhyaev",
+    "odds1": 350,
+    "odds2": -520
+  },
+  {
+    "fighter1": "Abusupiyan Magomedov",
+    "fighter2": "Cameron Rowston",
+    "odds1": -110,
+    "odds2": -110
+  },
+  {
+    "fighter1": "Grant Dawson",
+    "fighter2": "Nurullo Aliev",
+    "odds1": -120,
+    "odds2": -106
+  },
+  {
+    "fighter1": "Colby Thicknesse",
+    "fighter2": "Asaf Chopurov",
+    "odds1": 400,
+    "odds2": -620
+  },
+  {
+    "fighter1": "Abubakar Vagaev",
+    "fighter2": "Jacob Malkoun",
+    "odds1": -170,
+    "odds2": 132
+  },
+  {
+    "fighter1": "Bolaji Oki",
+    "fighter2": "Daniel Santos",
+    "odds1": -106,
+    "odds2": -120
+  },
+  {
+    "fighter1": "Kody Steele",
+    "fighter2": "Noah Gugnon",
+    "odds1": -172,
+    "odds2": 134
+  },
+  {
+    "fighter1": "Iasmin Lucindo",
+    "fighter2": "Nicole Caliari",
+    "odds1": -110,
+    "odds2": -110
   }
 ]
