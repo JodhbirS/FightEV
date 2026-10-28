@@ -39,8 +39,7 @@ export interface ModelPoint {
   fight_sequence: number;
   opponent_name: string;
   result: string;
-  finish: boolean;
-  finish_rate: number;
+  method: string;
   event: string;
 }
 
@@ -64,5 +63,5 @@ export interface FighterDetail {
   losses: number;
   draws: number;
   fight_history: FightHistoryItem[];
-  model_history: ModelPoint[];
+  method_history: ModelPoint[];
 }

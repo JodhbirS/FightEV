@@ -81,7 +81,6 @@ export default function FightersPage() {
             >
               <span className="fighter-item-name">{fighter.name}</span>
               <span className="fighter-item-wc">{fighter.weight_class || '—'}</span>
-              <span className="fighter-item-profile">View profile</span>
             </motion.div>
           ))}
         </motion.div>

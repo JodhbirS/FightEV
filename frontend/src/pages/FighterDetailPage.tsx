@@ -2,8 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { motion, type Variants } from 'framer-motion';
 import {
-  Bar, CartesianGrid, Cell, ComposedChart, Line, ResponsiveContainer,
-  Tooltip, XAxis, YAxis,
+  Cell, Pie, PieChart, ResponsiveContainer, Tooltip,
 } from 'recharts';
 import { getFighter } from '../api';
 import type { FighterDetail } from '../types';
@@ -14,26 +13,19 @@ const pageVariants: Variants = {
   exit: { opacity: 0, y: -6, transition: { duration: 0.16, ease: [0.25, 1, 0.5, 1] } },
 };
 
-interface TooltipProps {
+interface PieTooltipProps {
   active?: boolean;
   payload?: Array<{
     payload: {
-      fight_sequence: number;
-      outcome_score: number;
-      finish_rate: number;
-      finish: boolean;
-      opponent_name: string;
-      result: string;
-      event: string;
+      name: string;
+      value: number;
     };
   }>;
 }
 
-function ChartTooltip({ active, payload }: TooltipProps) {
+function ChartTooltip({ active, payload }: PieTooltipProps) {
   if (!active || !payload?.length) return null;
   const d = payload[0].payload;
-  const isWin = d.result === 'win';
-  const isLoss = d.result === 'loss';
 
   return (
     <div style={{
@@ -44,18 +36,20 @@ function ChartTooltip({ active, payload }: TooltipProps) {
       boxShadow: '0 4px 12px rgba(0,0,0,0.06)',
       fontSize: '0.75rem',
     }}>
-      <div style={{ color: 'var(--ink-3)', fontSize: '0.625rem', marginBottom: 2 }}>{d.event}</div>
-      <div style={{ fontWeight: 600, marginBottom: 3 }}>vs {d.opponent_name}</div>
-      <div style={{ display: 'flex', gap: 6, alignItems: 'center' }}>
-        <span className={`history-tag ${isWin ? 'w' : isLoss ? 'l' : 'other'}`} style={{ padding: '1px 6px' }}>
-          {d.result.toUpperCase().slice(0, 1)}
-        </span>
-        <span style={{ fontWeight: 600, fontVariantNumeric: 'tabular-nums', color: 'var(--blue)' }}>
-          {d.finish ? 'Finish' : 'Decision'} · {Math.round(d.finish_rate)}% finish rate
-        </span>
-      </div>
+      <div style={{ fontWeight: 600 }}>{d.name}</div>
+      <div style={{ color: 'var(--ink-2)', marginTop: 2 }}>{d.value} fights</div>
     </div>
   );
+}
+
+function methodCategory(result: string, method: string) {
+  const normalized = method.toLowerCase();
+  const type = normalized.includes('ko') || normalized.includes('tko')
+    ? 'KO/TKO'
+    : normalized.includes('sub')
+      ? 'Submission'
+      : 'Decision';
+  return `${result === 'win' ? 'Win' : 'Loss'} · ${type}`;
 }
 
 export default function FighterDetailPage() {
@@ -106,15 +100,15 @@ export default function FighterDetailPage() {
     );
   }
 
-  const chartData = fighter.model_history.map((p) => ({
-    fight_sequence: p.fight_sequence,
-    outcome_score: p.result === 'win' ? 1 : p.result === 'loss' ? -1 : 0,
-    finish: p.finish,
-    finish_rate: p.finish_rate,
-    opponent_name: p.opponent_name,
-    result: p.result,
-    event: p.event,
-  }));
+  const methodCounts = fighter.method_history.reduce<Record<string, number>>((counts, fight) => {
+    if (fight.result === 'win' || fight.result === 'loss') {
+      const category = methodCategory(fight.result, fight.method);
+      counts[category] = (counts[category] || 0) + 1;
+    }
+    return counts;
+  }, {});
+  const chartData = Object.entries(methodCounts).map(([name, value]) => ({ name, value }));
+  const chartColors = ['var(--pos)', 'var(--blue)', '#78A889', 'var(--neg)', '#C77B7B', '#9B6B6B'];
 
   return (
     <motion.main
@@ -167,61 +161,29 @@ export default function FighterDetailPage() {
       </div>
 
       {/* Chart */}
-      {chartData.length > 1 && (
+      {chartData.length > 0 && (
         <section style={{ marginBottom: 16 }}>
           <div className="section-label">
-            Results &amp; Finishes <span>{chartData.length} fights</span>
+            Win &amp; Loss Methods <span>{fighter.wins + fighter.losses} fights</span>
           </div>
           <div className="chart-panel">
             <ResponsiveContainer width="100%" height={210}>
-              <ComposedChart data={chartData} margin={{ top: 8, right: 16, bottom: 8, left: 0 }}>
-                <CartesianGrid strokeDasharray="3 3" stroke="var(--line-subtle)" vertical={false} />
-                <XAxis
-                  dataKey="fight_sequence"
-                  tick={{ fontSize: 10, fill: 'var(--ink-3)', fontFamily: 'var(--ff)' }}
-                  axisLine={{ stroke: 'var(--line)' }}
-                  tickLine={false}
-                />
-                <YAxis
-                  yAxisId="outcome"
-                  domain={[-1.2, 1.2]}
-                  ticks={[-1, 0, 1]}
-                  tickFormatter={(value) => value === 1 ? 'W' : value === -1 ? 'L' : '—'}
-                  tick={{ fontSize: 10, fill: 'var(--ink-3)', fontFamily: 'var(--ff)' }}
-                  axisLine={false}
-                  tickLine={false}
-                  width={38}
-                />
-                <YAxis
-                  yAxisId="finish"
-                  orientation="right"
-                  domain={[0, 100]}
-                  tickFormatter={(value) => `${value}%`}
-                  tick={{ fontSize: 10, fill: 'var(--ink-3)', fontFamily: 'var(--ff)' }}
-                  axisLine={false}
-                  tickLine={false}
-                  width={38}
-                />
+              <PieChart>
                 <Tooltip content={<ChartTooltip />} />
-                <Bar dataKey="outcome_score" yAxisId="outcome" barSize={12} radius={[3, 3, 0, 0]}>
-                  {chartData.map((entry) => (
-                    <Cell key={entry.fight_sequence} fill={entry.outcome_score === 1 ? 'var(--pos)' : entry.outcome_score === -1 ? 'var(--neg)' : 'var(--ink-3)'} />
+                <Pie data={chartData} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={78} innerRadius={42} paddingAngle={2}>
+                  {chartData.map((entry, index) => (
+                    <Cell key={entry.name} fill={chartColors[index % chartColors.length]} />
                   ))}
-                </Bar>
-                <Line
-                  yAxisId="finish"
-                  type="monotone"
-                  dataKey="finish_rate"
-                  stroke="var(--blue)"
-                  strokeWidth={2}
-                  dot={{ r: 2.5, fill: 'var(--blue)', stroke: '#FFFFFF', strokeWidth: 1.5 }}
-                  activeDot={{ r: 4, fill: 'var(--blue)', stroke: '#FFFFFF', strokeWidth: 2 }}
-                  isAnimationActive
-                  animationDuration={600}
-                  animationEasing="ease-out"
-                />
-              </ComposedChart>
+                </Pie>
+              </PieChart>
             </ResponsiveContainer>
+            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '6px 12px', padding: '0 12px 10px', fontSize: '0.6875rem', color: 'var(--ink-2)' }}>
+              {chartData.map((entry, index) => (
+                <span key={entry.name}>
+                  <span style={{ color: chartColors[index % chartColors.length] }}>●</span> {entry.name}: {entry.value}
+                </span>
+              ))}
+            </div>
           </div>
         </section>
       )}

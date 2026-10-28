@@ -27,8 +27,7 @@ class ModelPoint(BaseModel):
     fight_sequence: int
     opponent_name: str
     result: str
-    finish: bool
-    finish_rate: float
+    method: str
     event: str
 
     model_config = {"from_attributes": True}
@@ -56,7 +55,7 @@ class FighterDetail(BaseModel):
     losses: int
     draws: int
     fight_history: list[FightHistoryItem]
-    model_history: list[ModelPoint]
+    method_history: list[ModelPoint]
 
     model_config = {"from_attributes": True}
 

@@ -186,22 +186,21 @@ class TestGetFighterDetail:
         assert "losses" in data
         assert "draws" in data
         assert "fight_history" in data
-        assert "model_history" in data
-        assert len(data["model_history"]) > 0
+        assert "method_history" in data
+        assert len(data["method_history"]) > 0
 
-    def test_model_history_structure(self):
-        """Model history entries have correct fields."""
+    def test_method_history_structure(self):
+        """Method history entries have correct fields."""
         resp = client.get("/fighters?search=jones")
         fighter_id = resp.json()["fighters"][0]["id"]
 
         resp2 = client.get(f"/fighters/{fighter_id}")
-        model_point = resp2.json()["model_history"][0]
+        model_point = resp2.json()["method_history"][0]
         assert "fight_id" in model_point
         assert "fight_sequence" in model_point
         assert "opponent_name" in model_point
         assert "result" in model_point
-        assert "finish" in model_point
-        assert "finish_rate" in model_point
+        assert "method" in model_point
         assert "event" in model_point
 
     def test_not_found(self):

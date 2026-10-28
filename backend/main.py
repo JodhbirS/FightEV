@@ -156,9 +156,9 @@ def _build_fighter_detail(fighter: Fighter, db: Session) -> FighterDetail:
     cutoff = date.today() - timedelta(days=INACTIVITY_DAYS)
     last_fight = fights[-1] if fights else None
     is_active = bool(last_fight and last_fight.event_date and last_fight.event_date >= cutoff)
-    wins = losses = draws = finish_wins = 0
+    wins = losses = draws = 0
     history = []
-    model_history = []
+    method_history = []
     for sequence, fight in enumerate(fights, 1):
         is_first = fight.fighter_1_id == fighter.id
         opponent_id = fight.fighter_2_id if is_first else fight.fighter_1_id
@@ -171,25 +171,18 @@ def _build_fighter_detail(fighter: Fighter, db: Session) -> FighterDetail:
             losses += 1
         elif result == "draw":
             draws += 1
-        finish = any(
-            keyword in (fight.method or "").lower()
-            for keyword in ("ko", "tko", "submission", "sub")
-        )
-        if result == "win" and finish:
-            finish_wins += 1
-        finish_rate = round(100 * finish_wins / max(1, wins), 1)
         history.append(FightHistoryItem(
             id=fight.id, event=fight.event, opponent_name=fighters.get(opponent_id, "Unknown"),
             result=result, method=fight.method, round=fight.round, time=fight.time,
         ))
-        model_history.append(ModelPoint(
+        method_history.append(ModelPoint(
             fight_id=fight.id, fight_sequence=sequence, opponent_name=fighters.get(opponent_id, "Unknown"),
-            result=result, finish=finish, finish_rate=finish_rate, event=fight.event,
+            result=result, method=fight.method, event=fight.event,
         ))
     return FighterDetail(
         id=fighter.id, name=fighter.name, weight_class=fighter.weight_class,
         is_active=is_active, total_fights=len(fights), wins=wins, losses=losses,
-        draws=draws, fight_history=history, model_history=model_history,
+        draws=draws, fight_history=history, method_history=method_history,
     )
 
 
