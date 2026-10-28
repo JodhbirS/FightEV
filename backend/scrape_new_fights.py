@@ -80,6 +80,9 @@ def normalize_name(s: str) -> str:
 
 
 def get_or_create_fighter(session, name: str, weight_class: str | None = None) -> Fighter:
+    if normalize_name(name) == "bobby green":
+        name = "King Green"
+
     # 1. Exact case-insensitive match
     fighter = session.query(Fighter).filter(Fighter.name.ilike(name)).first()
     if fighter:

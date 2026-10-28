@@ -6,6 +6,7 @@ from typing import List
 
 from fastapi import Depends, FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
+from sqlalchemy import func, or_
 from sqlalchemy.orm import Session
 
 from database import Base, SessionLocal, engine, get_db
@@ -28,7 +29,7 @@ def _load_predictor() -> None:
     db = SessionLocal()
     try:
         fighters = {fighter.id: fighter.name for fighter in db.query(Fighter).all()}
-        fights = db.query(Fight).order_by(Fight.event_date.asc().nullslast(), Fight.id.asc()).all()
+        fights = db.query(Fight).order_by(Fight.event_date.asc().nullsfirst(), Fight.id.asc()).all()
         _predictor.fit([
             {
                 "fighter_1": fighters[fight.fighter_1_id],
@@ -94,17 +95,6 @@ def get_fights():
     return compute_metrics(_predictor, _load_current_card())
 
 
-def _latest_dates(db: Session) -> dict[int, date]:
-    latest: dict[int, date] = {}
-    for fight in db.query(Fight).all():
-        if not fight.event_date:
-            continue
-        for fighter_id in (fight.fighter_1_id, fight.fighter_2_id):
-            if fighter_id not in latest or fight.event_date > latest[fighter_id]:
-                latest[fighter_id] = fight.event_date
-    return latest
-
-
 @app.get("/fighters", response_model=FighterListResponse)
 def get_fighters(
     limit: int = Query(default=20, ge=1, le=100),
@@ -114,13 +104,25 @@ def get_fighters(
     db: Session = Depends(get_db),
 ):
     cutoff = date.today() - timedelta(days=INACTIVITY_DAYS)
-    latest = _latest_dates(db)
-    fighters = [
-        fighter for fighter in db.query(Fighter).all()
-        if latest.get(fighter.id) and latest[fighter.id] >= cutoff
-        and (not search or search.lower() in fighter.name.lower())
-        and (not division or division.lower() in (fighter.weight_class or "").lower())
-    ]
+    active_ids = {
+        fighter_id
+        for fighter_id, latest_date in db.query(
+            Fighter.id,
+            func.max(Fight.event_date),
+        ).join(
+            Fight,
+            or_(Fight.fighter_1_id == Fighter.id, Fight.fighter_2_id == Fighter.id),
+        ).filter(
+            Fight.event_date.is_not(None),
+        ).group_by(Fighter.id).all()
+        if latest_date >= cutoff
+    }
+    query = db.query(Fighter).filter(Fighter.id.in_(active_ids))
+    if search:
+        query = query.filter(Fighter.name.ilike(f"%{search}%"))
+    if division:
+        query = query.filter(Fighter.weight_class.ilike(f"%{division}%"))
+    fighters = query.all()
     if not search:
         featured = {name: index for index, name in enumerate(FEATURED_FIGHTERS)}
         fighters = [fighter for fighter in fighters if fighter.name in featured]
@@ -149,10 +151,17 @@ def _build_fighter_detail(fighter: Fighter, db: Session) -> FighterDetail:
     fights = (
         db.query(Fight)
         .filter((Fight.fighter_1_id == fighter.id) | (Fight.fighter_2_id == fighter.id))
-        .order_by(Fight.event_date.asc().nullslast(), Fight.id.asc())
+        .order_by(Fight.event_date.asc().nullsfirst(), Fight.id.asc())
         .all()
     )
-    fighters = {item.id: item.name for item in db.query(Fighter).all()}
+    opponent_ids = {
+        fight.fighter_2_id if fight.fighter_1_id == fighter.id else fight.fighter_1_id
+        for fight in fights
+    }
+    fighters = {
+        item.id: item.name
+        for item in db.query(Fighter).filter(Fighter.id.in_(opponent_ids)).all()
+    }
     cutoff = date.today() - timedelta(days=INACTIVITY_DAYS)
     last_fight = fights[-1] if fights else None
     is_active = bool(last_fight and last_fight.event_date and last_fight.event_date >= cutoff)

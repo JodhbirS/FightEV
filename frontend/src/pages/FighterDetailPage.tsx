@@ -42,14 +42,14 @@ function ChartTooltip({ active, payload }: PieTooltipProps) {
   );
 }
 
-function methodCategory(result: string, method: string) {
+function methodCategory(method: string) {
   const normalized = method.toLowerCase();
   const type = normalized.includes('ko') || normalized.includes('tko')
     ? 'KO/TKO'
     : normalized.includes('sub')
       ? 'Submission'
       : 'Decision';
-  return `${result === 'win' ? 'Win' : 'Loss'} · ${type}`;
+  return `Win · ${type}`;
 }
 
 export default function FighterDetailPage() {
@@ -101,14 +101,14 @@ export default function FighterDetailPage() {
   }
 
   const methodCounts = fighter.method_history.reduce<Record<string, number>>((counts, fight) => {
-    if (fight.result === 'win' || fight.result === 'loss') {
-      const category = methodCategory(fight.result, fight.method);
+    if (fight.result === 'win') {
+      const category = methodCategory(fight.method);
       counts[category] = (counts[category] || 0) + 1;
     }
     return counts;
   }, {});
   const chartData = Object.entries(methodCounts).map(([name, value]) => ({ name, value }));
-  const chartColors = ['var(--pos)', 'var(--blue)', '#78A889', 'var(--neg)', '#C77B7B', '#9B6B6B'];
+  const chartColors = ['var(--pos)', 'var(--blue)', '#78A889'];
 
   return (
     <motion.main
@@ -164,10 +164,10 @@ export default function FighterDetailPage() {
       {chartData.length > 0 && (
         <section style={{ marginBottom: 16 }}>
           <div className="section-label">
-            Win &amp; Loss Methods <span>{fighter.wins + fighter.losses} fights</span>
+            Victory Methods <span>{fighter.wins} wins</span>
           </div>
-          <div className="chart-panel">
-            <ResponsiveContainer width="100%" height={210}>
+          <div className="chart-panel" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 20, padding: '12px 18px' }}>
+            <ResponsiveContainer width="55%" height={190}>
               <PieChart>
                 <Tooltip content={<ChartTooltip />} />
                 <Pie data={chartData} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={78} innerRadius={42} paddingAngle={2}>
@@ -177,10 +177,10 @@ export default function FighterDetailPage() {
                 </Pie>
               </PieChart>
             </ResponsiveContainer>
-            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '6px 12px', padding: '0 12px 10px', fontSize: '0.6875rem', color: 'var(--ink-2)' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 9, fontSize: '0.6875rem', color: 'var(--ink-2)' }}>
               {chartData.map((entry, index) => (
-                <span key={entry.name}>
-                  <span style={{ color: chartColors[index % chartColors.length] }}>●</span> {entry.name}: {entry.value}
+                <span key={entry.name} style={{ whiteSpace: 'nowrap' }}>
+                  <span style={{ color: chartColors[index % chartColors.length] }}>●</span> {entry.name.replace('Win · ', '')}: {entry.value}
                 </span>
               ))}
             </div>

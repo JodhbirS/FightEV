@@ -60,11 +60,30 @@ def add_event_date_column() -> None:
         connection.execute(text("DROP TABLE IF EXISTS elo_snapshots"))
 
 
+def merge_renamed_fighters(db) -> int:
+    """Merge known fighter renames before checking for duplicate bouts."""
+    canonical = db.query(Fighter).filter(Fighter.name == "King Green").first()
+    legacy = db.query(Fighter).filter(Fighter.name == "Bobby Green").first()
+    if not canonical or not legacy:
+        return 0
+
+    db.query(Fight).filter(Fight.fighter_1_id == legacy.id).update(
+        {Fight.fighter_1_id: canonical.id}, synchronize_session=False
+    )
+    db.query(Fight).filter(Fight.fighter_2_id == legacy.id).update(
+        {Fight.fighter_2_id: canonical.id}, synchronize_session=False
+    )
+    db.delete(legacy)
+    db.flush()
+    return 1
+
+
 def main() -> None:
     add_event_date_column()
     dates = fetch_event_dates()
     db = SessionLocal()
     try:
+        merged = merge_renamed_fighters(db)
         seen = set()
         removed = 0
         for fight in db.query(Fight).all():
@@ -98,7 +117,7 @@ def main() -> None:
         db.flush()
         db.commit()
         dated = db.query(Fight).filter(Fight.event_date.is_not(None)).count()
-        print(f"Removed {removed} invalid/duplicate fights; dated {dated} fights.")
+        print(f"Merged {merged} renamed fighter; removed {removed} invalid/duplicate fights; dated {dated} fights.")
     finally:
         db.close()
 
