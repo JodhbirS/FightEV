@@ -5,6 +5,7 @@ Uses an in-memory SQLite database with a small fixture dataset.
 """
 import math
 from collections import defaultdict
+from datetime import date
 
 import pytest
 from fastapi.testclient import TestClient
@@ -49,6 +50,7 @@ def setup_db():
     # Create fights (chronological order by ID)
     fight1 = Fight(
         event="UFC 165",
+        event_date=date.today(),
         fighter_1_id=f1.id,
         fighter_2_id=f2.id,
         result="win",
@@ -58,6 +60,7 @@ def setup_db():
     )
     fight2 = Fight(
         event="UFC 182",
+        event_date=date.today(),
         fighter_1_id=f1.id,
         fighter_2_id=f3.id,
         result="win",
@@ -67,6 +70,7 @@ def setup_db():
     )
     fight3 = Fight(
         event="UFC 214",
+        event_date=date.today(),
         fighter_1_id=f3.id,
         fighter_2_id=f1.id,
         result="win",

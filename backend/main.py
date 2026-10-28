@@ -6,7 +6,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import List
 from sqlalchemy.orm import Session
-from sqlalchemy import func, or_
+from sqlalchemy import func
+from sqlalchemy.sql import over
 from datetime import date, timedelta
 
 from database import engine, get_db, Base, SessionLocal
@@ -111,7 +112,7 @@ def get_fights():
     return compute_metrics(_elo_engine, fights)
 
 
-INACTIVITY_DAYS = 730
+INACTIVITY_DAYS = 913  # Approximately 2.5 years; historical records are retained.
 
 
 @app.get("/fighters", response_model=FighterListResponse, summary="Paginated list of fighters")
@@ -125,17 +126,21 @@ def get_fighters(
     """
     Return a paginated list of UFC fighters with their current Elo rating.
     Supports optional name search and weight class division filtering.
-    Fighters who have not fought in > 1.5 years have their current_elo set to 0.0
-    and is_active set to False. Active fighters are ordered by highest Elo first.
+    Only fighters with a fight in the last 2.5 years are returned. Historical
+    fighters and fights remain in the database for career histories and training.
     """
     latest_snap = (
         db.query(
             EloSnapshot.fighter_id,
-            func.max(Fight.event_date).label("last_fight_date"),
-            func.max(EloSnapshot.fight_id).label("fallback_fight_id"),
+            Fight.event_date.label("last_fight_date"),
+            EloSnapshot.fight_id.label("last_fight_id"),
+            over(
+                func.row_number(),
+                partition_by=EloSnapshot.fighter_id,
+                order_by=(Fight.event_date.desc().nullslast(), EloSnapshot.fight_id.desc()),
+            ).label("rank"),
         )
         .join(Fight, Fight.id == EloSnapshot.fight_id)
-        .group_by(EloSnapshot.fighter_id)
         .subquery()
     )
 
@@ -147,24 +152,16 @@ def get_fighters(
             EloSnapshot.elo_after.label("raw_elo"),
             latest_snap.c.last_fight_date,
         )
-        .join(latest_snap, Fighter.id == latest_snap.c.fighter_id)
+        .join(
+            latest_snap,
+            (Fighter.id == latest_snap.c.fighter_id) & (latest_snap.c.rank == 1),
+        )
         .join(
             EloSnapshot,
-            EloSnapshot.fighter_id == latest_snap.c.fighter_id,
+            (EloSnapshot.fight_id == latest_snap.c.last_fight_id)
+            & (EloSnapshot.fighter_id == latest_snap.c.fighter_id),
         )
         .join(Fight, Fight.id == EloSnapshot.fight_id)
-        .filter(
-            or_(
-                (
-                    latest_snap.c.last_fight_date.is_(None)
-                    & (EloSnapshot.fight_id == latest_snap.c.fallback_fight_id)
-                ),
-                (
-                    latest_snap.c.last_fight_date.is_not(None)
-                    & (Fight.event_date == latest_snap.c.last_fight_date)
-                ),
-            )
-        )
     )
 
     if search:
@@ -174,12 +171,7 @@ def get_fighters(
         query = query.filter(Fighter.weight_class.ilike(f"%{division}%"))
 
     cutoff = date.today() - timedelta(days=INACTIVITY_DAYS)
-    query = query.filter(
-        or_(
-            latest_snap.c.last_fight_date.is_(None),
-            latest_snap.c.last_fight_date >= cutoff,
-        )
-    )
+    query = query.filter(latest_snap.c.last_fight_date >= cutoff)
     total = query.count()
 
     rows = (
@@ -191,7 +183,7 @@ def get_fighters(
 
     fighters = []
     for row in rows:
-        is_active = row.last_fight_date is None or row.last_fight_date >= cutoff
+        is_active = row.last_fight_date >= cutoff
         fighters.append(
             FighterListItem(
                 id=row.id,
@@ -224,7 +216,8 @@ def _build_fighter_detail(fighter: Fighter, db: Session) -> FighterDetail:
     last_fight = db.query(Fight).filter(Fight.id == last_snap.fight_id).first() if last_snap else None
     is_active = bool(
         last_fight
-        and (last_fight.event_date is None or last_fight.event_date >= date.today() - timedelta(days=INACTIVITY_DAYS))
+        and last_fight.event_date is not None
+        and last_fight.event_date >= date.today() - timedelta(days=INACTIVITY_DAYS)
     )
     current_elo = round(last_snap.elo_after, 2) if (last_snap and is_active) else 0.0
 
