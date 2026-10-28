@@ -140,7 +140,7 @@ export default function CardPage() {
                     </div>
                   )}
                   <div className="card-bottom">
-                    <span className="card-elo">
+                    <span className="card-model">
                       Model: {(fight.modelProb1 * 100).toFixed(1)}%
                     </span>
                     <span className={`card-ev ${isF1Positive ? 'pos' : 'neg'}`}>
@@ -182,7 +182,7 @@ export default function CardPage() {
                     </div>
                   )}
                   <div className="card-bottom">
-                    <span className="card-elo">
+                    <span className="card-model">
                       Model: {(fight.modelProb2 * 100).toFixed(1)}%
                     </span>
                     <span className={`card-ev ${isF2Positive ? 'pos' : 'neg'}`}>

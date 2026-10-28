@@ -24,26 +24,23 @@ export interface FighterListItem {
   id: number;
   name: string;
   weight_class: string | null;
-  model_score: number;
   is_active?: boolean;
 }
 
 export interface FighterListResponse {
   total: number;
-  divisions: FighterDivision[];
-}
-
-export interface FighterDivision {
-  name: string;
+  limit: number;
+  offset: number;
   fighters: FighterListItem[];
 }
 
 export interface ModelPoint {
   fight_id: number;
   fight_sequence: number;
-  model_score: number;
   opponent_name: string;
   result: string;
+  finish: boolean;
+  finish_rate: number;
   event: string;
 }
 
@@ -61,7 +58,6 @@ export interface FighterDetail {
   id: number;
   name: string;
   weight_class: string | null;
-  model_score: number;
   is_active?: boolean;
   total_fights: number;
   wins: number;

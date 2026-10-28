@@ -8,20 +8,16 @@ class FighterListItem(BaseModel):
     id: int
     name: str
     weight_class: Optional[str] = None
-    model_score: float
     is_active: bool = True
 
     model_config = {"from_attributes": True}
 
 
-class DivisionGroup(BaseModel):
-    name: str
-    fighters: list[FighterListItem]
-
-
 class FighterListResponse(BaseModel):
     total: int
-    divisions: list[DivisionGroup]
+    limit: int
+    offset: int
+    fighters: list[FighterListItem]
 
 
 # --- /fighters/{id} detail ---
@@ -29,9 +25,10 @@ class FighterListResponse(BaseModel):
 class ModelPoint(BaseModel):
     fight_id: int
     fight_sequence: int
-    model_score: float
     opponent_name: str
     result: str
+    finish: bool
+    finish_rate: float
     event: str
 
     model_config = {"from_attributes": True}
@@ -53,7 +50,6 @@ class FighterDetail(BaseModel):
     id: int
     name: str
     weight_class: Optional[str] = None
-    model_score: float
     is_active: bool = True
     total_fights: int
     wins: int

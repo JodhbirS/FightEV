@@ -150,41 +150,30 @@ client = TestClient(app)
 # --- Tests ---
 
 class TestGetFighters:
-    def test_returns_top_fighters_by_division(self):
-        """GET /fighters returns fixed UFC division groups."""
-        resp = client.get("/fighters")
+    def test_search_returns_active_fighters(self):
+        """GET /fighters supports searching the active fighter directory."""
+        resp = client.get("/fighters?search=jones")
         assert resp.status_code == 200
         data = resp.json()
         assert "total" in data
-        assert "divisions" in data
-        assert data["total"] == 2
-        assert len(data["divisions"]) == 11
-        assert all(len(group["fighters"]) <= 5 for group in data["divisions"])
-        assert all(group["name"] in {
-            "Flyweight", "Bantamweight", "Featherweight", "Lightweight",
-            "Welterweight", "Middleweight", "Light Heavyweight", "Heavyweight",
-            "Women's Strawweight", "Women's Flyweight", "Women's Bantamweight",
-        } for group in data["divisions"])
+        assert "fighters" in data
+        assert data["total"] == 1
+        assert len(data["fighters"]) == 1
 
-    def test_fighter_has_model_score(self):
-        """Each fighter in the list has a numeric model score."""
-        resp = client.get("/fighters")
-        for group in resp.json()["divisions"]:
-            for fighter in group["fighters"]:
-                assert isinstance(fighter["model_score"], (int, float))
-                assert 0 <= fighter["model_score"] <= 100
+    def test_fighter_list_item_shape(self):
+        """Each fighter in the list has the directory fields."""
+        resp = client.get("/fighters?search=jones")
+        for fighter in resp.json()["fighters"]:
+            assert "name" in fighter
+            assert "weight_class" in fighter
 
 
 class TestGetFighterDetail:
     def test_happy_path(self):
         """GET /fighters/{id} returns full fighter detail."""
         # Get a valid ID first
-        resp = client.get("/fighters")
-        fighter_id = next(
-            group["fighters"][0]["id"]
-            for group in resp.json()["divisions"]
-            if group["fighters"]
-        )
+        resp = client.get("/fighters?search=jones")
+        fighter_id = resp.json()["fighters"][0]["id"]
 
         resp2 = client.get(f"/fighters/{fighter_id}")
         assert resp2.status_code == 200
@@ -192,7 +181,6 @@ class TestGetFighterDetail:
 
         assert "id" in data
         assert "name" in data
-        assert "model_score" in data
         assert "total_fights" in data
         assert "wins" in data
         assert "losses" in data
@@ -203,20 +191,17 @@ class TestGetFighterDetail:
 
     def test_model_history_structure(self):
         """Model history entries have correct fields."""
-        resp = client.get("/fighters")
-        fighter_id = next(
-            group["fighters"][0]["id"]
-            for group in resp.json()["divisions"]
-            if group["fighters"]
-        )
+        resp = client.get("/fighters?search=jones")
+        fighter_id = resp.json()["fighters"][0]["id"]
 
         resp2 = client.get(f"/fighters/{fighter_id}")
         model_point = resp2.json()["model_history"][0]
         assert "fight_id" in model_point
         assert "fight_sequence" in model_point
-        assert "model_score" in model_point
         assert "opponent_name" in model_point
         assert "result" in model_point
+        assert "finish" in model_point
+        assert "finish_rate" in model_point
         assert "event" in model_point
 
     def test_not_found(self):

@@ -14,8 +14,19 @@ export async function getFights() {
   return await res.json();
 }
 
-export async function getFighters(): Promise<FighterListResponse> {
-  const res = await fetch(`${API_BASE}/fighters`);
+export async function getFighters(
+  limit: number = 20,
+  offset: number = 0,
+  search: string = '',
+  division: string = '',
+): Promise<FighterListResponse> {
+  const params = new URLSearchParams({
+    limit: String(limit),
+    offset: String(offset),
+  });
+  if (search) params.set('search', search);
+  if (division) params.set('division', division);
+  const res = await fetch(`${API_BASE}/fighters?${params}`);
   if (!res.ok) throw new Error("Failed to fetch /fighters");
   return await res.json();
 }

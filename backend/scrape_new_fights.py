@@ -275,7 +275,6 @@ def main():
     if new_fights > 0:
         session.flush()
         print(f"Added {new_fights} new fights. The ensemble retrains on API startup.")
-        recompute_elo(session)
         session.commit()
         print(f"Successfully updated database with {new_fights} new fights!")
     else:

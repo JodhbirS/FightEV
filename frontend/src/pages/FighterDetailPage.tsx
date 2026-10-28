@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { motion, type Variants } from 'framer-motion';
 import {
-  LineChart, Line, XAxis, YAxis, Tooltip,
-  ResponsiveContainer, CartesianGrid, ReferenceLine,
+  Bar, CartesianGrid, Cell, ComposedChart, Line, ResponsiveContainer,
+  Tooltip, XAxis, YAxis,
 } from 'recharts';
 import { getFighter } from '../api';
 import type { FighterDetail } from '../types';
@@ -19,7 +19,9 @@ interface TooltipProps {
   payload?: Array<{
     payload: {
       fight_sequence: number;
-      model_score: number;
+      outcome_score: number;
+      finish_rate: number;
+      finish: boolean;
       opponent_name: string;
       result: string;
       event: string;
@@ -49,7 +51,7 @@ function ChartTooltip({ active, payload }: TooltipProps) {
           {d.result.toUpperCase().slice(0, 1)}
         </span>
         <span style={{ fontWeight: 600, fontVariantNumeric: 'tabular-nums', color: 'var(--blue)' }}>
-          {Math.round(d.model_score)}% win rate
+          {d.finish ? 'Finish' : 'Decision'} · {Math.round(d.finish_rate)}% finish rate
         </span>
       </div>
     </div>
@@ -106,16 +108,13 @@ export default function FighterDetailPage() {
 
   const chartData = fighter.model_history.map((p) => ({
     fight_sequence: p.fight_sequence,
-    model_score: p.model_score,
+    outcome_score: p.result === 'win' ? 1 : p.result === 'loss' ? -1 : 0,
+    finish: p.finish,
+    finish_rate: p.finish_rate,
     opponent_name: p.opponent_name,
     result: p.result,
     event: p.event,
   }));
-
-  const scoreMin = Math.min(...chartData.map((d) => d.model_score));
-  const scoreMax = Math.max(...chartData.map((d) => d.model_score));
-  const yMin = Math.max(0, Math.floor((scoreMin - 5) / 5) * 5);
-  const yMax = Math.min(100, Math.ceil((scoreMax + 5) / 5) * 5);
 
   return (
     <motion.main
@@ -147,10 +146,10 @@ export default function FighterDetailPage() {
         {/* Stats summary */}
         <div className="stat-summary">
           <div className="stat-block">
-            <span className="stat-val" style={{ color: fighter.model_score > 0 ? 'var(--blue)' : 'var(--ink-3)', fontSize: fighter.model_score > 0 ? '1.125rem' : '0.85rem', fontWeight: 600 }}>
-              {fighter.model_score > 0 ? `${Math.round(fighter.model_score)}%` : 'Inactive'}
+            <span className="stat-val" style={{ color: fighter.is_active ? 'var(--blue)' : 'var(--ink-3)', fontSize: '0.85rem', fontWeight: 600 }}>
+              {fighter.is_active ? 'Active' : 'Inactive'}
             </span>
-            <span className="stat-label">{fighter.model_score > 0 ? 'Career Win Rate' : 'Status'}</span>
+            <span className="stat-label">Status</span>
           </div>
           <div className="stat-block">
             <span className="stat-val">{fighter.total_fights}</span>
@@ -171,11 +170,11 @@ export default function FighterDetailPage() {
       {chartData.length > 1 && (
         <section style={{ marginBottom: 16 }}>
           <div className="section-label">
-            Win Rate History <span>{chartData.length} fights</span>
+            Results &amp; Finishes <span>{chartData.length} fights</span>
           </div>
           <div className="chart-panel">
             <ResponsiveContainer width="100%" height={210}>
-              <LineChart data={chartData} margin={{ top: 8, right: 16, bottom: 8, left: 0 }}>
+              <ComposedChart data={chartData} margin={{ top: 8, right: 16, bottom: 8, left: 0 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="var(--line-subtle)" vertical={false} />
                 <XAxis
                   dataKey="fight_sequence"
@@ -184,17 +183,35 @@ export default function FighterDetailPage() {
                   tickLine={false}
                 />
                 <YAxis
-                  domain={[yMin, yMax]}
+                  yAxisId="outcome"
+                  domain={[-1.2, 1.2]}
+                  ticks={[-1, 0, 1]}
+                  tickFormatter={(value) => value === 1 ? 'W' : value === -1 ? 'L' : '—'}
                   tick={{ fontSize: 10, fill: 'var(--ink-3)', fontFamily: 'var(--ff)' }}
                   axisLine={false}
                   tickLine={false}
                   width={38}
                 />
-                <ReferenceLine y={1000} stroke="var(--line)" strokeDasharray="4 3" />
+                <YAxis
+                  yAxisId="finish"
+                  orientation="right"
+                  domain={[0, 100]}
+                  tickFormatter={(value) => `${value}%`}
+                  tick={{ fontSize: 10, fill: 'var(--ink-3)', fontFamily: 'var(--ff)' }}
+                  axisLine={false}
+                  tickLine={false}
+                  width={38}
+                />
                 <Tooltip content={<ChartTooltip />} />
+                <Bar dataKey="outcome_score" yAxisId="outcome" barSize={12} radius={[3, 3, 0, 0]}>
+                  {chartData.map((entry) => (
+                    <Cell key={entry.fight_sequence} fill={entry.outcome_score === 1 ? 'var(--pos)' : entry.outcome_score === -1 ? 'var(--neg)' : 'var(--ink-3)'} />
+                  ))}
+                </Bar>
                 <Line
+                  yAxisId="finish"
                   type="monotone"
-                  dataKey="model_score"
+                  dataKey="finish_rate"
                   stroke="var(--blue)"
                   strokeWidth={2}
                   dot={{ r: 2.5, fill: 'var(--blue)', stroke: '#FFFFFF', strokeWidth: 1.5 }}
@@ -203,7 +220,7 @@ export default function FighterDetailPage() {
                   animationDuration={600}
                   animationEasing="ease-out"
                 />
-              </LineChart>
+              </ComposedChart>
             </ResponsiveContainer>
           </div>
         </section>

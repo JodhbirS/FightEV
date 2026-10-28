@@ -2,7 +2,6 @@ import json
 import os
 from contextlib import asynccontextmanager
 from datetime import date, timedelta
-from math import exp, tanh
 from typing import List
 
 from fastapi import Depends, FastAPI, HTTPException, Query
@@ -13,7 +12,6 @@ from database import Base, SessionLocal, engine, get_db
 from ensemble_engine import EnsemblePredictor, compute_metrics
 from models import Fight, Fighter
 from schemas import (
-    DivisionGroup,
     FightHistoryItem,
     FightOut,
     FighterDetail,
@@ -68,81 +66,18 @@ app.add_middleware(
 )
 
 INACTIVITY_DAYS = 913
-MIN_RANKING_FIGHTS = 5
-UFC_DIVISIONS = (
-    "Flyweight",
-    "Bantamweight",
-    "Featherweight",
-    "Lightweight",
-    "Welterweight",
-    "Middleweight",
-    "Light Heavyweight",
-    "Heavyweight",
-    "Women's Strawweight",
-    "Women's Flyweight",
-    "Women's Bantamweight",
+FEATURED_FIGHTERS = (
+    "Islam Makhachev",
+    "Alexander Volkanovski",
+    "Joshua Van",
+    "Alexandre Pantoja",
+    "Petr Yan",
+    "Ilia Topuria",
+    "Alex Pereira",
+    "Tom Aspinall",
+    "Dricus Du Plessis",
+    "Khamzat Chimaev",
 )
-
-
-def _canonical_division(weight_class: str | None) -> str | None:
-    if not weight_class:
-        return None
-    normalized = " ".join(weight_class.replace("’", "'").split()).lower()
-    for division in UFC_DIVISIONS:
-        if normalized == division.lower():
-            return division
-    return None
-
-
-def _division_power_scores(
-    db: Session,
-    fighters: list[Fighter],
-) -> dict[int, float]:
-    """Estimate division strength with a recency-weighted Bradley-Terry fit."""
-    fighter_ids = {fighter.id for fighter in fighters}
-    scores = {fighter.id: 0.0 for fighter in fighters}
-    fights = db.query(Fight).filter(
-        (Fight.fighter_1_id.in_(fighter_ids))
-        | (Fight.fighter_2_id.in_(fighter_ids)),
-        Fight.result.in_(("win", "draw")),
-    ).all()
-    all_ids = {
-        fighter_id
-        for fight in fights
-        for fighter_id in (fight.fighter_1_id, fight.fighter_2_id)
-    }
-    scores.update({fighter_id: 0.0 for fighter_id in all_ids})
-    today = date.today()
-
-    for _ in range(40):
-        gradients = {fighter_id: 0.0 for fighter_id in all_ids}
-        for fight in fights:
-            if fight.result == "draw":
-                outcome = 0.5
-            else:
-                outcome = 1.0
-            first_score = scores[fight.fighter_1_id]
-            second_score = scores[fight.fighter_2_id]
-            probability = 1.0 / (1.0 + exp(second_score - first_score))
-            age_days = max(0, (today - (fight.event_date or today)).days)
-            weight = exp(-age_days / 1095.0)
-            error = weight * (outcome - probability)
-            gradients[fight.fighter_1_id] += error
-            gradients[fight.fighter_2_id] -= error
-        for fighter_id in fighter_ids:
-            scores[fighter_id] += 0.18 * gradients[fighter_id] - 0.01 * scores[fighter_id]
-
-    average = sum(scores.values()) / max(1, len(scores))
-    for fighter in fighters:
-        fights_count = sum(
-            1 for fight in fights
-            if fighter.id in (fight.fighter_1_id, fight.fighter_2_id)
-        )
-        confidence = fights_count / (fights_count + 8.0)
-        scores[fighter.id] = average + confidence * (scores[fighter.id] - average)
-    return scores
-
-
 def _load_current_card() -> list[tuple[str, str, int, int]]:
     path = "data/card.json" if os.path.exists("data/card.json") else "backend/data/card.json"
     if not os.path.exists(path):
@@ -172,55 +107,41 @@ def _latest_dates(db: Session) -> dict[int, date]:
 
 @app.get("/fighters", response_model=FighterListResponse)
 def get_fighters(
+    limit: int = Query(default=20, ge=1, le=100),
+    offset: int = Query(default=0, ge=0),
+    search: str = Query(default=""),
+    division: str = Query(default=""),
     db: Session = Depends(get_db),
 ):
     cutoff = date.today() - timedelta(days=INACTIVITY_DAYS)
     latest = _latest_dates(db)
-    by_division: dict[str, list[Fighter]] = {division: [] for division in UFC_DIVISIONS}
-    fight_counts: dict[int, int] = {}
-    for fight in db.query(Fight).all():
-        fight_counts[fight.fighter_1_id] = fight_counts.get(fight.fighter_1_id, 0) + 1
-        fight_counts[fight.fighter_2_id] = fight_counts.get(fight.fighter_2_id, 0) + 1
-    for fighter in db.query(Fighter).all():
-        division = _canonical_division(fighter.weight_class)
-        if (
-            division
-            and latest.get(fighter.id)
-            and latest[fighter.id] >= cutoff
-            and fight_counts.get(fighter.id, 0) >= MIN_RANKING_FIGHTS
-        ):
-            by_division[division].append(fighter)
+    fighters = [
+        fighter for fighter in db.query(Fighter).all()
+        if latest.get(fighter.id) and latest[fighter.id] >= cutoff
+        and (not search or search.lower() in fighter.name.lower())
+        and (not division or division.lower() in (fighter.weight_class or "").lower())
+    ]
+    if not search:
+        featured = {name: index for index, name in enumerate(FEATURED_FIGHTERS)}
+        fighters = [fighter for fighter in fighters if fighter.name in featured]
+        fighters.sort(key=lambda fighter: featured[fighter.name])
+    else:
+        fighters.sort(key=lambda fighter: fighter.name.lower())
 
-    groups = []
-    for division in UFC_DIVISIONS:
-        division_scores = _division_power_scores(db, by_division[division])
-        fighters = sorted(
-            by_division[division],
-            key=lambda fighter: (
-                division_scores[fighter.id],
-                latest[fighter.id],
-                fighter.name,
-            ),
-            reverse=True,
-        )[:5]
-        groups.append(DivisionGroup(
-            name=division,
-            fighters=[
-                FighterListItem(
-                    id=fighter.id,
-                    name=fighter.name,
-                    weight_class=division,
-                    model_score=round(
-                        50.0 + 50.0 * tanh(division_scores[fighter.id] / 3.0), 1
-                    ),
-                    is_active=True,
-                )
-                for fighter in fighters
-            ],
-        ))
+    selected = fighters[offset:offset + limit]
     return FighterListResponse(
-        total=sum(len(group.fighters) for group in groups),
-        divisions=groups,
+        total=len(fighters),
+        limit=limit,
+        offset=offset,
+        fighters=[
+            FighterListItem(
+                id=fighter.id,
+                name=fighter.name,
+                weight_class=fighter.weight_class,
+                is_active=True,
+            )
+            for fighter in selected
+        ],
     )
 
 
@@ -232,11 +153,10 @@ def _build_fighter_detail(fighter: Fighter, db: Session) -> FighterDetail:
         .all()
     )
     fighters = {item.id: item.name for item in db.query(Fighter).all()}
-    profile = _predictor.profiles[fighter.name]
     cutoff = date.today() - timedelta(days=INACTIVITY_DAYS)
     last_fight = fights[-1] if fights else None
     is_active = bool(last_fight and last_fight.event_date and last_fight.event_date >= cutoff)
-    wins = losses = draws = 0
+    wins = losses = draws = finish_wins = 0
     history = []
     model_history = []
     for sequence, fight in enumerate(fights, 1):
@@ -251,18 +171,23 @@ def _build_fighter_detail(fighter: Fighter, db: Session) -> FighterDetail:
             losses += 1
         elif result == "draw":
             draws += 1
-        score = round(100 * wins / max(1, wins + losses), 1)
+        finish = any(
+            keyword in (fight.method or "").lower()
+            for keyword in ("ko", "tko", "submission", "sub")
+        )
+        if result == "win" and finish:
+            finish_wins += 1
+        finish_rate = round(100 * finish_wins / max(1, wins), 1)
         history.append(FightHistoryItem(
             id=fight.id, event=fight.event, opponent_name=fighters.get(opponent_id, "Unknown"),
             result=result, method=fight.method, round=fight.round, time=fight.time,
         ))
         model_history.append(ModelPoint(
-            fight_id=fight.id, fight_sequence=sequence, model_score=score,
-            opponent_name=fighters.get(opponent_id, "Unknown"), result=result, event=fight.event,
+            fight_id=fight.id, fight_sequence=sequence, opponent_name=fighters.get(opponent_id, "Unknown"),
+            result=result, finish=finish, finish_rate=finish_rate, event=fight.event,
         ))
     return FighterDetail(
         id=fighter.id, name=fighter.name, weight_class=fighter.weight_class,
-        model_score=round(100 * profile.wins / max(1, profile.experience), 1) if is_active else 0.0,
         is_active=is_active, total_fights=len(fights), wins=wins, losses=losses,
         draws=draws, fight_history=history, model_history=model_history,
     )

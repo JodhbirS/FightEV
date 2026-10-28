@@ -16,7 +16,7 @@ If you use this to place your own bets, please do so at your own discretion.
 - **Expected Value (+EV) Calculation** & highlighted edge cards
 - **Quarter-Kelly Criterion** suggested bet unit sizing (`0.5u` – `3.0u`)
 - **Interactive Fight History Popups** showing a fighter's last 5 UFC bouts
-- **Fighters Directory & Profiles** with weight class division filters and model score history
+- **Fighters Directory & Profiles** with active-fighter search and result/finish timelines
 - **Automated Workflows** on GitHub Actions to refresh cards and update historical fights weekly
 
 ## Tech Stack
