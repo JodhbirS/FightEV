@@ -80,6 +80,60 @@ def setup_db():
     )
     db.add_all([fight1, fight2, fight3])
     db.flush()
+    extra_fights = [
+        Fight(
+            event="UFC 220",
+            event_date=date.today(),
+            fighter_1_id=f2.id,
+            fighter_2_id=f3.id,
+            result="win",
+            method="U-DEC",
+            round=3,
+            time="5:00",
+        ),
+        Fight(
+            event="UFC 225",
+            event_date=date.today(),
+            fighter_1_id=f1.id,
+            fighter_2_id=f2.id,
+            result="win",
+            method="U-DEC",
+            round=3,
+            time="5:00",
+        ),
+        Fight(
+            event="UFC 226",
+            event_date=date.today(),
+            fighter_1_id=f3.id,
+            fighter_2_id=f1.id,
+            result="win",
+            method="U-DEC",
+            round=3,
+            time="5:00",
+        ),
+        Fight(
+            event="UFC 227",
+            event_date=date.today(),
+            fighter_1_id=f2.id,
+            fighter_2_id=f3.id,
+            result="win",
+            method="U-DEC",
+            round=3,
+            time="5:00",
+        ),
+        Fight(
+            event="UFC 228",
+            event_date=date.today(),
+            fighter_1_id=f1.id,
+            fighter_2_id=f3.id,
+            result="win",
+            method="U-DEC",
+            round=3,
+            time="5:00",
+        ),
+    ]
+    db.add_all(extra_fights)
+    db.flush()
 
     db.commit()
     yield

@@ -2,7 +2,7 @@ import json
 import os
 from contextlib import asynccontextmanager
 from datetime import date, timedelta
-from math import exp
+from math import exp, tanh
 from typing import List
 
 from fastapi import Depends, FastAPI, HTTPException, Query
@@ -68,6 +68,7 @@ app.add_middleware(
 )
 
 INACTIVITY_DAYS = 913
+MIN_RANKING_FIGHTS = 5
 UFC_DIVISIONS = (
     "Flyweight",
     "Bantamweight",
@@ -176,9 +177,18 @@ def get_fighters(
     cutoff = date.today() - timedelta(days=INACTIVITY_DAYS)
     latest = _latest_dates(db)
     by_division: dict[str, list[Fighter]] = {division: [] for division in UFC_DIVISIONS}
+    fight_counts: dict[int, int] = {}
+    for fight in db.query(Fight).all():
+        fight_counts[fight.fighter_1_id] = fight_counts.get(fight.fighter_1_id, 0) + 1
+        fight_counts[fight.fighter_2_id] = fight_counts.get(fight.fighter_2_id, 0) + 1
     for fighter in db.query(Fighter).all():
         division = _canonical_division(fighter.weight_class)
-        if division and latest.get(fighter.id) and latest[fighter.id] >= cutoff:
+        if (
+            division
+            and latest.get(fighter.id)
+            and latest[fighter.id] >= cutoff
+            and fight_counts.get(fighter.id, 0) >= MIN_RANKING_FIGHTS
+        ):
             by_division[division].append(fighter)
 
     groups = []
@@ -201,7 +211,7 @@ def get_fighters(
                     name=fighter.name,
                     weight_class=division,
                     model_score=round(
-                        50.0 + 10.0 * division_scores[fighter.id], 1
+                        50.0 + 50.0 * tanh(division_scores[fighter.id] / 3.0), 1
                     ),
                     is_active=True,
                 )
