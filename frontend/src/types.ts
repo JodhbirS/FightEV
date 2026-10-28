@@ -30,8 +30,11 @@ export interface FighterListItem {
 
 export interface FighterListResponse {
   total: number;
-  limit: number;
-  offset: number;
+  divisions: FighterDivision[];
+}
+
+export interface FighterDivision {
+  name: string;
   fighters: FighterListItem[];
 }
 

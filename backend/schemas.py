@@ -14,11 +14,14 @@ class FighterListItem(BaseModel):
     model_config = {"from_attributes": True}
 
 
+class DivisionGroup(BaseModel):
+    name: str
+    fighters: list[FighterListItem]
+
+
 class FighterListResponse(BaseModel):
     total: int
-    limit: int
-    offset: int
-    fighters: list[FighterListItem]
+    divisions: list[DivisionGroup]
 
 
 # --- /fighters/{id} detail ---

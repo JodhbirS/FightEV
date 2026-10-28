@@ -12,6 +12,7 @@ from database import Base, SessionLocal, engine, get_db
 from ensemble_engine import EnsemblePredictor, compute_metrics
 from models import Fight, Fighter
 from schemas import (
+    DivisionGroup,
     FightHistoryItem,
     FightOut,
     FighterDetail,
@@ -66,6 +67,30 @@ app.add_middleware(
 )
 
 INACTIVITY_DAYS = 913
+UFC_DIVISIONS = (
+    "Flyweight",
+    "Bantamweight",
+    "Featherweight",
+    "Lightweight",
+    "Welterweight",
+    "Middleweight",
+    "Light Heavyweight",
+    "Heavyweight",
+    "Women's Strawweight",
+    "Women's Flyweight",
+    "Women's Bantamweight",
+    "Women's Featherweight",
+)
+
+
+def _canonical_division(weight_class: str | None) -> str | None:
+    if not weight_class:
+        return None
+    normalized = " ".join(weight_class.replace("’", "'").split()).lower()
+    for division in UFC_DIVISIONS:
+        if normalized == division.lower():
+            return division
+    return None
 
 
 def _load_current_card() -> list[tuple[str, str, int, int]]:
@@ -97,43 +122,47 @@ def _latest_dates(db: Session) -> dict[int, date]:
 
 @app.get("/fighters", response_model=FighterListResponse)
 def get_fighters(
-    limit: int = Query(default=20, ge=1, le=100),
-    offset: int = Query(default=0, ge=0),
-    search: str = Query(default=""),
-    division: str = Query(default=""),
     db: Session = Depends(get_db),
 ):
     cutoff = date.today() - timedelta(days=INACTIVITY_DAYS)
     latest = _latest_dates(db)
-    active = [
-        fighter for fighter in db.query(Fighter).all()
-        if latest.get(fighter.id) and latest[fighter.id] >= cutoff
-        and (not search or search.lower() in fighter.name.lower())
-        and (not division or division.lower() in (fighter.weight_class or "").lower())
-    ]
-    active.sort(key=lambda fighter: (
-        _predictor.profiles[fighter.name].wins
-        / max(1, _predictor.profiles[fighter.name].experience),
-        fighter.name,
-    ), reverse=True)
-    selected = active[offset:offset + limit]
+    by_division: dict[str, list[Fighter]] = {division: [] for division in UFC_DIVISIONS}
+    for fighter in db.query(Fighter).all():
+        division = _canonical_division(fighter.weight_class)
+        if division and latest.get(fighter.id) and latest[fighter.id] >= cutoff:
+            by_division[division].append(fighter)
+
+    groups = []
+    for division in UFC_DIVISIONS:
+        fighters = sorted(
+            by_division[division],
+            key=lambda fighter: (
+                _predictor.profiles[fighter.name].wins
+                / max(1, _predictor.profiles[fighter.name].experience),
+                _predictor.profiles[fighter.name].experience,
+                fighter.name,
+            ),
+            reverse=True,
+        )[:5]
+        groups.append(DivisionGroup(
+            name=division,
+            fighters=[
+                FighterListItem(
+                    id=fighter.id,
+                    name=fighter.name,
+                    weight_class=division,
+                    model_score=round(
+                        100 * _predictor.profiles[fighter.name].wins
+                        / max(1, _predictor.profiles[fighter.name].experience), 1
+                    ),
+                    is_active=True,
+                )
+                for fighter in fighters
+            ],
+        ))
     return FighterListResponse(
-        total=len(active),
-        limit=limit,
-        offset=offset,
-        fighters=[
-            FighterListItem(
-                id=fighter.id,
-                name=fighter.name,
-                weight_class=fighter.weight_class,
-                model_score=round(
-                    100 * _predictor.profiles[fighter.name].wins
-                    / max(1, _predictor.profiles[fighter.name].experience), 1
-                ),
-                is_active=True,
-            )
-            for fighter in selected
-        ],
+        total=sum(len(group.fighters) for group in groups),
+        divisions=groups,
     )
 
 

@@ -1,10 +1,8 @@
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, type Variants } from 'framer-motion';
 import { getFighters } from '../api';
-import type { FighterListItem } from '../types';
-
-const PAGE_SIZE = 25;
+import type { FighterDivision } from '../types';
 
 const pageVariants: Variants = {
   initial: { opacity: 0, y: 6 },
@@ -14,12 +12,7 @@ const pageVariants: Variants = {
 
 const listVariants = {
   hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.015,
-    },
-  },
+  show: { opacity: 1, transition: { staggerChildren: 0.015 } },
 };
 
 const itemVariants = {
@@ -27,64 +20,66 @@ const itemVariants = {
   show: { opacity: 1, y: 0, transition: { duration: 0.15 } },
 };
 
-const DIVISIONS = [
-  'All',
-  'Flyweight',
-  'Bantamweight',
-  'Featherweight',
-  'Lightweight',
-  'Welterweight',
-  'Middleweight',
-  'Light Heavyweight',
-  'Heavyweight',
-  "Women's Strawweight",
-  "Women's Flyweight",
-  "Women's Bantamweight",
-];
+function DivisionList({ division, onSelect }: {
+  division: FighterDivision;
+  onSelect: (id: number) => void;
+}) {
+  return (
+    <section className="fighters-division">
+      <div className="page-header">
+        <h2 className="page-title">{division.name}</h2>
+        <span className="page-meta">Top {division.fighters.length}</span>
+      </div>
+      {division.fighters.length === 0 ? (
+        <div className="status-msg">No active fighters found.</div>
+      ) : (
+        <motion.div
+          className="fighters-container"
+          variants={listVariants}
+          initial="hidden"
+          animate="show"
+        >
+          {division.fighters.map((fighter) => (
+            <motion.div
+              key={fighter.id}
+              id={`fighter-${fighter.id}`}
+              className="fighter-item"
+              variants={itemVariants}
+              onClick={() => onSelect(fighter.id)}
+              onKeyDown={(event) => event.key === 'Enter' && onSelect(fighter.id)}
+              tabIndex={0}
+              role="button"
+              aria-label={`View ${fighter.name}`}
+            >
+              <span className="fighter-item-name">{fighter.name}</span>
+              <span className="fighter-item-wc">{division.name}</span>
+              <span className={`fighter-item-elo ${fighter.model_score >= 60 ? 'high' : ''}`}>
+                {Math.round(fighter.model_score)}%
+              </span>
+            </motion.div>
+          ))}
+        </motion.div>
+      )}
+    </section>
+  );
+}
 
 export default function FightersPage() {
-  const [fighters, setFighters] = useState<FighterListItem[]>([]);
+  const [divisions, setDivisions] = useState<FighterDivision[]>([]);
   const [total, setTotal] = useState(0);
-  const [offset, setOffset] = useState(0);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [search, setSearch] = useState('');
-  const [searchInput, setSearchInput] = useState('');
-  const [division, setDivision] = useState('All');
   const navigate = useNavigate();
 
-  const fetchData = useCallback(async (off: number, q: string, div: string) => {
-    setLoading(true);
-    setError(null);
-    try {
-      const divFilter = div === 'All' ? '' : div;
-      const data = await getFighters(PAGE_SIZE, off, q, divFilter);
-      setFighters(data.fighters);
-      setTotal(data.total);
-    } catch {
-      setError('Failed to load fighters.');
-    } finally {
-      setLoading(false);
-    }
-  }, []);
-
   useEffect(() => {
-    fetchData(offset, search, division);
-  }, [offset, search, division, fetchData]);
-
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault();
-    setOffset(0);
-    setSearch(searchInput);
-  };
-
-  const handleDivisionChange = (div: string) => {
-    setDivision(div);
-    setOffset(0);
-  };
-
-  const totalPages = Math.ceil(total / PAGE_SIZE);
-  const currentPage = Math.floor(offset / PAGE_SIZE) + 1;
+    getFighters()
+      .then((data) => {
+        setDivisions(data.divisions);
+        setTotal(data.total);
+      })
+      .catch(() => setError('Failed to load fighters.'))
+      .finally(() => setLoading(false));
+  }, []);
 
   return (
     <motion.main
@@ -95,107 +90,15 @@ export default function FightersPage() {
       exit="exit"
     >
       <div className="page-header">
-        <h1 className="page-title">Fighters</h1>
-        <span className="page-meta">{total.toLocaleString()} fighters</span>
-      </div>
-
-      <form onSubmit={handleSearch} className="search-box">
-        <svg
-          className="search-icon"
-          viewBox="0 0 16 16"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-        >
-          <circle cx="6.5" cy="6.5" r="4.5" />
-          <path d="M10 10L14 14" />
-        </svg>
-        <input
-          id="fighter-search"
-          type="text"
-          value={searchInput}
-          onChange={(e) => setSearchInput(e.target.value)}
-          placeholder="Search fighters by name…"
-          className="search-input"
-        />
-      </form>
-
-      {/* Division filter chips */}
-      <div className="division-chips" role="tablist" aria-label="Weight class divisions">
-        {DIVISIONS.map((d) => (
-          <button
-            key={d}
-            type="button"
-            className={`division-chip ${division === d ? 'active' : ''}`}
-            onClick={() => handleDivisionChange(d)}
-            role="tab"
-            aria-selected={division === d}
-          >
-            {d}
-          </button>
-        ))}
+        <h1 className="page-title">Top UFC Fighters</h1>
+        <span className="page-meta">{total} fighters</span>
       </div>
 
       {loading && <div className="status-msg">Loading fighters…</div>}
       {error && <div className="status-msg" style={{ color: 'var(--ink-2)' }}>{error}</div>}
-
-      {!loading && !error && fighters.length === 0 && (
-        <div className="status-msg">No fighters found.</div>
-      )}
-
-      {!loading && !error && fighters.length > 0 && (
-        <>
-          <motion.div
-            className="fighters-container"
-            variants={listVariants}
-            initial="hidden"
-            animate="show"
-          >
-            {fighters.map((f) => (
-              <motion.div
-                key={f.id}
-                id={`fighter-${f.id}`}
-                className="fighter-item"
-                variants={itemVariants}
-                onClick={() => navigate(`/fighters/${f.id}`)}
-                onKeyDown={(e) => e.key === 'Enter' && navigate(`/fighters/${f.id}`)}
-                tabIndex={0}
-                role="button"
-                aria-label={`View ${f.name}`}
-              >
-                <span className="fighter-item-name">{f.name}</span>
-                <span className="fighter-item-wc">{f.weight_class || '—'}</span>
-                <span className={`fighter-item-elo ${f.model_score >= 60 ? 'high' : ''}`}>
-                  {Math.round(f.model_score)}%
-                </span>
-              </motion.div>
-            ))}
-          </motion.div>
-
-          <div className="pagination-bar">
-            <button
-              className="page-btn"
-              id="prev-btn"
-              disabled={offset === 0}
-              onClick={() => setOffset(Math.max(0, offset - PAGE_SIZE))}
-            >
-              ← Prev
-            </button>
-            <span className="page-info">
-              {currentPage} / {totalPages}
-            </span>
-            <button
-              className="page-btn"
-              id="next-btn"
-              disabled={offset + PAGE_SIZE >= total}
-              onClick={() => setOffset(offset + PAGE_SIZE)}
-            >
-              Next →
-            </button>
-          </div>
-        </>
-      )}
+      {!loading && !error && divisions.map((division) => (
+        <DivisionList key={division.name} division={division} onSelect={(id) => navigate(`/fighters/${id}`)} />
+      ))}
     </motion.main>
   );
 }

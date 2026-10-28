@@ -96,67 +96,42 @@ client = TestClient(app)
 # --- Tests ---
 
 class TestGetFighters:
-    def test_paginated_default(self):
-        """GET /fighters returns paginated results with correct structure."""
+    def test_returns_top_fighters_by_division(self):
+        """GET /fighters returns fixed UFC division groups."""
         resp = client.get("/fighters")
         assert resp.status_code == 200
         data = resp.json()
         assert "total" in data
-        assert "limit" in data
-        assert "offset" in data
-        assert "fighters" in data
-        assert data["total"] == 3
-        assert data["limit"] == 20
-        assert data["offset"] == 0
-        assert len(data["fighters"]) == 3
-
-    def test_paginated_with_limit(self):
-        """GET /fighters?limit=1 returns exactly 1 fighter."""
-        resp = client.get("/fighters?limit=1")
-        assert resp.status_code == 200
-        data = resp.json()
-        assert len(data["fighters"]) == 1
-        assert data["total"] == 3
-
-    def test_paginated_with_offset(self):
-        """GET /fighters?offset=1&limit=1 skips the first fighter."""
-        resp1 = client.get("/fighters?limit=3")
-        all_names = [f["name"] for f in resp1.json()["fighters"]]
-
-        resp2 = client.get("/fighters?offset=1&limit=1")
-        data = resp2.json()
-        assert data["fighters"][0]["name"] == all_names[1]
-
-    def test_search_filter(self):
-        """GET /fighters?search=jones returns matching fighters."""
-        resp = client.get("/fighters?search=jones")
-        assert resp.status_code == 200
-        data = resp.json()
-        assert data["total"] >= 1
-        assert any("Jones" in f["name"] for f in data["fighters"])
-
-    def test_division_filter(self):
-        """GET /fighters?division=Heavyweight returns matching division fighters."""
-        resp = client.get("/fighters?division=Heavyweight")
-        assert resp.status_code == 200
-        data = resp.json()
-        assert data["total"] >= 1
-        assert all("Heavyweight" in (f["weight_class"] or "") for f in data["fighters"])
+        assert "divisions" in data
+        assert data["total"] == 2
+        assert len(data["divisions"]) == 12
+        assert all(len(group["fighters"]) <= 5 for group in data["divisions"])
+        assert all(group["name"] in {
+            "Flyweight", "Bantamweight", "Featherweight", "Lightweight",
+            "Welterweight", "Middleweight", "Light Heavyweight", "Heavyweight",
+            "Women's Strawweight", "Women's Flyweight", "Women's Bantamweight",
+            "Women's Featherweight",
+        } for group in data["divisions"])
 
     def test_fighter_has_model_score(self):
         """Each fighter in the list has a numeric model score."""
         resp = client.get("/fighters")
-        for f in resp.json()["fighters"]:
-            assert isinstance(f["model_score"], (int, float))
-            assert 0 <= f["model_score"] <= 100
+        for group in resp.json()["divisions"]:
+            for fighter in group["fighters"]:
+                assert isinstance(fighter["model_score"], (int, float))
+                assert 0 <= fighter["model_score"] <= 100
 
 
 class TestGetFighterDetail:
     def test_happy_path(self):
         """GET /fighters/{id} returns full fighter detail."""
         # Get a valid ID first
-        resp = client.get("/fighters?limit=1")
-        fighter_id = resp.json()["fighters"][0]["id"]
+        resp = client.get("/fighters")
+        fighter_id = next(
+            group["fighters"][0]["id"]
+            for group in resp.json()["divisions"]
+            if group["fighters"]
+        )
 
         resp2 = client.get(f"/fighters/{fighter_id}")
         assert resp2.status_code == 200
@@ -175,8 +150,12 @@ class TestGetFighterDetail:
 
     def test_model_history_structure(self):
         """Model history entries have correct fields."""
-        resp = client.get("/fighters?limit=1")
-        fighter_id = resp.json()["fighters"][0]["id"]
+        resp = client.get("/fighters")
+        fighter_id = next(
+            group["fighters"][0]["id"]
+            for group in resp.json()["divisions"]
+            if group["fighters"]
+        )
 
         resp2 = client.get(f"/fighters/{fighter_id}")
         model_point = resp2.json()["model_history"][0]
