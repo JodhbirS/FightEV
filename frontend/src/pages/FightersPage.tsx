@@ -54,7 +54,7 @@ function DivisionList({ division, onSelect }: {
               <span className="fighter-item-name">{fighter.name}</span>
               <span className="fighter-item-wc">{division.name}</span>
               <span className={`fighter-item-elo ${fighter.model_score >= 60 ? 'high' : ''}`}>
-                {Math.round(fighter.model_score)}%
+                Power {Math.round(fighter.model_score)}
               </span>
             </motion.div>
           ))}

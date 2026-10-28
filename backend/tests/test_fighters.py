@@ -104,13 +104,12 @@ class TestGetFighters:
         assert "total" in data
         assert "divisions" in data
         assert data["total"] == 2
-        assert len(data["divisions"]) == 12
+        assert len(data["divisions"]) == 11
         assert all(len(group["fighters"]) <= 5 for group in data["divisions"])
         assert all(group["name"] in {
             "Flyweight", "Bantamweight", "Featherweight", "Lightweight",
             "Welterweight", "Middleweight", "Light Heavyweight", "Heavyweight",
             "Women's Strawweight", "Women's Flyweight", "Women's Bantamweight",
-            "Women's Featherweight",
         } for group in data["divisions"])
 
     def test_fighter_has_model_score(self):

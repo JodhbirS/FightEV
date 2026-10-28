@@ -2,6 +2,7 @@ import json
 import os
 from contextlib import asynccontextmanager
 from datetime import date, timedelta
+from math import exp
 from typing import List
 
 from fastapi import Depends, FastAPI, HTTPException, Query
@@ -79,7 +80,6 @@ UFC_DIVISIONS = (
     "Women's Strawweight",
     "Women's Flyweight",
     "Women's Bantamweight",
-    "Women's Featherweight",
 )
 
 
@@ -91,6 +91,55 @@ def _canonical_division(weight_class: str | None) -> str | None:
         if normalized == division.lower():
             return division
     return None
+
+
+def _division_power_scores(
+    db: Session,
+    fighters: list[Fighter],
+) -> dict[int, float]:
+    """Estimate division strength with a recency-weighted Bradley-Terry fit."""
+    fighter_ids = {fighter.id for fighter in fighters}
+    scores = {fighter.id: 0.0 for fighter in fighters}
+    fights = db.query(Fight).filter(
+        (Fight.fighter_1_id.in_(fighter_ids))
+        | (Fight.fighter_2_id.in_(fighter_ids)),
+        Fight.result.in_(("win", "draw")),
+    ).all()
+    all_ids = {
+        fighter_id
+        for fight in fights
+        for fighter_id in (fight.fighter_1_id, fight.fighter_2_id)
+    }
+    scores.update({fighter_id: 0.0 for fighter_id in all_ids})
+    today = date.today()
+
+    for _ in range(40):
+        gradients = {fighter_id: 0.0 for fighter_id in all_ids}
+        for fight in fights:
+            if fight.result == "draw":
+                outcome = 0.5
+            else:
+                outcome = 1.0
+            first_score = scores[fight.fighter_1_id]
+            second_score = scores[fight.fighter_2_id]
+            probability = 1.0 / (1.0 + exp(second_score - first_score))
+            age_days = max(0, (today - (fight.event_date or today)).days)
+            weight = exp(-age_days / 1095.0)
+            error = weight * (outcome - probability)
+            gradients[fight.fighter_1_id] += error
+            gradients[fight.fighter_2_id] -= error
+        for fighter_id in fighter_ids:
+            scores[fighter_id] += 0.18 * gradients[fighter_id] - 0.01 * scores[fighter_id]
+
+    average = sum(scores.values()) / max(1, len(scores))
+    for fighter in fighters:
+        fights_count = sum(
+            1 for fight in fights
+            if fighter.id in (fight.fighter_1_id, fight.fighter_2_id)
+        )
+        confidence = fights_count / (fights_count + 8.0)
+        scores[fighter.id] = average + confidence * (scores[fighter.id] - average)
+    return scores
 
 
 def _load_current_card() -> list[tuple[str, str, int, int]]:
@@ -134,12 +183,12 @@ def get_fighters(
 
     groups = []
     for division in UFC_DIVISIONS:
+        division_scores = _division_power_scores(db, by_division[division])
         fighters = sorted(
             by_division[division],
             key=lambda fighter: (
-                _predictor.profiles[fighter.name].wins
-                / max(1, _predictor.profiles[fighter.name].experience),
-                _predictor.profiles[fighter.name].experience,
+                division_scores[fighter.id],
+                latest[fighter.id],
                 fighter.name,
             ),
             reverse=True,
@@ -152,8 +201,7 @@ def get_fighters(
                     name=fighter.name,
                     weight_class=division,
                     model_score=round(
-                        100 * _predictor.profiles[fighter.name].wins
-                        / max(1, _predictor.profiles[fighter.name].experience), 1
+                        50.0 + 10.0 * division_scores[fighter.id], 1
                     ),
                     is_active=True,
                 )
