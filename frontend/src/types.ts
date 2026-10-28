@@ -5,8 +5,8 @@ export interface FightOut {
   fighter2: string;
   odds1: number;
   odds2: number;
-  eloProb1: number;
-  eloProb2: number;
+  modelProb1: number;
+  modelProb2: number;
   impProb1: number;
   impProb2: number;
   ev1: number;
@@ -24,7 +24,7 @@ export interface FighterListItem {
   id: number;
   name: string;
   weight_class: string | null;
-  current_elo: number;
+  model_score: number;
   is_active?: boolean;
 }
 
@@ -35,10 +35,10 @@ export interface FighterListResponse {
   fighters: FighterListItem[];
 }
 
-export interface EloPoint {
+export interface ModelPoint {
   fight_id: number;
   fight_sequence: number;
-  elo_after: number;
+  model_score: number;
   opponent_name: string;
   result: string;
   event: string;
@@ -58,12 +58,12 @@ export interface FighterDetail {
   id: number;
   name: string;
   weight_class: string | null;
-  current_elo: number;
+  model_score: number;
   is_active?: boolean;
   total_fights: number;
   wins: number;
   losses: number;
   draws: number;
   fight_history: FightHistoryItem[];
-  elo_history: EloPoint[];
+  model_history: ModelPoint[];
 }

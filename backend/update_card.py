@@ -281,7 +281,7 @@ def fetch_ufc_odds():
                                     odds2 = outcomes[0]['price']
                                 break
 
-                # Standardize to database canonical fighter names for accurate Elo lookup
+                # Standardize to database canonical fighter names for model lookup
                 canonical_f1 = get_canonical_db_name(f1, db_fighters)
                 canonical_f2 = get_canonical_db_name(f2, db_fighters)
 

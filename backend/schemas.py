@@ -8,7 +8,7 @@ class FighterListItem(BaseModel):
     id: int
     name: str
     weight_class: Optional[str] = None
-    current_elo: float
+    model_score: float
     is_active: bool = True
 
     model_config = {"from_attributes": True}
@@ -23,10 +23,10 @@ class FighterListResponse(BaseModel):
 
 # --- /fighters/{id} detail ---
 
-class EloPoint(BaseModel):
+class ModelPoint(BaseModel):
     fight_id: int
     fight_sequence: int
-    elo_after: float
+    model_score: float
     opponent_name: str
     result: str
     event: str
@@ -50,14 +50,14 @@ class FighterDetail(BaseModel):
     id: int
     name: str
     weight_class: Optional[str] = None
-    current_elo: float
+    model_score: float
     is_active: bool = True
     total_fights: int
     wins: int
     losses: int
     draws: int
     fight_history: list[FightHistoryItem]
-    elo_history: list[EloPoint]
+    model_history: list[ModelPoint]
 
     model_config = {"from_attributes": True}
 
@@ -69,8 +69,8 @@ class FightOut(BaseModel):
     fighter2: str
     odds1: int
     odds2: int
-    eloProb1: float
-    eloProb2: float
+    modelProb1: float
+    modelProb2: float
     impProb1: float
     impProb2: float
     ev1: float

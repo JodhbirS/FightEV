@@ -11,7 +11,6 @@ class Fighter(Base):
     name = Column(String, unique=True, nullable=False, index=True)
     weight_class = Column(String, nullable=True)
 
-    elo_snapshots = relationship("EloSnapshot", back_populates="fighter", foreign_keys="EloSnapshot.fighter_id")
 
 
 class Fight(Base):
@@ -32,19 +31,3 @@ class Fight(Base):
 
     # No unique constraint — rematches at the same event are possible
     # (e.g. tournament-style events like UFC - Ultimate Japan)
-
-
-class EloSnapshot(Base):
-    __tablename__ = "elo_snapshots"
-
-    id = Column(Integer, primary_key=True, index=True, autoincrement=True)
-    fighter_id = Column(Integer, ForeignKey("fighters.id"), nullable=False, index=True)
-    fight_id = Column(Integer, ForeignKey("fights.id"), nullable=False)
-    elo_before = Column(Float, nullable=False)
-    elo_after = Column(Float, nullable=False)
-    opponent_id = Column(Integer, ForeignKey("fighters.id"), nullable=False)
-    result = Column(String, nullable=False)  # "win"/"loss"/"draw"/"nc" from this fighter's POV
-
-    fighter = relationship("Fighter", back_populates="elo_snapshots", foreign_keys=[fighter_id])
-    opponent = relationship("Fighter", foreign_keys=[opponent_id])
-    fight = relationship("Fight")

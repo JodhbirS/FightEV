@@ -19,7 +19,7 @@ interface TooltipProps {
   payload?: Array<{
     payload: {
       fight_sequence: number;
-      elo_after: number;
+      model_score: number;
       opponent_name: string;
       result: string;
       event: string;
@@ -49,7 +49,7 @@ function ChartTooltip({ active, payload }: TooltipProps) {
           {d.result.toUpperCase().slice(0, 1)}
         </span>
         <span style={{ fontWeight: 600, fontVariantNumeric: 'tabular-nums', color: 'var(--blue)' }}>
-          {Math.round(d.elo_after)} Elo
+          {Math.round(d.model_score)}% win rate
         </span>
       </div>
     </div>
@@ -104,18 +104,18 @@ export default function FighterDetailPage() {
     );
   }
 
-  const chartData = fighter.elo_history.map((p) => ({
+  const chartData = fighter.model_history.map((p) => ({
     fight_sequence: p.fight_sequence,
-    elo_after: p.elo_after,
+    model_score: p.model_score,
     opponent_name: p.opponent_name,
     result: p.result,
     event: p.event,
   }));
 
-  const eloMin = Math.min(...chartData.map((d) => d.elo_after));
-  const eloMax = Math.max(...chartData.map((d) => d.elo_after));
-  const yMin = Math.floor((eloMin - 30) / 50) * 50;
-  const yMax = Math.ceil((eloMax + 30) / 50) * 50;
+  const scoreMin = Math.min(...chartData.map((d) => d.model_score));
+  const scoreMax = Math.max(...chartData.map((d) => d.model_score));
+  const yMin = Math.max(0, Math.floor((scoreMin - 5) / 5) * 5);
+  const yMax = Math.min(100, Math.ceil((scoreMax + 5) / 5) * 5);
 
   return (
     <motion.main
@@ -147,10 +147,10 @@ export default function FighterDetailPage() {
         {/* Stats summary */}
         <div className="stat-summary">
           <div className="stat-block">
-            <span className="stat-val" style={{ color: fighter.current_elo > 0 ? 'var(--blue)' : 'var(--ink-3)', fontSize: fighter.current_elo > 0 ? '1.125rem' : '0.85rem', fontWeight: 600 }}>
-              {fighter.current_elo > 0 ? Math.round(fighter.current_elo) : 'Inactive'}
+            <span className="stat-val" style={{ color: fighter.model_score > 0 ? 'var(--blue)' : 'var(--ink-3)', fontSize: fighter.model_score > 0 ? '1.125rem' : '0.85rem', fontWeight: 600 }}>
+              {fighter.model_score > 0 ? `${Math.round(fighter.model_score)}%` : 'Inactive'}
             </span>
-            <span className="stat-label">{fighter.current_elo > 0 ? 'Elo Rating' : 'Status'}</span>
+            <span className="stat-label">{fighter.model_score > 0 ? 'Career Win Rate' : 'Status'}</span>
           </div>
           <div className="stat-block">
             <span className="stat-val">{fighter.total_fights}</span>
@@ -171,7 +171,7 @@ export default function FighterDetailPage() {
       {chartData.length > 1 && (
         <section style={{ marginBottom: 16 }}>
           <div className="section-label">
-            Elo History <span>{chartData.length} fights</span>
+            Win Rate History <span>{chartData.length} fights</span>
           </div>
           <div className="chart-panel">
             <ResponsiveContainer width="100%" height={210}>
@@ -194,7 +194,7 @@ export default function FighterDetailPage() {
                 <Tooltip content={<ChartTooltip />} />
                 <Line
                   type="monotone"
-                  dataKey="elo_after"
+                  dataKey="model_score"
                   stroke="var(--blue)"
                   strokeWidth={2}
                   dot={{ r: 2.5, fill: 'var(--blue)', stroke: '#FFFFFF', strokeWidth: 1.5 }}

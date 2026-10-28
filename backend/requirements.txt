@@ -8,3 +8,5 @@ python-dotenv
 sqlalchemy
 httpx
 pytest
+scikit-learn
+numpy

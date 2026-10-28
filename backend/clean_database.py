@@ -1,4 +1,4 @@
-"""Repair the committed UFC database and rebuild chronological Elo snapshots."""
+"""Repair and normalize the committed UFC database."""
 
 import re
 import sys
@@ -11,8 +11,7 @@ from sqlalchemy import inspect, text
 
 sys.path.insert(0, ".")
 from database import SessionLocal, engine  # noqa: E402
-from models import Fighter, Fight, EloSnapshot  # noqa: E402
-from scrape_new_fights import recompute_elo  # noqa: E402
+from models import Fighter, Fight  # noqa: E402
 
 HEADERS = {"User-Agent": "FightEV-Bot/1.0 (https://fightev.app)"}
 
@@ -55,9 +54,10 @@ def fetch_event_dates() -> dict[str, date]:
 
 
 def add_event_date_column() -> None:
-    if not any(column["name"] == "event_date" for column in inspect(engine).get_columns("fights")):
-        with engine.begin() as connection:
+    with engine.begin() as connection:
+        if not any(column["name"] == "event_date" for column in inspect(engine).get_columns("fights")):
             connection.execute(text("ALTER TABLE fights ADD COLUMN event_date DATE"))
+        connection.execute(text("DROP TABLE IF EXISTS elo_snapshots"))
 
 
 def main() -> None:
@@ -96,9 +96,6 @@ def main() -> None:
                 fight.event_date = dates.get(numbered_event.group(1))
 
         db.flush()
-        db.query(EloSnapshot).delete()
-        db.commit()
-        recompute_elo(db)
         db.commit()
         dated = db.query(Fight).filter(Fight.event_date.is_not(None)).count()
         print(f"Removed {removed} invalid/duplicate fights; dated {dated} fights.")

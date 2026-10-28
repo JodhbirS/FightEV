@@ -26,8 +26,7 @@ else:
     DB_PATH = "backend/data/fightev.db"
 
 from database import Base
-from models import Fighter, Fight, EloSnapshot
-from elo_engine import get_method_factor
+from models import Fighter, Fight
 
 WIKI_HEADERS = {"User-Agent": "FightEV-Bot/1.0 (https://fightev.app; dev@fightev.app)"}
 
@@ -141,68 +140,6 @@ def is_valid_ufc_event(event: str, fighter_1: str, fighter_2: str) -> bool:
         or "defeats" in fighter_text
         or "ufc " in fighter_text
     )
-
-
-def recompute_elo(session):
-    """Recompute all Elo snapshots from scratch using round-calibrated K-factor."""
-    session.query(EloSnapshot).delete()
-    session.flush()
-
-    fights = (
-        session.query(Fight)
-        .order_by(Fight.event_date.asc().nullslast(), Fight.id.asc())
-        .all()
-    )
-
-    INITIAL_ELO = 1000.0
-    BASE_K = 40.0
-    ratings = defaultdict(lambda: INITIAL_ELO)
-    bouts = defaultdict(int)
-
-    for fight in fights:
-        f1_id, f2_id = fight.fighter_1_id, fight.fighter_2_id
-
-        ra = ratings[f1_id]
-        rb = ratings[f2_id]
-
-        ea = 1.0 / (1.0 + 10 ** ((rb - ra) / 400.0))
-        eb = 1.0 - ea
-
-        result = fight.result
-        if result == "win":
-            sa, sb = 1.0, 0.0
-            f1_r, f2_r = "win", "loss"
-        elif result == "draw":
-            sa, sb = 0.5, 0.5
-            f1_r, f2_r = "draw", "draw"
-        else:
-            sa, sb = 0.0, 0.0
-            f1_r, f2_r = "nc", "nc"
-
-        mf = get_method_factor(fight.method, fight.round)
-        k1 = (BASE_K / math.sqrt(max(1, bouts[f1_id]))) * mf
-        k2 = (BASE_K / math.sqrt(max(1, bouts[f2_id]))) * mf
-
-        new_ra = round(ra + k1 * (sa - ea), 2)
-        new_rb = round(rb + k2 * (sb - eb), 2)
-
-        session.add(EloSnapshot(
-            fighter_id=f1_id, fight_id=fight.id,
-            elo_before=ra, elo_after=new_ra,
-            opponent_id=f2_id, result=f1_r,
-        ))
-        session.add(EloSnapshot(
-            fighter_id=f2_id, fight_id=fight.id,
-            elo_before=rb, elo_after=new_rb,
-            opponent_id=f1_id, result=f2_r,
-        ))
-
-        ratings[f1_id] = new_ra
-        ratings[f2_id] = new_rb
-        bouts[f1_id] += 1
-        bouts[f2_id] += 1
-
-    session.flush()
 
 
 def scrape_wikipedia_events(session) -> int:
@@ -337,7 +274,7 @@ def main():
 
     if new_fights > 0:
         session.flush()
-        print(f"Added {new_fights} new fights. Recomputing Elo ratings...")
+        print(f"Added {new_fights} new fights. The ensemble retrains on API startup.")
         recompute_elo(session)
         session.commit()
         print(f"Successfully updated database with {new_fights} new fights!")
