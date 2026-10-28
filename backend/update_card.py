@@ -2,9 +2,7 @@ import requests
 import json
 import os
 import re
-import sys
 import unicodedata
-from datetime import datetime, timezone, timedelta
 from dotenv import load_dotenv
 from bs4 import BeautifulSoup
 from database import SessionLocal
@@ -226,6 +224,9 @@ def fetch_ufc_odds():
         official_bouts = []
         if page_title:
             official_bouts = parse_wikipedia_bouts(page_title)
+        if not official_bouts:
+            print("Error: Could not retrieve the official upcoming UFC card.")
+            return
 
         # 2. Fetch live odds for all MMA events from Odds API
         odds_url = f"{base_url}/sports/{sport}/odds"
@@ -241,59 +242,7 @@ def fetch_ufc_odds():
         raw_odds_events = odds_res.json()
         print(f"Retrieved {len(raw_odds_events)} live MMA betting events.")
 
-        # 3. If Wikipedia event page was not found or had no bouts, fallback to headliner clustering
-        if not official_bouts:
-            print("Fallback: Searching Wikipedia using Odds API event clusters...")
-            parsed_events = []
-            for event in raw_odds_events:
-                f1 = event.get('home_team', '')
-                f2 = event.get('away_team', '')
-                commence_str = event.get('commence_time', '')
-                try:
-                    ctime = datetime.fromisoformat(commence_str.replace('Z', '+00:00'))
-                except Exception:
-                    continue
-
-                in_db1 = f1.lower() in db_fighters or normalize_name(f1) in [normalize_name(k) for k in db_fighters]
-                in_db2 = f2.lower() in db_fighters or normalize_name(f2) in [normalize_name(k) for k in db_fighters]
-
-                parsed_events.append({
-                    'event': event,
-                    'f1': f1,
-                    'f2': f2,
-                    'ctime': ctime,
-                    'is_ufc': in_db1 or in_db2,
-                    'ufc_score': (1 if in_db1 else 0) + (1 if in_db2 else 0),
-                })
-
-            parsed_events.sort(key=lambda x: x['ctime'])
-
-            # Group events into sessions
-            clusters = []
-            current_cluster = []
-            for item in parsed_events:
-                if not current_cluster:
-                    current_cluster.append(item)
-                else:
-                    last_time = current_cluster[-1]['ctime']
-                    if (item['ctime'] - last_time).total_seconds() / 3600 <= 5:
-                        current_cluster.append(item)
-                    else:
-                        clusters.append(current_cluster)
-                        current_cluster = [item]
-            if current_cluster:
-                clusters.append(current_cluster)
-
-            if clusters:
-                # Pick cluster with highest UFC fighter count
-                best_cluster = max(clusters, key=lambda cl: sum(x['ufc_score'] for x in cl))
-                search_pairs = [(x['f1'], x['f2']) for x in reversed(best_cluster)]
-                found_title = search_wikipedia_for_event(search_pairs)
-                if found_title:
-                    print(f"Matched Wikipedia event page via Odds API cluster: '{found_title}'")
-                    official_bouts = parse_wikipedia_bouts(found_title)
-
-        # 4. Match official bouts to Odds API events to attach live moneyline odds
+        # 3. Match official bouts to Odds API events to attach live moneyline odds
         card_fights = []
 
         if official_bouts:

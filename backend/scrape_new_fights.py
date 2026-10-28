@@ -132,12 +132,27 @@ def fight_exists(session, event: str, f1_id: int, f2_id: int) -> bool:
     return False
 
 
+def is_valid_ufc_event(event: str, fighter_1: str, fighter_2: str) -> bool:
+    event_lower = event.lower()
+    fighter_text = f"{fighter_1} {fighter_2}".lower()
+    return not (
+        re.fullmatch(r"\d{4} in ufc", event_lower)
+        or "road to ufc" in event_lower
+        or "defeats" in fighter_text
+        or "ufc " in fighter_text
+    )
+
+
 def recompute_elo(session):
     """Recompute all Elo snapshots from scratch using round-calibrated K-factor."""
     session.query(EloSnapshot).delete()
     session.flush()
 
-    fights = session.query(Fight).order_by(Fight.id.asc()).all()
+    fights = (
+        session.query(Fight)
+        .order_by(Fight.event_date.asc().nullslast(), Fight.id.asc())
+        .all()
+    )
 
     INITIAL_ELO = 1000.0
     BASE_K = 40.0
@@ -260,7 +275,13 @@ def scrape_wikipedia_events(session) -> int:
                         rnd_str = tds[5].strip()
                         tm_str = tds[6].strip()
 
-                        if not f1_name or not f2_name or "fighter" in f1_name.lower() or "weight" in f1_name.lower():
+                        if (
+                            not f1_name
+                            or not f2_name
+                            or "fighter" in f1_name.lower()
+                            or "weight" in f1_name.lower()
+                            or not is_valid_ufc_event(event_name, f1_name, f2_name)
+                        ):
                             continue
 
                         # Check if it has a completed result

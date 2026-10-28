@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Float, ForeignKey
+from sqlalchemy import Column, Integer, String, Float, ForeignKey, Date
 from sqlalchemy.orm import relationship
 
 from database import Base
@@ -19,6 +19,7 @@ class Fight(Base):
 
     id = Column(Integer, primary_key=True, index=True, autoincrement=True)
     event = Column(String, nullable=False)
+    event_date = Column(Date, nullable=True, index=True)
     fighter_1_id = Column(Integer, ForeignKey("fighters.id"), nullable=False)
     fighter_2_id = Column(Integer, ForeignKey("fighters.id"), nullable=False)
     result = Column(String, nullable=False)  # "win", "draw", "nc"
