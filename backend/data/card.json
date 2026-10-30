@@ -32,8 +32,8 @@
   {
     "fighter1": "Francis Marshall",
     "fighter2": "Dakota Hope",
-    "odds1": -235,
-    "odds2": 186
+    "odds1": -225,
+    "odds2": 180
   },
   {
     "fighter1": "Rodrigo Sezinando",
@@ -57,13 +57,13 @@
     "fighter1": "Nick Klein",
     "fighter2": "Joseph Kropschot",
     "odds1": 250,
-    "odds2": -310
+    "odds2": -325
   },
   {
     "fighter1": "Talita Alencar",
     "fighter2": "Piera Rodr\u00edguez",
-    "odds1": 235,
-    "odds2": -300
+    "odds1": 245,
+    "odds2": -320
   },
   {
     "fighter1": "Lucia Szabov\u00e1",
