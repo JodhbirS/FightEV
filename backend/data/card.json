@@ -2,8 +2,8 @@
   {
     "fighter1": "Renato Moicano",
     "fighter2": "Tom Nolan",
-    "odds1": -118,
-    "odds2": 100
+    "odds1": -126,
+    "odds2": 108
   },
   {
     "fighter1": "Randy Brown",
@@ -14,8 +14,8 @@
   {
     "fighter1": "Ode Osbourne",
     "fighter2": "Cody Durden",
-    "odds1": -102,
-    "odds2": -116
+    "odds1": 100,
+    "odds2": -118
   },
   {
     "fighter1": "Yana Santos",
@@ -32,8 +32,8 @@
   {
     "fighter1": "Francis Marshall",
     "fighter2": "Dakota Hope",
-    "odds1": -220,
-    "odds2": 184
+    "odds1": -205,
+    "odds2": 172
   },
   {
     "fighter1": "Rodrigo Sezinando",
@@ -56,8 +56,8 @@
   {
     "fighter1": "Nick Klein",
     "fighter2": "Joseph Kropschot",
-    "odds1": 265,
-    "odds2": -330
+    "odds1": 275,
+    "odds2": -340
   },
   {
     "fighter1": "Talita Alencar",
@@ -68,7 +68,7 @@
   {
     "fighter1": "Lucia Szabov\u00e1",
     "fighter2": "Tainara Lisboa",
-    "odds1": -700,
-    "odds2": 500
+    "odds1": -670,
+    "odds2": 490
   }
 ]
