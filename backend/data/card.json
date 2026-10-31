@@ -2,44 +2,44 @@
   {
     "fighter1": "Renato Moicano",
     "fighter2": "Tom Nolan",
-    "odds1": -120,
-    "odds2": -102
+    "odds1": -118,
+    "odds2": 100
   },
   {
     "fighter1": "Randy Brown",
     "fighter2": "Jacobe Smith",
-    "odds1": 225,
-    "odds2": -290
+    "odds1": 215,
+    "odds2": -260
   },
   {
     "fighter1": "Ode Osbourne",
     "fighter2": "Cody Durden",
-    "odds1": -105,
-    "odds2": -115
+    "odds1": -102,
+    "odds2": -116
   },
   {
     "fighter1": "Yana Santos",
     "fighter2": "Luana Santos",
-    "odds1": 225,
-    "odds2": -290
+    "odds1": 260,
+    "odds2": -320
   },
   {
     "fighter1": "Jean-Paul Lebosnoyani",
     "fighter2": "Farman Hasanov",
-    "odds1": -300,
-    "odds2": 235
+    "odds1": -295,
+    "odds2": 240
   },
   {
     "fighter1": "Francis Marshall",
     "fighter2": "Dakota Hope",
-    "odds1": -225,
-    "odds2": 180
+    "odds1": -220,
+    "odds2": 184
   },
   {
     "fighter1": "Rodrigo Sezinando",
     "fighter2": "Theodor Berggren",
-    "odds1": -176,
-    "odds2": 142
+    "odds1": -178,
+    "odds2": 150
   },
   {
     "fighter1": "Julian Erosa",
@@ -50,25 +50,25 @@
   {
     "fighter1": "Zachary Reese",
     "fighter2": "Mickey Gall",
-    "odds1": -350,
-    "odds2": 265
+    "odds1": -405,
+    "odds2": 320
   },
   {
     "fighter1": "Nick Klein",
     "fighter2": "Joseph Kropschot",
-    "odds1": 250,
-    "odds2": -325
+    "odds1": 265,
+    "odds2": -330
   },
   {
     "fighter1": "Talita Alencar",
     "fighter2": "Piera Rodr\u00edguez",
-    "odds1": 245,
-    "odds2": -320
+    "odds1": 240,
+    "odds2": -295
   },
   {
     "fighter1": "Lucia Szabov\u00e1",
     "fighter2": "Tainara Lisboa",
     "odds1": -700,
-    "odds2": 470
+    "odds2": 500
   }
 ]
