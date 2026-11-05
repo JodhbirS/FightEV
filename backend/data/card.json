@@ -1,74 +1,86 @@
 [
   {
-    "fighter1": "Renato Moicano",
-    "fighter2": "Tom Nolan",
-    "odds1": -126,
-    "odds2": 108
+    "fighter1": "Waldo Cortes Acosta",
+    "fighter2": "Johnny Walker",
+    "odds1": -265,
+    "odds2": 200
   },
   {
-    "fighter1": "Randy Brown",
-    "fighter2": "Jacobe Smith",
-    "odds1": 215,
-    "odds2": -260
+    "fighter1": "Tatiana Suarez",
+    "fighter2": "Virna Jandiroba",
+    "odds1": -215,
+    "odds2": 164
   },
   {
-    "fighter1": "Ode Osbourne",
-    "fighter2": "Cody Durden",
-    "odds1": 100,
-    "odds2": -118
+    "fighter1": "Davey Grant",
+    "fighter2": "Elijah Smith",
+    "odds1": 250,
+    "odds2": -340
   },
   {
-    "fighter1": "Yana Santos",
-    "fighter2": "Luana Santos",
-    "odds1": 260,
-    "odds2": -320
+    "fighter1": "Billy Elekana",
+    "fighter2": "Lucas Fernando",
+    "odds1": 255,
+    "odds2": -350
   },
   {
-    "fighter1": "Jean-Paul Lebosnoyani",
-    "fighter2": "Farman Hasanov",
-    "odds1": -295,
-    "odds2": 240
+    "fighter1": "Priscila Cachoeira",
+    "fighter2": "Nina Nikolija Milo\u0161evi\u0107",
+    "odds1": 350,
+    "odds2": -520
   },
   {
-    "fighter1": "Francis Marshall",
-    "fighter2": "Dakota Hope",
-    "odds1": -205,
-    "odds2": 172
+    "fighter1": "Mitch Raposo",
+    "fighter2": "Marcos Degli",
+    "odds1": 186,
+    "odds2": -245
   },
   {
-    "fighter1": "Rodrigo Sezinando",
-    "fighter2": "Theodor Berggren",
-    "odds1": -178,
-    "odds2": 150
+    "fighter1": "Keiichiro Nakamura",
+    "fighter2": "Ollie Schmid",
+    "odds1": -390,
+    "odds2": 280
   },
   {
-    "fighter1": "Julian Erosa",
-    "fighter2": "Lee Jeong-yeong",
+    "fighter1": "Gabriel Loren\u00e7o",
+    "fighter2": "Thomas Petersen",
     "odds1": -110,
     "odds2": -110
   },
   {
-    "fighter1": "Zachary Reese",
-    "fighter2": "Mickey Gall",
-    "odds1": -405,
-    "odds2": 320
+    "fighter1": "Karine Silva",
+    "fighter2": "Gabriella Fernandes",
+    "odds1": -225,
+    "odds2": 172
   },
   {
-    "fighter1": "Nick Klein",
-    "fighter2": "Joseph Kropschot",
-    "odds1": 275,
-    "odds2": -340
+    "fighter1": "Jos\u00e9 Mauro Delano",
+    "fighter2": "Murtazali Magomedov",
+    "odds1": -120,
+    "odds2": -106
   },
   {
-    "fighter1": "Talita Alencar",
-    "fighter2": "Piera Rodr\u00edguez",
-    "odds1": 240,
-    "odds2": -295
+    "fighter1": "Austin Bashi",
+    "fighter2": "Carlos Calderon",
+    "odds1": -450,
+    "odds2": 350
   },
   {
-    "fighter1": "Lucia Szabov\u00e1",
-    "fighter2": "Tainara Lisboa",
-    "odds1": -670,
-    "odds2": 490
+    "fighter1": "Mantas Kondratavi\u010dius",
+    "fighter2": "Andre Petroski",
+    "odds1": -295,
+    "odds2": 220
+  },
+  {
+    "fighter1": "Ko Seok-hyeon",
+    "fighter2": "Wellington Turman",
+    "odds1": -800,
+    "odds2": 480
+  },
+  {
+    "fighter1": "Jonny Parsons",
+    "fighter2": "Jos\u00e9 Henrique Souza",
+    "odds1": 186,
+    "odds2": -245
   }
 ]
