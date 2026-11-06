@@ -2,44 +2,44 @@
   {
     "fighter1": "Waldo Cortes Acosta",
     "fighter2": "Johnny Walker",
-    "odds1": -265,
-    "odds2": 200
+    "odds1": -250,
+    "odds2": 198
   },
   {
     "fighter1": "Tatiana Suarez",
     "fighter2": "Virna Jandiroba",
-    "odds1": -215,
-    "odds2": 164
+    "odds1": -210,
+    "odds2": 168
   },
   {
     "fighter1": "Davey Grant",
     "fighter2": "Elijah Smith",
-    "odds1": 250,
-    "odds2": -340
+    "odds1": 245,
+    "odds2": -320
   },
   {
     "fighter1": "Billy Elekana",
     "fighter2": "Lucas Fernando",
-    "odds1": 255,
-    "odds2": -350
+    "odds1": 250,
+    "odds2": -325
   },
   {
     "fighter1": "Priscila Cachoeira",
     "fighter2": "Nina Nikolija Milo\u0161evi\u0107",
-    "odds1": 350,
-    "odds2": -520
+    "odds1": 360,
+    "odds2": -500
   },
   {
     "fighter1": "Mitch Raposo",
     "fighter2": "Marcos Degli",
-    "odds1": 186,
-    "odds2": -245
+    "odds1": 184,
+    "odds2": -230
   },
   {
     "fighter1": "Keiichiro Nakamura",
     "fighter2": "Ollie Schmid",
-    "odds1": -390,
-    "odds2": 280
+    "odds1": -375,
+    "odds2": 285
   },
   {
     "fighter1": "Gabriel Loren\u00e7o",
@@ -51,36 +51,36 @@
     "fighter1": "Karine Silva",
     "fighter2": "Gabriella Fernandes",
     "odds1": -225,
-    "odds2": 172
+    "odds2": 180
   },
   {
     "fighter1": "Jos\u00e9 Mauro Delano",
     "fighter2": "Murtazali Magomedov",
-    "odds1": -125,
+    "odds1": -120,
     "odds2": -102
   },
   {
     "fighter1": "Austin Bashi",
     "fighter2": "Carlos Calderon",
-    "odds1": -500,
-    "odds2": 340
+    "odds1": -480,
+    "odds2": 350
   },
   {
     "fighter1": "Mantas Kondratavi\u010dius",
     "fighter2": "Andre Petroski",
-    "odds1": -295,
-    "odds2": 220
+    "odds1": -300,
+    "odds2": 235
   },
   {
     "fighter1": "Ko Seok-hyeon",
     "fighter2": "Wellington Turman",
-    "odds1": -800,
-    "odds2": 480
+    "odds1": -750,
+    "odds2": 490
   },
   {
     "fighter1": "Jonny Parsons",
     "fighter2": "Jos\u00e9 Henrique Souza",
-    "odds1": 186,
-    "odds2": -245
+    "odds1": 184,
+    "odds2": -230
   }
 ]
