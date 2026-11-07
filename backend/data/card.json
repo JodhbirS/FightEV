@@ -14,20 +14,20 @@
   {
     "fighter1": "Davey Grant",
     "fighter2": "Elijah Smith",
-    "odds1": 240,
-    "odds2": -295
-  },
-  {
-    "fighter1": "Billy Elekana",
-    "fighter2": "Lucas Fernando",
     "odds1": 265,
     "odds2": -330
   },
   {
+    "fighter1": "Billy Elekana",
+    "fighter2": "Lucas Fernando",
+    "odds1": 275,
+    "odds2": -340
+  },
+  {
     "fighter1": "Priscila Cachoeira",
     "fighter2": "Nina Nikolija Milo\u0161evi\u0107",
-    "odds1": 420,
-    "odds2": -560
+    "odds1": 430,
+    "odds2": -590
   },
   {
     "fighter1": "Mitch Raposo",
@@ -62,8 +62,8 @@
   {
     "fighter1": "Austin Bashi",
     "fighter2": "Carlos Calderon",
-    "odds1": -550,
-    "odds2": 410
+    "odds1": -590,
+    "odds2": 440
   },
   {
     "fighter1": "Mantas Kondratavi\u010dius",
