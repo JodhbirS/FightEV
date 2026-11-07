@@ -1,17 +1,40 @@
-import type { FighterListResponse, FighterDetail } from './types';
+import type { FightOut, FighterListResponse, FighterDetail } from './types';
 
 // In production (Vercel), use the absolute backend URL.
 // In local dev, Vite's proxy rewrites /api/* → http://localhost:8000/*
 const API_BASE = import.meta.env.PROD
   ? 'https://fightev.onrender.com'
   : '/api';
+const REQUEST_TIMEOUT_MS = 30_000;
 
 const fighterCache = new Map<string | number, FighterDetail>();
 
+class ApiError extends Error {
+  constructor(public readonly status: number) {
+    super(`Request failed (${status})`);
+  }
+}
+
+async function fetchJson<T>(path: string): Promise<T> {
+  const controller = new AbortController();
+  const timeout = window.setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
+
+  try {
+    const res = await fetch(`${API_BASE}${path}`, { signal: controller.signal });
+    if (!res.ok) throw new ApiError(res.status);
+    return await res.json() as T;
+  } catch (error) {
+    if (error instanceof DOMException && error.name === 'AbortError') {
+      throw new Error('The API took too long to respond. Please try again.');
+    }
+    throw error;
+  } finally {
+    window.clearTimeout(timeout);
+  }
+}
+
 export async function getFights() {
-  const res = await fetch(`${API_BASE}/fights`);
-  if (!res.ok) throw new Error("Failed to fetch /fights");
-  return await res.json();
+  return fetchJson<FightOut[]>('/fights');
 }
 
 export async function getFighters(
@@ -26,21 +49,20 @@ export async function getFighters(
   });
   if (search) params.set('search', search);
   if (division) params.set('division', division);
-  const res = await fetch(`${API_BASE}/fighters?${params}`);
-  if (!res.ok) throw new Error("Failed to fetch /fighters");
-  return await res.json();
+  return fetchJson<FighterListResponse>(`/fighters?${params}`);
 }
 
 export async function getFighter(id: number): Promise<FighterDetail> {
   if (fighterCache.has(id)) {
     return fighterCache.get(id)!;
   }
-  const res = await fetch(`${API_BASE}/fighters/${id}`);
-  if (!res.ok) {
-    if (res.status === 404) throw new Error("Fighter not found");
-    throw new Error("Failed to fetch fighter details");
+  let data: FighterDetail;
+  try {
+    data = await fetchJson<FighterDetail>(`/fighters/${id}`);
+  } catch (error) {
+    if (error instanceof ApiError && error.status === 404) throw new Error("Fighter not found");
+    throw new Error("Failed to fetch fighter details", { cause: error });
   }
-  const data = await res.json();
   fighterCache.set(id, data);
   fighterCache.set(data.name.toLowerCase(), data);
   return data;
@@ -51,12 +73,13 @@ export async function getFighterByName(name: string): Promise<FighterDetail> {
   if (fighterCache.has(key)) {
     return fighterCache.get(key)!;
   }
-  const res = await fetch(`${API_BASE}/fighters/by-name/${encodeURIComponent(name)}`);
-  if (!res.ok) {
-    if (res.status === 404) throw new Error("Fighter not found");
-    throw new Error("Failed to fetch fighter details");
+  let data: FighterDetail;
+  try {
+    data = await fetchJson<FighterDetail>(`/fighters/by-name/${encodeURIComponent(name)}`);
+  } catch (error) {
+    if (error instanceof ApiError && error.status === 404) throw new Error("Fighter not found");
+    throw new Error("Failed to fetch fighter details", { cause: error });
   }
-  const data = await res.json();
   fighterCache.set(key, data);
   fighterCache.set(data.id, data);
   return data;
