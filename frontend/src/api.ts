@@ -5,7 +5,7 @@ import type { FightOut, FighterListResponse, FighterDetail } from './types';
 const API_BASE = import.meta.env.PROD
   ? 'https://fightev.onrender.com'
   : '/api';
-const REQUEST_TIMEOUT_MS = 30_000;
+const REQUEST_TIMEOUT_MS = 90_000;
 
 const fighterCache = new Map<string | number, FighterDetail>();
 
