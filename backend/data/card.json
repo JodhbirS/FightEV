@@ -1,86 +1,74 @@
 [
   {
-    "fighter1": "Waldo Cortes Acosta",
-    "fighter2": "Johnny Walker",
-    "odds1": -230,
-    "odds2": 190
-  },
-  {
-    "fighter1": "Tatiana Suarez",
-    "fighter2": "Virna Jandiroba",
-    "odds1": -200,
+    "fighter1": "Ciryl Gane",
+    "fighter2": "Josh Hokit",
+    "odds1": -210,
     "odds2": 168
   },
   {
-    "fighter1": "Davey Grant",
-    "fighter2": "Elijah Smith",
-    "odds1": 265,
-    "odds2": -330
+    "fighter1": "Kayla Harrison",
+    "fighter2": "Amanda Nunes",
+    "odds1": -180,
+    "odds2": 146
   },
   {
-    "fighter1": "Billy Elekana",
-    "fighter2": "Lucas Fernando",
-    "odds1": 275,
-    "odds2": -340
+    "fighter1": "Caio Borralho",
+    "fighter2": "Yousri Belgaroui",
+    "odds1": -158,
+    "odds2": 128
   },
   {
-    "fighter1": "Priscila Cachoeira",
-    "fighter2": "Nina Nikolija Milo\u0161evi\u0107",
-    "odds1": 430,
-    "odds2": -590
+    "fighter1": "Uro\u0161 Medi\u0107",
+    "fighter2": "Kevin Holland",
+    "odds1": -160,
+    "odds2": 130
   },
   {
-    "fighter1": "Mitch Raposo",
-    "fighter2": "Marcos Degli",
-    "odds1": 188,
+    "fighter1": "Bilal Hasan",
+    "fighter2": "Luis Gurule",
+    "odds1": -1250,
+    "odds2": 710
+  },
+  {
+    "fighter1": "Drew Dober",
+    "fighter2": "Chris Duncan",
+    "odds1": 140,
+    "odds2": -172
+  },
+  {
+    "fighter1": "Jim Miller",
+    "fighter2": "Terrance McKinney",
+    "odds1": 180,
     "odds2": -225
   },
   {
-    "fighter1": "Keiichiro Nakamura",
-    "fighter2": "Ollie Schmid",
-    "odds1": -360,
-    "odds2": 290
+    "fighter1": "Donte Johnson",
+    "fighter2": "C\u00e9sar Almeida",
+    "odds1": -188,
+    "odds2": 152
   },
   {
-    "fighter1": "Gabriel Loren\u00e7o",
-    "fighter2": "Thomas Petersen",
-    "odds1": -110,
-    "odds2": -110
+    "fighter1": "Jared Gordon",
+    "fighter2": "Melquizael Costa",
+    "odds1": 290,
+    "odds2": -385
   },
   {
-    "fighter1": "Karine Silva",
-    "fighter2": "Gabriella Fernandes",
-    "odds1": -220,
-    "odds2": 184
+    "fighter1": "Macy Chiasson",
+    "fighter2": "Beatriz Mesquita",
+    "odds1": 194,
+    "odds2": -245
   },
   {
-    "fighter1": "Jos\u00e9 Mauro Delano",
-    "fighter2": "Murtazali Magomedov",
-    "odds1": -118,
-    "odds2": 100
+    "fighter1": "Alateng Heili",
+    "fighter2": "Juan D\u00edaz",
+    "odds1": 310,
+    "odds2": -420
   },
   {
-    "fighter1": "Austin Bashi",
-    "fighter2": "Carlos Calderon",
-    "odds1": -590,
-    "odds2": 440
-  },
-  {
-    "fighter1": "Mantas Kondratavi\u010dius",
-    "fighter2": "Andre Petroski",
-    "odds1": -295,
-    "odds2": 240
-  },
-  {
-    "fighter1": "Ko Seok-hyeon",
-    "fighter2": "Wellington Turman",
-    "odds1": -720,
-    "odds2": 520
-  },
-  {
-    "fighter1": "Jonny Parsons",
-    "fighter2": "Jos\u00e9 Henrique Souza",
-    "odds1": 188,
-    "odds2": -225
+    "fighter1": "Evan Elder",
+    "fighter2": "Samuel Sanches",
+    "odds1": -104,
+    "odds2": -118
   }
 ]

@@ -82,6 +82,47 @@ def get_canonical_db_name(name: str, db_fighters: dict[str, str]) -> str:
     return name
 
 
+def get_upcoming_ufc_event_page() -> str | None:
+    """Find the next UFC event page from Wikipedia's event list."""
+    try:
+        response = requests.get(
+            "https://en.wikipedia.org/w/api.php",
+            params={
+                "action": "parse",
+                "page": "List of UFC events",
+                "prop": "text",
+                "format": "json",
+            },
+            headers=WIKI_HEADERS,
+            timeout=10,
+        )
+        if response.status_code != 200:
+            return None
+
+        html = response.json().get("parse", {}).get("text", {}).get("*", "")
+        soup = BeautifulSoup(html, "html.parser")
+        tables = soup.find_all("table", {"class": "wikitable"})
+        if not tables:
+            return None
+
+        upcoming_events = []
+        for row in tables[0].find_all("tr"):
+            cells = [cell.get_text(strip=True) for cell in row.find_all(["td", "th"])]
+            if len(cells) >= 2 and cells[0] != "Event":
+                event_name = re.sub(r"\[.*?\]", "", cells[0]).strip()
+                event_date = re.sub(r"\[.*?\]", "", cells[1]).strip()
+                if event_name:
+                    upcoming_events.append((event_name, event_date))
+
+        if upcoming_events:
+            event_name, event_date = upcoming_events[-1]
+            print(f"Discovered next upcoming UFC event: '{event_name}' ({event_date})")
+            return event_name
+    except Exception as e:
+        print(f"Warning: Could not fetch upcoming UFC event from Wikipedia: {e}")
+    return None
+
+
 def parse_wikipedia_bouts(page_title: str) -> list[tuple[str, str]]:
     """
     Parse official bout order from a Wikipedia UFC event article.
@@ -171,80 +212,52 @@ def fetch_fanduel_ufc_card():
     if not db_fighters:
         raise RuntimeError("No fighters were loaded from the UFC database")
 
+    wiki_title = get_upcoming_ufc_event_page()
+    official_bouts = parse_wikipedia_bouts(wiki_title) if wiki_title else []
+    if not official_bouts and wiki_title and ":" in wiki_title:
+        official_bouts = parse_wikipedia_bouts(wiki_title.split(":", 1)[0].strip())
+    if not official_bouts:
+        raise RuntimeError("Could not verify the selected MMA card as a UFC event")
+
     now = datetime.now(timezone.utc)
-    events_response = requests.get(
-        f"{base_url}/sports/{sport}/events",
+    odds_response = requests.get(
+        f"{base_url}/sports/{sport}/odds",
         params={
             "apiKey": API_KEY,
+            "regions": "us",
+            "markets": "h2h",
+            "oddsFormat": "american",
             "dateFormat": "iso",
             "commenceTimeFrom": (now - timedelta(hours=8)).strftime("%Y-%m-%dT%H:%M:%SZ"),
             "commenceTimeTo": (now + timedelta(days=14)).strftime("%Y-%m-%dT%H:%M:%SZ"),
         },
         timeout=15,
     )
-    events_response.raise_for_status()
-    events = events_response.json()
-    if not events:
-        raise RuntimeError("The Odds API returned no upcoming MMA events")
-
-    parsed = []
-    for event in events:
-        first = event.get("home_team", "")
-        second = event.get("away_team", "")
-        try:
-            event_time = datetime.fromisoformat(event["commence_time"].replace("Z", "+00:00"))
-        except (KeyError, ValueError):
-            continue
-        verified_count = sum(
-            any(names_match(name, known) for known in db_fighters.values())
-            for name in (first, second)
-        )
-        parsed.append({
-            "event": event,
-            "first": first,
-            "second": second,
-            "time": event_time,
-            "verified_count": verified_count,
-        })
-
-    parsed.sort(key=lambda item: item["time"])
-    clusters: list[list[dict]] = []
-    for item in parsed:
-        if not clusters or (item["time"] - clusters[-1][-1]["time"]) > timedelta(hours=7):
-            clusters.append([item])
-        else:
-            clusters[-1].append(item)
-
-    target = max(
-        clusters,
-        key=lambda cluster: (sum(item["verified_count"] for item in cluster), len(cluster)),
-        default=[],
-    )
-    if sum(item["verified_count"] for item in target) < 4:
-        raise RuntimeError("Could not verify an upcoming UFC card from MMA events")
-
-    candidate_pairs = [(item["first"], item["second"]) for item in target]
-    wiki_title = search_wikipedia_for_event(candidate_pairs[:5])
-    official_bouts = parse_wikipedia_bouts(wiki_title) if wiki_title else []
-    if not official_bouts:
-        raise RuntimeError("Could not verify the selected MMA card as a UFC event")
-
-    def bout_rank(first: str, second: str) -> int | None:
-        for index, (official_first, official_second) in enumerate(official_bouts):
-            if (
-                (names_match(first, official_first) and names_match(second, official_second))
-                or (names_match(first, official_second) and names_match(second, official_first))
-            ):
-                return index
-        return None
+    odds_response.raise_for_status()
+    odds_events = odds_response.json()
 
     card = []
-    for item in target:
-        rank = bout_rank(item["first"], item["second"])
-        if rank is None:
+    for rank, (official_first, official_second) in enumerate(official_bouts):
+        event = next(
+            (
+                event
+                for event in odds_events
+                if (
+                    names_match(official_first, event.get("home_team", ""))
+                    and names_match(official_second, event.get("away_team", ""))
+                )
+                or (
+                    names_match(official_first, event.get("away_team", ""))
+                    and names_match(official_second, event.get("home_team", ""))
+                )
+            ),
+            None,
+        )
+        if not event:
             continue
-        odds_response = requests.get(
-            f"{base_url}/sports/{sport}/events/{item['event']['id']}/odds",
+
+        event_odds_response = requests.get(
+            f"{base_url}/sports/{sport}/events/{event['id']}/odds",
             params={
                 "apiKey": API_KEY,
                 "regions": "us",
@@ -253,11 +266,12 @@ def fetch_fanduel_ufc_card():
             },
             timeout=15,
         )
-        odds_response.raise_for_status()
-        odds_data = odds_response.json()
+        event_odds_response.raise_for_status()
+        odds_data = event_odds_response.json()
         bookmaker = next(
             (book for book in odds_data.get("bookmakers", [])
-             if book.get("key", "").lower() == "fanduel"),
+             if book.get("key", "").lower() == "fanduel"
+             or book.get("title", "").lower() == "fanduel"),
             None,
         )
         if not bookmaker:
@@ -270,12 +284,21 @@ def fetch_fanduel_ufc_card():
         if not market:
             continue
         outcomes = market["outcomes"]
-        first_name, second_name = outcomes[0]["name"], outcomes[1]["name"]
+        first_outcome = next(
+            (outcome for outcome in outcomes if names_match(official_first, outcome["name"])),
+            None,
+        )
+        second_outcome = next(
+            (outcome for outcome in outcomes if names_match(official_second, outcome["name"])),
+            None,
+        )
+        if not first_outcome or not second_outcome:
+            continue
         card.append({
-            "fighter1": get_canonical_db_name(first_name, db_fighters),
-            "fighter2": get_canonical_db_name(second_name, db_fighters),
-            "odds1": outcomes[0]["price"],
-            "odds2": outcomes[1]["price"],
+            "fighter1": get_canonical_db_name(official_first, db_fighters),
+            "fighter2": get_canonical_db_name(official_second, db_fighters),
+            "odds1": first_outcome["price"],
+            "odds2": second_outcome["price"],
             "_rank": rank,
         })
 
