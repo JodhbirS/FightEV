@@ -105,6 +105,7 @@ export default function CardPage() {
         <div className="card-layout">
         {parlays && (
           <aside className="parlay-sidebar">
+            <h2 className="parlay-title">Parlays</h2>
             <div className="parlay-grid">
               {parlays.parlays.map((parlay) => (
                 <div className="parlay-card" key={parlay.mode}>

@@ -316,6 +316,13 @@ a {
   width: 250px;
 }
 
+.parlay-title {
+  margin-bottom: 10px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
 .matchups-list {
   width: 680px;
   max-width: 100%;
