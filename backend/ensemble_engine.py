@@ -10,6 +10,7 @@ from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler
 
 METHOD_CATEGORIES = ("KO/TKO", "Submission", "Decision", "Other")
+MARKET_PROBABILITY_WEIGHT = 0.2
 
 
 def categorize_method(method: str) -> str:
@@ -33,6 +34,19 @@ def calculate_kelly_unit(win_prob: float, odds: int, fraction: float = 0.25) -> 
     b = odds / 100 if odds > 0 else 100 / abs(odds)
     kelly = (b * win_prob - (1 - win_prob)) / b
     return round(min(3.0, max(0.1, kelly * fraction * 10)), 1) if kelly > 0 else 0.0
+
+
+def _no_vig_probability(odds: int, opposing_odds: int) -> float:
+    total = implied_prob(odds) + implied_prob(opposing_odds)
+    return implied_prob(odds) / total
+
+
+def _ev_probability(model_probability: float, odds: int, opposing_odds: int) -> float:
+    market_probability = _no_vig_probability(odds, opposing_odds)
+    return (
+        (1 - MARKET_PROBABILITY_WEIGHT) * model_probability
+        + MARKET_PROBABILITY_WEIGHT * market_probability
+    )
 
 
 @dataclass
@@ -216,7 +230,12 @@ def compute_metrics(
         pred = 1 if p1 >= p2 else 2
         winner, opponent = (first, second) if pred == 1 else (second, first)
         method, method_prob = predictor.method_prediction(winner, opponent)
-        ev1, ev2 = p1 - imp1, p2 - imp2
+        ev_probability1 = _ev_probability(p1, odds1, odds2)
+        ev_probability2 = 1.0 - ev_probability1
+        decimal_odds1 = 1 + (odds1 / 100 if odds1 > 0 else 100 / abs(odds1))
+        decimal_odds2 = 1 + (odds2 / 100 if odds2 > 0 else 100 / abs(odds2))
+        ev1 = ev_probability1 * decimal_odds1 - 1
+        ev2 = ev_probability2 * decimal_odds2 - 1
         results.append({
             "fighter1": first, "fighter2": second, "odds1": odds1, "odds2": odds2,
             "modelProb1": p1, "modelProb2": p2, "impProb1": imp1, "impProb2": imp2,

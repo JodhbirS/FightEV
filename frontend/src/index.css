@@ -311,20 +311,20 @@ a {
 
 .parlay-sidebar {
   position: absolute;
-  left: calc(50% + 380px);
+  left: calc(50% + 350px);
   top: 0;
-  width: 250px;
+  width: 240px;
 }
 
 .parlay-title {
-  margin-bottom: 10px;
-  font-size: 0.875rem;
+  margin-bottom: 12px;
+  font-size: 0.9375rem;
   font-weight: 700;
   letter-spacing: -0.02em;
 }
 
 .matchups-list {
-  width: 680px;
+  width: 620px;
   max-width: 100%;
   margin: 0 auto;
 }
@@ -336,20 +336,31 @@ a {
 }
 
 .parlay-card {
-  background: var(--bg-subtle);
-  border: 1px solid var(--line);
+  background: var(--card-bg);
+  border: 1px solid var(--blue-border);
   border-radius: var(--r-md);
-  padding: 10px 11px;
+  padding: 11px 12px;
+  box-shadow: 0 1px 3px rgba(37, 99, 235, 0.06);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.parlay-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 10px rgba(37, 99, 235, 0.1);
 }
 
 .parlay-card-header span {
   color: var(--ink-2);
-  font-size: 0.625rem;
+  font-size: 0.6875rem;
+  font-variant-numeric: tabular-nums;
 }
 
 .parlay-card-header .section-label {
-  color: var(--ink);
-  font-size: 0.625rem;
+  color: var(--blue);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
 .parlay-card-header {
@@ -366,15 +377,19 @@ a {
 
 .parlay-card li {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   gap: 8px;
-  padding: 5px 0;
+  padding: 7px 0;
   border-top: 1px solid var(--line);
-  font-size: 0.625rem;
+  font-size: 0.6875rem;
+  text-align: center;
 }
 
 .parlay-card li span {
   color: var(--ink-2);
+  margin-top: -4px;
 }
 
 .top-pick-badge {

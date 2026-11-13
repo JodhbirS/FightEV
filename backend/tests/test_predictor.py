@@ -1,6 +1,8 @@
 from datetime import date
 
-from ensemble_engine import EloLogisticPredictor, compute_metrics
+import pytest
+
+from ensemble_engine import EloLogisticPredictor, compute_metrics, implied_prob
 
 
 def _fight(first, second, result, method="U-DEC"):
@@ -48,3 +50,19 @@ def test_elo_update_respects_loss_result():
     ])
 
     assert predictor.profiles["First Fighter"].elo < predictor.profiles["Second Fighter"].elo
+
+
+def test_ev_uses_expected_return_with_market_anchor():
+    predictor = EloLogisticPredictor()
+    predictor.fit([
+        _fight("First Fighter", "Second Fighter", "win"),
+        _fight("First Fighter", "Third Fighter", "loss"),
+    ])
+
+    result = compute_metrics(predictor, [("First Fighter", "Second Fighter", -110, -110)])[0]
+    market_probability = implied_prob(-110)
+    expected_probability = 0.8 * result["modelProb1"] + 0.2 * 0.5
+    expected_ev = expected_probability * (1 / market_probability) - 1
+
+    assert result["ev1"] == pytest.approx(expected_ev)
+    assert result["ev1"] != pytest.approx(result["modelProb1"] - market_probability)
