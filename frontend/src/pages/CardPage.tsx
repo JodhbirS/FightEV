@@ -84,7 +84,7 @@ export default function CardPage() {
 
   return (
     <motion.main
-      className="page-container"
+      className="page-container card-page"
       variants={pageVariants}
       initial="initial"
       animate="animate"
