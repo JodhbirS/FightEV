@@ -301,84 +301,98 @@ a {
   vertical-align: middle;
 }
 
-.parlay-section {
-  margin-bottom: 24px;
+.card-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 190px;
+  gap: 20px;
+  align-items: start;
 }
 
-.top-pick-card,
+.parlay-sidebar {
+  grid-column: 2;
+  grid-row: 1;
+  position: sticky;
+  top: 16px;
+}
+
+.parlay-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
 .parlay-card {
   background: var(--bg-subtle);
   border: 1px solid var(--line);
   border-radius: var(--r-md);
-  padding: 16px;
+  padding: 10px 11px;
 }
 
-.top-pick-card {
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  align-items: center;
-  margin-bottom: 12px;
-}
-
-.top-pick-card h2,
-.parlay-card h3 {
-  margin: 4px 0;
-}
-
-.top-pick-card p,
-.parlay-card-header span,
-.parlay-disclaimer,
-.parlay-card small {
+.parlay-card-header span {
   color: var(--ink-2);
-  font-size: 0.75rem;
+  font-size: 0.625rem;
 }
 
-.top-pick-badge {
-  color: var(--pos);
-  font-size: 0.6875rem;
-  font-weight: 600;
-}
-
-.parlay-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 12px;
+.parlay-card-header .section-label {
+  color: var(--ink);
+  font-size: 0.625rem;
 }
 
 .parlay-card-header {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
-  gap: 8px;
 }
 
 .parlay-card ul {
   list-style: none;
   padding: 0;
-  margin: 12px 0;
+  margin: 6px 0 0;
 }
 
 .parlay-card li {
   display: flex;
   justify-content: space-between;
   gap: 8px;
-  padding: 7px 0;
+  padding: 5px 0;
   border-top: 1px solid var(--line);
-  font-size: 0.75rem;
+  font-size: 0.625rem;
 }
 
 .parlay-card li span {
   color: var(--ink-2);
 }
 
-.parlay-disclaimer {
-  margin: 10px 0 0;
+.top-pick-star {
+  color: var(--pos);
+  font-size: 0.75rem;
+  margin-right: 4px;
 }
 
 @media (max-width: 760px) {
+  .card-layout {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .parlay-sidebar {
+    order: -1;
+    position: static;
+    width: 100%;
+  }
+
   .parlay-grid {
-    grid-template-columns: 1fr;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .parlay-card li {
+    display: block;
+  }
+
+  .parlay-card li span {
+    display: block;
+    margin-top: 2px;
   }
 }
 

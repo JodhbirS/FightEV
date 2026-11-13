@@ -102,32 +102,15 @@ export default function CardPage() {
       )}
 
       {!loading && fights && fights.length > 0 && (
-        <>
+        <div className="card-layout">
         {parlays && (
-          <section className="parlay-section">
-            <div className="top-pick-card">
-              <div>
-                <span className="section-label">Top pick</span>
-                <h2>{parlays.topPick?.fighter ?? 'No qualifying pick'}</h2>
-                {parlays.topPick && (
-                  <p>
-                    {parlays.topPick.odds > 0 ? `+${parlays.topPick.odds}` : parlays.topPick.odds}
-                    {' · '}Model {(parlays.topPick.modelProbability * 100).toFixed(1)}%
-                    {' · '}EV {parlays.topPick.ev >= 0 ? '+' : ''}{(parlays.topPick.ev * 100).toFixed(1)}%
-                  </p>
-                )}
-              </div>
-              <span className="top-pick-badge">Best value + win probability</span>
-            </div>
+          <aside className="parlay-sidebar">
             <div className="parlay-grid">
               {parlays.parlays.map((parlay) => (
                 <div className="parlay-card" key={parlay.mode}>
                   <div className="parlay-card-header">
-                    <div>
-                      <span className="section-label">{parlay.mode}</span>
-                      <h3>{parlay.combinedAmericanOdds > 0 ? '+' : ''}{parlay.combinedAmericanOdds}</h3>
-                    </div>
-                    <span>{(parlay.estimatedProbability * 100).toFixed(1)}% estimated</span>
+                    <span className="section-label">{parlay.mode}</span>
+                    <span>{(parlay.estimatedProbability * 100).toFixed(1)}%</span>
                   </div>
                   <ul>
                     {parlay.legs.map((leg) => (
@@ -140,16 +123,10 @@ export default function CardPage() {
                       </li>
                     ))}
                   </ul>
-                  {parlay.mode === 'Aggressive' && (
-                    <small>Method labels are model angles; current odds are moneyline-only.</small>
-                  )}
                 </div>
               ))}
             </div>
-            <p className="parlay-disclaimer">
-              Sample parlays only. Estimated probabilities assume independent fight outcomes and are not betting advice.
-            </p>
-          </section>
+          </aside>
         )}
         <motion.div
           className="matchups-list"
@@ -160,6 +137,7 @@ export default function CardPage() {
           {fights.map((fight, i) => {
             const isF1Positive = fight.ev1 > 0;
             const isF2Positive = fight.ev2 > 0;
+            const isTopPick = (fighter: string) => parlays?.topPick?.fighter === fighter;
 
             return (
               <motion.div
@@ -179,7 +157,10 @@ export default function CardPage() {
                   title={`Click to view ${fight.fighter1}'s last 5 fights`}
                 >
                   <div className="card-top">
-                    <span className="card-name">{fight.fighter1}</span>
+                    <span className="card-name">
+                      {isTopPick(fight.fighter1) && <span className="top-pick-star" title="Top pick">★</span>}
+                      {fight.fighter1}
+                    </span>
                     {fight.predWinner === 1 && (
                       <span className="winner-badge">Predicted Winner</span>
                     )}
@@ -221,7 +202,10 @@ export default function CardPage() {
                   title={`Click to view ${fight.fighter2}'s last 5 fights`}
                 >
                   <div className="card-top">
-                    <span className="card-name">{fight.fighter2}</span>
+                    <span className="card-name">
+                      {isTopPick(fight.fighter2) && <span className="top-pick-star" title="Top pick">★</span>}
+                      {fight.fighter2}
+                    </span>
                     {fight.predWinner === 2 && (
                       <span className="winner-badge">Predicted Winner</span>
                     )}
@@ -252,7 +236,7 @@ export default function CardPage() {
             );
           })}
         </motion.div>
-        </>
+        </div>
       )}
 
       {/* Fighter History Popup Modal */}
