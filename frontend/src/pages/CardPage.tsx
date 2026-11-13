@@ -117,7 +117,6 @@ export default function CardPage() {
                       <li key={leg.fighter}>
                         <strong>{leg.fighter}</strong>
                         <span>
-                          {leg.odds > 0 ? `+${leg.odds}` : leg.odds}
                           {leg.methodAngleIncluded && ` · ${leg.methodAngle}`}
                         </span>
                       </li>
@@ -158,8 +157,8 @@ export default function CardPage() {
                 >
                   <div className="card-top">
                     <span className="card-name">
-                      {isTopPick(fight.fighter1) && <span className="top-pick-star" title="Top pick">★</span>}
                       {fight.fighter1}
+                      {isTopPick(fight.fighter1) && <span className="top-pick-badge">Top pick</span>}
                     </span>
                     {fight.predWinner === 1 && (
                       <span className="winner-badge">Predicted Winner</span>
@@ -203,8 +202,8 @@ export default function CardPage() {
                 >
                   <div className="card-top">
                     <span className="card-name">
-                      {isTopPick(fight.fighter2) && <span className="top-pick-star" title="Top pick">★</span>}
                       {fight.fighter2}
+                      {isTopPick(fight.fighter2) && <span className="top-pick-badge">Top pick</span>}
                     </span>
                     {fight.predWinner === 2 && (
                       <span className="winner-badge">Predicted Winner</span>

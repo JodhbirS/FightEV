@@ -303,8 +303,8 @@ a {
 
 .card-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 190px;
-  gap: 20px;
+  grid-template-columns: minmax(0, 1fr) 230px;
+  gap: 32px;
   align-items: start;
 }
 
@@ -363,10 +363,20 @@ a {
   color: var(--ink-2);
 }
 
-.top-pick-star {
+.top-pick-badge {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 7px;
+  padding: 2px 6px;
+  border: 1px solid rgba(22, 163, 74, 0.25);
+  border-radius: var(--r-full);
   color: var(--pos);
-  font-size: 0.75rem;
-  margin-right: 4px;
+  background: rgba(22, 163, 74, 0.08);
+  font-size: 0.5625rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
 }
 
 @media (max-width: 760px) {
