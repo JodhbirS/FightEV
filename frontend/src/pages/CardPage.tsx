@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence, type Variants } from 'framer-motion';
-import { getFights, getFighterByName } from '../api';
-import type { FightOut, FighterDetail } from '../types';
+import { getFights, getFighterByName, getParlays } from '../api';
+import type { FightOut, FighterDetail, ParlaySummary } from '../types';
 
 const pageVariants: Variants = {
   initial: { opacity: 0, y: 6 },
@@ -29,6 +29,7 @@ export default function CardPage() {
   const [fights, setFights] = useState<FightOut[] | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [parlays, setParlays] = useState<ParlaySummary | null>(null);
 
   // Modal State
   const [modalFighter, setModalFighter] = useState<FighterDetail | null>(null);
@@ -37,8 +38,11 @@ export default function CardPage() {
   const [activeFighterName, setActiveFighterName] = useState<string | null>(null);
 
   useEffect(() => {
-    getFights()
-      .then(setFights)
+    Promise.all([getFights(), getParlays()])
+      .then(([card, summary]) => {
+        setFights(card);
+        setParlays(summary);
+      })
       .catch(() => setError('Failed to load upcoming fights.'))
       .finally(() => setLoading(false));
   }, []);
@@ -98,6 +102,55 @@ export default function CardPage() {
       )}
 
       {!loading && fights && fights.length > 0 && (
+        <>
+        {parlays && (
+          <section className="parlay-section">
+            <div className="top-pick-card">
+              <div>
+                <span className="section-label">Top pick</span>
+                <h2>{parlays.topPick?.fighter ?? 'No qualifying pick'}</h2>
+                {parlays.topPick && (
+                  <p>
+                    {parlays.topPick.odds > 0 ? `+${parlays.topPick.odds}` : parlays.topPick.odds}
+                    {' · '}Model {(parlays.topPick.modelProbability * 100).toFixed(1)}%
+                    {' · '}EV {parlays.topPick.ev >= 0 ? '+' : ''}{(parlays.topPick.ev * 100).toFixed(1)}%
+                  </p>
+                )}
+              </div>
+              <span className="top-pick-badge">Best value + win probability</span>
+            </div>
+            <div className="parlay-grid">
+              {parlays.parlays.map((parlay) => (
+                <div className="parlay-card" key={parlay.mode}>
+                  <div className="parlay-card-header">
+                    <div>
+                      <span className="section-label">{parlay.mode}</span>
+                      <h3>{parlay.combinedAmericanOdds > 0 ? '+' : ''}{parlay.combinedAmericanOdds}</h3>
+                    </div>
+                    <span>{(parlay.estimatedProbability * 100).toFixed(1)}% estimated</span>
+                  </div>
+                  <ul>
+                    {parlay.legs.map((leg) => (
+                      <li key={leg.fighter}>
+                        <strong>{leg.fighter}</strong>
+                        <span>
+                          {leg.odds > 0 ? `+${leg.odds}` : leg.odds}
+                          {leg.methodAngleIncluded && ` · ${leg.methodAngle}`}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                  {parlay.mode === 'Aggressive' && (
+                    <small>Method labels are model angles; current odds are moneyline-only.</small>
+                  )}
+                </div>
+              ))}
+            </div>
+            <p className="parlay-disclaimer">
+              Sample parlays only. Estimated probabilities assume independent fight outcomes and are not betting advice.
+            </p>
+          </section>
+        )}
         <motion.div
           className="matchups-list"
           variants={listVariants}
@@ -199,6 +252,7 @@ export default function CardPage() {
             );
           })}
         </motion.div>
+        </>
       )}
 
       {/* Fighter History Popup Modal */}

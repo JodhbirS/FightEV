@@ -22,7 +22,7 @@ class FighterListResponse(BaseModel):
 
 # --- /fighters/{id} detail ---
 
-class ModelPoint(BaseModel):
+class FightMethodPoint(BaseModel):
     fight_id: int
     fight_sequence: int
     opponent_name: str
@@ -55,7 +55,7 @@ class FighterDetail(BaseModel):
     losses: int
     draws: int
     fight_history: list[FightHistoryItem]
-    method_history: list[ModelPoint]
+    method_history: list[FightMethodPoint]
 
     model_config = {"from_attributes": True}
 
@@ -78,3 +78,27 @@ class FightOut(BaseModel):
     predMethodProb: float
     kelly1: float = 0.0
     kelly2: float = 0.0
+
+
+class ParlayLeg(BaseModel):
+    fighter: str
+    odds: int
+    modelProbability: float
+    impliedProbability: float
+    ev: float
+    methodAngle: str
+    methodProbability: float
+    methodAngleIncluded: bool = False
+
+
+class ParlayOut(BaseModel):
+    mode: str
+    legs: list[ParlayLeg]
+    estimatedProbability: float
+    combinedDecimalOdds: float
+    combinedAmericanOdds: int
+
+
+class ParlaySummary(BaseModel):
+    topPick: ParlayLeg | None
+    parlays: list[ParlayOut]

@@ -18,6 +18,30 @@ export interface FightOut {
   kelly2?: number;
 }
 
+export interface ParlayLeg {
+  fighter: string;
+  odds: number;
+  modelProbability: number;
+  impliedProbability: number;
+  ev: number;
+  methodAngle: string;
+  methodProbability: number;
+  methodAngleIncluded?: boolean;
+}
+
+export interface Parlay {
+  mode: string;
+  legs: ParlayLeg[];
+  estimatedProbability: number;
+  combinedDecimalOdds: number;
+  combinedAmericanOdds: number;
+}
+
+export interface ParlaySummary {
+  topPick: ParlayLeg | null;
+  parlays: Parlay[];
+}
+
 // --- Fighter types ---
 
 export interface FighterListItem {
@@ -34,7 +58,7 @@ export interface FighterListResponse {
   fighters: FighterListItem[];
 }
 
-export interface ModelPoint {
+export interface FightMethodPoint {
   fight_id: number;
   fight_sequence: number;
   opponent_name: string;
@@ -63,5 +87,5 @@ export interface FighterDetail {
   losses: number;
   draws: number;
   fight_history: FightHistoryItem[];
-  method_history: ModelPoint[];
+  method_history: FightMethodPoint[];
 }

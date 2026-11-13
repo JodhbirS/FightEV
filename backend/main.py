@@ -4,13 +4,14 @@ from contextlib import asynccontextmanager
 from datetime import date, timedelta
 from typing import List
 
+import joblib
 from fastapi import Depends, FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy import func, or_
 from sqlalchemy.orm import Session
 
-from database import Base, SessionLocal, engine, get_db
-from ensemble_engine import EnsemblePredictor, compute_metrics
+from database import Base, engine, get_db
+from ensemble_engine import EloLogisticPredictor, build_parlay_summary, compute_metrics
 from models import Fight, Fighter
 from schemas import (
     FightHistoryItem,
@@ -18,30 +19,27 @@ from schemas import (
     FighterDetail,
     FighterListItem,
     FighterListResponse,
-    ModelPoint,
+    FightMethodPoint,
+    ParlaySummary,
 )
 
 Base.metadata.create_all(bind=engine)
-_predictor = EnsemblePredictor()
+_predictor = EloLogisticPredictor()
+MODEL_PATH = os.path.join(os.path.dirname(__file__), "data", "model.joblib")
 
 
 def _load_predictor() -> None:
-    db = SessionLocal()
-    try:
-        fighters = {fighter.id: fighter.name for fighter in db.query(Fighter).all()}
-        fights = db.query(Fight).order_by(Fight.event_date.asc().nullsfirst(), Fight.id.asc()).all()
-        _predictor.fit([
-            {
-                "fighter_1": fighters[fight.fighter_1_id],
-                "fighter_2": fighters[fight.fighter_2_id],
-                "result": fight.result,
-                "method": fight.method,
-                "event_date": fight.event_date,
-            }
-            for fight in fights
-        ])
-    finally:
-        db.close()
+    global _predictor
+    if os.path.exists(MODEL_PATH):
+        _predictor = joblib.load(MODEL_PATH)
+        if not isinstance(_predictor, EloLogisticPredictor) or not _predictor.trained:
+            raise RuntimeError(f"Invalid trained predictor artifact: {MODEL_PATH}")
+        return
+
+    raise FileNotFoundError(
+        f"Trained predictor artifact not found at {MODEL_PATH}. "
+        "Run backend/build_model.py before starting the API."
+    )
 
 
 @asynccontextmanager
@@ -52,7 +50,7 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(
     title="FightEV API",
-    description="UFC fight predictions powered by a CPU-only ensemble model.",
+    description="UFC fight predictions powered by a CPU-only Elo-plus-logistic model.",
     version="3.0.0",
     lifespan=lifespan,
 )
@@ -93,6 +91,11 @@ def _load_current_card() -> list[tuple[str, str, int, int]]:
 @app.get("/fights", response_model=List[FightOut])
 def get_fights():
     return compute_metrics(_predictor, _load_current_card())
+
+
+@app.get("/parlays", response_model=ParlaySummary)
+def get_parlays():
+    return build_parlay_summary(compute_metrics(_predictor, _load_current_card()))
 
 
 @app.get("/fighters", response_model=FighterListResponse)
@@ -184,7 +187,7 @@ def _build_fighter_detail(fighter: Fighter, db: Session) -> FighterDetail:
             id=fight.id, event=fight.event, opponent_name=fighters.get(opponent_id, "Unknown"),
             result=result, method=fight.method, round=fight.round, time=fight.time,
         ))
-        method_history.append(ModelPoint(
+        method_history.append(FightMethodPoint(
             fight_id=fight.id, fight_sequence=sequence, opponent_name=fighters.get(opponent_id, "Unknown"),
             result=result, method=fight.method, event=fight.event,
         ))

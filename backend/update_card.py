@@ -3,6 +3,7 @@ import json
 import os
 import re
 import unicodedata
+from datetime import datetime, timedelta, timezone
 from dotenv import load_dotenv
 from bs4 import BeautifulSoup
 from database import SessionLocal
@@ -79,52 +80,6 @@ def get_canonical_db_name(name: str, db_fighters: dict[str, str]) -> str:
             return canonical
 
     return name
-
-
-def get_upcoming_ufc_event_page() -> str | None:
-    """
-    Query Wikipedia's 'List of UFC events' table to find the immediate next upcoming UFC event.
-    """
-    try:
-        url = "https://en.wikipedia.org/w/api.php"
-        params = {
-            'action': 'parse',
-            'page': 'List of UFC events',
-            'prop': 'text',
-            'format': 'json',
-        }
-        res = requests.get(url, params=params, headers=WIKI_HEADERS, timeout=10)
-        if res.status_code != 200:
-            return None
-        data = res.json()
-        html = data.get('parse', {}).get('text', {}).get('*', '')
-        soup = BeautifulSoup(html, 'html.parser')
-        tables = soup.find_all('table', {'class': 'wikitable'})
-        if not tables:
-            return None
-
-        upcoming_table = tables[0]
-        upcoming_events = []
-        for tr in upcoming_table.find_all('tr'):
-            tds = [td.get_text(strip=True) for td in tr.find_all(['td', 'th'])]
-            if len(tds) >= 2 and tds[0] != 'Event':
-                # Remove references like [24]
-                event_name = re.sub(r'\[.*?\]', '', tds[0]).strip()
-                event_date = re.sub(r'\[.*?\]', '', tds[1]).strip()
-                if event_name:
-                    upcoming_events.append((event_name, event_date))
-
-        if upcoming_events:
-            # The upcoming table is listed chronologically reverse (farthest first, next immediate last)
-            next_event_title = upcoming_events[-1][0]
-            next_event_date = upcoming_events[-1][1]
-            print(f"Discovered next upcoming UFC event on Wikipedia: '{next_event_title}' ({next_event_date})")
-            return next_event_title
-
-        return None
-    except Exception as e:
-        print(f"Warning: Could not fetch upcoming UFC events from Wikipedia: {e}")
-        return None
 
 
 def parse_wikipedia_bouts(page_title: str) -> list[tuple[str, str]]:
@@ -206,122 +161,137 @@ def search_wikipedia_for_event(fighter_pairs: list[tuple[str, str]]) -> str | No
     return None
 
 
-def fetch_ufc_odds():
+def fetch_fanduel_ufc_card():
     if not API_KEY:
-        print("API key not set. Please set the ODDS_API_KEY environment variable.")
-        return
+        raise RuntimeError("ODDS_API_KEY is not set")
 
     base_url = "https://api.the-odds-api.com/v4"
     sport = "mma_mixed_martial_arts"
-    preferred_books = ['fanduel', 'draftkings', 'betmgm', 'bovada', 'betonlineag', 'williamhill_us']
+    db_fighters = get_db_fighter_names()
+    if not db_fighters:
+        raise RuntimeError("No fighters were loaded from the UFC database")
 
-    try:
-        db_fighters = get_db_fighter_names()
-        print(f"Loaded {len(db_fighters)} fighters from database for verification.")
+    now = datetime.now(timezone.utc)
+    events_response = requests.get(
+        f"{base_url}/sports/{sport}/events",
+        params={
+            "apiKey": API_KEY,
+            "dateFormat": "iso",
+            "commenceTimeFrom": (now - timedelta(hours=8)).strftime("%Y-%m-%dT%H:%M:%SZ"),
+            "commenceTimeTo": (now + timedelta(days=14)).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        },
+        timeout=15,
+    )
+    events_response.raise_for_status()
+    events = events_response.json()
+    if not events:
+        raise RuntimeError("The Odds API returned no upcoming MMA events")
 
-        # 1. First, find official upcoming UFC card from Wikipedia
-        page_title = get_upcoming_ufc_event_page()
-        official_bouts = []
-        if page_title:
-            official_bouts = parse_wikipedia_bouts(page_title)
-        if not official_bouts:
-            print("Error: Could not retrieve the official upcoming UFC card.")
-            return
+    parsed = []
+    for event in events:
+        first = event.get("home_team", "")
+        second = event.get("away_team", "")
+        try:
+            event_time = datetime.fromisoformat(event["commence_time"].replace("Z", "+00:00"))
+        except (KeyError, ValueError):
+            continue
+        verified_count = sum(
+            any(names_match(name, known) for known in db_fighters.values())
+            for name in (first, second)
+        )
+        parsed.append({
+            "event": event,
+            "first": first,
+            "second": second,
+            "time": event_time,
+            "verified_count": verified_count,
+        })
 
-        # 2. Fetch live odds for all MMA events from Odds API
-        odds_url = f"{base_url}/sports/{sport}/odds"
-        odds_params = {
-            'apiKey': API_KEY,
-            'regions': 'us',
-            'markets': 'h2h',
-            'oddsFormat': 'american',
-        }
-        print("Fetching live odds from The Odds API...")
-        odds_res = requests.get(odds_url, params=odds_params, timeout=12)
-        odds_res.raise_for_status()
-        raw_odds_events = odds_res.json()
-        print(f"Retrieved {len(raw_odds_events)} live MMA betting events.")
-
-        # 3. Match official bouts to Odds API events to attach live moneyline odds
-        card_fights = []
-
-        if official_bouts:
-            for bout_idx, (f1, f2) in enumerate(official_bouts):
-                matched_event = None
-                for ev in raw_odds_events:
-                    home = ev.get('home_team', '')
-                    away = ev.get('away_team', '')
-                    if (names_match(f1, home) and names_match(f2, away)) or (names_match(f1, away) and names_match(f2, home)):
-                        matched_event = ev
-                        break
-                    if (names_match(f1, home) or names_match(f1, away)) and (names_match(f2, home) or names_match(f2, away)):
-                        matched_event = ev
-                        break
-
-                odds1, odds2 = -110, -110  # default pick'em if unlisted
-                if matched_event:
-                    bookmakers = {b.get('key', '').lower(): b for b in matched_event.get('bookmakers', [])}
-                    chosen_bookmaker = None
-                    for pref in preferred_books:
-                        if pref in bookmakers:
-                            chosen_bookmaker = bookmakers[pref]
-                            break
-                    if not chosen_bookmaker and matched_event.get('bookmakers'):
-                        chosen_bookmaker = matched_event['bookmakers'][0]
-
-                    if chosen_bookmaker:
-                        for market in chosen_bookmaker.get('markets', []):
-                            if market.get('key') == 'h2h' and len(market.get('outcomes', [])) >= 2:
-                                outcomes = market['outcomes']
-                                if names_match(f1, outcomes[0]['name']):
-                                    odds1 = outcomes[0]['price']
-                                    odds2 = outcomes[1]['price']
-                                else:
-                                    odds1 = outcomes[1]['price']
-                                    odds2 = outcomes[0]['price']
-                                break
-
-                # Standardize to database canonical fighter names for model lookup
-                canonical_f1 = get_canonical_db_name(f1, db_fighters)
-                canonical_f2 = get_canonical_db_name(f2, db_fighters)
-
-                card_fights.append({
-                    "fighter1": canonical_f1,
-                    "fighter2": canonical_f2,
-                    "odds1": odds1,
-                    "odds2": odds2,
-                })
+    parsed.sort(key=lambda item: item["time"])
+    clusters: list[list[dict]] = []
+    for item in parsed:
+        if not clusters or (item["time"] - clusters[-1][-1]["time"]) > timedelta(hours=7):
+            clusters.append([item])
         else:
-            print("Error: Could not retrieve official UFC fight card.")
-            return
+            clusters[-1].append(item)
 
-        print(f"\nSuccessfully compiled official UFC fight card ({len(card_fights)} bouts):")
-        for idx, f in enumerate(card_fights):
-            print(f"  #{idx + 1:02d}: {f['fighter1']} ({f['odds1']:+d}) vs {f['fighter2']} ({f['odds2']:+d})")
+    target = max(
+        clusters,
+        key=lambda cluster: (sum(item["verified_count"] for item in cluster), len(cluster)),
+        default=[],
+    )
+    if sum(item["verified_count"] for item in target) < 4:
+        raise RuntimeError("Could not verify an upcoming UFC card from MMA events")
 
-        # 5. Save to backend/data/card.json and data/card.json
-        base_dir = os.path.dirname(os.path.abspath(__file__))
-        data_dir = os.path.join(base_dir, "data")
-        os.makedirs(data_dir, exist_ok=True)
-        target_path = os.path.join(data_dir, "card.json")
+    candidate_pairs = [(item["first"], item["second"]) for item in target]
+    wiki_title = search_wikipedia_for_event(candidate_pairs[:5])
+    official_bouts = parse_wikipedia_bouts(wiki_title) if wiki_title else []
+    if not official_bouts:
+        raise RuntimeError("Could not verify the selected MMA card as a UFC event")
 
-        with open(target_path, "w") as f:
-            json.dump(card_fights, f, indent=2)
+    def bout_rank(first: str, second: str) -> int | None:
+        for index, (official_first, official_second) in enumerate(official_bouts):
+            if (
+                (names_match(first, official_first) and names_match(second, official_second))
+                or (names_match(first, official_second) and names_match(second, official_first))
+            ):
+                return index
+        return None
 
-        print(f"\nCard saved to {target_path}")
+    card = []
+    for item in target:
+        rank = bout_rank(item["first"], item["second"])
+        if rank is None:
+            continue
+        odds_response = requests.get(
+            f"{base_url}/sports/{sport}/events/{item['event']['id']}/odds",
+            params={
+                "apiKey": API_KEY,
+                "regions": "us",
+                "markets": "h2h",
+                "oddsFormat": "american",
+            },
+            timeout=15,
+        )
+        odds_response.raise_for_status()
+        odds_data = odds_response.json()
+        bookmaker = next(
+            (book for book in odds_data.get("bookmakers", [])
+             if book.get("key", "").lower() == "fanduel"),
+            None,
+        )
+        if not bookmaker:
+            continue
+        market = next(
+            (market for market in bookmaker.get("markets", [])
+             if market.get("key") == "h2h" and len(market.get("outcomes", [])) >= 2),
+            None,
+        )
+        if not market:
+            continue
+        outcomes = market["outcomes"]
+        first_name, second_name = outcomes[0]["name"], outcomes[1]["name"]
+        card.append({
+            "fighter1": get_canonical_db_name(first_name, db_fighters),
+            "fighter2": get_canonical_db_name(second_name, db_fighters),
+            "odds1": outcomes[0]["price"],
+            "odds2": outcomes[1]["price"],
+            "_rank": rank,
+        })
 
-        # Also write to root data/ if present
-        root_data_dir = os.path.join(os.path.dirname(base_dir), "data")
-        if os.path.exists(root_data_dir):
-            root_card_path = os.path.join(root_data_dir, "card.json")
-            with open(root_card_path, "w") as f:
-                json.dump(card_fights, f, indent=2)
+    if not card:
+        raise RuntimeError("FanDuel returned no verified UFC fight odds")
+    card.sort(key=lambda fight: fight["_rank"])
+    output = [{key: value for key, value in fight.items() if not key.startswith("_")} for fight in card]
 
-    except Exception as e:
-        print(f"Error in fetch_ufc_odds: {e}")
-        import traceback
-        traceback.print_exc()
+    target_path = os.path.join(os.path.dirname(__file__), "data", "card.json")
+    temp_path = f"{target_path}.tmp"
+    with open(temp_path, "w") as card_file:
+        json.dump(output, card_file, indent=2)
+        card_file.write("\n")
+    os.replace(temp_path, target_path)
+    print(f"Saved {len(output)} verified UFC FanDuel fights to {target_path}")
 
 
 if __name__ == "__main__":
-    fetch_ufc_odds()
+    fetch_fanduel_ufc_card()

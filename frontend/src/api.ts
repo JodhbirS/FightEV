@@ -1,11 +1,11 @@
-import type { FightOut, FighterListResponse, FighterDetail } from './types';
+import type { FightOut, FighterListResponse, FighterDetail, ParlaySummary } from './types';
 
 // In production (Vercel), use the absolute backend URL.
 // In local dev, Vite's proxy rewrites /api/* → http://localhost:8000/*
 const API_BASE = import.meta.env.PROD
   ? 'https://fightev.onrender.com'
   : '/api';
-const REQUEST_TIMEOUT_MS = 90_000;
+const REQUEST_TIMEOUT_MS = 30_000;
 
 const fighterCache = new Map<string | number, FighterDetail>();
 
@@ -35,6 +35,10 @@ async function fetchJson<T>(path: string): Promise<T> {
 
 export async function getFights() {
   return fetchJson<FightOut[]>('/fights');
+}
+
+export async function getParlays() {
+  return fetchJson<ParlaySummary>('/parlays');
 }
 
 export async function getFighters(

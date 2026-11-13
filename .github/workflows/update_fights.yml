@@ -28,11 +28,17 @@ jobs:
       - name: Run UFC-scraping script
         run: python backend/scrape_new_fights.py
 
+      - name: Normalize fight dates and database records
+        run: python backend/clean_database.py
+
+      - name: Build predictor artifact
+        run: python backend/build_model.py
+
       - name: Commit and push updates
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add backend/data/fightev.db
+          git add backend/data/fightev.db backend/data/model.joblib
           git commit -m "Weekly: update UFC fights database" || echo "No changes to commit"
           git push
         env:

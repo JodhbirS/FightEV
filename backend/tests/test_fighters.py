@@ -3,8 +3,6 @@ Tests for the /fighters endpoints.
 
 Uses an in-memory SQLite database with a small fixture dataset.
 """
-import math
-from collections import defaultdict
 from datetime import date
 
 import pytest

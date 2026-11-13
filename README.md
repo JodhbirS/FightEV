@@ -1,6 +1,6 @@
 # FightEV — UFC Predictions
 
-A clean React + TypeScript web app displaying upcoming UFC fight cards with live sportsbook odds alongside a CPU-only scikit-learn ensemble win-probability and expected-value model. Positive-EV picks are highlighted in green with suggested Kelly unit sizing. The fight card is refreshed automatically on fight weekends, and completed results are used to retrain the ensemble on API startup.
+A clean React + TypeScript web app displaying upcoming UFC fight cards with live sportsbook odds alongside a CPU-only Elo-plus-logistic win-probability and expected-value model. Positive-EV picks are highlighted in green with suggested Kelly unit sizing. The fight card and persisted predictor are refreshed automatically each week.
 
 If you use this to place your own bets, please do so at your own discretion.
 
@@ -11,7 +11,7 @@ If you use this to place your own bets, please do so at your own discretion.
 ## Features
 
 - **Live Odds & Implied Probabilities** from The Odds API
-- **CPU-Only Ensemble Model** combining logistic regression, random forest, and histogram gradient boosting
+- **CPU-Only Elo + Logistic Model** using Elo as the primary signal and logistic regression for feature-based adjustment
 - **Matchup-Aware Method Predictions** combining the predicted winner's winning methods with the opponent's losing methods
 - **Expected Value (+EV) Calculation** & highlighted edge cards
 - **Quarter-Kelly Criterion** suggested bet unit sizing (`0.5u` – `3.0u`)

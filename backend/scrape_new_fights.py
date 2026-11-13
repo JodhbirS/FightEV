@@ -7,10 +7,8 @@ Run from repo root:  python backend/scrape_new_fights.py
 import os
 import re
 import sys
-import math
 import time
 import urllib.parse
-from collections import defaultdict
 
 import requests
 from bs4 import BeautifulSoup
@@ -277,7 +275,7 @@ def main():
 
     if new_fights > 0:
         session.flush()
-        print(f"Added {new_fights} new fights. The ensemble retrains on API startup.")
+        print(f"Added {new_fights} new fights. The weekly workflow will rebuild the predictor artifact.")
         session.commit()
         print(f"Successfully updated database with {new_fights} new fights!")
     else:

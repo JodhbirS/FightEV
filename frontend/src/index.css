@@ -301,6 +301,87 @@ a {
   vertical-align: middle;
 }
 
+.parlay-section {
+  margin-bottom: 24px;
+}
+
+.top-pick-card,
+.parlay-card {
+  background: var(--bg-subtle);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  padding: 16px;
+}
+
+.top-pick-card {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.top-pick-card h2,
+.parlay-card h3 {
+  margin: 4px 0;
+}
+
+.top-pick-card p,
+.parlay-card-header span,
+.parlay-disclaimer,
+.parlay-card small {
+  color: var(--ink-2);
+  font-size: 0.75rem;
+}
+
+.top-pick-badge {
+  color: var(--pos);
+  font-size: 0.6875rem;
+  font-weight: 600;
+}
+
+.parlay-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.parlay-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.parlay-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0;
+}
+
+.parlay-card li {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 7px 0;
+  border-top: 1px solid var(--line);
+  font-size: 0.75rem;
+}
+
+.parlay-card li span {
+  color: var(--ink-2);
+}
+
+.parlay-disclaimer {
+  margin: 10px 0 0;
+}
+
+@media (max-width: 760px) {
+  .parlay-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* VS Badge */
 .vs-circle {
   width: 24px;
