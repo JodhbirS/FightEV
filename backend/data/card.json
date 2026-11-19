@@ -1,74 +1,62 @@
 [
   {
-    "fighter1": "Ciryl Gane",
-    "fighter2": "Josh Hokit",
-    "odds1": -225,
-    "odds2": 188
+    "fighter1": "Ji\u0159\u00ed Proch\u00e1zka",
+    "fighter2": "Navajo Stirling",
+    "odds1": 132,
+    "odds2": -170
   },
   {
-    "fighter1": "Kayla Harrison",
-    "fighter2": "Amanda Nunes",
-    "odds1": -164,
-    "odds2": 138
+    "fighter1": "Aljamain Sterling",
+    "fighter2": "Kevin Vallejos",
+    "odds1": 108,
+    "odds2": -138
   },
   {
-    "fighter1": "Caio Borralho",
-    "fighter2": "Yousri Belgaroui",
-    "odds1": -156,
-    "odds2": 132
+    "fighter1": "Dan Hooker",
+    "fighter2": "Brian Ortega",
+    "odds1": -194,
+    "odds2": 150
   },
   {
-    "fighter1": "Uro\u0161 Medi\u0107",
-    "fighter2": "Kevin Holland",
-    "odds1": -154,
-    "odds2": 130
+    "fighter1": "Jared Cannonier",
+    "fighter2": "Ikram Aliskerov",
+    "odds1": 230,
+    "odds2": -310
   },
   {
-    "fighter1": "Bilal Hasan",
-    "fighter2": "Luis Gurule",
-    "odds1": -1150,
-    "odds2": 730
+    "fighter1": "Aleksandre Topuria",
+    "fighter2": "Santiago Luna",
+    "odds1": -295,
+    "odds2": 220
   },
   {
-    "fighter1": "Drew Dober",
-    "fighter2": "Chris Duncan",
-    "odds1": 152,
-    "odds2": -180
-  },
-  {
-    "fighter1": "Jim Miller",
-    "fighter2": "Terrance McKinney",
-    "odds1": 188,
-    "odds2": -220
-  },
-  {
-    "fighter1": "Donte Johnson",
-    "fighter2": "C\u00e9sar Almeida",
-    "odds1": -196,
+    "fighter1": "Shamil Gaziev",
+    "fighter2": "Tallison Teixeira",
+    "odds1": -215,
     "odds2": 164
   },
   {
-    "fighter1": "Jared Gordon",
-    "fighter2": "Melquizael Costa",
-    "odds1": 295,
-    "odds2": -370
+    "fighter1": "Amir Albazi",
+    "fighter2": "Alessandro Costa",
+    "odds1": -118,
+    "odds2": -108
   },
   {
-    "fighter1": "Macy Chiasson",
-    "fighter2": "Beatriz Mesquita",
-    "odds1": 205,
-    "odds2": -250
+    "fighter1": "Jake Matthews",
+    "fighter2": "Tahir Abdullayev",
+    "odds1": -265,
+    "odds2": 200
   },
   {
-    "fighter1": "Alateng Heili",
-    "fighter2": "Juan D\u00edaz",
-    "odds1": 320,
-    "odds2": -405
+    "fighter1": "Nikolas Motta",
+    "fighter2": "Dom Mar Fan",
+    "odds1": 124,
+    "odds2": -160
   },
   {
-    "fighter1": "Evan Elder",
-    "fighter2": "Samuel Sanches",
-    "odds1": 100,
-    "odds2": -118
+    "fighter1": "Diyar Nurgozhay",
+    "fighter2": "Alik Lorenz",
+    "odds1": -265,
+    "odds2": 200
   }
 ]
