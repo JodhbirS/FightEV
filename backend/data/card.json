@@ -14,55 +14,55 @@
   {
     "fighter1": "Dan Hooker",
     "fighter2": "Brian Ortega",
-    "odds1": -192,
-    "odds2": 154
+    "odds1": -188,
+    "odds2": 158
   },
   {
     "fighter1": "Jared Cannonier",
     "fighter2": "Ikram Aliskerov",
-    "odds1": 235,
-    "odds2": -300
+    "odds1": 240,
+    "odds2": -295
   },
   {
     "fighter1": "Aleksandre Topuria",
     "fighter2": "Santiago Luna",
-    "odds1": -290,
+    "odds1": -275,
     "odds2": 225
   },
   {
     "fighter1": "Shamil Gaziev",
     "fighter2": "Tallison Teixeira",
-    "odds1": -210,
-    "odds2": 168
+    "odds1": -205,
+    "odds2": 172
   },
   {
     "fighter1": "Amir Albazi",
     "fighter2": "Alessandro Costa",
-    "odds1": -106,
-    "odds2": -114
+    "odds1": -104,
+    "odds2": -112
   },
   {
     "fighter1": "Jake Matthews",
     "fighter2": "Tahir Abdullayev",
-    "odds1": -260,
+    "odds1": -250,
     "odds2": 205
   },
   {
     "fighter1": "Nikolas Motta",
     "fighter2": "Dom Mar Fan",
-    "odds1": 138,
-    "odds2": -170
+    "odds1": 140,
+    "odds2": -166
   },
   {
     "fighter1": "Diyar Nurgozhay",
     "fighter2": "Alik Lorenz",
-    "odds1": -250,
-    "odds2": 198
+    "odds1": -260,
+    "odds2": 215
   },
   {
     "fighter1": "Shoaib Yousaf",
     "fighter2": "John Mitchell",
-    "odds1": 118,
-    "odds2": -144
+    "odds1": 120,
+    "odds2": -142
   }
 ]
