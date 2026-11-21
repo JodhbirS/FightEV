@@ -2,8 +2,8 @@
   {
     "fighter1": "Ji\u0159\u00ed Proch\u00e1zka",
     "fighter2": "Navajo Stirling",
-    "odds1": 150,
-    "odds2": -178
+    "odds1": 166,
+    "odds2": -198
   },
   {
     "fighter1": "Aljamain Sterling",
@@ -16,53 +16,5 @@
     "fighter2": "Brian Ortega",
     "odds1": -188,
     "odds2": 158
-  },
-  {
-    "fighter1": "Jared Cannonier",
-    "fighter2": "Ikram Aliskerov",
-    "odds1": 240,
-    "odds2": -295
-  },
-  {
-    "fighter1": "Aleksandre Topuria",
-    "fighter2": "Santiago Luna",
-    "odds1": -275,
-    "odds2": 225
-  },
-  {
-    "fighter1": "Shamil Gaziev",
-    "fighter2": "Tallison Teixeira",
-    "odds1": -200,
-    "odds2": 168
-  },
-  {
-    "fighter1": "Amir Albazi",
-    "fighter2": "Alessandro Costa",
-    "odds1": -104,
-    "odds2": -112
-  },
-  {
-    "fighter1": "Jake Matthews",
-    "fighter2": "Tahir Abdullayev",
-    "odds1": -250,
-    "odds2": 205
-  },
-  {
-    "fighter1": "Nikolas Motta",
-    "fighter2": "Dom Mar Fan",
-    "odds1": 140,
-    "odds2": -166
-  },
-  {
-    "fighter1": "Diyar Nurgozhay",
-    "fighter2": "Alik Lorenz",
-    "odds1": -260,
-    "odds2": 215
-  },
-  {
-    "fighter1": "Shoaib Yousaf",
-    "fighter2": "John Mitchell",
-    "odds1": 120,
-    "odds2": -142
   }
 ]
