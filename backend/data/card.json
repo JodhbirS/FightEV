@@ -2,26 +2,26 @@
   {
     "fighter1": "Israel Adesanya",
     "fighter2": "Sharabutdin Magomedov",
-    "odds1": -184,
-    "odds2": 142
+    "odds1": -178,
+    "odds2": 138
   },
   {
     "fighter1": "Ian Machado Garry",
     "fighter2": "Yaroslav Amosov",
-    "odds1": -192,
-    "odds2": 148
+    "odds1": -178,
+    "odds2": 138
   },
   {
     "fighter1": "Levan Chokheli",
     "fighter2": "Islam Dulatov",
-    "odds1": 164,
-    "odds2": -215
+    "odds1": 148,
+    "odds2": -192
   },
   {
     "fighter1": "Mairon Santos",
     "fighter2": "Akbar Abdullaev",
-    "odds1": 240,
-    "odds2": -330
+    "odds1": 230,
+    "odds2": -310
   },
   {
     "fighter1": "Magomed Tuchalov",
@@ -32,8 +32,8 @@
   {
     "fighter1": "Luke Riley",
     "fighter2": "Gabriel Santos",
-    "odds1": -160,
-    "odds2": 124
+    "odds1": -148,
+    "odds2": 116
   },
   {
     "fighter1": "Bruno Gustavo da Silva",
@@ -44,31 +44,31 @@
   {
     "fighter1": "Uran Satybaldiev",
     "fighter2": "Ivan Gnizditskiy",
-    "odds1": -120,
-    "odds2": -104
+    "odds1": -130,
+    "odds2": 102
   },
   {
     "fighter1": "Marco Tulio",
     "fighter2": "Park Jun-yong",
-    "odds1": -188,
-    "odds2": 146
+    "odds1": -184,
+    "odds2": 142
   },
   {
     "fighter1": "Pavel Andrusca",
     "fighter2": "Mehemmedeli Osmanli",
-    "odds1": -132,
-    "odds2": 104
+    "odds1": -140,
+    "odds2": 110
   },
   {
     "fighter1": "Modestino Rodrigues",
     "fighter2": "Matthieu Letho Duclos",
-    "odds1": 122,
-    "odds2": -156
+    "odds1": 116,
+    "odds2": -148
   },
   {
     "fighter1": "Abdul Hussein",
     "fighter2": "Hecher Sosa",
-    "odds1": -166,
-    "odds2": 130
+    "odds1": -184,
+    "odds2": 142
   }
 ]
